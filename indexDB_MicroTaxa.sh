@@ -48,7 +48,6 @@ CLUSTER_ID=$(awk '/^CLUSTER_ID/{print $3}' "${CONFIG}")
 conda activate MicroTaxa_py36
 #echo "MicroTaxa virtual environment has been activated successfully..." | tee /dev/fd/3
 
-
 echo ""
 echo "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" | tee /dev/fd/3
 echo "Clustering and indexing database for sortmerna... " `date` | tee /dev/fd/3

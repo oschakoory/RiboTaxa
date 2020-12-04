@@ -89,7 +89,6 @@ echo "Saving results for quality control..." | tee /dev/fd/3
 
 echo "Quality control ends successfully on : "`date` | tee /dev/fd/3
 
-
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 #
 #				Filtering 16S/18S reads using sortemrna

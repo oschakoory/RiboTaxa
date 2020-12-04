@@ -88,7 +88,7 @@ Now, you are ready to use MicroTaxa !!!
 ### Indexing databases
 
 MicroTaxa pipeline includes tools like sortmerna and emirge, both of which need indexed databases of their own. The latest SILVA SSU 138.1 
-can be downloaded <a class="reference external" href="https://www.arb-silva.de/" target="_blank" rel="noopener noreferrer">here</a>
+can be downloaded <a class="reference external" href="https://www.arb-silva.de/" target="_blank" rel="noopener noreferrer">here</a>.
 
 To index your database, you will need to fill the config file ```indexDB_arguments.conf```.If you are not sure of certains parameters, leave as defined except for directories and input files.
 

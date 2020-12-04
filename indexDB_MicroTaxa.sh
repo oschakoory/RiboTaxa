@@ -92,3 +92,5 @@ echo "Job ends successfully on : "`date` | tee /dev/fd/3
 
 conda deactivate
 #echo "MicroTaxa virtual environment has been deactivated successfully..." | tee /dev/fd/3
+
+mv indexdb_MicroTaxa.log "$OUTPUT"

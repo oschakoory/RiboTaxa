@@ -122,10 +122,11 @@ Indexing database takes a while. Using the maximum number of available threads/C
 ### Running MicroTaxa pipeline
 
 MicroTaxa pipeline will 
-- Perform a quality control on the (meta)genomics data using BBTOOLS
-- Filter 16S/18S reads using SORTMERNA
-- Reconstruct full-length SSU rRNA sequences using EMIRGE
-- Classify the full-length reconstructed SSU sequences using sklearn classifier of Qiime2
+- Perform a quality control on the (meta)genomics data using <a class="reference external" href="https://jgi.doe.gov/data-and-tools/bbtools/" target="_blank" rel="noopener noreferrer">BBTOOLS</a>
+- Filter 16S/18S reads using <a class="reference external" href="https://academic.oup.com/bioinformatics/article/28/24/3211/246053" target="_blank" rel="noopener noreferrer">SortMeRNA</a> (Kopylova et al.,2012)
+- Reconstruct full-length SSU rRNA sequences using <a class="reference external" href="https://genomebiology.biomedcentral.com/articles/10.1186/gb-2011-12-5-r44" target="_blank" rel="noopener noreferrer">EMIRGE</a> (Miller et al., 2011)
+- Classify the full-length reconstructed SSU sequences using <a class="reference external" href="https://docs.qiime2.org/2020.8/plugins/available/feature-classifier/classify-sklearn/">sklearn classifier</a> of <a class="reference external" href="https://docs.qiime2.org/2020.8/" target="_blank" rel="noopener noreferrer">QIIME2</a>
+
 
 MicroTaxa can used for one paired-end dataset or multiple paired-end datasets in the same folder.
 

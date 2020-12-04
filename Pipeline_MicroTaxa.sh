@@ -9,7 +9,6 @@ __credits__=["Oshma"]
 __status__='Development'
 __version__='0.0.1'
 
-
 # Handling errors
 #set -x # debug mode on
 set -o errexit # ensure script will stop in case of ignored error

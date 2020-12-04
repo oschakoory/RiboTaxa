@@ -79,7 +79,6 @@ bbduk.sh \
 echo "Run the second quality control on trimmed data..." | tee /dev/fd/3
 fastqc "$OUTPUT"/quality_control/"$SHORTNAME"_1_trimmed.fastq "$OUTPUT"/quality_control/"$SHORTNAME"_2_trimmed.fastq -dir $OUTPUT -o "$OUTPUT"/quality_control/after_fastqc
 
-
 echo "Running multiQC..." | tee /dev/fd/3
 
 multiqc -f "$OUTPUT"/quality_control/before_fastqc/* --outdir "$OUTPUT"/quality_control/before_fastqc/multiqc/

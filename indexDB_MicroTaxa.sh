@@ -30,7 +30,7 @@ SHORTNAME=$(basename ""${NAME[@]}"")
 #echo "shortname = $SHORTNAME" | tee /dev/fd/3
 
 OUTPUT=$(awk '/^OUTPUT/{print $3}' "${CONFIG}")
-echo "OUTPUT_path = $OUTPUT" | tee /dev/fd/3
+#echo "OUTPUT_path = $OUTPUT" | tee /dev/fd/3
 
 mkdir -p "$OUTPUT/sortmerna_indexed_DB"
 mkdir -p "$OUTPUT/bowtie_indexed_DB"
@@ -48,7 +48,12 @@ CLUSTER_ID=$(awk '/^CLUSTER_ID/{print $3}' "${CONFIG}")
 conda activate MicroTaxa_py36
 #echo "MicroTaxa virtual environment has been activated successfully..." | tee /dev/fd/3
 
-echo "Starting indexing database for sortmerna... " `date` | tee /dev/fd/3
+
+echo ""
+echo "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" | tee /dev/fd/3
+echo "Clustering and indexing database for sortmerna... " `date` | tee /dev/fd/3
+echo "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" | tee /dev/fd/3
+echo ""
 
 matam_db_preprocessing.py -i "$DB_DIR"  \
 	--clustering_id_threshold $CLUSTER_ID \
@@ -72,23 +77,25 @@ conda deactivate
 conda activate MicroTaxa_py27
 #echo "MicroTaxa virtual environment has been activated successfully..." | tee /dev/fd/3
 
-echo "Remove ambiguous characters and replacing non-standard base characters in reference database..." `date` | tee /dev/fd/3
+echo ""
+echo "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" | tee /dev/fd/3
+echo "Fixing and indexing clustered database for EMIRGE with bowtie..."`date` | tee /dev/fd/3
+echo "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" | tee /dev/fd/3
+echo ""
+
+echo "Remove ambiguous characters and replacing non-standard base characters in reference database..." | tee /dev/fd/3
 
 python "$MicroTaxa_DIR"/fix_nonstandard_chars.py < "$OUTPUT"/sortmerna_indexed_DB/*.clustered.fasta* > "$OUTPUT"/bowtie_indexed_DB/"$SHORTNAME"_clustered_fixed.fasta 
 
-echo "Finished fixing database for emirge..."`date` | tee /dev/fd/3
+echo "Finished fixing database for emirge..."| tee /dev/fd/3
 
-
-echo "starting indexing the newly fixed and clustered database with bowtie..."`date` | tee /dev/fd/3
 #Create bowtie-index for your new reference database
 bowtie-build "$OUTPUT"/bowtie_indexed_DB/"$SHORTNAME"_clustered_fixed.fasta  "$OUTPUT"/bowtie_indexed_DB/"$SHORTNAME"_bowtie_indexed \
 	-p "$THREAD"
 
-echo "Finished indexing the newly fixed and clustred database with bowtie..."`date` | tee /dev/fd/3
-
 echo "Saving results..."
 
-echo "Job ends successfully on : "`date` | tee /dev/fd/3
+echo "Finished indexing the newly fixed and clustred database with bowtie..."| tee /dev/fd/3
 
 conda deactivate
 #echo "MicroTaxa virtual environment has been deactivated successfully..." | tee /dev/fd/3

@@ -28,7 +28,6 @@ echo ""
 
 #echo "Set up directories ..." | tee /dev/fd/3
 
-#set up 
 CONFIG_PATH=$1
 CONFIG="${CONFIG_PATH[@]}"
 

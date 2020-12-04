@@ -65,7 +65,7 @@ echo "Removing adapters from sequences..." | tee /dev/fd/3
 bbduk.sh -Xmx1g in1="$DATA_DIR"/"$SHORTNAME"_1.fastq in2="$DATA_DIR"/"$SHORTNAME"_2.fastq out1="$OUTPUT"/quality_control/"$SHORTNAME"_1_noadapt.fastq out2="$OUTPUT"/quality_control/"$SHORTNAME"_2_noadapt.fastq ref="$MicroTaxa_DIR"/adapters/TruSeq3-PE.fa ktrim=$KTRIM k=$KMER mink=11 tpe tbo
 
 echo "Trimming sequences..." | tee /dev/fd/3
-bbduk.sh \
+bbduk.sh -Xmx2g \
 	in1="$OUTPUT"/quality_control/"$SHORTNAME"_1_noadapt.fastq \
 	in2="$OUTPUT"/quality_control/"$SHORTNAME"_2_noadapt.fastq \
 	out1="$OUTPUT"/quality_control/"$SHORTNAME"_1_trimmed.fastq \

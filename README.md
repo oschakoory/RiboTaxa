@@ -5,7 +5,6 @@ by Oshma Chakoory, Sophie Marre, and Pierre Peyret.
 MicroTaxa is a complete pipeline to rapidly filter and reconstruct the full length SSU rRNAs from Illumina (meta)genomic dataset and perform taxonomic classification on the reconstructed sequences.
 
 Tools used in MicroTaxa pipeline:
-- To index databases used in MicroTaxa pipeline: <a class="reference external" href="http://bowtie-bio.sourceforge.net/manual.shtml" target="_blank" rel="noopener noreferrer">Bowtie</a>
 - For quality control :<a class="reference external" href="http://www.bioinformatics.babraham.ac.uk/projects/fastqc/" target="_blank" rel="noopener noreferrer">FastQC</a>, <a class="reference external" href="https://multiqc.info/" target="_blank" rel="noopener noreferrer">MultiQC</a>
 - For adapters removal and trimming: <a class="reference external" href="https://jgi.doe.gov/data-and-tools/bbtools/" target="_blank" rel="noopener noreferrer">BBTOOLS</a>
 - To filter 16S/18S reads: <a class="reference external" href="https://academic.oup.com/bioinformatics/article/28/24/3211/246053" target="_blank" rel="noopener noreferrer">SortMeRNA</a> 
@@ -126,7 +125,7 @@ bash -i indexDB_MicroTaxa.sh PATH_TO/indexDB_arguments.conf
 
 Indexing database takes a while. Using the maximum number of available threads/CPUs will save time. This step will produce two directories in your ```OUTPUT``` path:
 - sortemerna_indexed_DB : containing indexed files for sortmeRNA
-- bowtie_indexed_DB : containing indexed files by bowtie to be used for emirge
+- bowtie_indexed_DB : containing indexed files by <a class="reference external" href="http://bowtie-bio.sourceforge.net/manual.shtml" target="_blank" rel="noopener noreferrer">Bowtie</a> to be used for emirge
 
 ### Running MicroTaxa pipeline
 

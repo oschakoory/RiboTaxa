@@ -45,7 +45,7 @@ bash conda_virt_env.sh
 ```
 The first virtual environment ```MicroTaxa_py27``` uses python 2.7 and contains all the necessary tools for quality control, to filter 16S18S reads and reconstruct full length rRNAs sequences.
 
-The second virtual environment ```MicroTaxa_py36``` uses python 3.6 and runs sklearn classifier of QIIME2 to taxonomically classify full length reconstruted rRNAs sequences.
+The second virtual environment ```MicroTaxa_py36``` uses python 3.6 and runs sklearn classifer of QIIME2 to taxonomically classify full length reconstruted rRNAs sequences.
 
 ### Activate the conda environment
 

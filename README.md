@@ -155,6 +155,10 @@ DATA_DIR = /home/user/Documents/MetaGenomics/raw_data
 ####set up output directory
 OUTPUT = /home/user/Documents/MetaGenomics/results
 
+####format of your paired end files 
+## fastq : if files are not compressed
+## fastq.gz: if files are compressed in gz format
+FORMAT = fastq
 
 [Quality control uing BBTOOLS]
 

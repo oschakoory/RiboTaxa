@@ -39,15 +39,26 @@ mkdir -p "$OUTPUT/quality_control/before_fastqc/multiqc"
 mkdir -p "$OUTPUT/quality_control/after_fastqc"
 mkdir -p "$OUTPUT/quality_control/after_fastqc/multiqc"
 
+NAME=($(ls "$DATA_DIR"/*"$SHORTNAME"_1*))
+FILE=$(basename ""${NAME[@]}"") 
+#echo "FILE=$FILE"
+
+#echo "Verifying the format of input files..." | tee /dev/fd/3
+for NAME in `ls "$DATA_DIR"/*"$SHORTNAME"*`; do
+	FILE=($(basename ""${NAME[@]}""))
+	if [[ ${NAME[@]} == *.gz* ]]; then
+		echo "$FILE is gzipped"
+		gunzip ${NAME[@]}
+	else
+		echo "$FILE is not gzipped"
+	fi
+done
+
 echo ""
 echo "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" | tee /dev/fd/3
 echo "Quality control starting on : "`date` | tee /dev/fd/3
 echo "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" | tee /dev/fd/3
 echo ""
-
-echo "Run the First quality control on raw data... " | tee /dev/fd/3
-
-fastqc "$DATA_DIR"/"$SHORTNAME"_1.fastq "$DATA_DIR"/"$SHORTNAME"_2.fastq -dir $OUTPUT -o "$OUTPUT"/quality_control/before_fastqc
 
 KTRIM=$(awk '/^ktrim/{print $3}' "${CONFIG}")
 
@@ -60,6 +71,10 @@ TRIMQ=$(awk '/^trimq/{print $3}' "${CONFIG}")
 QTRIM=$(awk '/^qtrim/{print $3}' "${CONFIG}")
 
 MAXNS=$(awk '/^maxns/{print $3}' "${CONFIG}")
+
+echo "Run the First quality control on raw data... " | tee /dev/fd/3
+
+fastqc "$DATA_DIR"/"$SHORTNAME"_1.fastq "$DATA_DIR"/"$SHORTNAME"_2.fastq -dir $OUTPUT -o "$OUTPUT"/quality_control/before_fastqc
 
 echo "Removing adapters from sequences..." | tee /dev/fd/3
 bbduk.sh -Xmx1g in1="$DATA_DIR"/"$SHORTNAME"_1.fastq in2="$DATA_DIR"/"$SHORTNAME"_2.fastq out1="$OUTPUT"/quality_control/"$SHORTNAME"_1_noadapt.fastq out2="$OUTPUT"/quality_control/"$SHORTNAME"_2_noadapt.fastq ref="$MicroTaxa_DIR"/adapters/TruSeq3-PE.fa ktrim=$KTRIM k=$KMER mink=11 tpe tbo

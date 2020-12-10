@@ -23,9 +23,13 @@ OUTPUT=$(awk '/^OUTPUT/{print $3}' "${CONFIG}")
 
 MicroTaxa_DIR=$(awk '/^MicroTaxa_DIR/{print $3}' "${CONFIG}")
 
-for NAME in `ls "$DATA_DIR"/*_1.fastq | sed 's/_1.fastq//'` 
+FORMAT=$(awk '/^FORMAT/{print $3}' "${CONFIG}")
+#echo $FORMAT
+
+for NAME in `ls "$DATA_DIR"/*_1.$FORMAT | sed 's/_1.'$FORMAT'//'` 
 do
 SHORTNAME=$(basename ""${NAME[@]}"") 
+#echo $SHORTNAME
 echo "" | tee /dev/fd/3
 echo "***********************************************************************************************" | tee /dev/fd/3
 echo "               Running MicroTaxa on $NAME"  | tee /dev/fd/3

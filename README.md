@@ -4,6 +4,8 @@ by Oshma Chakoory, Sophie Marre, and Pierre Peyret.
 
 MicroTaxa is a complete pipeline to rapidly filter and reconstruct the full length SSU rRNAs from Illumina (meta)genomic dataset and perform taxonomic classification on the reconstructed sequences.
 
+MicroTaxa takes as input paired end files which can be in compressed format (.gz) or uncompressed format. 
+
 Tools used in MicroTaxa pipeline:
 - For quality control :<a class="reference external" href="http://www.bioinformatics.babraham.ac.uk/projects/fastqc/" target="_blank" rel="noopener noreferrer">FastQC</a>, <a class="reference external" href="https://multiqc.info/" target="_blank" rel="noopener noreferrer">MultiQC</a>
 - For adapters removal and trimming: <a class="reference external" href="https://jgi.doe.gov/data-and-tools/bbtools/" target="_blank" rel="noopener noreferrer">BBTOOLS</a>

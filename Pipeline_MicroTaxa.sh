@@ -7,7 +7,16 @@ __author__='Oshma Chakoory'
 __email__='oshma.chakoory@uca.fr'
 __credits__=["Oshma"]
 __status__='Development'
-__version__='0.0.1'
+__version__='1.0'
+
+echo "
+MicroTaxa -- A complete pipeline from raw metagenomics to species-level identification\
+by Oshma Chakoory, Sophie Marre & Pierre Peyret \
+University Clermont Auvergne, France \
+Version: 1.0
+
+This program is distributes under the AGPL-3.0 License. See LICENSE for more information.
+"
 
 # Handling errors
 #set -x # debug mode on

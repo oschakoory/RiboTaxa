@@ -2,7 +2,7 @@
 
 by Oshma Chakoory, Sophie Marre, and Pierre Peyret.
 
-MicroTaxa is a complete pipeline to rapidly filter and reconstruct the full length SSU rRNAs from Illumina (meta)genomic dataset and perform taxonomic classification on the reconstructed sequences.
+MicroTaxa is a complete pipeline to rapidly filter and reconstruct the full length SSU rRNA gene from Illumina (meta)genomic dataset and perform taxonomic classification on the reconstructed sequences.
 
 MicroTaxa takes as input paired end files which can be in compressed format (fastq.gz) or uncompressed format (.fastq).
 

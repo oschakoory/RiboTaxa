@@ -245,7 +245,7 @@ bash -i Pipeline_RiboTaxa.sh PATH_TO/RiboTaxa_arguments.conf
 RiboTaxa produces the 4 following directories in your OUTPUT path of your ```RiboTaxa_arguments.conf``` file:
 - ```quality_control``` : This directory contains your (meta)genomics (paired-end) files after adpaters removal and trimming. It also has two sub_directories ```before_fastqc``` and ```after_fastqc``` containing quality reports of your sequence files before and after trimming. You may look at the ```.html``` files in each sub-directory to have an overview of each (meta)genomics file or look into ```multiqc``` folder to have an overview of all the (meta)genomics files given to this pipeline.
 
-- ```output_sortmerna``` : This folder contains filtered 16S/18S sequences from your trimmed (meta)genomics sequence files: ```$FILE_R1_16S18Sreads.fastq```,```$FILE_R2_16S18Sreads.fastq``` and  and a ```$FILE.log``` indicating the % of 16S/18S reads filtered from your (meta)genomics dataset. Reads not matching the SSU database are sent into ```$FILE_other_than_16S18S.fastq```.
+- ```output_sortmerna``` : This folder contains filtered 16S/18S sequences from your trimmed (meta)genomics sequence files: ```$FILE_R1_16S18Sreads.fastq```,```$FILE_R2_16S18Sreads.fastq``` and  and a ```$FILE.log``` indicating the % of 16S/18S reads filtered from your (meta)genomics dataset. Reads not matching the SSU database are saved in ```$FILE_other_than_16S18S.fastq```.
 
 -  ```output_emirge``` : This folder contains the full-length SSU rRNA sequences reconstructed by EMIRGE, matched to given 16S/18S database in the form of ```$FILE_renamed_16S18S_recons.fasta```. Dissecting a single example header:
 

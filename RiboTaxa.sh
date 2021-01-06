@@ -154,6 +154,8 @@ echo "Saving results..." | tee /dev/fd/3
 
 echo "Filtering 16S/18S using sortmerna ends successfully on : "`date` | tee /dev/fd/3
 
+rm "$OUTPUT"/output_sortmerna/"$SHORTNAME"_mergedpaired.fastq
+rm "$OUTPUT"/output_sortmerna/"$SHORTNAME"_16S18S.fastq
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 #

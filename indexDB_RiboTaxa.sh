@@ -94,7 +94,7 @@ bowtie-build "$OUTPUT"/bowtie_indexed_DB/"$SHORTNAME"_clustered_fixed.fasta  "$O
 
 echo "Saving results..."
 
-echo "Finished indexing the newly fixed and clustred database with bowtie..."| tee /dev/fd/3
+echo "Finished indexing the newly fixed and clustred database with bowtie..." `date` | tee /dev/fd/3
 
 conda deactivate
 #echo "RiboTaxa virtual environment has been deactivated successfully..." | tee /dev/fd/3

@@ -16,8 +16,8 @@ set -o errexit # ensure script will stop in case of ignored error
 #
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-#activate virtual environment for Microtaxa
-conda activate MicroTaxa_py36
+#activate virtual environment for RiboTaxa
+conda activate RiboTaxa_py36
 #echo "Qiime2 virtual environment has been activated successfully..." | tee /dev/fd/3
 
 echo ""
@@ -31,7 +31,7 @@ echo ""
 CONFIG_PATH=$1
 CONFIG="${CONFIG_PATH[@]}"
 
-MicroTaxa_DIR=$(awk '/^MicroTaxa_DIR/{print $3}' "${CONFIG}")
+RiboTaxa_DIR=$(awk '/^RiboTaxa_DIR/{print $3}' "${CONFIG}")
 
 #Set up database directory
 SKLEARN_DB=$(awk '/^SKLEARN_DB/{print $3}' "${CONFIG}")

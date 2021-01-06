@@ -1,7 +1,7 @@
 #!/bin/sh
 
-echo -n "" > indexdb_MicroTaxa.log
-exec 3>&1 1>> indexdb_MicroTaxa.log 2>&3
+echo -n "" > indexdb_RiboTaxa.log
+exec 3>&1 1>> indexdb_RiboTaxa.log 2>&3
 
 # Program configuration
 __author__='Oshma Chakoory'
@@ -17,7 +17,7 @@ set -o errexit # ensure script will stop in case of ignored error
 CONFIG_PATH=$1
 CONFIG="${CONFIG_PATH[@]}"
 
-MicroTaxa_DIR=$(awk '/^MicroTaxa_DIR/{print $3}' "${CONFIG}")
+RiboTaxa_DIR=$(awk '/^RiboTaxa_DIR/{print $3}' "${CONFIG}")
 
 DB_DIR=$(awk '/^DB_DIR/{print $3}' "${CONFIG}")
 echo "DB_DIR_path = $DB_DIR" | tee /dev/fd/3
@@ -45,8 +45,8 @@ CLUSTER_ID=$(awk '/^CLUSTER_ID/{print $3}' "${CONFIG}")
 #
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-conda activate MicroTaxa_py36
-#echo "MicroTaxa virtual environment has been activated successfully..." | tee /dev/fd/3
+conda activate RiboTaxa_py36
+#echo "RiboTaxa virtual environment has been activated successfully..." | tee /dev/fd/3
 
 echo ""
 echo "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" | tee /dev/fd/3
@@ -64,7 +64,7 @@ matam_db_preprocessing.py -i "$DB_DIR"  \
 echo "Finished indexing database for sortmerna... " `date` | tee /dev/fd/3
 
 conda deactivate
-#echo "MicroTaxa virtual environment has been deactivated successfully..." | tee /dev/fd/3
+#echo "RiboTaxa virtual environment has been deactivated successfully..." | tee /dev/fd/3
 
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -73,8 +73,8 @@ conda deactivate
 #
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-conda activate MicroTaxa_py27
-#echo "MicroTaxa virtual environment has been activated successfully..." | tee /dev/fd/3
+conda activate RiboTaxa_py27
+#echo "RiboTaxa virtual environment has been activated successfully..." | tee /dev/fd/3
 
 echo ""
 echo "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" | tee /dev/fd/3
@@ -84,7 +84,7 @@ echo ""
 
 echo "Remove ambiguous characters and replacing non-standard base characters in reference database..." | tee /dev/fd/3
 
-python "$MicroTaxa_DIR"/fix_nonstandard_chars.py < "$OUTPUT"/sortmerna_indexed_DB/*.clustered.fasta* > "$OUTPUT"/bowtie_indexed_DB/"$SHORTNAME"_clustered_fixed.fasta 
+python "$RiboTaxa_DIR"/fix_nonstandard_chars.py < "$OUTPUT"/sortmerna_indexed_DB/*.clustered.fasta* > "$OUTPUT"/bowtie_indexed_DB/"$SHORTNAME"_clustered_fixed.fasta 
 
 echo "Finished fixing database for emirge..."| tee /dev/fd/3
 
@@ -97,6 +97,6 @@ echo "Saving results..."
 echo "Finished indexing the newly fixed and clustred database with bowtie..."| tee /dev/fd/3
 
 conda deactivate
-#echo "MicroTaxa virtual environment has been deactivated successfully..." | tee /dev/fd/3
+#echo "RiboTaxa virtual environment has been deactivated successfully..." | tee /dev/fd/3
 
-mv indexdb_MicroTaxa.log "$OUTPUT"
+mv indexdb_RiboTaxa.log "$OUTPUT"

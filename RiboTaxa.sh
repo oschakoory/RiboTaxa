@@ -12,9 +12,9 @@ __version__='0.0.1'
 #set -x # debug mode on
 set -o errexit # ensure script will stop in case of ignored error
 
-#activate virtual environment for Microtaxa
-conda activate MicroTaxa_py27
-#echo "MicroTaxa virtual environment has been activated successfully..." | tee /dev/fd/3
+#activate virtual environment for RiboTaxa
+conda activate RiboTaxa_py27
+#echo "RiboTaxa virtual environment has been activated successfully..." | tee /dev/fd/3
 
 #echo "Setting up directories for quality control..." | tee /dev/fd/3
 
@@ -22,7 +22,7 @@ conda activate MicroTaxa_py27
 CONFIG_PATH=$1
 CONFIG="${CONFIG_PATH[@]}"
 
-MicroTaxa_DIR=$(awk '/^MicroTaxa_DIR/{print $3}' "${CONFIG}")
+RiboTaxa_DIR=$(awk '/^RiboTaxa_DIR/{print $3}' "${CONFIG}")
 
 #Set up data directory
 DATA_DIR=$(awk '/^DATA_DIR/{print $3}' "${CONFIG}")
@@ -77,7 +77,7 @@ echo "Run the First quality control on raw data... " | tee /dev/fd/3
 fastqc "$DATA_DIR"/"$SHORTNAME"_1.fastq "$DATA_DIR"/"$SHORTNAME"_2.fastq -dir $OUTPUT -o "$OUTPUT"/quality_control/before_fastqc
 
 echo "Removing adapters from sequences..." | tee /dev/fd/3
-bbduk.sh -Xmx1g in1="$DATA_DIR"/"$SHORTNAME"_1.fastq in2="$DATA_DIR"/"$SHORTNAME"_2.fastq out1="$OUTPUT"/quality_control/"$SHORTNAME"_1_noadapt.fastq out2="$OUTPUT"/quality_control/"$SHORTNAME"_2_noadapt.fastq ref="$MicroTaxa_DIR"/adapters/TruSeq3-PE.fa ktrim=$KTRIM k=$KMER mink=11 tpe tbo
+bbduk.sh -Xmx1g in1="$DATA_DIR"/"$SHORTNAME"_1.fastq in2="$DATA_DIR"/"$SHORTNAME"_2.fastq out1="$OUTPUT"/quality_control/"$SHORTNAME"_1_noadapt.fastq out2="$OUTPUT"/quality_control/"$SHORTNAME"_2_noadapt.fastq ref="$RiboTaxa_DIR"/adapters/TruSeq3-PE.fa ktrim=$KTRIM k=$KMER mink=11 tpe tbo
 
 echo "Trimming sequences..." | tee /dev/fd/3
 bbduk.sh -Xmx2g \
@@ -224,4 +224,4 @@ echo "Saving results..." | tee /dev/fd/3
 echo "Reconstructing 16S18S using EMIRGE ends successfully on : "`date` | tee /dev/fd/3
 
 conda deactivate
-#echo "MicroTaxa virtual environment has been deactivated successfully..." | tee /dev/fd/3
+#echo "RiboTaxa virtual environment has been deactivated successfully..." | tee /dev/fd/3

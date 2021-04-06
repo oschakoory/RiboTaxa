@@ -268,8 +268,8 @@ This folder contains sub-folders of all your input (meta)genomics dataset contai
 To get the abundance of each reconstructed SSU sequence, the length-normalized abundance estimate is retrived from emirge output. The ```$FILE_SSU_taxonomy_abundance.tsv``` contains the following column names:
 
 ```bash
-Sequence_ID		Domain		Phylum			Class			Order		Family		Genus			Species		Confidence		Abundance
-3|EU334524.1.1558	Bacteria	Desulfobacterota	Desulfuromonadia	Geobacterales	Geobacteraceae	Trichlorobacter	Geobacter_lovleyi	0.8307219278710196	0.046687
+Sequence_ID		Domain		Phylum			Class			Order		Family		Genus			Species		Length(bp)		Abundance
+3|EU334524.1.1558	Bacteria	Desulfobacterota	Desulfuromonadia	Geobacterales	Geobacteraceae	Trichlorobacter	Geobacter_lovleyi	1425	0.046687
 ```
 
 

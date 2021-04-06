@@ -76,8 +76,8 @@ done
 
 mv taxonomy.tsv "$OUTPUT"/tax_class_sklearn_qiime2/taxonomy.tsv
 
-cat "$OUTPUT"/tax_class_sklearn_qiime2/taxonomy.tsv | sed 1d |sort -k1,1n -k2,2 | tr ';' \\t > "$OUTPUT"/tax_class_sklearn_qiime2/"$SHORTNAME"_renamed_16S18S_recons_qiime2_taxonomy.tsv
-cat  "$OUTPUT"/output_emirge/"$SHORTNAME"_renamed_16S18S_recons.fasta |grep '^>'|tr -d '>' | sort -n | awk '{sub("NormPrior=", "",$4);print}'|tr ' ' \\t | cut -f 1,4 > "$OUTPUT"/tax_class_sklearn_qiime2/"$SHORTNAME"_emirge_abundance.tsv
+cat "$OUTPUT"/tax_class_sklearn_qiime2/taxonomy.tsv | sed 1d |sort -k1,1n -k2,2 |sed -r 's/(.*)\s+[^\s]+$/\1/' | tr ';' \\t > "$OUTPUT"/tax_class_sklearn_qiime2/"$SHORTNAME"_renamed_16S18S_recons_qiime2_taxonomy.tsv
+cat  "$OUTPUT"/output_emirge/"$SHORTNAME"_renamed_16S18S_recons.fasta |grep '^>'|tr -d '>' | sort -n | awk '{sub("Length=", "",$3);print}' | awk '{sub("NormPrior=", "",$4);print}'|tr ' ' \\t | cut -f 1,3,4 > "$OUTPUT"/tax_class_sklearn_qiime2/"$SHORTNAME"_emirge_abundance.tsv
 join "$OUTPUT"/tax_class_sklearn_qiime2/"$SHORTNAME"_renamed_16S18S_recons_qiime2_taxonomy.tsv "$OUTPUT"/tax_class_sklearn_qiime2/"$SHORTNAME"_emirge_abundance.tsv |tr  ' ' \\t > "$OUTPUT"/tax_class_sklearn_qiime2/"$SHORTNAME"_SSU_taxonomy_abundance.tsv
 
 rm "$OUTPUT"/tax_class_sklearn_qiime2/"$SHORTNAME"_emirge_abundance.tsv

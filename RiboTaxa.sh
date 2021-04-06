@@ -103,6 +103,13 @@ multiqc -f "$OUTPUT"/quality_control/after_fastqc/* --outdir "$OUTPUT"/quality_c
 echo "Saving results for quality control..." | tee /dev/fd/3
 
 echo "Quality control ends successfully on : "`date` | tee /dev/fd/3
+ 
+rm "$OUTPUT"/quality_control/*_noadapt.fastq
+
+for NAME in `ls "$DATA_DIR"/*"$SHORTNAME"*`; do
+	FILE=($(basename ""${NAME[@]}""))
+		gzip ${NAME[@]}
+done
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 #
@@ -133,7 +140,8 @@ THREAD=$(awk '/^THREAD/{print $3}' "${CONFIG}")
 #echo "Number of threads used = $THREAD" | tee /dev/fd/3
 
 echo "Merging paired files into single files... " | tee /dev/fd/3
-bash merge-paired-reads.sh "$OUTPUT"/quality_control/"$SHORTNAME"_1_trimmed.fastq "$OUTPUT"/quality_control/"$SHORTNAME"_2_trimmed.fastq "$OUTPUT"/output_sortmerna/"$SHORTNAME"_mergedpaired.fastq
+#bash merge-paired-reads.sh "$OUTPUT"/quality_control/"$SHORTNAME"_1_trimmed.fastq "$OUTPUT"/quality_control/"$SHORTNAME"_2_trimmed.fastq "$OUTPUT"/output_sortmerna/"$SHORTNAME"_mergedpaired.fastq
+reformat.sh in1="$OUTPUT"/quality_control/"$SHORTNAME"_1_trimmed.fastq in2="$OUTPUT"/quality_control/"$SHORTNAME"_2_trimmed.fastq out="$OUTPUT"/output_sortmerna/"$SHORTNAME"_mergedpaired.fastq
 
 echo "Filtering 16S/18S reads...." | tee /dev/fd/3
 sortmerna --ref "$SORTMERNA_DB"/"$SORTME_NAME".fasta,"$SORTMERNA_DB"/$SORTME_NAME \
@@ -146,15 +154,14 @@ sortmerna --ref "$SORTMERNA_DB"/"$SORTME_NAME".fasta,"$SORTMERNA_DB"/$SORTME_NAM
 	--log \
 	-v
 
-
 echo "Unmerging single files into paired files...." | tee /dev/fd/3
-bash unmerge-paired-reads.sh "$OUTPUT"/output_sortmerna/"$SHORTNAME"_16S18S.fastq "$OUTPUT"/output_sortmerna/"$SHORTNAME"_R1_16S18Sreads.fastq "$OUTPUT"/output_sortmerna/"$SHORTNAME"_R2_16S18Sreads.fastq
+#bash unmerge-paired-reads.sh "$OUTPUT"/output_sortmerna/"$SHORTNAME"_16S18S.fastq "$OUTPUT"/output_sortmerna/"$SHORTNAME"_R1_16S18Sreads.fastq "$OUTPUT"/output_sortmerna/"$SHORTNAME"_R2_16S18Sreads.fastq
+reformat.sh in="$OUTPUT"/output_sortmerna/"$SHORTNAME"_16S18S.fastq out1="$OUTPUT"/output_sortmerna/"$SHORTNAME"_R1_16S18Sreads.fastq out2="$OUTPUT"/output_sortmerna/"$SHORTNAME"_R2_16S18Sreads.fastq
 
 echo "Saving results..." | tee /dev/fd/3
 
 echo "Filtering 16S/18S using sortmerna ends successfully on : "`date` | tee /dev/fd/3
 
-rm "$OUTPUT"/output_sortmerna/"$SHORTNAME"_mergedpaired.fastq
 rm "$OUTPUT"/output_sortmerna/"$SHORTNAME"_16S18S.fastq
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -170,8 +177,8 @@ echo "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 echo ""
 
 #echo "Setting up directories for EMIRGE..." | tee /dev/fd/3
-mkdir -p "$OUTPUT/output_emirge"
-rm -rf "$OUTPUT"/output_emirge/"$SHORTNAME"_amplicon_16S18S_recons/*
+mkdir -p "$OUTPUT/SSU_sequences/output_emirge"
+rm -rf "$OUTPUT"/SSU_sequences/output_emirge/"$SHORTNAME"_amplicon_16S18S_recons/*
 
 #echo "Setting up indexed database for EMIRGE..." | tee /dev/fd/3
 EMIRGE_DB=$(awk '/^EMIRGE_DB/{print $3}' "${CONFIG}")
@@ -196,7 +203,7 @@ MEAN_INSERT_SIZE=$(awk '/^MEAN_INSERT_SIZE/{print $3}' "${CONFIG}")
 STD_DEV=$(awk '/^STD_DEV/{print $3}' "${CONFIG}")
 
 
-echo "Running emirge amplicon to reconstrct 16S/18S full length sequences..." | tee /dev/fd/3
+echo "Running emirge amplicon to reconstruct 16S/18S full length sequences..." | tee /dev/fd/3
 emirge_amplicon.py \
 	-1 "$OUTPUT"/output_sortmerna/"$SHORTNAME"_R1_16S18Sreads.fastq \
 	-f "$EMIRGE_DB"/"$REF_NAME" \
@@ -208,7 +215,7 @@ emirge_amplicon.py \
 	-i "$MEAN_INSERT_SIZE" \
 	-s "$STD_DEV" \
 	-a "$THREAD" \
-	--phred33 "$OUTPUT"/output_emirge/"$SHORTNAME"_amplicon_16S18S_recons
+	--phred33 "$OUTPUT"/SSU_sequences/output_emirge/"$SHORTNAME"_amplicon_16S18S_recons
 
 #-j 1 : 100 % identity
 # -i : mean insert size of 300 bp
@@ -219,11 +226,37 @@ emirge_amplicon.py \
 
 echo "Merging iterations into fasta sequence... " | tee /dev/fd/3
 
-emirge_rename_fasta.py "$OUTPUT"/output_emirge/"$SHORTNAME"_amplicon_16S18S_recons/iter.$NUM_ITERATION > "$OUTPUT"/output_emirge/"$SHORTNAME"_renamed_16S18S_recons.fasta
+emirge_rename_fasta.py --no_N "$OUTPUT"/SSU_sequences/output_emirge/"$SHORTNAME"_amplicon_16S18S_recons/iter.$NUM_ITERATION > "$OUTPUT"/SSU_sequences/output_emirge/"$SHORTNAME"_renamed_16S18S_recons.fasta
+
+echo "Running MetaRib to reconstruct 16S/18S full length sequences..." | tee /dev/fd/3
+
+python2 run_MetaRib.py -cfg CONFIG_PATH file1 file2 bt ref
+
+echo "Finalising reconstructed sequences..." | tee /dev/fd/3
+
+cat "$OUTPUT"/SSU_sequences/output_emirge/"$SHORTNAME"_renamed_16S18S_recons.fasta metarib.fasta > "$OUTPUT"/SSU_sequences/emirge_metarib_SSU_sequences.fasta
+
+#clustering at 97%
+vsearch --cluster "$OUTPUT"/SSU_sequences/emirge_metarib_SSU_sequences.fasta --centroids "$OUTPUT"/SSU_sequences/emirge_metarib_clustered_SSU_sequences.fasta --id 0.97
+
+#covert small letters into capital letters
+awk '/^>/ {print($0)}; /^[^>]/ {print(toupper($0))}' "$OUTPUT"/SSU_sequences/emirge_metarib_clustered_SSU_sequences.fasta > "$OUTPUT"/SSU_sequences/"$SHORTNAME"_SSU_sequences.fasta
 
 echo "Saving results..." | tee /dev/fd/3
 
-echo "Reconstructing 16S18S using EMIRGE ends successfully on : "`date` | tee /dev/fd/3
+echo "Reconstructing 16S/18S sequences ends successfully on : "`date` | tee /dev/fd/3
+
+echo "Calculating relative abundances of reconstructed sequences..." | tee /dev/fd/3
+
+bbmap.sh in="$OUTPUT"/output_sortmerna/"$SHORTNAME"_mergedpaired.fastq ref="$OUTPUT"/SSU_sequences/"$SHORTNAME"_SSU_sequences.fasta vslow scafstats="$OUTPUT"/SSU_sequences/"$SHORTNAME"_scafstats.txt out="$SHORTNAME"_mapped.sam
+
+#rm "$OUTPUT"/output_sortmerna/"$SHORTNAME"_mergedpaired.fastq
+#rm "$OUTPUT"/SSU_sequences/emirge_metarib_SSU_sequences.fasta
+#rm "$OUTPUT"/SSU_sequences/emirge_metarib_clustered_SSU_sequences.fasta
+
+echo "Saving results..." | tee /dev/fd/3
+
+echo "Relative abundance calculation ends successfully on : "`date` | tee /dev/fd/3
 
 conda deactivate
 #echo "RiboTaxa virtual environment has been deactivated successfully..." | tee /dev/fd/3

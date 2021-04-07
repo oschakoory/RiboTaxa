@@ -5,7 +5,7 @@ __author__='Oshma Chakoory'
 __email__='oshma.chakoory@uca.fr'
 __credits__=["Oshma"]
 __status__='Development'
-__version__='0.0.1'
+__version__='1.4'
 
 
 # Handling errors
@@ -77,7 +77,17 @@ echo "Run the First quality control on raw data... " | tee /dev/fd/3
 fastqc "$DATA_DIR"/"$SHORTNAME"_1.fastq "$DATA_DIR"/"$SHORTNAME"_2.fastq -dir $OUTPUT -o "$OUTPUT"/quality_control/before_fastqc
 
 echo "Removing adapters from sequences..." | tee /dev/fd/3
-bbduk.sh -Xmx1g in1="$DATA_DIR"/"$SHORTNAME"_1.fastq in2="$DATA_DIR"/"$SHORTNAME"_2.fastq out1="$OUTPUT"/quality_control/"$SHORTNAME"_1_noadapt.fastq out2="$OUTPUT"/quality_control/"$SHORTNAME"_2_noadapt.fastq ref="$RiboTaxa_DIR"/adapters/TruSeq3-PE.fa ktrim=$KTRIM k=$KMER mink=11 tpe tbo
+bbduk.sh -Xmx1g \
+	in1="$DATA_DIR"/"$SHORTNAME"_1.fastq \
+	in2="$DATA_DIR"/"$SHORTNAME"_2.fastq \
+	out1="$OUTPUT"/quality_control/"$SHORTNAME"_1_noadapt.fastq \
+	out2="$OUTPUT"/quality_control/"$SHORTNAME"_2_noadapt.fastq \
+	ref="$RiboTaxa_DIR"/adapters/TruSeq3-PE.fa \
+	ktrim=$KTRIM \
+	k=$KMER \
+	mink=11 \
+	tpe \
+	tbo
 
 echo "Trimming sequences..." | tee /dev/fd/3
 bbduk.sh -Xmx2g \
@@ -148,7 +158,6 @@ sortmerna --ref "$SORTMERNA_DB"/"$SORTME_NAME".fasta,"$SORTMERNA_DB"/$SORTME_NAM
 	--reads "$OUTPUT"/output_sortmerna/"$SHORTNAME"_mergedpaired.fastq \
 	--fastx \
 	--aligned "$OUTPUT"/output_sortmerna/"$SHORTNAME"_16S18S \
-	--other "$OUTPUT"/output_sortmerna/"$SHORTNAME"_other_than_16S18S \
 	--paired_in \
 	-a "$THREAD" \
 	--log \
@@ -230,17 +239,26 @@ emirge_rename_fasta.py --no_N "$OUTPUT"/SSU_sequences/output_emirge/"$SHORTNAME"
 
 echo "Running MetaRib to reconstruct 16S/18S full length sequences..." | tee /dev/fd/3
 
-python2 run_MetaRib.py -cfg CONFIG_PATH file1 file2 bt ref
+python2 "$RiboTaxa_DIR"/run_MetaRib.py -cfg "$CONFIG_PATH" -1 output_sortmerna/"$SHORTNAME"_R1_16S18Sreads.fastq -2 output_sortmerna/"$SHORTNAME"_R2_16S18Sreads.fastq -b "$EMIRGE_DB"/$BWT_NAME -l "$EMIRGE_DB"/"$REF_NAME"
+
+mkdir -p "$OUTPUT"/output_MetaRib/"$SHORTNAME"
+
+mv "$OUTPUT"/output_MetaRib/Abundance "$OUTPUT"/output_MetaRib/"$SHORTNAME"
+mv "$OUTPUT"/output_MetaRib/Iteration "$OUTPUT"/output_MetaRib/"$SHORTNAME"
+rm "$OUTPUT"/output_MetaRib/"$SHORTNAME"/Abundance/all.dedup.filtered.fasta
 
 echo "Finalising reconstructed sequences..." | tee /dev/fd/3
 
-cat "$OUTPUT"/SSU_sequences/output_emirge/"$SHORTNAME"_renamed_16S18S_recons.fasta metarib.fasta > "$OUTPUT"/SSU_sequences/emirge_metarib_SSU_sequences.fasta
+cat "$OUTPUT"/SSU_sequences/output_emirge/"$SHORTNAME"_renamed_16S18S_recons.fasta "$OUTPUT"/output_MetaRib/"$SHORTNAME"/Abundance/all.dedup.fasta > "$OUTPUT"/SSU_sequences/emirge_metarib_SSU_sequences.fasta
 
 #clustering at 97%
-vsearch --cluster "$OUTPUT"/SSU_sequences/emirge_metarib_SSU_sequences.fasta --centroids "$OUTPUT"/SSU_sequences/emirge_metarib_clustered_SSU_sequences.fasta --id 0.97
+vsearch --cluster_fast "$OUTPUT"/SSU_sequences/emirge_metarib_SSU_sequences.fasta --centroids "$OUTPUT"/SSU_sequences/emirge_metarib_clustered_SSU_sequences.fasta --id 0.97
 
 #covert small letters into capital letters
 awk '/^>/ {print($0)}; /^[^>]/ {print(toupper($0))}' "$OUTPUT"/SSU_sequences/emirge_metarib_clustered_SSU_sequences.fasta > "$OUTPUT"/SSU_sequences/"$SHORTNAME"_SSU_sequences.fasta
+
+#rm "$OUTPUT"/SSU_sequences/emirge_metarib_SSU_sequences.fasta
+#rm "$OUTPUT"/SSU_sequences/emirge_metarib_clustered_SSU_sequences.fasta
 
 echo "Saving results..." | tee /dev/fd/3
 
@@ -248,7 +266,13 @@ echo "Reconstructing 16S/18S sequences ends successfully on : "`date` | tee /dev
 
 echo "Calculating relative abundances of reconstructed sequences..." | tee /dev/fd/3
 
-bbmap.sh in="$OUTPUT"/output_sortmerna/"$SHORTNAME"_mergedpaired.fastq ref="$OUTPUT"/SSU_sequences/"$SHORTNAME"_SSU_sequences.fasta vslow scafstats="$OUTPUT"/SSU_sequences/"$SHORTNAME"_scafstats.txt out="$SHORTNAME"_mapped.sam
+bbmap.sh in="$OUTPUT"/output_sortmerna/"$SHORTNAME"_mergedpaired.fastq \
+	ref="$OUTPUT"/SSU_sequences/"$SHORTNAME"_SSU_sequences.fasta \
+	vslow \
+	k=12 \
+	scafstats="$OUTPUT"/SSU_sequences/"$SHORTNAME"_scafstats.txt \
+	out="$OUTPUT"/SSU_sequences/"$SHORTNAME"_mapped.sam \
+	covstats="$OUTPUT"/SSU_sequences/"$SHORTNAME"_covstats.txt
 
 #rm "$OUTPUT"/output_sortmerna/"$SHORTNAME"_mergedpaired.fastq
 #rm "$OUTPUT"/SSU_sequences/emirge_metarib_SSU_sequences.fasta

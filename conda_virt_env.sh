@@ -1,5 +1,12 @@
 #!/bin/sh
 
+# Program configuration
+__author__='Oshma Chakoory'
+__email__='oshma.chakoory@uca.fr'
+__credits__=["Oshma"]
+__status__='Development'
+__version__='1.4'
+
 echo ""
 echo "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" 
 echo "Creating virtual environment and installing RiboTaxa... " `date` 

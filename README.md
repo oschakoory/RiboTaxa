@@ -1,4 +1,4 @@
-# RiboTaxa v1.0
+# RiboTaxa v1.4
 
 by Oshma Chakoory, Sophie Marre, and Pierre Peyret.
 

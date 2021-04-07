@@ -7,12 +7,13 @@ __author__='Oshma Chakoory'
 __email__='oshma.chakoory@uca.fr'
 __credits__=["Oshma"]
 __status__='Development'
-__version__='1.0'
+__version__='1.4'
 
-echo "RiboTaxa -- A complete pipeline from raw metagenomics to species-level identification"
-echo "By Oshma Chakoory, Sophie Marre & Pierre Peyret"
-echo "University Clermont Auvergne, France "
-echo "Version: 1.0"
+echo " "
+echo "RiboTaxa -- A complete pipeline from raw metagenomics to species-level identification" | tee /dev/fd/3
+echo "By Oshma Chakoory, Sophie Marre & Pierre Peyret" | tee /dev/fd/3
+echo "University Clermont Auvergne, France " | tee /dev/fd/3
+echo "Version: 1.4"
 
 echo "This program is distributed under the AGPL-3.0 License. See LICENSE for more information."
 
@@ -39,7 +40,7 @@ SHORTNAME=$(basename ""${NAME[@]}"")
 #echo $SHORTNAME
 echo "" | tee /dev/fd/3
 echo "***********************************************************************************************" | tee /dev/fd/3
-echo "               Running RiboTaxa on $NAME"  | tee /dev/fd/3
+echo "			Running RiboTaxa on $NAME"  | tee /dev/fd/3
 echo "***********************************************************************************************" | tee /dev/fd/3
 echo "" | tee /dev/fd/3
 #run RiboTaxa.sh script to perform
@@ -57,3 +58,4 @@ source "$RiboTaxa_DIR"/sklearn_classifier.sh $CONFIG_PATH
 done
 
 mv RiboTaxa.log "$OUTPUT"
+mv "$OUTPUT"/output_MetaRib "$OUTPUT"/SSU_sequences

@@ -23,17 +23,19 @@ class MyParser(argparse.ArgumentParser):
 
 def parse_arg():
     example_text = '''Example:
-    python2 run_MetaRib.py -cfg MetaRib.cfg -1 path_to/forward_file -2 path_to/reverse_file -b path_to/bwt_indexes -l path_to/reference database
+    python2 run_MetaRib.py -cfg MetaRib.cfg -n #subsampling -1 path_to/forward_file -2 path_to/reverse_file -b path_to/bwt_indexes -l path_to/reference database
     '''
     parser = argparse.ArgumentParser(description='Constructing ribosomal genes from large scale total RNA meta-transcriptomic data\n',epilog=example_text, formatter_class=argparse.RawDescriptionHelpFormatter)
     parser._optionals.title = 'Mandatory Arguments'
     parser.add_argument('-cfg', required=True, help='MetaRib configure file')
+    parser.add_argument('-n', required=True, help="Number of subsampling to be used", dest="subsampling")
     parser.add_argument('-1', required=True, help="Forward file in fastq format", dest="forward")
     parser.add_argument('-2', required=True, help="Reverse file in fastq format", dest="reverse")
     parser.add_argument('-b', required=True, help="Bowtie indexed database files", dest="bwt")
     parser.add_argument('-l', required=True, help="Reference database file in fasta format", dest="ref")
-    global forward_file, reverse_file, EM_REF, EM_BT
+    global SAMPLING_NUM, forward_file, reverse_file, EM_REF, EM_BT
     args = parser.parse_args()
+    SAMPLING_NUM = args.subsampling
     forward_file = args.forward
     #print(forward_file)
     reverse_file = args.reverse
@@ -48,7 +50,7 @@ def parse_cfg(config):
     global DATA_DIR, PROJECT_DIR, SAMPLING_NUM, THREAD
     DATA_DIR = config.get('BASE', 'DATA_DIR')
     PROJECT_DIR = config.get('BASE', 'OUTPUT')
-    SAMPLING_NUM = config.get('METARIB', 'SAMPLING_NUM')
+    #SAMPLING_NUM = config.get('METARIB', 'SAMPLING_NUM')
     THREAD = config.getint('BASE','THREAD')
     # EMIRGE
     global MAX_LENGTH, IDENTITY, NUM_ITERATION, MEAN_INSERT_SIZE, STD_DEV, EMIRGE_DB
@@ -228,7 +230,7 @@ def run_iteration(unmap_fq1, unmap_fq2, dedup_fa, iter_time, keep_running):
     if curr_unmap_fq_num <= (0.01*new_unmap_fq_num):
         keep_running = 0
     # case3: maximum iteration
-    if iter_time == 10:
+    if iter_time == 1:
         keep_running = 0
     new_iter_time = iter_time + 1
     iter_dir = '/'.join([PROJECT_DIR, '/output_MetaRib/Iteration'])
@@ -355,7 +357,7 @@ def generate_and_filter_abundance_table(samples_list, all_scafstats_path, all_co
     # save filtered abundance file
     raw_fa_num = cal_fa_num(os.getcwd()+'/all.dedup.fasta')
     ft_fa_num = cal_fa_num(os.getcwd()+'/all.dedup.filtered.fasta')
-    fa_stat = 'Raw contig:'+str(raw_fa_num)+'\t'+'Filtered contigs: '+str(ft_fa_num)
+    fa_stat = 'Total number of contig:'+str(raw_fa_num)
     print(fa_stat)
     filter_ab_df = all_ab_df.loc[all_ab_df['Contig_ID'].isin(all_keeped_ctgs)]
     filter_ab_file = os.getcwd()+'/all.dedup.filtered.est.ab.txt'
@@ -387,7 +389,7 @@ def main():
     # iteration parameters
     unmap_fq1, unmap_fq2, iter_time = all_fq1, all_fq2, 1
     keep_running = 1
-    max_iter = 10 # set maximum 10 iterations
+    max_iter = 2 # set maximum 1 iterations
     keep_running = 1
     iteration_dir = work_dir+'/Iteration/'
     if not os.path.isdir(iteration_dir):

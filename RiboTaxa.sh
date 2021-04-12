@@ -149,6 +149,9 @@ SORTME_NAME=$(basename ""${NAME[@]}"")
 THREAD=$(awk '/^THREAD/{print $3}' "${CONFIG}")
 #echo "Number of threads used = $THREAD" | tee /dev/fd/3
 
+#remove this file if it already exists to prevent errors
+rm -rf "$OUTPUT"/output_sortmerna/"$SHORTNAME"_mergedpaired.fastq
+
 echo "Merging paired files into single files... " | tee /dev/fd/3
 #bash merge-paired-reads.sh "$OUTPUT"/quality_control/"$SHORTNAME"_1_trimmed.fastq "$OUTPUT"/quality_control/"$SHORTNAME"_2_trimmed.fastq "$OUTPUT"/output_sortmerna/"$SHORTNAME"_mergedpaired.fastq
 reformat.sh in1="$OUTPUT"/quality_control/"$SHORTNAME"_1_trimmed.fastq in2="$OUTPUT"/quality_control/"$SHORTNAME"_2_trimmed.fastq out="$OUTPUT"/output_sortmerna/"$SHORTNAME"_mergedpaired.fastq
@@ -239,7 +242,9 @@ emirge_rename_fasta.py --no_N "$OUTPUT"/SSU_sequences/output_emirge/"$SHORTNAME"
 
 echo "Running MetaRib to reconstruct 16S/18S full length sequences..." | tee /dev/fd/3
 
-python2 "$RiboTaxa_DIR"/run_MetaRib.py -cfg "$CONFIG_PATH" -1 output_sortmerna/"$SHORTNAME"_R1_16S18Sreads.fastq -2 output_sortmerna/"$SHORTNAME"_R2_16S18Sreads.fastq -b "$EMIRGE_DB"/$BWT_NAME -l "$EMIRGE_DB"/"$REF_NAME"
+SAMPLE=$(awk '{s++}END{print s/4}' "$OUTPUT"/output_sortmerna/"$SHORTNAME"_R1_16S18Sreads.fastq) 
+
+python2 "$RiboTaxa_DIR"/run_MetaRib.py -cfg "$CONFIG_PATH" -n "$SAMPLE" -1 output_sortmerna/"$SHORTNAME"_R1_16S18Sreads.fastq -2 output_sortmerna/"$SHORTNAME"_R2_16S18Sreads.fastq -b "$EMIRGE_DB"/$BWT_NAME -l "$EMIRGE_DB"/"$REF_NAME"
 
 mkdir -p "$OUTPUT"/output_MetaRib/"$SHORTNAME"
 

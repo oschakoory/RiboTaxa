@@ -182,7 +182,7 @@ def run_align_bbmap(current_iter_fa, unmap_fq1, unmap_fq2):
 
 def run_emirge_and_dedup(sub_fq1, sub_fq2, dedup_fa, iter_time):
     cmd = ' '.join(['emirge_amplicon.py', 'emirge_amp/', '-1', sub_fq1, '-2', sub_fq2,
-    '--phred33', '-l', MAX_LENGTH, '-i', MEAN_INSERT_SIZE, '-s', STD_DEV, '-a', str(THREAD), '-n', NUM_ITERATION, '-f', EM_REF, '-b', EM_BT, '>> iter_'+str(iter_time)+'_emirge.log','2>> iter_'+str(iter_time)+'_emirge.log'])
+    '--phred33', '-l', MAX_LENGTH, '-i', MEAN_INSERT_SIZE,'-j', IDENTITY, '-s', STD_DEV, '-a', str(THREAD), '-n', NUM_ITERATION, '-f', EM_REF, '-b', EM_BT, '>> iter_'+str(iter_time)+'_emirge.log','2>> iter_'+str(iter_time)+'_emirge.log'])
    # print(cmd)
     os.system(cmd)
     # change to last iteration folder in EMIRGE

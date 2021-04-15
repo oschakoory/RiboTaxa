@@ -1,0 +1,37 @@
+ 
+RiboTaxa -- A complete pipeline from raw metagenomics to species-level identification
+By Oshma Chakoory, Sophie Marre & Pierre Peyret
+University Clermont Auvergne, France 
+Version: 1.4
+This program is distributed under the AGPL-3.0 License. See LICENSE for more information.
+
+***********************************************************************************************
+			Running RiboTaxa on /home/oschakoo/Documents/mock_community_GascPeyret2018/MG/raw_reads/SRR5381736
+***********************************************************************************************
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Quality control starting on : jeu. 15 avril 2021 10:04:11 CEST
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Run the First quality control on raw data... 
+Analysis complete for SRR5381736_1.fastq.gz
+Analysis complete for SRR5381736_2.fastq.gz
+Removing adapters from sequences...
+Trimming sequences...
+Run the second quality control on trimmed data...
+Analysis complete for SRR5381736_1_trimmed.fastq.gz
+Analysis complete for SRR5381736_2_trimmed.fastq.gz
+Running multiQC...
+Saving results for quality control...
+Quality control ends successfully on : jeu. 15 avril 2021 10:05:37 CEST
+SRR5381736_1_trimmed.fastq is not gzipped
+SRR5381736_2_trimmed.fastq is not gzipped
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Filtering 16S/18S using sortmerna starting on : jeu. 15 avril 2021 10:05:44 CEST
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Database directory for sortmerna = /home/oschakoo/Documents/Databases/sortmerna_indexed_DB
+Merging paired files into single files... 
+Filtering 16S/18S reads....

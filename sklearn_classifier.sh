@@ -37,6 +37,12 @@ RiboTaxa_DIR=$(awk '/^RiboTaxa_DIR/{print $3}' "${CONFIG}")
 SKLEARN_DB=$(awk '/^SKLEARN_DB/{print $3}' "${CONFIG}")
 echo "Sklearn Database = $SKLEARN_DB" | tee /dev/fd/3
 
+DIR=$(awk '/^OUTPUT/{print $3}' "${CONFIG}")
+mkdir -p "$DIR/data"
+export TMPDIR="$DIR/data"
+
+echo $TMPDIR | tee /dev/fd/3
+
 #set up output directory
 OUTPUT=$(awk '/^OUTPUT/{print $3}' "${CONFIG}")
 mkdir -p "$OUTPUT/tax_class_sklearn_qiime2"

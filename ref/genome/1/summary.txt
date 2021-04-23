@@ -1,0 +1,13 @@
+#Summary
+#Generated on	Thu Apr 15 14:55:55 CEST 2021
+#Version	5
+chroms	1
+bases	91637
+defined	63037
+undefined	28600
+contigs	43
+scaffolds	43
+interpad	300
+source	/home/oschakoo/Documents/mock_community_GascPeyret2018/MG/testing_RiboTaxa/SSU_sequences/SRR5381736_SSU_sequences.fasta
+bytes	64784
+last modified	1618491349037

@@ -240,23 +240,23 @@ cd "$OUTPUT"/SSU_sequences/output_emirge && zip -rm "$SHORTNAME"_amplicon_16S18S
 
 #rm -r "$OUTPUT"/SSU_sequences/output_emirge/"$SHORTNAME"_amplicon_16S18S_recons
 
-echo "Running MetaRib to reconstruct 16S/18S full length sequences..." | tee /dev/fd/3
+echo "Running MetaRib to reconstruct 16S/18S full length sequences..."`date` | tee /dev/fd/3
 
-SAMPLE=$(awk '{s++}END{print s/4}' "$OUTPUT"/output_sortmerna/"$SHORTNAME"_R1_16S18Sreads.fastq) 
+SAMPLE=$(awk '{s++}END{print s/4}' "$OUTPUT"/output_sortmerna/"$SHORTNAME"_R1_16S18Sreads.fastq)
 
 python2 "$RiboTaxa_DIR"/run_MetaRib.py -cfg "$CONFIG_PATH" -n "$SAMPLE" -1 output_sortmerna/"$SHORTNAME"_R1_16S18Sreads.fastq -2 output_sortmerna/"$SHORTNAME"_R2_16S18Sreads.fastq -b "$EMIRGE_DB"/$BWT_NAME -l "$EMIRGE_DB"/"$REF_NAME"
 
-mkdir -p "$OUTPUT"/output_MetaRib/"$SHORTNAME"
+mkdir -p "$OUTPUT/SSU_sequences/output_MetaRib/$SHORTNAME"
 
-mv "$OUTPUT"/output_MetaRib/Abundance/all.dedup.fasta "$OUTPUT"/output_MetaRib/"$SHORTNAME"
-rm -r "$OUTPUT"/output_MetaRib/Abundance
-mv "$OUTPUT"/output_MetaRib/"$SHORTNAME"/all.dedup.fasta "$OUTPUT"/output_MetaRib/"$SHORTNAME"/"$SHORTNAME"_contigs.fasta
-mv "$OUTPUT"/output_MetaRib/Iteration "$OUTPUT"/output_MetaRib/"$SHORTNAME"
-rm "$OUTPUT"/output_MetaRib/dedup_contigs.fasta
+mv "$OUTPUT"/output_MetaRib/Abundance/all.dedup.fasta "$OUTPUT"/SSU_sequences/output_MetaRib/"$SHORTNAME"
+#rm -r "$OUTPUT"/output_MetaRib/Abundance
+mv "$OUTPUT"/SSU_sequences/output_MetaRib/"$SHORTNAME"/all.dedup.fasta "$OUTPUT"/SSU_sequences/output_MetaRib/"$SHORTNAME"/"$SHORTNAME"_contigs.fasta
+mv "$OUTPUT"/output_MetaRib/Iteration "$OUTPUT"/SSU_sequences/output_MetaRib/"$SHORTNAME"
+#rm "$OUTPUT"/output_MetaRib/dedup_contigs.fasta
 
 echo "Finalising reconstructed sequences..." | tee /dev/fd/3
 
-cat "$OUTPUT"/SSU_sequences/output_emirge/"$SHORTNAME"_renamed_16S18S_recons.fasta "$OUTPUT"/output_MetaRib/"$SHORTNAME"/"$SHORTNAME"_contigs.fasta > "$OUTPUT"/SSU_sequences/emirge_metarib_SSU_sequences.fasta
+cat "$OUTPUT"/SSU_sequences/output_emirge/"$SHORTNAME"_renamed_16S18S_recons.fasta "$OUTPUT"/SSU_sequences/output_MetaRib/"$SHORTNAME"/"$SHORTNAME"_contigs.fasta > "$OUTPUT"/SSU_sequences/emirge_metarib_SSU_sequences.fasta
 
 #clustering at 97%
 vsearch --cluster_fast "$OUTPUT"/SSU_sequences/emirge_metarib_SSU_sequences.fasta --centroids "$OUTPUT"/SSU_sequences/emirge_metarib_clustered_SSU_sequences.fasta --id 0.97
@@ -266,7 +266,7 @@ awk '/^>/ {print($0)}; /^[^>]/ {print(toupper($0))}' "$OUTPUT"/SSU_sequences/emi
 
 #rm -rv "$OUTPUT"/output_MetaRib/"$SHORTNAME"/Iteration/iter_1/emirge_amp/!("initial_mapping"|"iter.$NUM_ITERATION")
 
-cd "$OUTPUT"/output_MetaRib/"$SHORTNAME" && zip -rm Iteration.zip Iteration/ && cd -
+cd "$OUTPUT"/SSU_sequences/output_MetaRib/"$SHORTNAME" && zip -rm Iteration.zip Iteration/ && cd -
 
 #zip -r Iteration.zip "$OUTPUT"/output_MetaRib/"$SHORTNAME"/Iteration/
 
@@ -280,7 +280,7 @@ echo "Reconstructing 16S/18S sequences ends successfully on : "`date` | tee /dev
 
 echo "Calculating relative abundances of reconstructed sequences..." | tee /dev/fd/3
 
-bbmap.sh in="$OUTPUT"/output_sortmerna/"$SHORTNAME"_mergedpaired.fastq \
+bbmap.sh -Xmx3g in="$OUTPUT"/output_sortmerna/"$SHORTNAME"_mergedpaired.fastq \
 	ref="$OUTPUT"/SSU_sequences/"$SHORTNAME"_SSU_sequences.fasta \
 	vslow \
 	k=12 \

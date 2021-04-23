@@ -6,12 +6,12 @@ Version: 1.4
 This program is distributed under the AGPL-3.0 License. See LICENSE for more information.
 
 ***********************************************************************************************
-			Running RiboTaxa on /home/oschakoo/Documents/mock_community_GascPeyret2018/MG/raw_reads/SRR5381736
+Running RiboTaxa on /home/oschakoo/Documents/mock_community_GascPeyret2018/MG/raw_reads/SRR5381736
 ***********************************************************************************************
 
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-Quality control starting on : jeu. 15 avril 2021 10:04:11 CEST
+Quality control starting on : jeu. 15 avril 2021 14:15:29 CEST
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Run the First quality control on raw data... 
@@ -24,14 +24,3577 @@ Analysis complete for SRR5381736_1_trimmed.fastq.gz
 Analysis complete for SRR5381736_2_trimmed.fastq.gz
 Running multiQC...
 Saving results for quality control...
-Quality control ends successfully on : jeu. 15 avril 2021 10:05:37 CEST
+Quality control ends successfully on : jeu. 15 avril 2021 14:16:54 CEST
 SRR5381736_1_trimmed.fastq is not gzipped
 SRR5381736_2_trimmed.fastq is not gzipped
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-Filtering 16S/18S using sortmerna starting on : jeu. 15 avril 2021 10:05:44 CEST
+Filtering 16S/18S using sortmerna starting on : jeu. 15 avril 2021 14:17:01 CEST
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Database directory for sortmerna = /home/oschakoo/Documents/Databases/sortmerna_indexed_DB
 Merging paired files into single files... 
 Filtering 16S/18S reads....
+
+  Program:     SortMeRNA version 2.1b, 03/03/2016
+  Copyright:   2012-16 Bonsai Bioinformatics Research Group:
+               LIFL, University Lille 1, CNRS UMR 8022, INRIA Nord-Europe
+               2014-16 Knight Lab:
+               Department of Pediatrics, UCSD, La Jolla,
+  Disclaimer:  SortMeRNA comes with ABSOLUTELY NO WARRANTY; without even the
+               implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+               See the GNU Lesser General Public License for more details.
+  Contact:     Evguenia Kopylova, jenya.kopylov@gmail.com 
+               Laurent Noé, laurent.noe@lifl.fr
+               Hélène Touzet, helene.touzet@lifl.fr
+
+
+  Computing read file statistics ... done [2.61 sec]
+  size of reads file: 1101584987 bytes
+  partial section(s) to be executed: 2 of size 1073741824 bytes 
+  Parameters summary:
+    Number of seeds = 2
+    Edges = 4 (as integer)
+    SW match = 2
+    SW mismatch = -3
+    SW gap open penalty = 5
+    SW gap extend penalty = 2
+    SW ambiguous nucleotide = -3
+    SQ tags are not output
+    Number of threads = 8
+
+  [4mBegin mmap reads section # 1[0m:
+  Time to mmap reads and set up pointers [1.17 sec]
+
+  Begin analysis of: [0;34m/home/oschakoo/Documents/Databases/sortmerna_indexed_DB/SILVA_138.1_SSURef_NR99_tax_silva_NR97.clustered.fasta[0m
+    Seed length = 18
+    Pass 1 = 18, Pass 2 = 9, Pass 3 = 3
+    Gumbel lambda = 0.605415
+    Gumbel K = 0.340159
+    Minimal SW score based on E-value = 63
+    Loading index part 1/1 ...  done [6.04 sec]
+    Begin index search ...  done [188.41 sec]
+    Freeing index ...  done [1.06 sec]
+    Total number of reads mapped (incl. all reads file sections searched): 16544
+    Writing aligned FASTA/FASTQ ...  done [0.25 sec]
+
+  [4mBegin mmap reads section # 2[0m:
+  Time to mmap reads and set up pointers [0.04 sec]
+
+  Begin analysis of: [0;34m/home/oschakoo/Documents/Databases/sortmerna_indexed_DB/SILVA_138.1_SSURef_NR99_tax_silva_NR97.clustered.fasta[0m
+    Loading index part 1/1 ...  done [9.31 sec]
+    Begin index search ...  done [4.22 sec]
+    Freeing index ...  done [1.04 sec]
+    Total number of reads mapped (incl. all reads file sections searched): 16917
+    Writing aligned FASTA/FASTQ ...  done [0.02 sec]
+Unmerging single files into paired files....
+Saving results...
+Filtering 16S/18S using sortmerna ends successfully on : jeu. 15 avril 2021 14:20:47 CEST
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Reconstructing 16S18S using EMIRGE starting on : jeu. 15 avril 2021 14:20:47 CEST
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Database directory for EMIRGE = /home/oschakoo/Documents/Databases/bowtie_indexed_DB
+Running emirge amplicon to reconstruct 16S/18S full length sequences...
+If you use EMIRGE in your work, please cite these manuscripts, as appropriate.
+
+Miller CS, Baker BJ, Thomas BC, Singer SW, Banfield JF (2011)
+EMIRGE: reconstruction of full-length ribosomal genes from microbial community short read sequencing data.
+Genome biology 12: R44. doi:10.1186/gb-2011-12-5-r44.
+
+Miller CS, Handley KM, Wrighton KC, Frischkorn KR, Thomas BC, Banfield JF (2013)
+Short-Read Assembly of Full-Length 16S Amplicons Reveals Bacterial Diversity in Subsurface Sediments.
+PloS one 8: e56018. doi:10.1371/journal.pone.0056018.
+
+imported _emirge C functions from: /home/oschakoo/miniconda3/envs/RiboTaxa_py27/lib/python2.7/site-packages/_emirge_amplicon.so
+Command:
+/home/oschakoo/miniconda3/envs/RiboTaxa_py27/bin/emirge_amplicon.py -1 /home/oschakoo/Documents/mock_community_GascPeyret2018/MG/testing_RiboTaxa/output_sortmerna/SRR5381736_R1_16S18Sreads.fastq -f /home/oschakoo/Documents/Databases/bowtie_indexed_DB/silva138_for_emirge_fixed.fasta -b /home/oschakoo/Documents/Databases/bowtie_indexed_DB/silva138_bowtie_indexed -l 300 -2 /home/oschakoo/Documents/mock_community_GascPeyret2018/MG/testing_RiboTaxa/output_sortmerna/SRR5381736_R2_16S18Sreads.fastq -j 1 -n 120 -i 300 -s 100 -a 8 --phred33 /home/oschakoo/Documents/mock_community_GascPeyret2018/MG/testing_RiboTaxa/SSU_sequences/output_emirge/SRR5381736_amplicon_16S18S_recons
+
+EMIRGE started at Thu Apr 15 14:20:47 2021
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:02
+# reads processed: 10675
+# reads with at least one reported alignment: 994 (9.31%)
+# reads that failed to align: 9681 (90.69%)
+Reported 994 paired-end alignments
+Time searching: 00:00:02
+Overall time: 00:00:02
+usearch v11.0.667_i86linux32, 4.0Gb RAM (16.0Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: personal use only
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:01
+# reads processed: 10675
+# reads with at least one reported alignment: 1156 (10.83%)
+# reads that failed to align: 9519 (89.17%)
+Reported 2448 paired-end alignments
+Time searching: 00:00:01
+Overall time: 00:00:01
+usearch v11.0.667_i86linux32, 4.0Gb RAM (16.0Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: personal use only
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:01
+# reads processed: 10675
+# reads with at least one reported alignment: 1156 (10.83%)
+# reads that failed to align: 9519 (89.17%)
+Reported 2538 paired-end alignments
+Time searching: 00:00:01
+Overall time: 00:00:01
+usearch v11.0.667_i86linux32, 4.0Gb RAM (16.0Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: personal use only
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:01
+# reads processed: 10675
+# reads with at least one reported alignment: 1156 (10.83%)
+# reads that failed to align: 9519 (89.17%)
+Reported 2555 paired-end alignments
+Time searching: 00:00:01
+Overall time: 00:00:01
+usearch v11.0.667_i86linux32, 4.0Gb RAM (16.0Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: personal use only
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:01
+# reads processed: 10675
+# reads with at least one reported alignment: 1156 (10.83%)
+# reads that failed to align: 9519 (89.17%)
+Reported 2506 paired-end alignments
+Time searching: 00:00:01
+Overall time: 00:00:01
+usearch v11.0.667_i86linux32, 4.0Gb RAM (16.0Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: personal use only
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:00
+# reads processed: 10675
+# reads with at least one reported alignment: 1156 (10.83%)
+# reads that failed to align: 9519 (89.17%)
+Reported 2561 paired-end alignments
+Time searching: 00:00:00
+Overall time: 00:00:00
+usearch v11.0.667_i86linux32, 4.0Gb RAM (16.0Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: personal use only
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:00
+# reads processed: 10675
+# reads with at least one reported alignment: 1151 (10.78%)
+# reads that failed to align: 9524 (89.22%)
+Reported 2485 paired-end alignments
+Time searching: 00:00:00
+Overall time: 00:00:00
+usearch v11.0.667_i86linux32, 4.0Gb RAM (16.0Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: personal use only
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:00
+# reads processed: 10675
+# reads with at least one reported alignment: 1151 (10.78%)
+# reads that failed to align: 9524 (89.22%)
+Reported 2488 paired-end alignments
+Time searching: 00:00:00
+Overall time: 00:00:00
+usearch v11.0.667_i86linux32, 4.0Gb RAM (16.0Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: personal use only
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:01
+# reads processed: 10675
+# reads with at least one reported alignment: 1151 (10.78%)
+# reads that failed to align: 9524 (89.22%)
+Reported 2488 paired-end alignments
+Time searching: 00:00:01
+Overall time: 00:00:01
+usearch v11.0.667_i86linux32, 4.0Gb RAM (16.0Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: personal use only
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:01
+# reads processed: 10675
+# reads with at least one reported alignment: 1151 (10.78%)
+# reads that failed to align: 9524 (89.22%)
+Reported 2490 paired-end alignments
+Time searching: 00:00:01
+Overall time: 00:00:01
+usearch v11.0.667_i86linux32, 4.0Gb RAM (16.0Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: personal use only
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:01
+# reads processed: 10675
+# reads with at least one reported alignment: 1151 (10.78%)
+# reads that failed to align: 9524 (89.22%)
+Reported 2484 paired-end alignments
+Time searching: 00:00:01
+Overall time: 00:00:01
+usearch v11.0.667_i86linux32, 4.0Gb RAM (16.0Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: personal use only
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:01
+# reads processed: 10675
+# reads with at least one reported alignment: 1151 (10.78%)
+# reads that failed to align: 9524 (89.22%)
+Reported 2475 paired-end alignments
+Time searching: 00:00:01
+Overall time: 00:00:01
+usearch v11.0.667_i86linux32, 4.0Gb RAM (16.0Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: personal use only
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:01
+# reads processed: 10675
+# reads with at least one reported alignment: 1151 (10.78%)
+# reads that failed to align: 9524 (89.22%)
+Reported 2475 paired-end alignments
+Time searching: 00:00:01
+Overall time: 00:00:01
+usearch v11.0.667_i86linux32, 4.0Gb RAM (16.0Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: personal use only
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:01
+# reads processed: 10675
+# reads with at least one reported alignment: 1151 (10.78%)
+# reads that failed to align: 9524 (89.22%)
+Reported 2475 paired-end alignments
+Time searching: 00:00:01
+Overall time: 00:00:01
+usearch v11.0.667_i86linux32, 4.0Gb RAM (16.0Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: personal use only
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:00
+# reads processed: 10675
+# reads with at least one reported alignment: 1151 (10.78%)
+# reads that failed to align: 9524 (89.22%)
+Reported 2475 paired-end alignments
+Time searching: 00:00:00
+Overall time: 00:00:00
+usearch v11.0.667_i86linux32, 4.0Gb RAM (16.0Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: personal use only
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:00
+# reads processed: 10675
+# reads with at least one reported alignment: 1151 (10.78%)
+# reads that failed to align: 9524 (89.22%)
+Reported 2475 paired-end alignments
+Time searching: 00:00:00
+Overall time: 00:00:00
+usearch v11.0.667_i86linux32, 4.0Gb RAM (16.0Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: personal use only
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:00
+# reads processed: 10675
+# reads with at least one reported alignment: 1151 (10.78%)
+# reads that failed to align: 9524 (89.22%)
+Reported 2476 paired-end alignments
+Time searching: 00:00:00
+Overall time: 00:00:00
+usearch v11.0.667_i86linux32, 4.0Gb RAM (16.0Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: personal use only
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:01
+# reads processed: 10675
+# reads with at least one reported alignment: 1151 (10.78%)
+# reads that failed to align: 9524 (89.22%)
+Reported 2476 paired-end alignments
+Time searching: 00:00:01
+Overall time: 00:00:01
+usearch v11.0.667_i86linux32, 4.0Gb RAM (16.0Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: personal use only
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:01
+# reads processed: 10675
+# reads with at least one reported alignment: 1151 (10.78%)
+# reads that failed to align: 9524 (89.22%)
+Reported 2476 paired-end alignments
+Time searching: 00:00:01
+Overall time: 00:00:01
+usearch v11.0.667_i86linux32, 4.0Gb RAM (16.0Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: personal use only
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:01
+# reads processed: 10675
+# reads with at least one reported alignment: 1151 (10.78%)
+# reads that failed to align: 9524 (89.22%)
+Reported 2476 paired-end alignments
+Time searching: 00:00:01
+Overall time: 00:00:01
+usearch v11.0.667_i86linux32, 4.0Gb RAM (16.0Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: personal use only
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:01
+# reads processed: 10675
+# reads with at least one reported alignment: 1151 (10.78%)
+# reads that failed to align: 9524 (89.22%)
+Reported 2476 paired-end alignments
+Time searching: 00:00:01
+Overall time: 00:00:01
+usearch v11.0.667_i86linux32, 4.0Gb RAM (16.0Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: personal use only
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:01
+# reads processed: 10675
+# reads with at least one reported alignment: 1151 (10.78%)
+# reads that failed to align: 9524 (89.22%)
+Reported 2476 paired-end alignments
+Time searching: 00:00:01
+Overall time: 00:00:01
+usearch v11.0.667_i86linux32, 4.0Gb RAM (16.0Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: personal use only
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:00
+# reads processed: 10675
+# reads with at least one reported alignment: 1151 (10.78%)
+# reads that failed to align: 9524 (89.22%)
+Reported 2476 paired-end alignments
+Time searching: 00:00:00
+Overall time: 00:00:00
+usearch v11.0.667_i86linux32, 4.0Gb RAM (16.0Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: personal use only
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:00
+# reads processed: 10675
+# reads with at least one reported alignment: 1151 (10.78%)
+# reads that failed to align: 9524 (89.22%)
+Reported 2476 paired-end alignments
+Time searching: 00:00:00
+Overall time: 00:00:00
+usearch v11.0.667_i86linux32, 4.0Gb RAM (16.0Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: personal use only
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:01
+# reads processed: 10675
+# reads with at least one reported alignment: 1151 (10.78%)
+# reads that failed to align: 9524 (89.22%)
+Reported 2476 paired-end alignments
+Time searching: 00:00:01
+Overall time: 00:00:01
+usearch v11.0.667_i86linux32, 4.0Gb RAM (16.0Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: personal use only
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:01
+# reads processed: 10675
+# reads with at least one reported alignment: 1151 (10.78%)
+# reads that failed to align: 9524 (89.22%)
+Reported 2476 paired-end alignments
+Time searching: 00:00:01
+Overall time: 00:00:01
+usearch v11.0.667_i86linux32, 4.0Gb RAM (16.0Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: personal use only
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:00
+# reads processed: 10675
+# reads with at least one reported alignment: 1151 (10.78%)
+# reads that failed to align: 9524 (89.22%)
+Reported 2476 paired-end alignments
+Time searching: 00:00:00
+Overall time: 00:00:00
+usearch v11.0.667_i86linux32, 4.0Gb RAM (16.0Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: personal use only
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:01
+# reads processed: 10675
+# reads with at least one reported alignment: 1151 (10.78%)
+# reads that failed to align: 9524 (89.22%)
+Reported 2476 paired-end alignments
+Time searching: 00:00:01
+Overall time: 00:00:01
+usearch v11.0.667_i86linux32, 4.0Gb RAM (16.0Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: personal use only
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:01
+# reads processed: 10675
+# reads with at least one reported alignment: 1151 (10.78%)
+# reads that failed to align: 9524 (89.22%)
+Reported 2476 paired-end alignments
+Time searching: 00:00:01
+Overall time: 00:00:01
+usearch v11.0.667_i86linux32, 4.0Gb RAM (16.0Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: personal use only
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:00
+# reads processed: 10675
+# reads with at least one reported alignment: 1151 (10.78%)
+# reads that failed to align: 9524 (89.22%)
+Reported 2476 paired-end alignments
+Time searching: 00:00:00
+Overall time: 00:00:00
+usearch v11.0.667_i86linux32, 4.0Gb RAM (16.0Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: personal use only
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:01
+# reads processed: 10675
+# reads with at least one reported alignment: 1151 (10.78%)
+# reads that failed to align: 9524 (89.22%)
+Reported 2476 paired-end alignments
+Time searching: 00:00:01
+Overall time: 00:00:01
+usearch v11.0.667_i86linux32, 4.0Gb RAM (16.0Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: personal use only
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:01
+# reads processed: 10675
+# reads with at least one reported alignment: 1151 (10.78%)
+# reads that failed to align: 9524 (89.22%)
+Reported 2475 paired-end alignments
+Time searching: 00:00:01
+Overall time: 00:00:01
+usearch v11.0.667_i86linux32, 4.0Gb RAM (16.0Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: personal use only
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:00
+# reads processed: 10675
+# reads with at least one reported alignment: 1151 (10.78%)
+# reads that failed to align: 9524 (89.22%)
+Reported 2475 paired-end alignments
+Time searching: 00:00:00
+Overall time: 00:00:00
+usearch v11.0.667_i86linux32, 4.0Gb RAM (16.0Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: personal use only
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:01
+# reads processed: 10675
+# reads with at least one reported alignment: 1151 (10.78%)
+# reads that failed to align: 9524 (89.22%)
+Reported 2475 paired-end alignments
+Time searching: 00:00:01
+Overall time: 00:00:01
+usearch v11.0.667_i86linux32, 4.0Gb RAM (16.0Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: personal use only
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:00
+# reads processed: 10675
+# reads with at least one reported alignment: 1151 (10.78%)
+# reads that failed to align: 9524 (89.22%)
+Reported 2476 paired-end alignments
+Time searching: 00:00:00
+Overall time: 00:00:00
+usearch v11.0.667_i86linux32, 4.0Gb RAM (16.0Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: personal use only
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:01
+# reads processed: 10675
+# reads with at least one reported alignment: 1151 (10.78%)
+# reads that failed to align: 9524 (89.22%)
+Reported 2476 paired-end alignments
+Time searching: 00:00:01
+Overall time: 00:00:01
+usearch v11.0.667_i86linux32, 4.0Gb RAM (16.0Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: personal use only
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:01
+# reads processed: 10675
+# reads with at least one reported alignment: 1151 (10.78%)
+# reads that failed to align: 9524 (89.22%)
+Reported 2476 paired-end alignments
+Time searching: 00:00:01
+Overall time: 00:00:01
+usearch v11.0.667_i86linux32, 4.0Gb RAM (16.0Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: personal use only
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:01
+# reads processed: 10675
+# reads with at least one reported alignment: 1151 (10.78%)
+# reads that failed to align: 9524 (89.22%)
+Reported 2476 paired-end alignments
+Time searching: 00:00:01
+Overall time: 00:00:01
+usearch v11.0.667_i86linux32, 4.0Gb RAM (16.0Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: personal use only
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:00
+# reads processed: 10675
+# reads with at least one reported alignment: 1151 (10.78%)
+# reads that failed to align: 9524 (89.22%)
+Reported 2476 paired-end alignments
+Time searching: 00:00:00
+Overall time: 00:00:00
+usearch v11.0.667_i86linux32, 4.0Gb RAM (16.0Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: personal use only
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:01
+# reads processed: 10675
+# reads with at least one reported alignment: 1151 (10.78%)
+# reads that failed to align: 9524 (89.22%)
+Reported 2476 paired-end alignments
+Time searching: 00:00:01
+Overall time: 00:00:01
+usearch v11.0.667_i86linux32, 4.0Gb RAM (16.0Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: personal use only
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:01
+# reads processed: 10675
+# reads with at least one reported alignment: 1151 (10.78%)
+# reads that failed to align: 9524 (89.22%)
+Reported 2476 paired-end alignments
+Time searching: 00:00:01
+Overall time: 00:00:01
+usearch v11.0.667_i86linux32, 4.0Gb RAM (16.0Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: personal use only
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:00
+# reads processed: 10675
+# reads with at least one reported alignment: 1151 (10.78%)
+# reads that failed to align: 9524 (89.22%)
+Reported 2476 paired-end alignments
+Time searching: 00:00:00
+Overall time: 00:00:00
+usearch v11.0.667_i86linux32, 4.0Gb RAM (16.0Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: personal use only
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:01
+# reads processed: 10675
+# reads with at least one reported alignment: 1151 (10.78%)
+# reads that failed to align: 9524 (89.22%)
+Reported 2476 paired-end alignments
+Time searching: 00:00:01
+Overall time: 00:00:01
+usearch v11.0.667_i86linux32, 4.0Gb RAM (16.0Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: personal use only
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:01
+# reads processed: 10675
+# reads with at least one reported alignment: 1151 (10.78%)
+# reads that failed to align: 9524 (89.22%)
+Reported 2476 paired-end alignments
+Time searching: 00:00:01
+Overall time: 00:00:01
+usearch v11.0.667_i86linux32, 4.0Gb RAM (16.0Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: personal use only
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:01
+# reads processed: 10675
+# reads with at least one reported alignment: 1151 (10.78%)
+# reads that failed to align: 9524 (89.22%)
+Reported 2476 paired-end alignments
+Time searching: 00:00:01
+Overall time: 00:00:01
+usearch v11.0.667_i86linux32, 4.0Gb RAM (16.0Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: personal use only
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:01
+# reads processed: 10675
+# reads with at least one reported alignment: 1151 (10.78%)
+# reads that failed to align: 9524 (89.22%)
+Reported 2476 paired-end alignments
+Time searching: 00:00:01
+Overall time: 00:00:01
+usearch v11.0.667_i86linux32, 4.0Gb RAM (16.0Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: personal use only
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:01
+# reads processed: 10675
+# reads with at least one reported alignment: 1151 (10.78%)
+# reads that failed to align: 9524 (89.22%)
+Reported 2476 paired-end alignments
+Time searching: 00:00:01
+Overall time: 00:00:01
+usearch v11.0.667_i86linux32, 4.0Gb RAM (16.0Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: personal use only
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:00
+# reads processed: 10675
+# reads with at least one reported alignment: 1151 (10.78%)
+# reads that failed to align: 9524 (89.22%)
+Reported 2472 paired-end alignments
+Time searching: 00:00:00
+Overall time: 00:00:00
+usearch v11.0.667_i86linux32, 4.0Gb RAM (16.0Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: personal use only
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:00
+# reads processed: 10675
+# reads with at least one reported alignment: 1151 (10.78%)
+# reads that failed to align: 9524 (89.22%)
+Reported 2472 paired-end alignments
+Time searching: 00:00:00
+Overall time: 00:00:00
+usearch v11.0.667_i86linux32, 4.0Gb RAM (16.0Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: personal use only
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:00
+# reads processed: 10675
+# reads with at least one reported alignment: 1151 (10.78%)
+# reads that failed to align: 9524 (89.22%)
+Reported 2468 paired-end alignments
+Time searching: 00:00:00
+Overall time: 00:00:00
+usearch v11.0.667_i86linux32, 4.0Gb RAM (16.0Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: personal use only
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:01
+# reads processed: 10675
+# reads with at least one reported alignment: 1151 (10.78%)
+# reads that failed to align: 9524 (89.22%)
+Reported 2468 paired-end alignments
+Time searching: 00:00:01
+Overall time: 00:00:01
+usearch v11.0.667_i86linux32, 4.0Gb RAM (16.0Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: personal use only
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:01
+# reads processed: 10675
+# reads with at least one reported alignment: 1151 (10.78%)
+# reads that failed to align: 9524 (89.22%)
+Reported 2465 paired-end alignments
+Time searching: 00:00:01
+Overall time: 00:00:01
+usearch v11.0.667_i86linux32, 4.0Gb RAM (16.0Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: personal use only
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:00
+# reads processed: 10675
+# reads with at least one reported alignment: 1151 (10.78%)
+# reads that failed to align: 9524 (89.22%)
+Reported 2465 paired-end alignments
+Time searching: 00:00:00
+Overall time: 00:00:00
+usearch v11.0.667_i86linux32, 4.0Gb RAM (16.0Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: personal use only
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:00
+# reads processed: 10675
+# reads with at least one reported alignment: 1151 (10.78%)
+# reads that failed to align: 9524 (89.22%)
+Reported 2465 paired-end alignments
+Time searching: 00:00:00
+Overall time: 00:00:00
+usearch v11.0.667_i86linux32, 4.0Gb RAM (16.0Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: personal use only
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:01
+# reads processed: 10675
+# reads with at least one reported alignment: 1151 (10.78%)
+# reads that failed to align: 9524 (89.22%)
+Reported 2465 paired-end alignments
+Time searching: 00:00:01
+Overall time: 00:00:01
+usearch v11.0.667_i86linux32, 4.0Gb RAM (16.0Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: personal use only
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:01
+# reads processed: 10675
+# reads with at least one reported alignment: 1151 (10.78%)
+# reads that failed to align: 9524 (89.22%)
+Reported 2465 paired-end alignments
+Time searching: 00:00:01
+Overall time: 00:00:01
+usearch v11.0.667_i86linux32, 4.0Gb RAM (16.0Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: personal use only
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:01
+# reads processed: 10675
+# reads with at least one reported alignment: 1151 (10.78%)
+# reads that failed to align: 9524 (89.22%)
+Reported 2465 paired-end alignments
+Time searching: 00:00:01
+Overall time: 00:00:01
+usearch v11.0.667_i86linux32, 4.0Gb RAM (16.0Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: personal use only
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:00
+# reads processed: 10675
+# reads with at least one reported alignment: 1151 (10.78%)
+# reads that failed to align: 9524 (89.22%)
+Reported 2465 paired-end alignments
+Time searching: 00:00:00
+Overall time: 00:00:00
+usearch v11.0.667_i86linux32, 4.0Gb RAM (16.0Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: personal use only
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:01
+# reads processed: 10675
+# reads with at least one reported alignment: 1151 (10.78%)
+# reads that failed to align: 9524 (89.22%)
+Reported 2465 paired-end alignments
+Time searching: 00:00:01
+Overall time: 00:00:01
+usearch v11.0.667_i86linux32, 4.0Gb RAM (16.0Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: personal use only
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:01
+# reads processed: 10675
+# reads with at least one reported alignment: 1151 (10.78%)
+# reads that failed to align: 9524 (89.22%)
+Reported 2466 paired-end alignments
+Time searching: 00:00:01
+Overall time: 00:00:01
+usearch v11.0.667_i86linux32, 4.0Gb RAM (16.0Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: personal use only
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:00
+# reads processed: 10675
+# reads with at least one reported alignment: 1151 (10.78%)
+# reads that failed to align: 9524 (89.22%)
+Reported 2466 paired-end alignments
+Time searching: 00:00:00
+Overall time: 00:00:00
+usearch v11.0.667_i86linux32, 4.0Gb RAM (16.0Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: personal use only
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:00
+# reads processed: 10675
+# reads with at least one reported alignment: 1151 (10.78%)
+# reads that failed to align: 9524 (89.22%)
+Reported 2466 paired-end alignments
+Time searching: 00:00:00
+Overall time: 00:00:00
+usearch v11.0.667_i86linux32, 4.0Gb RAM (16.0Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: personal use only
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:00
+# reads processed: 10675
+# reads with at least one reported alignment: 1151 (10.78%)
+# reads that failed to align: 9524 (89.22%)
+Reported 2466 paired-end alignments
+Time searching: 00:00:00
+Overall time: 00:00:00
+usearch v11.0.667_i86linux32, 4.0Gb RAM (16.0Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: personal use only
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:01
+# reads processed: 10675
+# reads with at least one reported alignment: 1151 (10.78%)
+# reads that failed to align: 9524 (89.22%)
+Reported 2466 paired-end alignments
+Time searching: 00:00:01
+Overall time: 00:00:01
+usearch v11.0.667_i86linux32, 4.0Gb RAM (16.0Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: personal use only
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:00
+# reads processed: 10675
+# reads with at least one reported alignment: 1151 (10.78%)
+# reads that failed to align: 9524 (89.22%)
+Reported 2466 paired-end alignments
+Time searching: 00:00:00
+Overall time: 00:00:00
+usearch v11.0.667_i86linux32, 4.0Gb RAM (16.0Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: personal use only
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:00
+# reads processed: 10675
+# reads with at least one reported alignment: 1151 (10.78%)
+# reads that failed to align: 9524 (89.22%)
+Reported 2466 paired-end alignments
+Time searching: 00:00:00
+Overall time: 00:00:00
+usearch v11.0.667_i86linux32, 4.0Gb RAM (16.0Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: personal use only
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:01
+# reads processed: 10675
+# reads with at least one reported alignment: 1151 (10.78%)
+# reads that failed to align: 9524 (89.22%)
+Reported 2466 paired-end alignments
+Time searching: 00:00:01
+Overall time: 00:00:01
+usearch v11.0.667_i86linux32, 4.0Gb RAM (16.0Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: personal use only
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:01
+# reads processed: 10675
+# reads with at least one reported alignment: 1151 (10.78%)
+# reads that failed to align: 9524 (89.22%)
+Reported 2466 paired-end alignments
+Time searching: 00:00:01
+Overall time: 00:00:01
+usearch v11.0.667_i86linux32, 4.0Gb RAM (16.0Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: personal use only
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:00
+# reads processed: 10675
+# reads with at least one reported alignment: 1151 (10.78%)
+# reads that failed to align: 9524 (89.22%)
+Reported 2466 paired-end alignments
+Time searching: 00:00:00
+Overall time: 00:00:00
+usearch v11.0.667_i86linux32, 4.0Gb RAM (16.0Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: personal use only
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:00
+# reads processed: 10675
+# reads with at least one reported alignment: 1151 (10.78%)
+# reads that failed to align: 9524 (89.22%)
+Reported 2466 paired-end alignments
+Time searching: 00:00:00
+Overall time: 00:00:00
+usearch v11.0.667_i86linux32, 4.0Gb RAM (16.0Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: personal use only
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:01
+# reads processed: 10675
+# reads with at least one reported alignment: 1151 (10.78%)
+# reads that failed to align: 9524 (89.22%)
+Reported 2466 paired-end alignments
+Time searching: 00:00:01
+Overall time: 00:00:01
+usearch v11.0.667_i86linux32, 4.0Gb RAM (16.0Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: personal use only
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:01
+# reads processed: 10675
+# reads with at least one reported alignment: 1151 (10.78%)
+# reads that failed to align: 9524 (89.22%)
+Reported 2466 paired-end alignments
+Time searching: 00:00:01
+Overall time: 00:00:01
+usearch v11.0.667_i86linux32, 4.0Gb RAM (16.0Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: personal use only
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:01
+# reads processed: 10675
+# reads with at least one reported alignment: 1151 (10.78%)
+# reads that failed to align: 9524 (89.22%)
+Reported 2466 paired-end alignments
+Time searching: 00:00:01
+Overall time: 00:00:01
+usearch v11.0.667_i86linux32, 4.0Gb RAM (16.0Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: personal use only
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:00
+# reads processed: 10675
+# reads with at least one reported alignment: 1151 (10.78%)
+# reads that failed to align: 9524 (89.22%)
+Reported 2466 paired-end alignments
+Time searching: 00:00:00
+Overall time: 00:00:00
+usearch v11.0.667_i86linux32, 4.0Gb RAM (16.0Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: personal use only
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:01
+# reads processed: 10675
+# reads with at least one reported alignment: 1151 (10.78%)
+# reads that failed to align: 9524 (89.22%)
+Reported 2466 paired-end alignments
+Time searching: 00:00:01
+Overall time: 00:00:01
+usearch v11.0.667_i86linux32, 4.0Gb RAM (16.0Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: personal use only
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:01
+# reads processed: 10675
+# reads with at least one reported alignment: 1151 (10.78%)
+# reads that failed to align: 9524 (89.22%)
+Reported 2466 paired-end alignments
+Time searching: 00:00:01
+Overall time: 00:00:01
+usearch v11.0.667_i86linux32, 4.0Gb RAM (16.0Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: personal use only
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:00
+# reads processed: 10675
+# reads with at least one reported alignment: 1151 (10.78%)
+# reads that failed to align: 9524 (89.22%)
+Reported 2466 paired-end alignments
+Time searching: 00:00:00
+Overall time: 00:00:00
+usearch v11.0.667_i86linux32, 4.0Gb RAM (16.0Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: personal use only
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:00
+# reads processed: 10675
+# reads with at least one reported alignment: 1151 (10.78%)
+# reads that failed to align: 9524 (89.22%)
+Reported 2466 paired-end alignments
+Time searching: 00:00:00
+Overall time: 00:00:00
+usearch v11.0.667_i86linux32, 4.0Gb RAM (16.0Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: personal use only
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:01
+# reads processed: 10675
+# reads with at least one reported alignment: 1151 (10.78%)
+# reads that failed to align: 9524 (89.22%)
+Reported 2466 paired-end alignments
+Time searching: 00:00:01
+Overall time: 00:00:01
+usearch v11.0.667_i86linux32, 4.0Gb RAM (16.0Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: personal use only
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:01
+# reads processed: 10675
+# reads with at least one reported alignment: 1151 (10.78%)
+# reads that failed to align: 9524 (89.22%)
+Reported 2466 paired-end alignments
+Time searching: 00:00:01
+Overall time: 00:00:01
+usearch v11.0.667_i86linux32, 4.0Gb RAM (16.0Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: personal use only
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:01
+# reads processed: 10675
+# reads with at least one reported alignment: 1151 (10.78%)
+# reads that failed to align: 9524 (89.22%)
+Reported 2466 paired-end alignments
+Time searching: 00:00:01
+Overall time: 00:00:01
+usearch v11.0.667_i86linux32, 4.0Gb RAM (16.0Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: personal use only
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:01
+# reads processed: 10675
+# reads with at least one reported alignment: 1151 (10.78%)
+# reads that failed to align: 9524 (89.22%)
+Reported 2466 paired-end alignments
+Time searching: 00:00:01
+Overall time: 00:00:01
+usearch v11.0.667_i86linux32, 4.0Gb RAM (16.0Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: personal use only
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:00
+# reads processed: 10675
+# reads with at least one reported alignment: 1151 (10.78%)
+# reads that failed to align: 9524 (89.22%)
+Reported 2466 paired-end alignments
+Time searching: 00:00:00
+Overall time: 00:00:00
+usearch v11.0.667_i86linux32, 4.0Gb RAM (16.0Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: personal use only
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:01
+# reads processed: 10675
+# reads with at least one reported alignment: 1151 (10.78%)
+# reads that failed to align: 9524 (89.22%)
+Reported 2466 paired-end alignments
+Time searching: 00:00:01
+Overall time: 00:00:01
+usearch v11.0.667_i86linux32, 4.0Gb RAM (16.0Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: personal use only
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:01
+# reads processed: 10675
+# reads with at least one reported alignment: 1151 (10.78%)
+# reads that failed to align: 9524 (89.22%)
+Reported 2466 paired-end alignments
+Time searching: 00:00:01
+Overall time: 00:00:01
+usearch v11.0.667_i86linux32, 4.0Gb RAM (16.0Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: personal use only
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:00
+# reads processed: 10675
+# reads with at least one reported alignment: 1151 (10.78%)
+# reads that failed to align: 9524 (89.22%)
+Reported 2466 paired-end alignments
+Time searching: 00:00:00
+Overall time: 00:00:00
+usearch v11.0.667_i86linux32, 4.0Gb RAM (16.0Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: personal use only
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:00
+# reads processed: 10675
+# reads with at least one reported alignment: 1151 (10.78%)
+# reads that failed to align: 9524 (89.22%)
+Reported 2466 paired-end alignments
+Time searching: 00:00:00
+Overall time: 00:00:00
+usearch v11.0.667_i86linux32, 4.0Gb RAM (16.0Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: personal use only
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:00
+# reads processed: 10675
+# reads with at least one reported alignment: 1151 (10.78%)
+# reads that failed to align: 9524 (89.22%)
+Reported 2466 paired-end alignments
+Time searching: 00:00:00
+Overall time: 00:00:00
+usearch v11.0.667_i86linux32, 4.0Gb RAM (16.0Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: personal use only
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:00
+# reads processed: 10675
+# reads with at least one reported alignment: 1151 (10.78%)
+# reads that failed to align: 9524 (89.22%)
+Reported 2466 paired-end alignments
+Time searching: 00:00:00
+Overall time: 00:00:00
+usearch v11.0.667_i86linux32, 4.0Gb RAM (16.0Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: personal use only
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:01
+# reads processed: 10675
+# reads with at least one reported alignment: 1151 (10.78%)
+# reads that failed to align: 9524 (89.22%)
+Reported 2466 paired-end alignments
+Time searching: 00:00:01
+Overall time: 00:00:01
+usearch v11.0.667_i86linux32, 4.0Gb RAM (16.0Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: personal use only
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:00
+# reads processed: 10675
+# reads with at least one reported alignment: 1151 (10.78%)
+# reads that failed to align: 9524 (89.22%)
+Reported 2466 paired-end alignments
+Time searching: 00:00:00
+Overall time: 00:00:00
+usearch v11.0.667_i86linux32, 4.0Gb RAM (16.0Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: personal use only
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:01
+# reads processed: 10675
+# reads with at least one reported alignment: 1151 (10.78%)
+# reads that failed to align: 9524 (89.22%)
+Reported 2466 paired-end alignments
+Time searching: 00:00:01
+Overall time: 00:00:01
+usearch v11.0.667_i86linux32, 4.0Gb RAM (16.0Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: personal use only
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:01
+# reads processed: 10675
+# reads with at least one reported alignment: 1151 (10.78%)
+# reads that failed to align: 9524 (89.22%)
+Reported 2466 paired-end alignments
+Time searching: 00:00:01
+Overall time: 00:00:01
+usearch v11.0.667_i86linux32, 4.0Gb RAM (16.0Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: personal use only
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:00
+# reads processed: 10675
+# reads with at least one reported alignment: 1151 (10.78%)
+# reads that failed to align: 9524 (89.22%)
+Reported 2466 paired-end alignments
+Time searching: 00:00:00
+Overall time: 00:00:00
+usearch v11.0.667_i86linux32, 4.0Gb RAM (16.0Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: personal use only
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:01
+# reads processed: 10675
+# reads with at least one reported alignment: 1151 (10.78%)
+# reads that failed to align: 9524 (89.22%)
+Reported 2466 paired-end alignments
+Time searching: 00:00:01
+Overall time: 00:00:01
+usearch v11.0.667_i86linux32, 4.0Gb RAM (16.0Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: personal use only
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:01
+# reads processed: 10675
+# reads with at least one reported alignment: 1151 (10.78%)
+# reads that failed to align: 9524 (89.22%)
+Reported 2466 paired-end alignments
+Time searching: 00:00:01
+Overall time: 00:00:01
+usearch v11.0.667_i86linux32, 4.0Gb RAM (16.0Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: personal use only
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:01
+# reads processed: 10675
+# reads with at least one reported alignment: 1151 (10.78%)
+# reads that failed to align: 9524 (89.22%)
+Reported 2466 paired-end alignments
+Time searching: 00:00:01
+Overall time: 00:00:01
+usearch v11.0.667_i86linux32, 4.0Gb RAM (16.0Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: personal use only
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:00
+# reads processed: 10675
+# reads with at least one reported alignment: 1151 (10.78%)
+# reads that failed to align: 9524 (89.22%)
+Reported 2466 paired-end alignments
+Time searching: 00:00:00
+Overall time: 00:00:00
+usearch v11.0.667_i86linux32, 4.0Gb RAM (16.0Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: personal use only
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:01
+# reads processed: 10675
+# reads with at least one reported alignment: 1151 (10.78%)
+# reads that failed to align: 9524 (89.22%)
+Reported 2466 paired-end alignments
+Time searching: 00:00:01
+Overall time: 00:00:01
+usearch v11.0.667_i86linux32, 4.0Gb RAM (16.0Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: personal use only
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:00
+# reads processed: 10675
+# reads with at least one reported alignment: 1151 (10.78%)
+# reads that failed to align: 9524 (89.22%)
+Reported 2466 paired-end alignments
+Time searching: 00:00:00
+Overall time: 00:00:00
+usearch v11.0.667_i86linux32, 4.0Gb RAM (16.0Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: personal use only
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:01
+# reads processed: 10675
+# reads with at least one reported alignment: 1151 (10.78%)
+# reads that failed to align: 9524 (89.22%)
+Reported 2466 paired-end alignments
+Time searching: 00:00:01
+Overall time: 00:00:01
+usearch v11.0.667_i86linux32, 4.0Gb RAM (16.0Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: personal use only
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:01
+# reads processed: 10675
+# reads with at least one reported alignment: 1151 (10.78%)
+# reads that failed to align: 9524 (89.22%)
+Reported 2466 paired-end alignments
+Time searching: 00:00:01
+Overall time: 00:00:01
+usearch v11.0.667_i86linux32, 4.0Gb RAM (16.0Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: personal use only
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:01
+# reads processed: 10675
+# reads with at least one reported alignment: 1151 (10.78%)
+# reads that failed to align: 9524 (89.22%)
+Reported 2466 paired-end alignments
+Time searching: 00:00:01
+Overall time: 00:00:01
+usearch v11.0.667_i86linux32, 4.0Gb RAM (16.0Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: personal use only
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:00
+# reads processed: 10675
+# reads with at least one reported alignment: 1151 (10.78%)
+# reads that failed to align: 9524 (89.22%)
+Reported 2464 paired-end alignments
+Time searching: 00:00:00
+Overall time: 00:00:00
+usearch v11.0.667_i86linux32, 4.0Gb RAM (16.0Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: personal use only
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:01
+# reads processed: 10675
+# reads with at least one reported alignment: 1151 (10.78%)
+# reads that failed to align: 9524 (89.22%)
+Reported 2464 paired-end alignments
+Time searching: 00:00:01
+Overall time: 00:00:01
+usearch v11.0.667_i86linux32, 4.0Gb RAM (16.0Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: personal use only
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:01
+# reads processed: 10675
+# reads with at least one reported alignment: 1151 (10.78%)
+# reads that failed to align: 9524 (89.22%)
+Reported 2466 paired-end alignments
+Time searching: 00:00:01
+Overall time: 00:00:01
+usearch v11.0.667_i86linux32, 4.0Gb RAM (16.0Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: personal use only
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:00
+# reads processed: 10675
+# reads with at least one reported alignment: 1151 (10.78%)
+# reads that failed to align: 9524 (89.22%)
+Reported 2466 paired-end alignments
+Time searching: 00:00:00
+Overall time: 00:00:00
+usearch v11.0.667_i86linux32, 4.0Gb RAM (16.0Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: personal use only
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:01
+# reads processed: 10675
+# reads with at least one reported alignment: 1151 (10.78%)
+# reads that failed to align: 9524 (89.22%)
+Reported 2466 paired-end alignments
+Time searching: 00:00:01
+Overall time: 00:00:01
+usearch v11.0.667_i86linux32, 4.0Gb RAM (16.0Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: personal use only
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:01
+# reads processed: 10675
+# reads with at least one reported alignment: 1151 (10.78%)
+# reads that failed to align: 9524 (89.22%)
+Reported 2466 paired-end alignments
+Time searching: 00:00:01
+Overall time: 00:00:01
+usearch v11.0.667_i86linux32, 4.0Gb RAM (16.0Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: personal use only
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:00
+# reads processed: 10675
+# reads with at least one reported alignment: 1151 (10.78%)
+# reads that failed to align: 9524 (89.22%)
+Reported 2466 paired-end alignments
+Time searching: 00:00:00
+Overall time: 00:00:00
+usearch v11.0.667_i86linux32, 4.0Gb RAM (16.0Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: personal use only
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:01
+# reads processed: 10675
+# reads with at least one reported alignment: 1151 (10.78%)
+# reads that failed to align: 9524 (89.22%)
+Reported 2466 paired-end alignments
+Time searching: 00:00:01
+Overall time: 00:00:01
+usearch v11.0.667_i86linux32, 4.0Gb RAM (16.0Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: personal use only
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:00
+# reads processed: 10675
+# reads with at least one reported alignment: 1151 (10.78%)
+# reads that failed to align: 9524 (89.22%)
+Reported 2466 paired-end alignments
+Time searching: 00:00:00
+Overall time: 00:00:00
+usearch v11.0.667_i86linux32, 4.0Gb RAM (16.0Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: personal use only
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:00
+# reads processed: 10675
+# reads with at least one reported alignment: 1151 (10.78%)
+# reads that failed to align: 9524 (89.22%)
+Reported 2466 paired-end alignments
+Time searching: 00:00:00
+Overall time: 00:00:00
+usearch v11.0.667_i86linux32, 4.0Gb RAM (16.0Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: personal use only
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:01
+# reads processed: 10675
+# reads with at least one reported alignment: 1151 (10.78%)
+# reads that failed to align: 9524 (89.22%)
+Reported 2466 paired-end alignments
+Time searching: 00:00:01
+Overall time: 00:00:01
+usearch v11.0.667_i86linux32, 4.0Gb RAM (16.0Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: personal use only
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:01
+# reads processed: 10675
+# reads with at least one reported alignment: 1151 (10.78%)
+# reads that failed to align: 9524 (89.22%)
+Reported 2466 paired-end alignments
+Time searching: 00:00:01
+Overall time: 00:00:01
+usearch v11.0.667_i86linux32, 4.0Gb RAM (16.0Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: personal use only
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:00
+# reads processed: 10675
+# reads with at least one reported alignment: 1151 (10.78%)
+# reads that failed to align: 9524 (89.22%)
+Reported 2466 paired-end alignments
+Time searching: 00:00:00
+Overall time: 00:00:00
+usearch v11.0.667_i86linux32, 4.0Gb RAM (16.0Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: personal use only
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:01
+# reads processed: 10675
+# reads with at least one reported alignment: 1151 (10.78%)
+# reads that failed to align: 9524 (89.22%)
+Reported 2466 paired-end alignments
+Time searching: 00:00:01
+Overall time: 00:00:01
+usearch v11.0.667_i86linux32, 4.0Gb RAM (16.0Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: personal use only
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:01
+# reads processed: 10675
+# reads with at least one reported alignment: 1151 (10.78%)
+# reads that failed to align: 9524 (89.22%)
+Reported 2466 paired-end alignments
+Time searching: 00:00:01
+Overall time: 00:00:01
+usearch v11.0.667_i86linux32, 4.0Gb RAM (16.0Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: personal use only
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:00
+# reads processed: 10675
+# reads with at least one reported alignment: 1151 (10.78%)
+# reads that failed to align: 9524 (89.22%)
+Reported 2466 paired-end alignments
+Time searching: 00:00:00
+Overall time: 00:00:00
+usearch v11.0.667_i86linux32, 4.0Gb RAM (16.0Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: personal use only
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:01
+# reads processed: 10675
+# reads with at least one reported alignment: 1151 (10.78%)
+# reads that failed to align: 9524 (89.22%)
+Reported 2466 paired-end alignments
+Time searching: 00:00:01
+Overall time: 00:00:01
+usearch v11.0.667_i86linux32, 4.0Gb RAM (16.0Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: personal use only
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:01
+# reads processed: 10675
+# reads with at least one reported alignment: 1151 (10.78%)
+# reads that failed to align: 9524 (89.22%)
+Reported 2466 paired-end alignments
+Time searching: 00:00:01
+Overall time: 00:00:01
+usearch v11.0.667_i86linux32, 4.0Gb RAM (16.0Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: personal use only
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:01
+# reads processed: 10675
+# reads with at least one reported alignment: 1151 (10.78%)
+# reads that failed to align: 9524 (89.22%)
+Reported 2466 paired-end alignments
+Time searching: 00:00:01
+Overall time: 00:00:01
+EMIRGE finished at Thu Apr 15 14:38:24 2021.  Total time: 0:17:36.321550
+Merging iterations into fasta sequence... 
+updating: SRR5381736_amplicon_16S18S_recons/ (stored 0%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.02/ (stored 0%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.02/iter.02.cons.fasta (deflated 78%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.02/bowtie.iter.02.log.gz (stored 0%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.02/iter.02.cons.fasta.fai (deflated 57%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.02/probN.pkl.gz (deflated 1%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.02/priors.iter.02.txt (deflated 59%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.29/ (stored 0%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.29/iter.29.cons.fasta.fai (deflated 57%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.29/priors.iter.29.txt (deflated 59%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.29/bowtie.iter.29.log.gz (stored 0%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.29/probN.pkl.gz (deflated 1%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.29/iter.29.cons.fasta (deflated 78%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.39/ (stored 0%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.39/priors.iter.39.txt (deflated 59%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.39/iter.39.cons.fasta (deflated 78%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.39/iter.39.cons.fasta.fai (deflated 57%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.39/probN.pkl.gz (deflated 1%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.39/bowtie.iter.39.log.gz (stored 0%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.109/ (stored 0%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.109/priors.iter.109.txt (deflated 60%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.109/bowtie.iter.109.log.gz (stored 0%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.109/probN.pkl.gz (deflated 1%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.109/iter.109.cons.fasta.fai (deflated 57%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.109/iter.109.cons.fasta (deflated 78%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.07/ (stored 0%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.07/iter.07.cons.fasta.fai (deflated 57%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.07/probN.pkl.gz (deflated 1%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.07/bowtie.iter.07.log.gz (stored 0%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.07/priors.iter.07.txt (deflated 59%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.07/iter.07.cons.fasta (deflated 78%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.94/ (stored 0%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.94/priors.iter.94.txt (deflated 60%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.94/iter.94.cons.fasta (deflated 78%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.94/probN.pkl.gz (deflated 1%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.94/bowtie.iter.94.log.gz (stored 0%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.94/iter.94.cons.fasta.fai (deflated 57%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.55/ (stored 0%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.55/priors.iter.55.txt (deflated 59%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.55/probN.pkl.gz (deflated 1%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.55/bowtie.iter.55.log.gz (stored 0%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.55/iter.55.cons.fasta.fai (deflated 57%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.55/iter.55.cons.fasta (deflated 78%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.119/ (stored 0%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.119/priors.iter.119.txt (deflated 60%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.119/iter.119.cons.fasta (deflated 78%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.119/bowtie.iter.119.log.gz (stored 0%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.119/probN.pkl.gz (deflated 1%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.119/iter.119.cons.fasta.fai (deflated 57%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.19/ (stored 0%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.19/iter.19.cons.fasta (deflated 78%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.19/iter.19.cons.fasta.fai (deflated 57%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.19/priors.iter.19.txt (deflated 60%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.19/probN.pkl.gz (deflated 1%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.19/bowtie.iter.19.log.gz (stored 0%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.80/ (stored 0%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.80/iter.80.cons.fasta (deflated 78%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.80/probN.pkl.gz (deflated 1%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.80/iter.80.cons.fasta.fai (deflated 57%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.80/priors.iter.80.txt (deflated 60%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.80/bowtie.iter.80.log.gz (stored 0%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.52/ (stored 0%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.52/bowtie.iter.52.log.gz (stored 0%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.52/iter.52.cons.fasta (deflated 78%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.52/priors.iter.52.txt (deflated 60%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.52/probN.pkl.gz (deflated 1%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.52/iter.52.cons.fasta.fai (deflated 57%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.18/ (stored 0%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.18/probN.pkl.gz (deflated 1%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.18/bowtie.iter.18.log.gz (stored 0%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.18/iter.18.cons.fasta.fai (deflated 57%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.18/iter.18.cons.fasta (deflated 78%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.18/priors.iter.18.txt (deflated 59%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.36/ (stored 0%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.36/iter.36.cons.fasta.fai (deflated 57%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.36/priors.iter.36.txt (deflated 59%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.36/bowtie.iter.36.log.gz (stored 0%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.36/probN.pkl.gz (deflated 1%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.36/iter.36.cons.fasta (deflated 78%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.65/ (stored 0%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.65/iter.65.cons.fasta.fai (deflated 57%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.65/iter.65.cons.fasta (deflated 78%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.65/bowtie.iter.65.log.gz (stored 0%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.65/probN.pkl.gz (deflated 1%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.65/priors.iter.65.txt (deflated 60%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.115/ (stored 0%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.115/priors.iter.115.txt (deflated 60%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.115/bowtie.iter.115.log.gz (stored 0%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.115/probN.pkl.gz (deflated 1%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.115/iter.115.cons.fasta.fai (deflated 57%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.115/iter.115.cons.fasta (deflated 78%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.103/ (stored 0%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.103/priors.iter.103.txt (deflated 60%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.103/bowtie.iter.103.log.gz (stored 0%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.103/iter.103.cons.fasta.fai (deflated 57%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.103/iter.103.cons.fasta (deflated 78%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.103/probN.pkl.gz (deflated 1%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.56/ (stored 0%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.56/iter.56.cons.fasta.fai (deflated 57%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.56/priors.iter.56.txt (deflated 59%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.56/probN.pkl.gz (deflated 1%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.56/iter.56.cons.fasta (deflated 78%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.56/bowtie.iter.56.log.gz (stored 0%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.117/ (stored 0%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.117/iter.117.cons.fasta (deflated 78%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.117/priors.iter.117.txt (deflated 60%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.117/probN.pkl.gz (deflated 1%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.117/iter.117.cons.fasta.fai (deflated 57%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.117/bowtie.iter.117.log.gz (stored 0%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.44/ (stored 0%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.44/iter.44.cons.fasta (deflated 78%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.44/iter.44.cons.fasta.fai (deflated 57%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.44/probN.pkl.gz (deflated 1%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.44/bowtie.iter.44.log.gz (stored 0%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.44/priors.iter.44.txt (deflated 59%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.47/ (stored 0%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.47/priors.iter.47.txt (deflated 59%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.47/iter.47.cons.fasta.fai (deflated 57%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.47/bowtie.iter.47.log.gz (stored 0%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.47/iter.47.cons.fasta (deflated 78%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.47/probN.pkl.gz (deflated 1%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.37/ (stored 0%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.37/priors.iter.37.txt (deflated 59%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.37/iter.37.cons.fasta.fai (deflated 57%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.37/bowtie.iter.37.log.gz (stored 0%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.37/probN.pkl.gz (deflated 1%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.37/iter.37.cons.fasta (deflated 78%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.73/ (stored 0%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.73/iter.73.cons.fasta.fai (deflated 57%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.73/bowtie.iter.73.log.gz (stored 0%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.73/priors.iter.73.txt (deflated 60%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.73/probN.pkl.gz (deflated 1%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.73/iter.73.cons.fasta (deflated 78%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.46/ (stored 0%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.46/iter.46.cons.fasta (deflated 78%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.46/probN.pkl.gz (deflated 1%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.46/iter.46.cons.fasta.fai (deflated 57%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.46/bowtie.iter.46.log.gz (stored 0%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.46/priors.iter.46.txt (deflated 59%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.53/ (stored 0%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.53/priors.iter.53.txt (deflated 59%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.53/bowtie.iter.53.log.gz (stored 0%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.53/probN.pkl.gz (deflated 1%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.53/iter.53.cons.fasta (deflated 78%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.53/iter.53.cons.fasta.fai (deflated 57%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.04/ (stored 0%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.04/iter.04.cons.fasta (deflated 78%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.04/iter.04.cons.fasta.fai (deflated 57%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.04/bowtie.iter.04.log.gz (stored 0%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.04/probN.pkl.gz (deflated 1%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.04/priors.iter.04.txt (deflated 59%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.90/ (stored 0%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.90/iter.90.cons.fasta (deflated 78%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.90/iter.90.cons.fasta.fai (deflated 57%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.90/bowtie.iter.90.log.gz (stored 0%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.90/probN.pkl.gz (deflated 1%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.90/priors.iter.90.txt (deflated 60%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.14/ (stored 0%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.14/iter.14.cons.fasta (deflated 78%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.14/priors.iter.14.txt (deflated 59%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.14/bowtie.iter.14.log.gz (stored 0%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.14/probN.pkl.gz (deflated 1%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.14/iter.14.cons.fasta.fai (deflated 57%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.105/ (stored 0%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.105/probN.pkl.gz (deflated 1%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.105/priors.iter.105.txt (deflated 60%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.105/bowtie.iter.105.log.gz (stored 0%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.105/iter.105.cons.fasta (deflated 78%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.105/iter.105.cons.fasta.fai (deflated 57%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.93/ (stored 0%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.93/priors.iter.93.txt (deflated 60%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.93/bowtie.iter.93.log.gz (stored 0%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.93/iter.93.cons.fasta.fai (deflated 57%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.93/probN.pkl.gz (deflated 1%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.93/iter.93.cons.fasta (deflated 78%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.87/ (stored 0%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.87/bowtie.iter.87.log.gz (stored 0%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.87/probN.pkl.gz (deflated 1%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.87/priors.iter.87.txt (deflated 60%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.87/iter.87.cons.fasta.fai (deflated 57%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.87/iter.87.cons.fasta (deflated 78%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.06/ (stored 0%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.06/bowtie.iter.06.log.gz (stored 0%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.06/iter.06.cons.fasta (deflated 78%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.06/probN.pkl.gz (deflated 1%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.06/priors.iter.06.txt (deflated 59%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.06/iter.06.cons.fasta.fai (deflated 57%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.86/ (stored 0%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.86/priors.iter.86.txt (deflated 60%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.86/bowtie.iter.86.log.gz (stored 0%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.86/probN.pkl.gz (deflated 1%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.86/iter.86.cons.fasta.fai (deflated 57%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.86/iter.86.cons.fasta (deflated 78%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.69/ (stored 0%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.69/bowtie.iter.69.log.gz (stored 0%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.69/probN.pkl.gz (deflated 1%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.69/priors.iter.69.txt (deflated 60%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.69/iter.69.cons.fasta.fai (deflated 57%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.69/iter.69.cons.fasta (deflated 78%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.40/ (stored 0%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.40/bowtie.iter.40.log.gz (stored 0%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.40/probN.pkl.gz (deflated 1%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.40/iter.40.cons.fasta (deflated 78%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.40/priors.iter.40.txt (deflated 59%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.40/iter.40.cons.fasta.fai (deflated 57%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.30/ (stored 0%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.30/iter.30.cons.fasta.fai (deflated 57%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.30/bowtie.iter.30.log.gz (stored 0%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.30/probN.pkl.gz (deflated 1%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.30/iter.30.cons.fasta (deflated 78%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.30/priors.iter.30.txt (deflated 59%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.31/ (stored 0%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.31/iter.31.cons.fasta (deflated 78%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.31/iter.31.cons.fasta.fai (deflated 57%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.31/bowtie.iter.31.log.gz (stored 0%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.31/probN.pkl.gz (deflated 1%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.31/priors.iter.31.txt (deflated 59%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.81/ (stored 0%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.81/bowtie.iter.81.log.gz (stored 0%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.81/probN.pkl.gz (deflated 1%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.81/iter.81.cons.fasta.fai (deflated 57%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.81/iter.81.cons.fasta (deflated 78%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.81/priors.iter.81.txt (deflated 60%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.113/ (stored 0%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.113/priors.iter.113.txt (deflated 60%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.113/iter.113.cons.fasta.fai (deflated 57%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.113/iter.113.cons.fasta (deflated 78%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.113/bowtie.iter.113.log.gz (stored 0%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.113/probN.pkl.gz (deflated 1%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.99/ (stored 0%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.99/bowtie.iter.99.log.gz (stored 0%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.99/priors.iter.99.txt (deflated 60%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.99/iter.99.cons.fasta.fai (deflated 57%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.99/probN.pkl.gz (deflated 1%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.99/iter.99.cons.fasta (deflated 78%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.66/ (stored 0%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.66/probN.pkl.gz (deflated 1%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.66/priors.iter.66.txt (deflated 60%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.66/iter.66.cons.fasta (deflated 78%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.66/bowtie.iter.66.log.gz (stored 0%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.66/iter.66.cons.fasta.fai (deflated 57%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.101/ (stored 0%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.101/iter.101.cons.fasta (deflated 78%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.101/iter.101.cons.fasta.fai (deflated 57%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.101/priors.iter.101.txt (deflated 60%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.101/probN.pkl.gz (deflated 1%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.101/bowtie.iter.101.log.gz (stored 0%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.76/ (stored 0%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.76/iter.76.cons.fasta (deflated 78%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.76/probN.pkl.gz (deflated 1%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.76/priors.iter.76.txt (deflated 60%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.76/iter.76.cons.fasta.fai (deflated 57%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.76/bowtie.iter.76.log.gz (stored 0%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.32/ (stored 0%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.32/iter.32.cons.fasta.fai (deflated 57%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.32/priors.iter.32.txt (deflated 59%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.32/bowtie.iter.32.log.gz (stored 0%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.32/iter.32.cons.fasta (deflated 78%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.32/probN.pkl.gz (deflated 1%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.88/ (stored 0%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.88/priors.iter.88.txt (deflated 60%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.88/probN.pkl.gz (deflated 1%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.88/iter.88.cons.fasta.fai (deflated 57%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.88/bowtie.iter.88.log.gz (stored 0%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.88/iter.88.cons.fasta (deflated 78%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.84/ (stored 0%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.84/iter.84.cons.fasta (deflated 78%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.84/priors.iter.84.txt (deflated 60%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.84/bowtie.iter.84.log.gz (stored 0%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.84/probN.pkl.gz (deflated 1%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.84/iter.84.cons.fasta.fai (deflated 57%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.21/ (stored 0%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.21/priors.iter.21.txt (deflated 59%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.21/iter.21.cons.fasta.fai (deflated 57%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.21/iter.21.cons.fasta (deflated 78%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.21/probN.pkl.gz (deflated 1%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.21/bowtie.iter.21.log.gz (stored 0%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.41/ (stored 0%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.41/iter.41.cons.fasta (deflated 78%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.41/bowtie.iter.41.log.gz (stored 0%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.41/priors.iter.41.txt (deflated 59%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.41/iter.41.cons.fasta.fai (deflated 57%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.41/probN.pkl.gz (deflated 1%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.54/ (stored 0%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.54/iter.54.cons.fasta.fai (deflated 57%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.54/probN.pkl.gz (deflated 1%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.54/priors.iter.54.txt (deflated 60%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.54/bowtie.iter.54.log.gz (stored 0%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.54/iter.54.cons.fasta (deflated 78%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.13/ (stored 0%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.13/bowtie.iter.13.log.gz (stored 0%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.13/iter.13.cons.fasta (deflated 78%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.13/priors.iter.13.txt (deflated 59%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.13/probN.pkl.gz (deflated 1%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.13/iter.13.cons.fasta.fai (deflated 57%)
+updating: SRR5381736_amplicon_16S18S_recons/initial_mapping/ (stored 0%)
+updating: SRR5381736_amplicon_16S18S_recons/initial_mapping/initial_bowtie_mapping.PE.bam (deflated 0%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.23/ (stored 0%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.23/priors.iter.23.txt (deflated 59%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.23/iter.23.cons.fasta.fai (deflated 57%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.23/iter.23.cons.fasta (deflated 78%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.23/probN.pkl.gz (deflated 1%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.23/bowtie.iter.23.log.gz (stored 0%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.71/ (stored 0%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.71/iter.71.cons.fasta.fai (deflated 57%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.71/bowtie.iter.71.log.gz (stored 0%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.71/priors.iter.71.txt (deflated 60%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.71/iter.71.cons.fasta (deflated 78%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.71/probN.pkl.gz (deflated 1%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.22/ (stored 0%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.22/iter.22.cons.fasta (deflated 78%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.22/bowtie.iter.22.log.gz (stored 0%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.22/probN.pkl.gz (deflated 1%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.22/priors.iter.22.txt (deflated 59%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.22/iter.22.cons.fasta.fai (deflated 57%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.108/ (stored 0%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.108/priors.iter.108.txt (deflated 60%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.108/iter.108.cons.fasta.fai (deflated 57%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.108/bowtie.iter.108.log.gz (stored 0%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.108/probN.pkl.gz (deflated 1%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.108/iter.108.cons.fasta (deflated 78%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.110/ (stored 0%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.110/priors.iter.110.txt (deflated 60%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.110/probN.pkl.gz (deflated 1%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.110/bowtie.iter.110.log.gz (stored 0%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.110/iter.110.cons.fasta.fai (deflated 57%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.110/iter.110.cons.fasta (deflated 78%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.75/ (stored 0%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.75/iter.75.cons.fasta.fai (deflated 57%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.75/bowtie.iter.75.log.gz (stored 0%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.75/priors.iter.75.txt (deflated 60%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.75/probN.pkl.gz (deflated 1%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.75/iter.75.cons.fasta (deflated 78%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.61/ (stored 0%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.61/priors.iter.61.txt (deflated 59%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.61/bowtie.iter.61.log.gz (stored 0%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.61/probN.pkl.gz (deflated 1%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.61/iter.61.cons.fasta (deflated 78%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.61/iter.61.cons.fasta.fai (deflated 57%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.104/ (stored 0%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.104/priors.iter.104.txt (deflated 60%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.104/iter.104.cons.fasta (deflated 78%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.104/iter.104.cons.fasta.fai (deflated 57%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.104/probN.pkl.gz (deflated 1%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.104/bowtie.iter.104.log.gz (stored 0%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.63/ (stored 0%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.63/iter.63.cons.fasta (deflated 78%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.63/iter.63.cons.fasta.fai (deflated 57%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.63/bowtie.iter.63.log.gz (stored 0%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.63/priors.iter.63.txt (deflated 59%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.63/probN.pkl.gz (deflated 1%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.74/ (stored 0%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.74/bowtie.iter.74.log.gz (stored 0%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.74/iter.74.cons.fasta (deflated 78%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.74/iter.74.cons.fasta.fai (deflated 57%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.74/probN.pkl.gz (deflated 1%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.74/priors.iter.74.txt (deflated 60%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.68/ (stored 0%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.68/bowtie.iter.68.log.gz (stored 0%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.68/priors.iter.68.txt (deflated 60%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.68/iter.68.cons.fasta.fai (deflated 57%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.68/probN.pkl.gz (deflated 1%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.68/iter.68.cons.fasta (deflated 78%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.38/ (stored 0%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.38/iter.38.cons.fasta.fai (deflated 57%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.38/probN.pkl.gz (deflated 1%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.38/iter.38.cons.fasta (deflated 78%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.38/bowtie.iter.38.log.gz (stored 0%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.38/priors.iter.38.txt (deflated 59%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.12/ (stored 0%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.12/bowtie.iter.12.log.gz (stored 0%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.12/probN.pkl.gz (deflated 1%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.12/priors.iter.12.txt (deflated 60%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.12/iter.12.cons.fasta (deflated 78%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.12/iter.12.cons.fasta.fai (deflated 57%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.79/ (stored 0%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.79/priors.iter.79.txt (deflated 60%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.79/probN.pkl.gz (deflated 1%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.79/bowtie.iter.79.log.gz (stored 0%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.79/iter.79.cons.fasta (deflated 78%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.79/iter.79.cons.fasta.fai (deflated 57%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.116/ (stored 0%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.116/iter.116.cons.fasta.fai (deflated 57%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.116/priors.iter.116.txt (deflated 60%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.116/iter.116.cons.fasta (deflated 78%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.116/probN.pkl.gz (deflated 1%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.116/bowtie.iter.116.log.gz (stored 0%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.01/ (stored 0%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.01/priors.iter.01.txt (deflated 59%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.01/iter.01.cons.fasta (deflated 78%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.01/probN.pkl.gz (deflated 1%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.01/iter.01.cons.fasta.fai (deflated 57%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.01/bowtie.iter.01.log.gz (stored 0%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.33/ (stored 0%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.33/iter.33.cons.fasta (deflated 78%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.33/bowtie.iter.33.log.gz (stored 0%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.33/probN.pkl.gz (deflated 1%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.33/iter.33.cons.fasta.fai (deflated 57%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.33/priors.iter.33.txt (deflated 60%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.17/ (stored 0%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.17/iter.17.cons.fasta.fai (deflated 57%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.17/bowtie.iter.17.log.gz (stored 0%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.17/priors.iter.17.txt (deflated 60%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.17/iter.17.cons.fasta (deflated 78%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.17/probN.pkl.gz (deflated 1%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.64/ (stored 0%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.64/priors.iter.64.txt (deflated 60%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.64/probN.pkl.gz (deflated 1%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.64/bowtie.iter.64.log.gz (stored 0%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.64/iter.64.cons.fasta.fai (deflated 57%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.64/iter.64.cons.fasta (deflated 78%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.107/ (stored 0%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.107/iter.107.cons.fasta.fai (deflated 57%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.107/probN.pkl.gz (deflated 1%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.107/priors.iter.107.txt (deflated 60%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.107/bowtie.iter.107.log.gz (stored 0%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.107/iter.107.cons.fasta (deflated 78%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.78/ (stored 0%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.78/iter.78.cons.fasta.fai (deflated 57%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.78/probN.pkl.gz (deflated 1%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.78/bowtie.iter.78.log.gz (stored 0%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.78/priors.iter.78.txt (deflated 60%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.78/iter.78.cons.fasta (deflated 78%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.89/ (stored 0%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.89/iter.89.cons.fasta (deflated 78%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.89/iter.89.cons.fasta.fai (deflated 57%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.89/probN.pkl.gz (deflated 1%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.89/priors.iter.89.txt (deflated 60%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.89/bowtie.iter.89.log.gz (stored 0%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.10/ (stored 0%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.10/bowtie.iter.10.log.gz (stored 0%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.10/iter.10.cons.fasta (deflated 78%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.10/iter.10.cons.fasta.fai (deflated 57%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.10/probN.pkl.gz (deflated 1%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.10/priors.iter.10.txt (deflated 59%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.72/ (stored 0%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.72/iter.72.cons.fasta (deflated 78%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.72/bowtie.iter.72.log.gz (stored 0%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.72/iter.72.cons.fasta.fai (deflated 57%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.72/probN.pkl.gz (deflated 1%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.72/priors.iter.72.txt (deflated 60%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.20/ (stored 0%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.20/iter.20.cons.fasta.fai (deflated 57%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.20/iter.20.cons.fasta (deflated 78%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.20/bowtie.iter.20.log.gz (stored 0%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.20/priors.iter.20.txt (deflated 59%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.20/probN.pkl.gz (deflated 1%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.16/ (stored 0%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.16/probN.pkl.gz (deflated 1%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.16/iter.16.cons.fasta (deflated 78%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.16/priors.iter.16.txt (deflated 60%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.16/iter.16.cons.fasta.fai (deflated 57%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.16/bowtie.iter.16.log.gz (stored 0%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.67/ (stored 0%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.67/iter.67.cons.fasta.fai (deflated 57%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.67/priors.iter.67.txt (deflated 60%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.67/probN.pkl.gz (deflated 1%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.67/bowtie.iter.67.log.gz (stored 0%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.67/iter.67.cons.fasta (deflated 78%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.03/ (stored 0%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.03/bowtie.iter.03.log.gz (stored 0%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.03/iter.03.cons.fasta (deflated 78%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.03/probN.pkl.gz (deflated 1%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.03/priors.iter.03.txt (deflated 59%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.03/iter.03.cons.fasta.fai (deflated 57%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.77/ (stored 0%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.77/bowtie.iter.77.log.gz (stored 0%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.77/iter.77.cons.fasta (deflated 78%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.77/priors.iter.77.txt (deflated 60%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.77/probN.pkl.gz (deflated 1%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.77/iter.77.cons.fasta.fai (deflated 57%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.57/ (stored 0%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.57/bowtie.iter.57.log.gz (stored 0%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.57/iter.57.cons.fasta (deflated 78%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.57/priors.iter.57.txt (deflated 59%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.57/iter.57.cons.fasta.fai (deflated 57%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.57/probN.pkl.gz (deflated 1%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.08/ (stored 0%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.08/iter.08.cons.fasta.fai (deflated 57%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.08/bowtie.iter.08.log.gz (stored 0%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.08/iter.08.cons.fasta (deflated 78%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.08/probN.pkl.gz (deflated 1%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.08/priors.iter.08.txt (deflated 59%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.05/ (stored 0%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.05/iter.05.cons.fasta (deflated 78%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.05/probN.pkl.gz (deflated 1%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.05/bowtie.iter.05.log.gz (stored 0%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.05/iter.05.cons.fasta.fai (deflated 57%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.05/priors.iter.05.txt (deflated 59%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.11/ (stored 0%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.11/iter.11.cons.fasta (deflated 78%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.11/probN.pkl.gz (deflated 1%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.11/iter.11.cons.fasta.fai (deflated 57%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.11/bowtie.iter.11.log.gz (stored 0%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.11/priors.iter.11.txt (deflated 59%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.83/ (stored 0%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.83/iter.83.cons.fasta (deflated 78%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.83/probN.pkl.gz (deflated 1%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.83/bowtie.iter.83.log.gz (stored 0%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.83/iter.83.cons.fasta.fai (deflated 57%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.83/priors.iter.83.txt (deflated 60%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.100/ (stored 0%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.100/iter.100.cons.fasta.fai (deflated 57%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.100/iter.100.cons.fasta (deflated 78%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.100/probN.pkl.gz (deflated 1%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.100/priors.iter.100.txt (deflated 60%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.100/bowtie.iter.100.log.gz (stored 0%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.85/ (stored 0%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.85/iter.85.cons.fasta.fai (deflated 57%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.85/iter.85.cons.fasta (deflated 78%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.85/priors.iter.85.txt (deflated 59%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.85/bowtie.iter.85.log.gz (stored 0%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.85/probN.pkl.gz (deflated 1%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.60/ (stored 0%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.60/iter.60.cons.fasta (deflated 78%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.60/iter.60.cons.fasta.fai (deflated 57%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.60/probN.pkl.gz (deflated 1%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.60/bowtie.iter.60.log.gz (stored 0%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.60/priors.iter.60.txt (deflated 59%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.24/ (stored 0%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.24/iter.24.cons.fasta (deflated 78%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.24/iter.24.cons.fasta.fai (deflated 57%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.24/priors.iter.24.txt (deflated 60%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.24/bowtie.iter.24.log.gz (stored 0%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.24/probN.pkl.gz (deflated 1%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.43/ (stored 0%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.43/bowtie.iter.43.log.gz (stored 0%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.43/probN.pkl.gz (deflated 1%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.43/priors.iter.43.txt (deflated 59%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.43/iter.43.cons.fasta.fai (deflated 57%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.43/iter.43.cons.fasta (deflated 78%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.118/ (stored 0%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.118/priors.iter.118.txt (deflated 60%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.118/iter.118.cons.fasta.fai (deflated 57%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.118/probN.pkl.gz (deflated 1%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.118/bowtie.iter.118.log.gz (stored 0%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.118/iter.118.cons.fasta (deflated 78%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.98/ (stored 0%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.98/iter.98.cons.fasta (deflated 78%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.98/priors.iter.98.txt (deflated 60%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.98/bowtie.iter.98.log.gz (stored 0%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.98/probN.pkl.gz (deflated 1%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.98/iter.98.cons.fasta.fai (deflated 57%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.112/ (stored 0%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.112/iter.112.cons.fasta.fai (deflated 57%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.112/bowtie.iter.112.log.gz (stored 0%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.112/probN.pkl.gz (deflated 1%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.112/iter.112.cons.fasta (deflated 78%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.112/priors.iter.112.txt (deflated 60%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.58/ (stored 0%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.58/iter.58.cons.fasta (deflated 78%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.58/priors.iter.58.txt (deflated 60%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.58/iter.58.cons.fasta.fai (deflated 57%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.58/probN.pkl.gz (deflated 1%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.58/bowtie.iter.58.log.gz (stored 0%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.27/ (stored 0%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.27/iter.27.cons.fasta (deflated 78%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.27/bowtie.iter.27.log.gz (stored 0%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.27/iter.27.cons.fasta.fai (deflated 57%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.27/priors.iter.27.txt (deflated 59%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.27/probN.pkl.gz (deflated 1%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.45/ (stored 0%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.45/iter.45.cons.fasta.fai (deflated 57%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.45/probN.pkl.gz (deflated 1%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.45/iter.45.cons.fasta (deflated 78%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.45/priors.iter.45.txt (deflated 59%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.45/bowtie.iter.45.log.gz (stored 0%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.42/ (stored 0%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.42/priors.iter.42.txt (deflated 59%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.42/iter.42.cons.fasta.fai (deflated 57%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.42/probN.pkl.gz (deflated 1%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.42/bowtie.iter.42.log.gz (stored 0%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.42/iter.42.cons.fasta (deflated 78%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.91/ (stored 0%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.91/bowtie.iter.91.log.gz (stored 0%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.91/iter.91.cons.fasta.fai (deflated 57%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.91/priors.iter.91.txt (deflated 60%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.91/iter.91.cons.fasta (deflated 78%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.91/probN.pkl.gz (deflated 1%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.95/ (stored 0%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.95/iter.95.cons.fasta (deflated 78%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.95/iter.95.cons.fasta.fai (deflated 57%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.95/bowtie.iter.95.log.gz (stored 0%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.95/probN.pkl.gz (deflated 1%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.95/priors.iter.95.txt (deflated 60%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.120/ (stored 0%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.120/priors.iter.120.txt (deflated 60%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.120/bowtie.iter.120.PE.u.b.bam (deflated 0%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.120/bowtie.iter.120.log.gz (stored 0%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.120/probN.pkl.gz (deflated 1%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.120/iter.120.cons.fasta (deflated 78%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.28/ (stored 0%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.28/bowtie.iter.28.log.gz (stored 0%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.28/iter.28.cons.fasta (deflated 78%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.28/probN.pkl.gz (deflated 1%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.28/priors.iter.28.txt (deflated 59%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.28/iter.28.cons.fasta.fai (deflated 57%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.50/ (stored 0%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.50/iter.50.cons.fasta.fai (deflated 57%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.50/bowtie.iter.50.log.gz (stored 0%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.50/probN.pkl.gz (deflated 1%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.50/priors.iter.50.txt (deflated 59%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.50/iter.50.cons.fasta (deflated 78%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.96/ (stored 0%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.96/probN.pkl.gz (deflated 1%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.96/priors.iter.96.txt (deflated 60%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.96/iter.96.cons.fasta.fai (deflated 57%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.96/iter.96.cons.fasta (deflated 78%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.96/bowtie.iter.96.log.gz (stored 0%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.106/ (stored 0%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.106/iter.106.cons.fasta (deflated 78%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.106/iter.106.cons.fasta.fai (deflated 57%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.106/priors.iter.106.txt (deflated 60%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.106/probN.pkl.gz (deflated 1%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.106/bowtie.iter.106.log.gz (stored 0%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.35/ (stored 0%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.35/iter.35.cons.fasta.fai (deflated 57%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.35/iter.35.cons.fasta (deflated 78%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.35/probN.pkl.gz (deflated 1%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.35/priors.iter.35.txt (deflated 59%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.35/bowtie.iter.35.log.gz (stored 0%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.92/ (stored 0%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.92/priors.iter.92.txt (deflated 60%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.92/iter.92.cons.fasta.fai (deflated 57%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.92/probN.pkl.gz (deflated 1%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.92/bowtie.iter.92.log.gz (stored 0%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.92/iter.92.cons.fasta (deflated 78%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.00/ (stored 0%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.00/priors.iter.00.txt (deflated 63%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.00/probN.pkl.gz (deflated 1%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.00/iter.00.cons.fasta (deflated 78%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.00/bowtie.iter.00.log.gz (stored 0%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.00/iter.00.cons.fasta.fai (deflated 57%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.48/ (stored 0%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.48/iter.48.cons.fasta (deflated 78%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.48/bowtie.iter.48.log.gz (stored 0%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.48/iter.48.cons.fasta.fai (deflated 57%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.48/probN.pkl.gz (deflated 1%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.48/priors.iter.48.txt (deflated 59%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.97/ (stored 0%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.97/iter.97.cons.fasta (deflated 78%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.97/priors.iter.97.txt (deflated 60%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.97/bowtie.iter.97.log.gz (stored 0%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.97/probN.pkl.gz (deflated 1%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.97/iter.97.cons.fasta.fai (deflated 57%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.34/ (stored 0%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.34/priors.iter.34.txt (deflated 59%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.34/probN.pkl.gz (deflated 1%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.34/iter.34.cons.fasta.fai (deflated 57%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.34/bowtie.iter.34.log.gz (stored 0%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.34/iter.34.cons.fasta (deflated 78%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.09/ (stored 0%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.09/iter.09.cons.fasta.fai (deflated 57%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.09/bowtie.iter.09.log.gz (stored 0%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.09/iter.09.cons.fasta (deflated 78%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.09/priors.iter.09.txt (deflated 59%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.09/probN.pkl.gz (deflated 1%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.26/ (stored 0%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.26/iter.26.cons.fasta.fai (deflated 57%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.26/priors.iter.26.txt (deflated 60%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.26/iter.26.cons.fasta (deflated 78%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.26/bowtie.iter.26.log.gz (stored 0%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.26/probN.pkl.gz (deflated 1%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.59/ (stored 0%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.59/iter.59.cons.fasta (deflated 78%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.59/bowtie.iter.59.log.gz (stored 0%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.59/probN.pkl.gz (deflated 1%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.59/iter.59.cons.fasta.fai (deflated 57%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.59/priors.iter.59.txt (deflated 60%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.82/ (stored 0%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.82/iter.82.cons.fasta (deflated 78%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.82/probN.pkl.gz (deflated 1%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.82/bowtie.iter.82.log.gz (stored 0%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.82/priors.iter.82.txt (deflated 60%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.82/iter.82.cons.fasta.fai (deflated 57%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.114/ (stored 0%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.114/iter.114.cons.fasta (deflated 78%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.114/bowtie.iter.114.log.gz (stored 0%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.114/iter.114.cons.fasta.fai (deflated 57%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.114/probN.pkl.gz (deflated 1%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.114/priors.iter.114.txt (deflated 59%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.111/ (stored 0%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.111/bowtie.iter.111.log.gz (stored 0%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.111/iter.111.cons.fasta.fai (deflated 57%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.111/iter.111.cons.fasta (deflated 78%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.111/probN.pkl.gz (deflated 1%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.111/priors.iter.111.txt (deflated 60%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.51/ (stored 0%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.51/iter.51.cons.fasta.fai (deflated 57%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.51/bowtie.iter.51.log.gz (stored 0%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.51/probN.pkl.gz (deflated 1%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.51/iter.51.cons.fasta (deflated 78%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.51/priors.iter.51.txt (deflated 60%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.25/ (stored 0%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.25/iter.25.cons.fasta (deflated 78%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.25/priors.iter.25.txt (deflated 59%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.25/probN.pkl.gz (deflated 1%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.25/bowtie.iter.25.log.gz (stored 0%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.25/iter.25.cons.fasta.fai (deflated 57%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.15/ (stored 0%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.15/priors.iter.15.txt (deflated 60%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.15/iter.15.cons.fasta (deflated 78%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.15/iter.15.cons.fasta.fai (deflated 57%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.15/probN.pkl.gz (deflated 1%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.15/bowtie.iter.15.log.gz (stored 0%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.62/ (stored 0%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.62/bowtie.iter.62.log.gz (stored 0%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.62/priors.iter.62.txt (deflated 59%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.62/probN.pkl.gz (deflated 1%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.62/iter.62.cons.fasta (deflated 78%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.62/iter.62.cons.fasta.fai (deflated 57%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.70/ (stored 0%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.70/iter.70.cons.fasta (deflated 78%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.70/bowtie.iter.70.log.gz (stored 0%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.70/iter.70.cons.fasta.fai (deflated 57%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.70/priors.iter.70.txt (deflated 60%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.70/probN.pkl.gz (deflated 1%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.102/ (stored 0%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.102/priors.iter.102.txt (deflated 60%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.102/probN.pkl.gz (deflated 1%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.102/iter.102.cons.fasta.fai (deflated 57%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.102/iter.102.cons.fasta (deflated 78%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.102/bowtie.iter.102.log.gz (stored 0%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.49/ (stored 0%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.49/iter.49.cons.fasta (deflated 78%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.49/bowtie.iter.49.log.gz (stored 0%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.49/priors.iter.49.txt (deflated 60%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.49/probN.pkl.gz (deflated 1%)
+updating: SRR5381736_amplicon_16S18S_recons/iter.49/iter.49.cons.fasta.fai (deflated 57%)
+updating: SRR5381736_amplicon_16S18S_recons/priors.initialized.txt (deflated 62%)
+/home/oschakoo/RiboTaxa
+Running MetaRib to reconstruct 16S/18S full length sequences...jeu. 15 avril 2021 14:38:28 CEST
+====START ITERATION 1====
+Iteration: 1	Total contigs: 47	New contigs: 47	unmapped fastq (MB): 3.78
+====FINISH ITERATION 1====
+====START LAST ITERATION 2====
+Iteration: 2	Total contigs: 47	New contigs: 0
+====FINISH ITERATION 2====
+Total number of contig:47
+====PROGRAM FINISHED!====
+Finalising reconstructed sequences...
+  adding: Iteration/ (stored 0%)
+  adding: Iteration/iter_1/ (stored 0%)
+  adding: Iteration/iter_1/sub.2.fq (deflated 60%)
+  adding: Iteration/iter_1/subsample.log (deflated 71%)
+  adding: Iteration/iter_1/iter_1_emirge.log (deflated 96%)
+  adding: Iteration/iter_1/sub.1.fq (deflated 63%)
+  adding: Iteration/iter_1/emirge_amp/ (stored 0%)
+  adding: Iteration/iter_1/emirge_amp/iter.02/ (stored 0%)
+  adding: Iteration/iter_1/emirge_amp/iter.02/iter.02.cons.fasta (deflated 78%)
+  adding: Iteration/iter_1/emirge_amp/iter.02/bowtie.iter.02.log.gz (stored 0%)
+  adding: Iteration/iter_1/emirge_amp/iter.02/iter.02.cons.fasta.fai (deflated 57%)
+  adding: Iteration/iter_1/emirge_amp/iter.02/probN.pkl.gz (deflated 1%)
+  adding: Iteration/iter_1/emirge_amp/iter.02/priors.iter.02.txt (deflated 59%)
+  adding: Iteration/iter_1/emirge_amp/iter.29/ (stored 0%)
+  adding: Iteration/iter_1/emirge_amp/iter.29/iter.29.cons.fasta.fai (deflated 57%)
+  adding: Iteration/iter_1/emirge_amp/iter.29/priors.iter.29.txt (deflated 59%)
+  adding: Iteration/iter_1/emirge_amp/iter.29/bowtie.iter.29.log.gz (stored 0%)
+  adding: Iteration/iter_1/emirge_amp/iter.29/probN.pkl.gz (deflated 1%)
+  adding: Iteration/iter_1/emirge_amp/iter.29/iter.29.cons.fasta (deflated 78%)
+  adding: Iteration/iter_1/emirge_amp/iter.39/ (stored 0%)
+  adding: Iteration/iter_1/emirge_amp/iter.39/priors.iter.39.txt (deflated 59%)
+  adding: Iteration/iter_1/emirge_amp/iter.39/iter.39.cons.fasta (deflated 78%)
+  adding: Iteration/iter_1/emirge_amp/iter.39/iter.39.cons.fasta.fai (deflated 57%)
+  adding: Iteration/iter_1/emirge_amp/iter.39/probN.pkl.gz (deflated 1%)
+  adding: Iteration/iter_1/emirge_amp/iter.39/bowtie.iter.39.log.gz (stored 0%)
+  adding: Iteration/iter_1/emirge_amp/iter.109/ (stored 0%)
+  adding: Iteration/iter_1/emirge_amp/iter.109/priors.iter.109.txt (deflated 60%)
+  adding: Iteration/iter_1/emirge_amp/iter.109/bowtie.iter.109.log.gz (stored 0%)
+  adding: Iteration/iter_1/emirge_amp/iter.109/probN.pkl.gz (deflated 1%)
+  adding: Iteration/iter_1/emirge_amp/iter.109/iter.109.cons.fasta.fai (deflated 57%)
+  adding: Iteration/iter_1/emirge_amp/iter.109/iter.109.cons.fasta (deflated 78%)
+  adding: Iteration/iter_1/emirge_amp/iter.07/ (stored 0%)
+  adding: Iteration/iter_1/emirge_amp/iter.07/iter.07.cons.fasta.fai (deflated 57%)
+  adding: Iteration/iter_1/emirge_amp/iter.07/probN.pkl.gz (deflated 1%)
+  adding: Iteration/iter_1/emirge_amp/iter.07/bowtie.iter.07.log.gz (stored 0%)
+  adding: Iteration/iter_1/emirge_amp/iter.07/priors.iter.07.txt (deflated 59%)
+  adding: Iteration/iter_1/emirge_amp/iter.07/iter.07.cons.fasta (deflated 78%)
+  adding: Iteration/iter_1/emirge_amp/iter.94/ (stored 0%)
+  adding: Iteration/iter_1/emirge_amp/iter.94/priors.iter.94.txt (deflated 60%)
+  adding: Iteration/iter_1/emirge_amp/iter.94/iter.94.cons.fasta (deflated 78%)
+  adding: Iteration/iter_1/emirge_amp/iter.94/probN.pkl.gz (deflated 1%)
+  adding: Iteration/iter_1/emirge_amp/iter.94/bowtie.iter.94.log.gz (stored 0%)
+  adding: Iteration/iter_1/emirge_amp/iter.94/iter.94.cons.fasta.fai (deflated 57%)
+  adding: Iteration/iter_1/emirge_amp/iter.55/ (stored 0%)
+  adding: Iteration/iter_1/emirge_amp/iter.55/priors.iter.55.txt (deflated 59%)
+  adding: Iteration/iter_1/emirge_amp/iter.55/probN.pkl.gz (deflated 1%)
+  adding: Iteration/iter_1/emirge_amp/iter.55/bowtie.iter.55.log.gz (stored 0%)
+  adding: Iteration/iter_1/emirge_amp/iter.55/iter.55.cons.fasta.fai (deflated 57%)
+  adding: Iteration/iter_1/emirge_amp/iter.55/iter.55.cons.fasta (deflated 78%)
+  adding: Iteration/iter_1/emirge_amp/iter.119/ (stored 0%)
+  adding: Iteration/iter_1/emirge_amp/iter.119/priors.iter.119.txt (deflated 60%)
+  adding: Iteration/iter_1/emirge_amp/iter.119/iter.119.cons.fasta (deflated 78%)
+  adding: Iteration/iter_1/emirge_amp/iter.119/bowtie.iter.119.log.gz (stored 0%)
+  adding: Iteration/iter_1/emirge_amp/iter.119/probN.pkl.gz (deflated 1%)
+  adding: Iteration/iter_1/emirge_amp/iter.119/iter.119.cons.fasta.fai (deflated 57%)
+  adding: Iteration/iter_1/emirge_amp/iter.19/ (stored 0%)
+  adding: Iteration/iter_1/emirge_amp/iter.19/iter.19.cons.fasta (deflated 78%)
+  adding: Iteration/iter_1/emirge_amp/iter.19/iter.19.cons.fasta.fai (deflated 57%)
+  adding: Iteration/iter_1/emirge_amp/iter.19/priors.iter.19.txt (deflated 60%)
+  adding: Iteration/iter_1/emirge_amp/iter.19/probN.pkl.gz (deflated 1%)
+  adding: Iteration/iter_1/emirge_amp/iter.19/bowtie.iter.19.log.gz (stored 0%)
+  adding: Iteration/iter_1/emirge_amp/iter.80/ (stored 0%)
+  adding: Iteration/iter_1/emirge_amp/iter.80/iter.80.cons.fasta (deflated 78%)
+  adding: Iteration/iter_1/emirge_amp/iter.80/probN.pkl.gz (deflated 1%)
+  adding: Iteration/iter_1/emirge_amp/iter.80/iter.80.cons.fasta.fai (deflated 57%)
+  adding: Iteration/iter_1/emirge_amp/iter.80/priors.iter.80.txt (deflated 60%)
+  adding: Iteration/iter_1/emirge_amp/iter.80/bowtie.iter.80.log.gz (stored 0%)
+  adding: Iteration/iter_1/emirge_amp/iter.52/ (stored 0%)
+  adding: Iteration/iter_1/emirge_amp/iter.52/bowtie.iter.52.log.gz (stored 0%)
+  adding: Iteration/iter_1/emirge_amp/iter.52/iter.52.cons.fasta (deflated 78%)
+  adding: Iteration/iter_1/emirge_amp/iter.52/priors.iter.52.txt (deflated 60%)
+  adding: Iteration/iter_1/emirge_amp/iter.52/probN.pkl.gz (deflated 1%)
+  adding: Iteration/iter_1/emirge_amp/iter.52/iter.52.cons.fasta.fai (deflated 57%)
+  adding: Iteration/iter_1/emirge_amp/iter.18/ (stored 0%)
+  adding: Iteration/iter_1/emirge_amp/iter.18/probN.pkl.gz (deflated 1%)
+  adding: Iteration/iter_1/emirge_amp/iter.18/bowtie.iter.18.log.gz (stored 0%)
+  adding: Iteration/iter_1/emirge_amp/iter.18/iter.18.cons.fasta.fai (deflated 57%)
+  adding: Iteration/iter_1/emirge_amp/iter.18/iter.18.cons.fasta (deflated 78%)
+  adding: Iteration/iter_1/emirge_amp/iter.18/priors.iter.18.txt (deflated 59%)
+  adding: Iteration/iter_1/emirge_amp/iter.36/ (stored 0%)
+  adding: Iteration/iter_1/emirge_amp/iter.36/iter.36.cons.fasta.fai (deflated 57%)
+  adding: Iteration/iter_1/emirge_amp/iter.36/priors.iter.36.txt (deflated 59%)
+  adding: Iteration/iter_1/emirge_amp/iter.36/bowtie.iter.36.log.gz (stored 0%)
+  adding: Iteration/iter_1/emirge_amp/iter.36/probN.pkl.gz (deflated 1%)
+  adding: Iteration/iter_1/emirge_amp/iter.36/iter.36.cons.fasta (deflated 78%)
+  adding: Iteration/iter_1/emirge_amp/iter.65/ (stored 0%)
+  adding: Iteration/iter_1/emirge_amp/iter.65/iter.65.cons.fasta.fai (deflated 57%)
+  adding: Iteration/iter_1/emirge_amp/iter.65/iter.65.cons.fasta (deflated 78%)
+  adding: Iteration/iter_1/emirge_amp/iter.65/bowtie.iter.65.log.gz (stored 0%)
+  adding: Iteration/iter_1/emirge_amp/iter.65/probN.pkl.gz (deflated 1%)
+  adding: Iteration/iter_1/emirge_amp/iter.65/priors.iter.65.txt (deflated 60%)
+  adding: Iteration/iter_1/emirge_amp/iter.115/ (stored 0%)
+  adding: Iteration/iter_1/emirge_amp/iter.115/priors.iter.115.txt (deflated 60%)
+  adding: Iteration/iter_1/emirge_amp/iter.115/bowtie.iter.115.log.gz (stored 0%)
+  adding: Iteration/iter_1/emirge_amp/iter.115/probN.pkl.gz (deflated 1%)
+  adding: Iteration/iter_1/emirge_amp/iter.115/iter.115.cons.fasta.fai (deflated 57%)
+  adding: Iteration/iter_1/emirge_amp/iter.115/iter.115.cons.fasta (deflated 78%)
+  adding: Iteration/iter_1/emirge_amp/iter.103/ (stored 0%)
+  adding: Iteration/iter_1/emirge_amp/iter.103/priors.iter.103.txt (deflated 60%)
+  adding: Iteration/iter_1/emirge_amp/iter.103/bowtie.iter.103.log.gz (stored 0%)
+  adding: Iteration/iter_1/emirge_amp/iter.103/iter.103.cons.fasta.fai (deflated 57%)
+  adding: Iteration/iter_1/emirge_amp/iter.103/iter.103.cons.fasta (deflated 78%)
+  adding: Iteration/iter_1/emirge_amp/iter.103/probN.pkl.gz (deflated 1%)
+  adding: Iteration/iter_1/emirge_amp/iter.56/ (stored 0%)
+  adding: Iteration/iter_1/emirge_amp/iter.56/iter.56.cons.fasta.fai (deflated 57%)
+  adding: Iteration/iter_1/emirge_amp/iter.56/priors.iter.56.txt (deflated 59%)
+  adding: Iteration/iter_1/emirge_amp/iter.56/probN.pkl.gz (deflated 1%)
+  adding: Iteration/iter_1/emirge_amp/iter.56/iter.56.cons.fasta (deflated 78%)
+  adding: Iteration/iter_1/emirge_amp/iter.56/bowtie.iter.56.log.gz (stored 0%)
+  adding: Iteration/iter_1/emirge_amp/iter.117/ (stored 0%)
+  adding: Iteration/iter_1/emirge_amp/iter.117/iter.117.cons.fasta (deflated 78%)
+  adding: Iteration/iter_1/emirge_amp/iter.117/priors.iter.117.txt (deflated 60%)
+  adding: Iteration/iter_1/emirge_amp/iter.117/probN.pkl.gz (deflated 1%)
+  adding: Iteration/iter_1/emirge_amp/iter.117/iter.117.cons.fasta.fai (deflated 57%)
+  adding: Iteration/iter_1/emirge_amp/iter.117/bowtie.iter.117.log.gz (stored 0%)
+  adding: Iteration/iter_1/emirge_amp/iter.44/ (stored 0%)
+  adding: Iteration/iter_1/emirge_amp/iter.44/iter.44.cons.fasta (deflated 78%)
+  adding: Iteration/iter_1/emirge_amp/iter.44/iter.44.cons.fasta.fai (deflated 57%)
+  adding: Iteration/iter_1/emirge_amp/iter.44/probN.pkl.gz (deflated 1%)
+  adding: Iteration/iter_1/emirge_amp/iter.44/bowtie.iter.44.log.gz (stored 0%)
+  adding: Iteration/iter_1/emirge_amp/iter.44/priors.iter.44.txt (deflated 59%)
+  adding: Iteration/iter_1/emirge_amp/iter.47/ (stored 0%)
+  adding: Iteration/iter_1/emirge_amp/iter.47/priors.iter.47.txt (deflated 59%)
+  adding: Iteration/iter_1/emirge_amp/iter.47/iter.47.cons.fasta.fai (deflated 57%)
+  adding: Iteration/iter_1/emirge_amp/iter.47/bowtie.iter.47.log.gz (stored 0%)
+  adding: Iteration/iter_1/emirge_amp/iter.47/iter.47.cons.fasta (deflated 78%)
+  adding: Iteration/iter_1/emirge_amp/iter.47/probN.pkl.gz (deflated 1%)
+  adding: Iteration/iter_1/emirge_amp/iter.37/ (stored 0%)
+  adding: Iteration/iter_1/emirge_amp/iter.37/priors.iter.37.txt (deflated 59%)
+  adding: Iteration/iter_1/emirge_amp/iter.37/iter.37.cons.fasta.fai (deflated 57%)
+  adding: Iteration/iter_1/emirge_amp/iter.37/bowtie.iter.37.log.gz (stored 0%)
+  adding: Iteration/iter_1/emirge_amp/iter.37/probN.pkl.gz (deflated 1%)
+  adding: Iteration/iter_1/emirge_amp/iter.37/iter.37.cons.fasta (deflated 78%)
+  adding: Iteration/iter_1/emirge_amp/iter.73/ (stored 0%)
+  adding: Iteration/iter_1/emirge_amp/iter.73/iter.73.cons.fasta.fai (deflated 57%)
+  adding: Iteration/iter_1/emirge_amp/iter.73/bowtie.iter.73.log.gz (stored 0%)
+  adding: Iteration/iter_1/emirge_amp/iter.73/priors.iter.73.txt (deflated 60%)
+  adding: Iteration/iter_1/emirge_amp/iter.73/probN.pkl.gz (deflated 1%)
+  adding: Iteration/iter_1/emirge_amp/iter.73/iter.73.cons.fasta (deflated 78%)
+  adding: Iteration/iter_1/emirge_amp/iter.46/ (stored 0%)
+  adding: Iteration/iter_1/emirge_amp/iter.46/iter.46.cons.fasta (deflated 78%)
+  adding: Iteration/iter_1/emirge_amp/iter.46/probN.pkl.gz (deflated 1%)
+  adding: Iteration/iter_1/emirge_amp/iter.46/iter.46.cons.fasta.fai (deflated 57%)
+  adding: Iteration/iter_1/emirge_amp/iter.46/bowtie.iter.46.log.gz (stored 0%)
+  adding: Iteration/iter_1/emirge_amp/iter.46/priors.iter.46.txt (deflated 59%)
+  adding: Iteration/iter_1/emirge_amp/iter.53/ (stored 0%)
+  adding: Iteration/iter_1/emirge_amp/iter.53/priors.iter.53.txt (deflated 59%)
+  adding: Iteration/iter_1/emirge_amp/iter.53/bowtie.iter.53.log.gz (stored 0%)
+  adding: Iteration/iter_1/emirge_amp/iter.53/probN.pkl.gz (deflated 1%)
+  adding: Iteration/iter_1/emirge_amp/iter.53/iter.53.cons.fasta (deflated 78%)
+  adding: Iteration/iter_1/emirge_amp/iter.53/iter.53.cons.fasta.fai (deflated 57%)
+  adding: Iteration/iter_1/emirge_amp/iter.04/ (stored 0%)
+  adding: Iteration/iter_1/emirge_amp/iter.04/iter.04.cons.fasta (deflated 78%)
+  adding: Iteration/iter_1/emirge_amp/iter.04/iter.04.cons.fasta.fai (deflated 57%)
+  adding: Iteration/iter_1/emirge_amp/iter.04/bowtie.iter.04.log.gz (stored 0%)
+  adding: Iteration/iter_1/emirge_amp/iter.04/probN.pkl.gz (deflated 1%)
+  adding: Iteration/iter_1/emirge_amp/iter.04/priors.iter.04.txt (deflated 59%)
+  adding: Iteration/iter_1/emirge_amp/iter.90/ (stored 0%)
+  adding: Iteration/iter_1/emirge_amp/iter.90/iter.90.cons.fasta (deflated 78%)
+  adding: Iteration/iter_1/emirge_amp/iter.90/iter.90.cons.fasta.fai (deflated 57%)
+  adding: Iteration/iter_1/emirge_amp/iter.90/bowtie.iter.90.log.gz (stored 0%)
+  adding: Iteration/iter_1/emirge_amp/iter.90/probN.pkl.gz (deflated 1%)
+  adding: Iteration/iter_1/emirge_amp/iter.90/priors.iter.90.txt (deflated 60%)
+  adding: Iteration/iter_1/emirge_amp/iter.14/ (stored 0%)
+  adding: Iteration/iter_1/emirge_amp/iter.14/iter.14.cons.fasta (deflated 78%)
+  adding: Iteration/iter_1/emirge_amp/iter.14/priors.iter.14.txt (deflated 59%)
+  adding: Iteration/iter_1/emirge_amp/iter.14/bowtie.iter.14.log.gz (stored 0%)
+  adding: Iteration/iter_1/emirge_amp/iter.14/probN.pkl.gz (deflated 1%)
+  adding: Iteration/iter_1/emirge_amp/iter.14/iter.14.cons.fasta.fai (deflated 57%)
+  adding: Iteration/iter_1/emirge_amp/iter.105/ (stored 0%)
+  adding: Iteration/iter_1/emirge_amp/iter.105/probN.pkl.gz (deflated 1%)
+  adding: Iteration/iter_1/emirge_amp/iter.105/priors.iter.105.txt (deflated 60%)
+  adding: Iteration/iter_1/emirge_amp/iter.105/bowtie.iter.105.log.gz (stored 0%)
+  adding: Iteration/iter_1/emirge_amp/iter.105/iter.105.cons.fasta (deflated 78%)
+  adding: Iteration/iter_1/emirge_amp/iter.105/iter.105.cons.fasta.fai (deflated 57%)
+  adding: Iteration/iter_1/emirge_amp/iter.93/ (stored 0%)
+  adding: Iteration/iter_1/emirge_amp/iter.93/priors.iter.93.txt (deflated 60%)
+  adding: Iteration/iter_1/emirge_amp/iter.93/bowtie.iter.93.log.gz (stored 0%)
+  adding: Iteration/iter_1/emirge_amp/iter.93/iter.93.cons.fasta.fai (deflated 57%)
+  adding: Iteration/iter_1/emirge_amp/iter.93/probN.pkl.gz (deflated 1%)
+  adding: Iteration/iter_1/emirge_amp/iter.93/iter.93.cons.fasta (deflated 78%)
+  adding: Iteration/iter_1/emirge_amp/iter.87/ (stored 0%)
+  adding: Iteration/iter_1/emirge_amp/iter.87/bowtie.iter.87.log.gz (stored 0%)
+  adding: Iteration/iter_1/emirge_amp/iter.87/probN.pkl.gz (deflated 1%)
+  adding: Iteration/iter_1/emirge_amp/iter.87/priors.iter.87.txt (deflated 60%)
+  adding: Iteration/iter_1/emirge_amp/iter.87/iter.87.cons.fasta.fai (deflated 57%)
+  adding: Iteration/iter_1/emirge_amp/iter.87/iter.87.cons.fasta (deflated 78%)
+  adding: Iteration/iter_1/emirge_amp/iter.06/ (stored 0%)
+  adding: Iteration/iter_1/emirge_amp/iter.06/bowtie.iter.06.log.gz (stored 0%)
+  adding: Iteration/iter_1/emirge_amp/iter.06/iter.06.cons.fasta (deflated 78%)
+  adding: Iteration/iter_1/emirge_amp/iter.06/probN.pkl.gz (deflated 1%)
+  adding: Iteration/iter_1/emirge_amp/iter.06/priors.iter.06.txt (deflated 59%)
+  adding: Iteration/iter_1/emirge_amp/iter.06/iter.06.cons.fasta.fai (deflated 57%)
+  adding: Iteration/iter_1/emirge_amp/iter.86/ (stored 0%)
+  adding: Iteration/iter_1/emirge_amp/iter.86/priors.iter.86.txt (deflated 60%)
+  adding: Iteration/iter_1/emirge_amp/iter.86/bowtie.iter.86.log.gz (stored 0%)
+  adding: Iteration/iter_1/emirge_amp/iter.86/probN.pkl.gz (deflated 1%)
+  adding: Iteration/iter_1/emirge_amp/iter.86/iter.86.cons.fasta.fai (deflated 57%)
+  adding: Iteration/iter_1/emirge_amp/iter.86/iter.86.cons.fasta (deflated 78%)
+  adding: Iteration/iter_1/emirge_amp/iter.69/ (stored 0%)
+  adding: Iteration/iter_1/emirge_amp/iter.69/bowtie.iter.69.log.gz (stored 0%)
+  adding: Iteration/iter_1/emirge_amp/iter.69/probN.pkl.gz (deflated 1%)
+  adding: Iteration/iter_1/emirge_amp/iter.69/priors.iter.69.txt (deflated 60%)
+  adding: Iteration/iter_1/emirge_amp/iter.69/iter.69.cons.fasta.fai (deflated 57%)
+  adding: Iteration/iter_1/emirge_amp/iter.69/iter.69.cons.fasta (deflated 78%)
+  adding: Iteration/iter_1/emirge_amp/iter.40/ (stored 0%)
+  adding: Iteration/iter_1/emirge_amp/iter.40/bowtie.iter.40.log.gz (stored 0%)
+  adding: Iteration/iter_1/emirge_amp/iter.40/probN.pkl.gz (deflated 1%)
+  adding: Iteration/iter_1/emirge_amp/iter.40/iter.40.cons.fasta (deflated 78%)
+  adding: Iteration/iter_1/emirge_amp/iter.40/priors.iter.40.txt (deflated 59%)
+  adding: Iteration/iter_1/emirge_amp/iter.40/iter.40.cons.fasta.fai (deflated 57%)
+  adding: Iteration/iter_1/emirge_amp/iter.30/ (stored 0%)
+  adding: Iteration/iter_1/emirge_amp/iter.30/iter.30.cons.fasta.fai (deflated 57%)
+  adding: Iteration/iter_1/emirge_amp/iter.30/bowtie.iter.30.log.gz (stored 0%)
+  adding: Iteration/iter_1/emirge_amp/iter.30/probN.pkl.gz (deflated 1%)
+  adding: Iteration/iter_1/emirge_amp/iter.30/iter.30.cons.fasta (deflated 78%)
+  adding: Iteration/iter_1/emirge_amp/iter.30/priors.iter.30.txt (deflated 59%)
+  adding: Iteration/iter_1/emirge_amp/iter.31/ (stored 0%)
+  adding: Iteration/iter_1/emirge_amp/iter.31/iter.31.cons.fasta (deflated 78%)
+  adding: Iteration/iter_1/emirge_amp/iter.31/iter.31.cons.fasta.fai (deflated 57%)
+  adding: Iteration/iter_1/emirge_amp/iter.31/bowtie.iter.31.log.gz (stored 0%)
+  adding: Iteration/iter_1/emirge_amp/iter.31/probN.pkl.gz (deflated 1%)
+  adding: Iteration/iter_1/emirge_amp/iter.31/priors.iter.31.txt (deflated 59%)
+  adding: Iteration/iter_1/emirge_amp/iter.81/ (stored 0%)
+  adding: Iteration/iter_1/emirge_amp/iter.81/bowtie.iter.81.log.gz (stored 0%)
+  adding: Iteration/iter_1/emirge_amp/iter.81/probN.pkl.gz (deflated 1%)
+  adding: Iteration/iter_1/emirge_amp/iter.81/iter.81.cons.fasta.fai (deflated 57%)
+  adding: Iteration/iter_1/emirge_amp/iter.81/iter.81.cons.fasta (deflated 78%)
+  adding: Iteration/iter_1/emirge_amp/iter.81/priors.iter.81.txt (deflated 60%)
+  adding: Iteration/iter_1/emirge_amp/iter.113/ (stored 0%)
+  adding: Iteration/iter_1/emirge_amp/iter.113/priors.iter.113.txt (deflated 60%)
+  adding: Iteration/iter_1/emirge_amp/iter.113/iter.113.cons.fasta.fai (deflated 57%)
+  adding: Iteration/iter_1/emirge_amp/iter.113/iter.113.cons.fasta (deflated 78%)
+  adding: Iteration/iter_1/emirge_amp/iter.113/bowtie.iter.113.log.gz (stored 0%)
+  adding: Iteration/iter_1/emirge_amp/iter.113/probN.pkl.gz (deflated 1%)
+  adding: Iteration/iter_1/emirge_amp/iter.99/ (stored 0%)
+  adding: Iteration/iter_1/emirge_amp/iter.99/bowtie.iter.99.log.gz (stored 0%)
+  adding: Iteration/iter_1/emirge_amp/iter.99/priors.iter.99.txt (deflated 60%)
+  adding: Iteration/iter_1/emirge_amp/iter.99/iter.99.cons.fasta.fai (deflated 57%)
+  adding: Iteration/iter_1/emirge_amp/iter.99/probN.pkl.gz (deflated 1%)
+  adding: Iteration/iter_1/emirge_amp/iter.99/iter.99.cons.fasta (deflated 78%)
+  adding: Iteration/iter_1/emirge_amp/iter.66/ (stored 0%)
+  adding: Iteration/iter_1/emirge_amp/iter.66/probN.pkl.gz (deflated 1%)
+  adding: Iteration/iter_1/emirge_amp/iter.66/priors.iter.66.txt (deflated 60%)
+  adding: Iteration/iter_1/emirge_amp/iter.66/iter.66.cons.fasta (deflated 78%)
+  adding: Iteration/iter_1/emirge_amp/iter.66/bowtie.iter.66.log.gz (stored 0%)
+  adding: Iteration/iter_1/emirge_amp/iter.66/iter.66.cons.fasta.fai (deflated 57%)
+  adding: Iteration/iter_1/emirge_amp/iter.101/ (stored 0%)
+  adding: Iteration/iter_1/emirge_amp/iter.101/iter.101.cons.fasta (deflated 78%)
+  adding: Iteration/iter_1/emirge_amp/iter.101/iter.101.cons.fasta.fai (deflated 57%)
+  adding: Iteration/iter_1/emirge_amp/iter.101/priors.iter.101.txt (deflated 60%)
+  adding: Iteration/iter_1/emirge_amp/iter.101/probN.pkl.gz (deflated 1%)
+  adding: Iteration/iter_1/emirge_amp/iter.101/bowtie.iter.101.log.gz (stored 0%)
+  adding: Iteration/iter_1/emirge_amp/iter.76/ (stored 0%)
+  adding: Iteration/iter_1/emirge_amp/iter.76/iter.76.cons.fasta (deflated 78%)
+  adding: Iteration/iter_1/emirge_amp/iter.76/probN.pkl.gz (deflated 1%)
+  adding: Iteration/iter_1/emirge_amp/iter.76/priors.iter.76.txt (deflated 60%)
+  adding: Iteration/iter_1/emirge_amp/iter.76/iter.76.cons.fasta.fai (deflated 57%)
+  adding: Iteration/iter_1/emirge_amp/iter.76/bowtie.iter.76.log.gz (stored 0%)
+  adding: Iteration/iter_1/emirge_amp/iter.32/ (stored 0%)
+  adding: Iteration/iter_1/emirge_amp/iter.32/iter.32.cons.fasta.fai (deflated 57%)
+  adding: Iteration/iter_1/emirge_amp/iter.32/priors.iter.32.txt (deflated 59%)
+  adding: Iteration/iter_1/emirge_amp/iter.32/bowtie.iter.32.log.gz (stored 0%)
+  adding: Iteration/iter_1/emirge_amp/iter.32/iter.32.cons.fasta (deflated 78%)
+  adding: Iteration/iter_1/emirge_amp/iter.32/probN.pkl.gz (deflated 1%)
+  adding: Iteration/iter_1/emirge_amp/iter.88/ (stored 0%)
+  adding: Iteration/iter_1/emirge_amp/iter.88/priors.iter.88.txt (deflated 60%)
+  adding: Iteration/iter_1/emirge_amp/iter.88/probN.pkl.gz (deflated 1%)
+  adding: Iteration/iter_1/emirge_amp/iter.88/iter.88.cons.fasta.fai (deflated 57%)
+  adding: Iteration/iter_1/emirge_amp/iter.88/bowtie.iter.88.log.gz (stored 0%)
+  adding: Iteration/iter_1/emirge_amp/iter.88/iter.88.cons.fasta (deflated 78%)
+  adding: Iteration/iter_1/emirge_amp/iter.84/ (stored 0%)
+  adding: Iteration/iter_1/emirge_amp/iter.84/iter.84.cons.fasta (deflated 78%)
+  adding: Iteration/iter_1/emirge_amp/iter.84/priors.iter.84.txt (deflated 60%)
+  adding: Iteration/iter_1/emirge_amp/iter.84/bowtie.iter.84.log.gz (stored 0%)
+  adding: Iteration/iter_1/emirge_amp/iter.84/probN.pkl.gz (deflated 1%)
+  adding: Iteration/iter_1/emirge_amp/iter.84/iter.84.cons.fasta.fai (deflated 57%)
+  adding: Iteration/iter_1/emirge_amp/iter.21/ (stored 0%)
+  adding: Iteration/iter_1/emirge_amp/iter.21/priors.iter.21.txt (deflated 59%)
+  adding: Iteration/iter_1/emirge_amp/iter.21/iter.21.cons.fasta.fai (deflated 57%)
+  adding: Iteration/iter_1/emirge_amp/iter.21/iter.21.cons.fasta (deflated 78%)
+  adding: Iteration/iter_1/emirge_amp/iter.21/probN.pkl.gz (deflated 1%)
+  adding: Iteration/iter_1/emirge_amp/iter.21/bowtie.iter.21.log.gz (stored 0%)
+  adding: Iteration/iter_1/emirge_amp/iter.41/ (stored 0%)
+  adding: Iteration/iter_1/emirge_amp/iter.41/iter.41.cons.fasta (deflated 78%)
+  adding: Iteration/iter_1/emirge_amp/iter.41/bowtie.iter.41.log.gz (stored 0%)
+  adding: Iteration/iter_1/emirge_amp/iter.41/priors.iter.41.txt (deflated 59%)
+  adding: Iteration/iter_1/emirge_amp/iter.41/iter.41.cons.fasta.fai (deflated 57%)
+  adding: Iteration/iter_1/emirge_amp/iter.41/probN.pkl.gz (deflated 1%)
+  adding: Iteration/iter_1/emirge_amp/iter.54/ (stored 0%)
+  adding: Iteration/iter_1/emirge_amp/iter.54/iter.54.cons.fasta.fai (deflated 57%)
+  adding: Iteration/iter_1/emirge_amp/iter.54/probN.pkl.gz (deflated 1%)
+  adding: Iteration/iter_1/emirge_amp/iter.54/priors.iter.54.txt (deflated 60%)
+  adding: Iteration/iter_1/emirge_amp/iter.54/bowtie.iter.54.log.gz (stored 0%)
+  adding: Iteration/iter_1/emirge_amp/iter.54/iter.54.cons.fasta (deflated 78%)
+  adding: Iteration/iter_1/emirge_amp/iter.13/ (stored 0%)
+  adding: Iteration/iter_1/emirge_amp/iter.13/bowtie.iter.13.log.gz (stored 0%)
+  adding: Iteration/iter_1/emirge_amp/iter.13/iter.13.cons.fasta (deflated 78%)
+  adding: Iteration/iter_1/emirge_amp/iter.13/priors.iter.13.txt (deflated 59%)
+  adding: Iteration/iter_1/emirge_amp/iter.13/probN.pkl.gz (deflated 1%)
+  adding: Iteration/iter_1/emirge_amp/iter.13/iter.13.cons.fasta.fai (deflated 57%)
+  adding: Iteration/iter_1/emirge_amp/initial_mapping/ (stored 0%)
+  adding: Iteration/iter_1/emirge_amp/initial_mapping/initial_bowtie_mapping.PE.bam (deflated 0%)
+  adding: Iteration/iter_1/emirge_amp/iter.23/ (stored 0%)
+  adding: Iteration/iter_1/emirge_amp/iter.23/priors.iter.23.txt (deflated 59%)
+  adding: Iteration/iter_1/emirge_amp/iter.23/iter.23.cons.fasta.fai (deflated 57%)
+  adding: Iteration/iter_1/emirge_amp/iter.23/iter.23.cons.fasta (deflated 78%)
+  adding: Iteration/iter_1/emirge_amp/iter.23/probN.pkl.gz (deflated 1%)
+  adding: Iteration/iter_1/emirge_amp/iter.23/bowtie.iter.23.log.gz (stored 0%)
+  adding: Iteration/iter_1/emirge_amp/iter.71/ (stored 0%)
+  adding: Iteration/iter_1/emirge_amp/iter.71/iter.71.cons.fasta.fai (deflated 57%)
+  adding: Iteration/iter_1/emirge_amp/iter.71/bowtie.iter.71.log.gz (stored 0%)
+  adding: Iteration/iter_1/emirge_amp/iter.71/priors.iter.71.txt (deflated 60%)
+  adding: Iteration/iter_1/emirge_amp/iter.71/iter.71.cons.fasta (deflated 78%)
+  adding: Iteration/iter_1/emirge_amp/iter.71/probN.pkl.gz (deflated 1%)
+  adding: Iteration/iter_1/emirge_amp/iter.22/ (stored 0%)
+  adding: Iteration/iter_1/emirge_amp/iter.22/iter.22.cons.fasta (deflated 78%)
+  adding: Iteration/iter_1/emirge_amp/iter.22/bowtie.iter.22.log.gz (stored 0%)
+  adding: Iteration/iter_1/emirge_amp/iter.22/probN.pkl.gz (deflated 1%)
+  adding: Iteration/iter_1/emirge_amp/iter.22/priors.iter.22.txt (deflated 59%)
+  adding: Iteration/iter_1/emirge_amp/iter.22/iter.22.cons.fasta.fai (deflated 57%)
+  adding: Iteration/iter_1/emirge_amp/iter.108/ (stored 0%)
+  adding: Iteration/iter_1/emirge_amp/iter.108/priors.iter.108.txt (deflated 60%)
+  adding: Iteration/iter_1/emirge_amp/iter.108/iter.108.cons.fasta.fai (deflated 57%)
+  adding: Iteration/iter_1/emirge_amp/iter.108/bowtie.iter.108.log.gz (stored 0%)
+  adding: Iteration/iter_1/emirge_amp/iter.108/probN.pkl.gz (deflated 1%)
+  adding: Iteration/iter_1/emirge_amp/iter.108/iter.108.cons.fasta (deflated 78%)
+  adding: Iteration/iter_1/emirge_amp/iter.110/ (stored 0%)
+  adding: Iteration/iter_1/emirge_amp/iter.110/priors.iter.110.txt (deflated 60%)
+  adding: Iteration/iter_1/emirge_amp/iter.110/probN.pkl.gz (deflated 1%)
+  adding: Iteration/iter_1/emirge_amp/iter.110/bowtie.iter.110.log.gz (stored 0%)
+  adding: Iteration/iter_1/emirge_amp/iter.110/iter.110.cons.fasta.fai (deflated 57%)
+  adding: Iteration/iter_1/emirge_amp/iter.110/iter.110.cons.fasta (deflated 78%)
+  adding: Iteration/iter_1/emirge_amp/iter.75/ (stored 0%)
+  adding: Iteration/iter_1/emirge_amp/iter.75/iter.75.cons.fasta.fai (deflated 57%)
+  adding: Iteration/iter_1/emirge_amp/iter.75/bowtie.iter.75.log.gz (stored 0%)
+  adding: Iteration/iter_1/emirge_amp/iter.75/priors.iter.75.txt (deflated 60%)
+  adding: Iteration/iter_1/emirge_amp/iter.75/probN.pkl.gz (deflated 1%)
+  adding: Iteration/iter_1/emirge_amp/iter.75/iter.75.cons.fasta (deflated 78%)
+  adding: Iteration/iter_1/emirge_amp/iter.61/ (stored 0%)
+  adding: Iteration/iter_1/emirge_amp/iter.61/priors.iter.61.txt (deflated 59%)
+  adding: Iteration/iter_1/emirge_amp/iter.61/bowtie.iter.61.log.gz (stored 0%)
+  adding: Iteration/iter_1/emirge_amp/iter.61/probN.pkl.gz (deflated 1%)
+  adding: Iteration/iter_1/emirge_amp/iter.61/iter.61.cons.fasta (deflated 78%)
+  adding: Iteration/iter_1/emirge_amp/iter.61/iter.61.cons.fasta.fai (deflated 57%)
+  adding: Iteration/iter_1/emirge_amp/iter.104/ (stored 0%)
+  adding: Iteration/iter_1/emirge_amp/iter.104/priors.iter.104.txt (deflated 60%)
+  adding: Iteration/iter_1/emirge_amp/iter.104/iter.104.cons.fasta (deflated 78%)
+  adding: Iteration/iter_1/emirge_amp/iter.104/iter.104.cons.fasta.fai (deflated 57%)
+  adding: Iteration/iter_1/emirge_amp/iter.104/probN.pkl.gz (deflated 1%)
+  adding: Iteration/iter_1/emirge_amp/iter.104/bowtie.iter.104.log.gz (stored 0%)
+  adding: Iteration/iter_1/emirge_amp/iter.63/ (stored 0%)
+  adding: Iteration/iter_1/emirge_amp/iter.63/iter.63.cons.fasta (deflated 78%)
+  adding: Iteration/iter_1/emirge_amp/iter.63/iter.63.cons.fasta.fai (deflated 57%)
+  adding: Iteration/iter_1/emirge_amp/iter.63/bowtie.iter.63.log.gz (stored 0%)
+  adding: Iteration/iter_1/emirge_amp/iter.63/priors.iter.63.txt (deflated 59%)
+  adding: Iteration/iter_1/emirge_amp/iter.63/probN.pkl.gz (deflated 1%)
+  adding: Iteration/iter_1/emirge_amp/iter.74/ (stored 0%)
+  adding: Iteration/iter_1/emirge_amp/iter.74/bowtie.iter.74.log.gz (stored 0%)
+  adding: Iteration/iter_1/emirge_amp/iter.74/iter.74.cons.fasta (deflated 78%)
+  adding: Iteration/iter_1/emirge_amp/iter.74/iter.74.cons.fasta.fai (deflated 57%)
+  adding: Iteration/iter_1/emirge_amp/iter.74/probN.pkl.gz (deflated 1%)
+  adding: Iteration/iter_1/emirge_amp/iter.74/priors.iter.74.txt (deflated 60%)
+  adding: Iteration/iter_1/emirge_amp/iter.68/ (stored 0%)
+  adding: Iteration/iter_1/emirge_amp/iter.68/bowtie.iter.68.log.gz (stored 0%)
+  adding: Iteration/iter_1/emirge_amp/iter.68/priors.iter.68.txt (deflated 60%)
+  adding: Iteration/iter_1/emirge_amp/iter.68/iter.68.cons.fasta.fai (deflated 57%)
+  adding: Iteration/iter_1/emirge_amp/iter.68/probN.pkl.gz (deflated 1%)
+  adding: Iteration/iter_1/emirge_amp/iter.68/iter.68.cons.fasta (deflated 78%)
+  adding: Iteration/iter_1/emirge_amp/iter.38/ (stored 0%)
+  adding: Iteration/iter_1/emirge_amp/iter.38/iter.38.cons.fasta.fai (deflated 57%)
+  adding: Iteration/iter_1/emirge_amp/iter.38/probN.pkl.gz (deflated 1%)
+  adding: Iteration/iter_1/emirge_amp/iter.38/iter.38.cons.fasta (deflated 78%)
+  adding: Iteration/iter_1/emirge_amp/iter.38/bowtie.iter.38.log.gz (stored 0%)
+  adding: Iteration/iter_1/emirge_amp/iter.38/priors.iter.38.txt (deflated 59%)
+  adding: Iteration/iter_1/emirge_amp/iter.12/ (stored 0%)
+  adding: Iteration/iter_1/emirge_amp/iter.12/bowtie.iter.12.log.gz (stored 0%)
+  adding: Iteration/iter_1/emirge_amp/iter.12/probN.pkl.gz (deflated 1%)
+  adding: Iteration/iter_1/emirge_amp/iter.12/priors.iter.12.txt (deflated 60%)
+  adding: Iteration/iter_1/emirge_amp/iter.12/iter.12.cons.fasta (deflated 78%)
+  adding: Iteration/iter_1/emirge_amp/iter.12/iter.12.cons.fasta.fai (deflated 57%)
+  adding: Iteration/iter_1/emirge_amp/iter.79/ (stored 0%)
+  adding: Iteration/iter_1/emirge_amp/iter.79/priors.iter.79.txt (deflated 60%)
+  adding: Iteration/iter_1/emirge_amp/iter.79/probN.pkl.gz (deflated 1%)
+  adding: Iteration/iter_1/emirge_amp/iter.79/bowtie.iter.79.log.gz (stored 0%)
+  adding: Iteration/iter_1/emirge_amp/iter.79/iter.79.cons.fasta (deflated 78%)
+  adding: Iteration/iter_1/emirge_amp/iter.79/iter.79.cons.fasta.fai (deflated 57%)
+  adding: Iteration/iter_1/emirge_amp/iter.116/ (stored 0%)
+  adding: Iteration/iter_1/emirge_amp/iter.116/iter.116.cons.fasta.fai (deflated 57%)
+  adding: Iteration/iter_1/emirge_amp/iter.116/priors.iter.116.txt (deflated 60%)
+  adding: Iteration/iter_1/emirge_amp/iter.116/iter.116.cons.fasta (deflated 78%)
+  adding: Iteration/iter_1/emirge_amp/iter.116/probN.pkl.gz (deflated 1%)
+  adding: Iteration/iter_1/emirge_amp/iter.116/bowtie.iter.116.log.gz (stored 0%)
+  adding: Iteration/iter_1/emirge_amp/iter.01/ (stored 0%)
+  adding: Iteration/iter_1/emirge_amp/iter.01/priors.iter.01.txt (deflated 59%)
+  adding: Iteration/iter_1/emirge_amp/iter.01/iter.01.cons.fasta (deflated 78%)
+  adding: Iteration/iter_1/emirge_amp/iter.01/probN.pkl.gz (deflated 1%)
+  adding: Iteration/iter_1/emirge_amp/iter.01/iter.01.cons.fasta.fai (deflated 57%)
+  adding: Iteration/iter_1/emirge_amp/iter.01/bowtie.iter.01.log.gz (stored 0%)
+  adding: Iteration/iter_1/emirge_amp/iter.33/ (stored 0%)
+  adding: Iteration/iter_1/emirge_amp/iter.33/iter.33.cons.fasta (deflated 78%)
+  adding: Iteration/iter_1/emirge_amp/iter.33/bowtie.iter.33.log.gz (stored 0%)
+  adding: Iteration/iter_1/emirge_amp/iter.33/probN.pkl.gz (deflated 1%)
+  adding: Iteration/iter_1/emirge_amp/iter.33/iter.33.cons.fasta.fai (deflated 57%)
+  adding: Iteration/iter_1/emirge_amp/iter.33/priors.iter.33.txt (deflated 60%)
+  adding: Iteration/iter_1/emirge_amp/iter.17/ (stored 0%)
+  adding: Iteration/iter_1/emirge_amp/iter.17/iter.17.cons.fasta.fai (deflated 57%)
+  adding: Iteration/iter_1/emirge_amp/iter.17/bowtie.iter.17.log.gz (stored 0%)
+  adding: Iteration/iter_1/emirge_amp/iter.17/priors.iter.17.txt (deflated 60%)
+  adding: Iteration/iter_1/emirge_amp/iter.17/iter.17.cons.fasta (deflated 78%)
+  adding: Iteration/iter_1/emirge_amp/iter.17/probN.pkl.gz (deflated 1%)
+  adding: Iteration/iter_1/emirge_amp/iter.64/ (stored 0%)
+  adding: Iteration/iter_1/emirge_amp/iter.64/priors.iter.64.txt (deflated 60%)
+  adding: Iteration/iter_1/emirge_amp/iter.64/probN.pkl.gz (deflated 1%)
+  adding: Iteration/iter_1/emirge_amp/iter.64/bowtie.iter.64.log.gz (stored 0%)
+  adding: Iteration/iter_1/emirge_amp/iter.64/iter.64.cons.fasta.fai (deflated 57%)
+  adding: Iteration/iter_1/emirge_amp/iter.64/iter.64.cons.fasta (deflated 78%)
+  adding: Iteration/iter_1/emirge_amp/iter.107/ (stored 0%)
+  adding: Iteration/iter_1/emirge_amp/iter.107/iter.107.cons.fasta.fai (deflated 57%)
+  adding: Iteration/iter_1/emirge_amp/iter.107/probN.pkl.gz (deflated 1%)
+  adding: Iteration/iter_1/emirge_amp/iter.107/priors.iter.107.txt (deflated 60%)
+  adding: Iteration/iter_1/emirge_amp/iter.107/bowtie.iter.107.log.gz (stored 0%)
+  adding: Iteration/iter_1/emirge_amp/iter.107/iter.107.cons.fasta (deflated 78%)
+  adding: Iteration/iter_1/emirge_amp/iter.78/ (stored 0%)
+  adding: Iteration/iter_1/emirge_amp/iter.78/iter.78.cons.fasta.fai (deflated 57%)
+  adding: Iteration/iter_1/emirge_amp/iter.78/probN.pkl.gz (deflated 1%)
+  adding: Iteration/iter_1/emirge_amp/iter.78/bowtie.iter.78.log.gz (stored 0%)
+  adding: Iteration/iter_1/emirge_amp/iter.78/priors.iter.78.txt (deflated 60%)
+  adding: Iteration/iter_1/emirge_amp/iter.78/iter.78.cons.fasta (deflated 78%)
+  adding: Iteration/iter_1/emirge_amp/iter.89/ (stored 0%)
+  adding: Iteration/iter_1/emirge_amp/iter.89/iter.89.cons.fasta (deflated 78%)
+  adding: Iteration/iter_1/emirge_amp/iter.89/iter.89.cons.fasta.fai (deflated 57%)
+  adding: Iteration/iter_1/emirge_amp/iter.89/probN.pkl.gz (deflated 1%)
+  adding: Iteration/iter_1/emirge_amp/iter.89/priors.iter.89.txt (deflated 60%)
+  adding: Iteration/iter_1/emirge_amp/iter.89/bowtie.iter.89.log.gz (stored 0%)
+  adding: Iteration/iter_1/emirge_amp/iter.10/ (stored 0%)
+  adding: Iteration/iter_1/emirge_amp/iter.10/bowtie.iter.10.log.gz (stored 0%)
+  adding: Iteration/iter_1/emirge_amp/iter.10/iter.10.cons.fasta (deflated 78%)
+  adding: Iteration/iter_1/emirge_amp/iter.10/iter.10.cons.fasta.fai (deflated 57%)
+  adding: Iteration/iter_1/emirge_amp/iter.10/probN.pkl.gz (deflated 1%)
+  adding: Iteration/iter_1/emirge_amp/iter.10/priors.iter.10.txt (deflated 59%)
+  adding: Iteration/iter_1/emirge_amp/iter.72/ (stored 0%)
+  adding: Iteration/iter_1/emirge_amp/iter.72/iter.72.cons.fasta (deflated 78%)
+  adding: Iteration/iter_1/emirge_amp/iter.72/bowtie.iter.72.log.gz (stored 0%)
+  adding: Iteration/iter_1/emirge_amp/iter.72/iter.72.cons.fasta.fai (deflated 57%)
+  adding: Iteration/iter_1/emirge_amp/iter.72/probN.pkl.gz (deflated 1%)
+  adding: Iteration/iter_1/emirge_amp/iter.72/priors.iter.72.txt (deflated 60%)
+  adding: Iteration/iter_1/emirge_amp/iter.20/ (stored 0%)
+  adding: Iteration/iter_1/emirge_amp/iter.20/iter.20.cons.fasta.fai (deflated 57%)
+  adding: Iteration/iter_1/emirge_amp/iter.20/iter.20.cons.fasta (deflated 78%)
+  adding: Iteration/iter_1/emirge_amp/iter.20/bowtie.iter.20.log.gz (stored 0%)
+  adding: Iteration/iter_1/emirge_amp/iter.20/priors.iter.20.txt (deflated 59%)
+  adding: Iteration/iter_1/emirge_amp/iter.20/probN.pkl.gz (deflated 1%)
+  adding: Iteration/iter_1/emirge_amp/iter.16/ (stored 0%)
+  adding: Iteration/iter_1/emirge_amp/iter.16/probN.pkl.gz (deflated 1%)
+  adding: Iteration/iter_1/emirge_amp/iter.16/iter.16.cons.fasta (deflated 78%)
+  adding: Iteration/iter_1/emirge_amp/iter.16/priors.iter.16.txt (deflated 60%)
+  adding: Iteration/iter_1/emirge_amp/iter.16/iter.16.cons.fasta.fai (deflated 57%)
+  adding: Iteration/iter_1/emirge_amp/iter.16/bowtie.iter.16.log.gz (stored 0%)
+  adding: Iteration/iter_1/emirge_amp/iter.67/ (stored 0%)
+  adding: Iteration/iter_1/emirge_amp/iter.67/iter.67.cons.fasta.fai (deflated 57%)
+  adding: Iteration/iter_1/emirge_amp/iter.67/priors.iter.67.txt (deflated 60%)
+  adding: Iteration/iter_1/emirge_amp/iter.67/probN.pkl.gz (deflated 1%)
+  adding: Iteration/iter_1/emirge_amp/iter.67/bowtie.iter.67.log.gz (stored 0%)
+  adding: Iteration/iter_1/emirge_amp/iter.67/iter.67.cons.fasta (deflated 78%)
+  adding: Iteration/iter_1/emirge_amp/iter.03/ (stored 0%)
+  adding: Iteration/iter_1/emirge_amp/iter.03/bowtie.iter.03.log.gz (stored 0%)
+  adding: Iteration/iter_1/emirge_amp/iter.03/iter.03.cons.fasta (deflated 78%)
+  adding: Iteration/iter_1/emirge_amp/iter.03/probN.pkl.gz (deflated 1%)
+  adding: Iteration/iter_1/emirge_amp/iter.03/priors.iter.03.txt (deflated 59%)
+  adding: Iteration/iter_1/emirge_amp/iter.03/iter.03.cons.fasta.fai (deflated 57%)
+  adding: Iteration/iter_1/emirge_amp/iter.77/ (stored 0%)
+  adding: Iteration/iter_1/emirge_amp/iter.77/bowtie.iter.77.log.gz (stored 0%)
+  adding: Iteration/iter_1/emirge_amp/iter.77/iter.77.cons.fasta (deflated 78%)
+  adding: Iteration/iter_1/emirge_amp/iter.77/priors.iter.77.txt (deflated 60%)
+  adding: Iteration/iter_1/emirge_amp/iter.77/probN.pkl.gz (deflated 1%)
+  adding: Iteration/iter_1/emirge_amp/iter.77/iter.77.cons.fasta.fai (deflated 57%)
+  adding: Iteration/iter_1/emirge_amp/iter.57/ (stored 0%)
+  adding: Iteration/iter_1/emirge_amp/iter.57/bowtie.iter.57.log.gz (stored 0%)
+  adding: Iteration/iter_1/emirge_amp/iter.57/iter.57.cons.fasta (deflated 78%)
+  adding: Iteration/iter_1/emirge_amp/iter.57/priors.iter.57.txt (deflated 59%)
+  adding: Iteration/iter_1/emirge_amp/iter.57/iter.57.cons.fasta.fai (deflated 57%)
+  adding: Iteration/iter_1/emirge_amp/iter.57/probN.pkl.gz (deflated 1%)
+  adding: Iteration/iter_1/emirge_amp/iter.08/ (stored 0%)
+  adding: Iteration/iter_1/emirge_amp/iter.08/iter.08.cons.fasta.fai (deflated 57%)
+  adding: Iteration/iter_1/emirge_amp/iter.08/bowtie.iter.08.log.gz (stored 0%)
+  adding: Iteration/iter_1/emirge_amp/iter.08/iter.08.cons.fasta (deflated 78%)
+  adding: Iteration/iter_1/emirge_amp/iter.08/probN.pkl.gz (deflated 1%)
+  adding: Iteration/iter_1/emirge_amp/iter.08/priors.iter.08.txt (deflated 59%)
+  adding: Iteration/iter_1/emirge_amp/iter.05/ (stored 0%)
+  adding: Iteration/iter_1/emirge_amp/iter.05/iter.05.cons.fasta (deflated 78%)
+  adding: Iteration/iter_1/emirge_amp/iter.05/probN.pkl.gz (deflated 1%)
+  adding: Iteration/iter_1/emirge_amp/iter.05/bowtie.iter.05.log.gz (stored 0%)
+  adding: Iteration/iter_1/emirge_amp/iter.05/iter.05.cons.fasta.fai (deflated 57%)
+  adding: Iteration/iter_1/emirge_amp/iter.05/priors.iter.05.txt (deflated 59%)
+  adding: Iteration/iter_1/emirge_amp/iter.11/ (stored 0%)
+  adding: Iteration/iter_1/emirge_amp/iter.11/iter.11.cons.fasta (deflated 78%)
+  adding: Iteration/iter_1/emirge_amp/iter.11/probN.pkl.gz (deflated 1%)
+  adding: Iteration/iter_1/emirge_amp/iter.11/iter.11.cons.fasta.fai (deflated 57%)
+  adding: Iteration/iter_1/emirge_amp/iter.11/bowtie.iter.11.log.gz (stored 0%)
+  adding: Iteration/iter_1/emirge_amp/iter.11/priors.iter.11.txt (deflated 59%)
+  adding: Iteration/iter_1/emirge_amp/iter.83/ (stored 0%)
+  adding: Iteration/iter_1/emirge_amp/iter.83/iter.83.cons.fasta (deflated 78%)
+  adding: Iteration/iter_1/emirge_amp/iter.83/probN.pkl.gz (deflated 1%)
+  adding: Iteration/iter_1/emirge_amp/iter.83/bowtie.iter.83.log.gz (stored 0%)
+  adding: Iteration/iter_1/emirge_amp/iter.83/iter.83.cons.fasta.fai (deflated 57%)
+  adding: Iteration/iter_1/emirge_amp/iter.83/priors.iter.83.txt (deflated 60%)
+  adding: Iteration/iter_1/emirge_amp/iter.100/ (stored 0%)
+  adding: Iteration/iter_1/emirge_amp/iter.100/iter.100.cons.fasta.fai (deflated 57%)
+  adding: Iteration/iter_1/emirge_amp/iter.100/iter.100.cons.fasta (deflated 78%)
+  adding: Iteration/iter_1/emirge_amp/iter.100/probN.pkl.gz (deflated 1%)
+  adding: Iteration/iter_1/emirge_amp/iter.100/priors.iter.100.txt (deflated 60%)
+  adding: Iteration/iter_1/emirge_amp/iter.100/bowtie.iter.100.log.gz (stored 0%)
+  adding: Iteration/iter_1/emirge_amp/iter.85/ (stored 0%)
+  adding: Iteration/iter_1/emirge_amp/iter.85/iter.85.cons.fasta.fai (deflated 57%)
+  adding: Iteration/iter_1/emirge_amp/iter.85/iter.85.cons.fasta (deflated 78%)
+  adding: Iteration/iter_1/emirge_amp/iter.85/priors.iter.85.txt (deflated 59%)
+  adding: Iteration/iter_1/emirge_amp/iter.85/bowtie.iter.85.log.gz (stored 0%)
+  adding: Iteration/iter_1/emirge_amp/iter.85/probN.pkl.gz (deflated 1%)
+  adding: Iteration/iter_1/emirge_amp/iter.60/ (stored 0%)
+  adding: Iteration/iter_1/emirge_amp/iter.60/iter.60.cons.fasta (deflated 78%)
+  adding: Iteration/iter_1/emirge_amp/iter.60/iter.60.cons.fasta.fai (deflated 57%)
+  adding: Iteration/iter_1/emirge_amp/iter.60/probN.pkl.gz (deflated 1%)
+  adding: Iteration/iter_1/emirge_amp/iter.60/bowtie.iter.60.log.gz (stored 0%)
+  adding: Iteration/iter_1/emirge_amp/iter.60/priors.iter.60.txt (deflated 59%)
+  adding: Iteration/iter_1/emirge_amp/iter.24/ (stored 0%)
+  adding: Iteration/iter_1/emirge_amp/iter.24/iter.24.cons.fasta (deflated 78%)
+  adding: Iteration/iter_1/emirge_amp/iter.24/iter.24.cons.fasta.fai (deflated 57%)
+  adding: Iteration/iter_1/emirge_amp/iter.24/priors.iter.24.txt (deflated 60%)
+  adding: Iteration/iter_1/emirge_amp/iter.24/bowtie.iter.24.log.gz (stored 0%)
+  adding: Iteration/iter_1/emirge_amp/iter.24/probN.pkl.gz (deflated 1%)
+  adding: Iteration/iter_1/emirge_amp/iter.43/ (stored 0%)
+  adding: Iteration/iter_1/emirge_amp/iter.43/bowtie.iter.43.log.gz (stored 0%)
+  adding: Iteration/iter_1/emirge_amp/iter.43/probN.pkl.gz (deflated 1%)
+  adding: Iteration/iter_1/emirge_amp/iter.43/priors.iter.43.txt (deflated 59%)
+  adding: Iteration/iter_1/emirge_amp/iter.43/iter.43.cons.fasta.fai (deflated 57%)
+  adding: Iteration/iter_1/emirge_amp/iter.43/iter.43.cons.fasta (deflated 78%)
+  adding: Iteration/iter_1/emirge_amp/iter.118/ (stored 0%)
+  adding: Iteration/iter_1/emirge_amp/iter.118/priors.iter.118.txt (deflated 60%)
+  adding: Iteration/iter_1/emirge_amp/iter.118/iter.118.cons.fasta.fai (deflated 57%)
+  adding: Iteration/iter_1/emirge_amp/iter.118/probN.pkl.gz (deflated 1%)
+  adding: Iteration/iter_1/emirge_amp/iter.118/bowtie.iter.118.log.gz (stored 0%)
+  adding: Iteration/iter_1/emirge_amp/iter.118/iter.118.cons.fasta (deflated 78%)
+  adding: Iteration/iter_1/emirge_amp/iter.98/ (stored 0%)
+  adding: Iteration/iter_1/emirge_amp/iter.98/iter.98.cons.fasta (deflated 78%)
+  adding: Iteration/iter_1/emirge_amp/iter.98/priors.iter.98.txt (deflated 60%)
+  adding: Iteration/iter_1/emirge_amp/iter.98/bowtie.iter.98.log.gz (stored 0%)
+  adding: Iteration/iter_1/emirge_amp/iter.98/probN.pkl.gz (deflated 1%)
+  adding: Iteration/iter_1/emirge_amp/iter.98/iter.98.cons.fasta.fai (deflated 57%)
+  adding: Iteration/iter_1/emirge_amp/iter.112/ (stored 0%)
+  adding: Iteration/iter_1/emirge_amp/iter.112/iter.112.cons.fasta.fai (deflated 57%)
+  adding: Iteration/iter_1/emirge_amp/iter.112/bowtie.iter.112.log.gz (stored 0%)
+  adding: Iteration/iter_1/emirge_amp/iter.112/probN.pkl.gz (deflated 1%)
+  adding: Iteration/iter_1/emirge_amp/iter.112/iter.112.cons.fasta (deflated 78%)
+  adding: Iteration/iter_1/emirge_amp/iter.112/priors.iter.112.txt (deflated 60%)
+  adding: Iteration/iter_1/emirge_amp/iter.58/ (stored 0%)
+  adding: Iteration/iter_1/emirge_amp/iter.58/iter.58.cons.fasta (deflated 78%)
+  adding: Iteration/iter_1/emirge_amp/iter.58/priors.iter.58.txt (deflated 60%)
+  adding: Iteration/iter_1/emirge_amp/iter.58/iter.58.cons.fasta.fai (deflated 57%)
+  adding: Iteration/iter_1/emirge_amp/iter.58/probN.pkl.gz (deflated 1%)
+  adding: Iteration/iter_1/emirge_amp/iter.58/bowtie.iter.58.log.gz (stored 0%)
+  adding: Iteration/iter_1/emirge_amp/iter.27/ (stored 0%)
+  adding: Iteration/iter_1/emirge_amp/iter.27/iter.27.cons.fasta (deflated 78%)
+  adding: Iteration/iter_1/emirge_amp/iter.27/bowtie.iter.27.log.gz (stored 0%)
+  adding: Iteration/iter_1/emirge_amp/iter.27/iter.27.cons.fasta.fai (deflated 57%)
+  adding: Iteration/iter_1/emirge_amp/iter.27/priors.iter.27.txt (deflated 59%)
+  adding: Iteration/iter_1/emirge_amp/iter.27/probN.pkl.gz (deflated 1%)
+  adding: Iteration/iter_1/emirge_amp/iter.45/ (stored 0%)
+  adding: Iteration/iter_1/emirge_amp/iter.45/iter.45.cons.fasta.fai (deflated 57%)
+  adding: Iteration/iter_1/emirge_amp/iter.45/probN.pkl.gz (deflated 1%)
+  adding: Iteration/iter_1/emirge_amp/iter.45/iter.45.cons.fasta (deflated 78%)
+  adding: Iteration/iter_1/emirge_amp/iter.45/priors.iter.45.txt (deflated 59%)
+  adding: Iteration/iter_1/emirge_amp/iter.45/bowtie.iter.45.log.gz (stored 0%)
+  adding: Iteration/iter_1/emirge_amp/iter.42/ (stored 0%)
+  adding: Iteration/iter_1/emirge_amp/iter.42/priors.iter.42.txt (deflated 59%)
+  adding: Iteration/iter_1/emirge_amp/iter.42/iter.42.cons.fasta.fai (deflated 57%)
+  adding: Iteration/iter_1/emirge_amp/iter.42/probN.pkl.gz (deflated 1%)
+  adding: Iteration/iter_1/emirge_amp/iter.42/bowtie.iter.42.log.gz (stored 0%)
+  adding: Iteration/iter_1/emirge_amp/iter.42/iter.42.cons.fasta (deflated 78%)
+  adding: Iteration/iter_1/emirge_amp/iter.91/ (stored 0%)
+  adding: Iteration/iter_1/emirge_amp/iter.91/bowtie.iter.91.log.gz (stored 0%)
+  adding: Iteration/iter_1/emirge_amp/iter.91/iter.91.cons.fasta.fai (deflated 57%)
+  adding: Iteration/iter_1/emirge_amp/iter.91/priors.iter.91.txt (deflated 60%)
+  adding: Iteration/iter_1/emirge_amp/iter.91/iter.91.cons.fasta (deflated 78%)
+  adding: Iteration/iter_1/emirge_amp/iter.91/probN.pkl.gz (deflated 1%)
+  adding: Iteration/iter_1/emirge_amp/iter.95/ (stored 0%)
+  adding: Iteration/iter_1/emirge_amp/iter.95/iter.95.cons.fasta (deflated 78%)
+  adding: Iteration/iter_1/emirge_amp/iter.95/iter.95.cons.fasta.fai (deflated 57%)
+  adding: Iteration/iter_1/emirge_amp/iter.95/bowtie.iter.95.log.gz (stored 0%)
+  adding: Iteration/iter_1/emirge_amp/iter.95/probN.pkl.gz (deflated 1%)
+  adding: Iteration/iter_1/emirge_amp/iter.95/priors.iter.95.txt (deflated 60%)
+  adding: Iteration/iter_1/emirge_amp/iter.120/ (stored 0%)
+  adding: Iteration/iter_1/emirge_amp/iter.120/current.sorted.fasta (deflated 78%)
+  adding: Iteration/iter_1/emirge_amp/iter.120/deinterleave.log (deflated 65%)
+  adding: Iteration/iter_1/emirge_amp/iter.120/bbmap.statsfile.txt (deflated 65%)
+  adding: Iteration/iter_1/emirge_amp/iter.120/priors.iter.120.txt (deflated 60%)
+  adding: Iteration/iter_1/emirge_amp/iter.120/all.dedup.fasta (deflated 78%)
+  adding: Iteration/iter_1/emirge_amp/iter.120/current.merged.fasta (deflated 78%)
+  adding: Iteration/iter_1/emirge_amp/iter.120/dedupe.log (deflated 73%)
+  adding: Iteration/iter_1/emirge_amp/iter.120/ref/ (stored 0%)
+  adding: Iteration/iter_1/emirge_amp/iter.120/ref/genome/ (stored 0%)
+  adding: Iteration/iter_1/emirge_amp/iter.120/ref/genome/1/ (stored 0%)
+  adding: Iteration/iter_1/emirge_amp/iter.120/ref/genome/1/info.txt (deflated 18%)
+  adding: Iteration/iter_1/emirge_amp/iter.120/ref/genome/1/scaffolds.txt.gz (stored 0%)
+  adding: Iteration/iter_1/emirge_amp/iter.120/ref/genome/1/chr1.chrom.gz (deflated 1%)
+  adding: Iteration/iter_1/emirge_amp/iter.120/ref/genome/1/summary.txt (deflated 23%)
+  adding: Iteration/iter_1/emirge_amp/iter.120/ref/index/ (stored 0%)
+  adding: Iteration/iter_1/emirge_amp/iter.120/ref/index/1/ (stored 0%)
+  adding: Iteration/iter_1/emirge_amp/iter.120/ref/index/1/chr1_index_k13_c14_b1.block2.gz (deflated 81%)
+  adding: Iteration/iter_1/emirge_amp/iter.120/ref/index/1/chr1_index_k13_c14_b1.block (deflated 31%)
+  adding: Iteration/iter_1/emirge_amp/iter.120/sort.log (deflated 68%)
+  adding: Iteration/iter_1/emirge_amp/iter.120/bbmap.log (deflated 66%)
+  adding: Iteration/iter_1/emirge_amp/iter.120/bowtie.iter.120.PE.u.b.bam (deflated 0%)
+  adding: Iteration/iter_1/emirge_amp/iter.120/bbmap.covstats.txt (deflated 51%)
+  adding: Iteration/iter_1/emirge_amp/iter.120/bowtie.iter.120.log.gz (stored 0%)
+  adding: Iteration/iter_1/emirge_amp/iter.120/current.uniqname.fasta (deflated 78%)
+  adding: Iteration/iter_1/emirge_amp/iter.120/rename.log (deflated 66%)
+  adding: Iteration/iter_1/emirge_amp/iter.120/bbmap.scafstats.txt (deflated 55%)
+  adding: Iteration/iter_1/emirge_amp/iter.120/probN.pkl.gz (deflated 1%)
+  adding: Iteration/iter_1/emirge_amp/iter.120/bbmap.unmaped.2.fq (deflated 59%)
+  adding: Iteration/iter_1/emirge_amp/iter.120/iter.120.cons.fasta (deflated 78%)
+  adding: Iteration/iter_1/emirge_amp/iter.120/bbmap.unmaped.1.fq (deflated 62%)
+  adding: Iteration/iter_1/emirge_amp/iter.120/all.dup.fasta (stored 0%)
+  adding: Iteration/iter_1/emirge_amp/iter.28/ (stored 0%)
+  adding: Iteration/iter_1/emirge_amp/iter.28/bowtie.iter.28.log.gz (stored 0%)
+  adding: Iteration/iter_1/emirge_amp/iter.28/iter.28.cons.fasta (deflated 78%)
+  adding: Iteration/iter_1/emirge_amp/iter.28/probN.pkl.gz (deflated 1%)
+  adding: Iteration/iter_1/emirge_amp/iter.28/priors.iter.28.txt (deflated 59%)
+  adding: Iteration/iter_1/emirge_amp/iter.28/iter.28.cons.fasta.fai (deflated 57%)
+  adding: Iteration/iter_1/emirge_amp/iter.50/ (stored 0%)
+  adding: Iteration/iter_1/emirge_amp/iter.50/iter.50.cons.fasta.fai (deflated 57%)
+  adding: Iteration/iter_1/emirge_amp/iter.50/bowtie.iter.50.log.gz (stored 0%)
+  adding: Iteration/iter_1/emirge_amp/iter.50/probN.pkl.gz (deflated 1%)
+  adding: Iteration/iter_1/emirge_amp/iter.50/priors.iter.50.txt (deflated 59%)
+  adding: Iteration/iter_1/emirge_amp/iter.50/iter.50.cons.fasta (deflated 78%)
+  adding: Iteration/iter_1/emirge_amp/iter.96/ (stored 0%)
+  adding: Iteration/iter_1/emirge_amp/iter.96/probN.pkl.gz (deflated 1%)
+  adding: Iteration/iter_1/emirge_amp/iter.96/priors.iter.96.txt (deflated 60%)
+  adding: Iteration/iter_1/emirge_amp/iter.96/iter.96.cons.fasta.fai (deflated 57%)
+  adding: Iteration/iter_1/emirge_amp/iter.96/iter.96.cons.fasta (deflated 78%)
+  adding: Iteration/iter_1/emirge_amp/iter.96/bowtie.iter.96.log.gz (stored 0%)
+  adding: Iteration/iter_1/emirge_amp/iter.106/ (stored 0%)
+  adding: Iteration/iter_1/emirge_amp/iter.106/iter.106.cons.fasta (deflated 78%)
+  adding: Iteration/iter_1/emirge_amp/iter.106/iter.106.cons.fasta.fai (deflated 57%)
+  adding: Iteration/iter_1/emirge_amp/iter.106/priors.iter.106.txt (deflated 60%)
+  adding: Iteration/iter_1/emirge_amp/iter.106/probN.pkl.gz (deflated 1%)
+  adding: Iteration/iter_1/emirge_amp/iter.106/bowtie.iter.106.log.gz (stored 0%)
+  adding: Iteration/iter_1/emirge_amp/iter.35/ (stored 0%)
+  adding: Iteration/iter_1/emirge_amp/iter.35/iter.35.cons.fasta.fai (deflated 57%)
+  adding: Iteration/iter_1/emirge_amp/iter.35/iter.35.cons.fasta (deflated 78%)
+  adding: Iteration/iter_1/emirge_amp/iter.35/probN.pkl.gz (deflated 1%)
+  adding: Iteration/iter_1/emirge_amp/iter.35/priors.iter.35.txt (deflated 59%)
+  adding: Iteration/iter_1/emirge_amp/iter.35/bowtie.iter.35.log.gz (stored 0%)
+  adding: Iteration/iter_1/emirge_amp/iter.92/ (stored 0%)
+  adding: Iteration/iter_1/emirge_amp/iter.92/priors.iter.92.txt (deflated 60%)
+  adding: Iteration/iter_1/emirge_amp/iter.92/iter.92.cons.fasta.fai (deflated 57%)
+  adding: Iteration/iter_1/emirge_amp/iter.92/probN.pkl.gz (deflated 1%)
+  adding: Iteration/iter_1/emirge_amp/iter.92/bowtie.iter.92.log.gz (stored 0%)
+  adding: Iteration/iter_1/emirge_amp/iter.92/iter.92.cons.fasta (deflated 78%)
+  adding: Iteration/iter_1/emirge_amp/iter.00/ (stored 0%)
+  adding: Iteration/iter_1/emirge_amp/iter.00/priors.iter.00.txt (deflated 63%)
+  adding: Iteration/iter_1/emirge_amp/iter.00/probN.pkl.gz (deflated 1%)
+  adding: Iteration/iter_1/emirge_amp/iter.00/iter.00.cons.fasta (deflated 78%)
+  adding: Iteration/iter_1/emirge_amp/iter.00/bowtie.iter.00.log.gz (stored 0%)
+  adding: Iteration/iter_1/emirge_amp/iter.00/iter.00.cons.fasta.fai (deflated 57%)
+  adding: Iteration/iter_1/emirge_amp/iter.48/ (stored 0%)
+  adding: Iteration/iter_1/emirge_amp/iter.48/iter.48.cons.fasta (deflated 78%)
+  adding: Iteration/iter_1/emirge_amp/iter.48/bowtie.iter.48.log.gz (stored 0%)
+  adding: Iteration/iter_1/emirge_amp/iter.48/iter.48.cons.fasta.fai (deflated 57%)
+  adding: Iteration/iter_1/emirge_amp/iter.48/probN.pkl.gz (deflated 1%)
+  adding: Iteration/iter_1/emirge_amp/iter.48/priors.iter.48.txt (deflated 59%)
+  adding: Iteration/iter_1/emirge_amp/iter.97/ (stored 0%)
+  adding: Iteration/iter_1/emirge_amp/iter.97/iter.97.cons.fasta (deflated 78%)
+  adding: Iteration/iter_1/emirge_amp/iter.97/priors.iter.97.txt (deflated 60%)
+  adding: Iteration/iter_1/emirge_amp/iter.97/bowtie.iter.97.log.gz (stored 0%)
+  adding: Iteration/iter_1/emirge_amp/iter.97/probN.pkl.gz (deflated 1%)
+  adding: Iteration/iter_1/emirge_amp/iter.97/iter.97.cons.fasta.fai (deflated 57%)
+  adding: Iteration/iter_1/emirge_amp/iter.34/ (stored 0%)
+  adding: Iteration/iter_1/emirge_amp/iter.34/priors.iter.34.txt (deflated 59%)
+  adding: Iteration/iter_1/emirge_amp/iter.34/probN.pkl.gz (deflated 1%)
+  adding: Iteration/iter_1/emirge_amp/iter.34/iter.34.cons.fasta.fai (deflated 57%)
+  adding: Iteration/iter_1/emirge_amp/iter.34/bowtie.iter.34.log.gz (stored 0%)
+  adding: Iteration/iter_1/emirge_amp/iter.34/iter.34.cons.fasta (deflated 78%)
+  adding: Iteration/iter_1/emirge_amp/iter.09/ (stored 0%)
+  adding: Iteration/iter_1/emirge_amp/iter.09/iter.09.cons.fasta.fai (deflated 57%)
+  adding: Iteration/iter_1/emirge_amp/iter.09/bowtie.iter.09.log.gz (stored 0%)
+  adding: Iteration/iter_1/emirge_amp/iter.09/iter.09.cons.fasta (deflated 78%)
+  adding: Iteration/iter_1/emirge_amp/iter.09/priors.iter.09.txt (deflated 59%)
+  adding: Iteration/iter_1/emirge_amp/iter.09/probN.pkl.gz (deflated 1%)
+  adding: Iteration/iter_1/emirge_amp/iter.26/ (stored 0%)
+  adding: Iteration/iter_1/emirge_amp/iter.26/iter.26.cons.fasta.fai (deflated 57%)
+  adding: Iteration/iter_1/emirge_amp/iter.26/priors.iter.26.txt (deflated 60%)
+  adding: Iteration/iter_1/emirge_amp/iter.26/iter.26.cons.fasta (deflated 78%)
+  adding: Iteration/iter_1/emirge_amp/iter.26/bowtie.iter.26.log.gz (stored 0%)
+  adding: Iteration/iter_1/emirge_amp/iter.26/probN.pkl.gz (deflated 1%)
+  adding: Iteration/iter_1/emirge_amp/iter.59/ (stored 0%)
+  adding: Iteration/iter_1/emirge_amp/iter.59/iter.59.cons.fasta (deflated 78%)
+  adding: Iteration/iter_1/emirge_amp/iter.59/bowtie.iter.59.log.gz (stored 0%)
+  adding: Iteration/iter_1/emirge_amp/iter.59/probN.pkl.gz (deflated 1%)
+  adding: Iteration/iter_1/emirge_amp/iter.59/iter.59.cons.fasta.fai (deflated 57%)
+  adding: Iteration/iter_1/emirge_amp/iter.59/priors.iter.59.txt (deflated 60%)
+  adding: Iteration/iter_1/emirge_amp/iter.82/ (stored 0%)
+  adding: Iteration/iter_1/emirge_amp/iter.82/iter.82.cons.fasta (deflated 78%)
+  adding: Iteration/iter_1/emirge_amp/iter.82/probN.pkl.gz (deflated 1%)
+  adding: Iteration/iter_1/emirge_amp/iter.82/bowtie.iter.82.log.gz (stored 0%)
+  adding: Iteration/iter_1/emirge_amp/iter.82/priors.iter.82.txt (deflated 60%)
+  adding: Iteration/iter_1/emirge_amp/iter.82/iter.82.cons.fasta.fai (deflated 57%)
+  adding: Iteration/iter_1/emirge_amp/iter.114/ (stored 0%)
+  adding: Iteration/iter_1/emirge_amp/iter.114/iter.114.cons.fasta (deflated 78%)
+  adding: Iteration/iter_1/emirge_amp/iter.114/bowtie.iter.114.log.gz (stored 0%)
+  adding: Iteration/iter_1/emirge_amp/iter.114/iter.114.cons.fasta.fai (deflated 57%)
+  adding: Iteration/iter_1/emirge_amp/iter.114/probN.pkl.gz (deflated 1%)
+  adding: Iteration/iter_1/emirge_amp/iter.114/priors.iter.114.txt (deflated 59%)
+  adding: Iteration/iter_1/emirge_amp/iter.111/ (stored 0%)
+  adding: Iteration/iter_1/emirge_amp/iter.111/bowtie.iter.111.log.gz (stored 0%)
+  adding: Iteration/iter_1/emirge_amp/iter.111/iter.111.cons.fasta.fai (deflated 57%)
+  adding: Iteration/iter_1/emirge_amp/iter.111/iter.111.cons.fasta (deflated 78%)
+  adding: Iteration/iter_1/emirge_amp/iter.111/probN.pkl.gz (deflated 1%)
+  adding: Iteration/iter_1/emirge_amp/iter.111/priors.iter.111.txt (deflated 60%)
+  adding: Iteration/iter_1/emirge_amp/iter.51/ (stored 0%)
+  adding: Iteration/iter_1/emirge_amp/iter.51/iter.51.cons.fasta.fai (deflated 57%)
+  adding: Iteration/iter_1/emirge_amp/iter.51/bowtie.iter.51.log.gz (stored 0%)
+  adding: Iteration/iter_1/emirge_amp/iter.51/probN.pkl.gz (deflated 1%)
+  adding: Iteration/iter_1/emirge_amp/iter.51/iter.51.cons.fasta (deflated 78%)
+  adding: Iteration/iter_1/emirge_amp/iter.51/priors.iter.51.txt (deflated 60%)
+  adding: Iteration/iter_1/emirge_amp/iter.25/ (stored 0%)
+  adding: Iteration/iter_1/emirge_amp/iter.25/iter.25.cons.fasta (deflated 78%)
+  adding: Iteration/iter_1/emirge_amp/iter.25/priors.iter.25.txt (deflated 59%)
+  adding: Iteration/iter_1/emirge_amp/iter.25/probN.pkl.gz (deflated 1%)
+  adding: Iteration/iter_1/emirge_amp/iter.25/bowtie.iter.25.log.gz (stored 0%)
+  adding: Iteration/iter_1/emirge_amp/iter.25/iter.25.cons.fasta.fai (deflated 57%)
+  adding: Iteration/iter_1/emirge_amp/iter.15/ (stored 0%)
+  adding: Iteration/iter_1/emirge_amp/iter.15/priors.iter.15.txt (deflated 60%)
+  adding: Iteration/iter_1/emirge_amp/iter.15/iter.15.cons.fasta (deflated 78%)
+  adding: Iteration/iter_1/emirge_amp/iter.15/iter.15.cons.fasta.fai (deflated 57%)
+  adding: Iteration/iter_1/emirge_amp/iter.15/probN.pkl.gz (deflated 1%)
+  adding: Iteration/iter_1/emirge_amp/iter.15/bowtie.iter.15.log.gz (stored 0%)
+  adding: Iteration/iter_1/emirge_amp/iter.62/ (stored 0%)
+  adding: Iteration/iter_1/emirge_amp/iter.62/bowtie.iter.62.log.gz (stored 0%)
+  adding: Iteration/iter_1/emirge_amp/iter.62/priors.iter.62.txt (deflated 59%)
+  adding: Iteration/iter_1/emirge_amp/iter.62/probN.pkl.gz (deflated 1%)
+  adding: Iteration/iter_1/emirge_amp/iter.62/iter.62.cons.fasta (deflated 78%)
+  adding: Iteration/iter_1/emirge_amp/iter.62/iter.62.cons.fasta.fai (deflated 57%)
+  adding: Iteration/iter_1/emirge_amp/iter.70/ (stored 0%)
+  adding: Iteration/iter_1/emirge_amp/iter.70/iter.70.cons.fasta (deflated 78%)
+  adding: Iteration/iter_1/emirge_amp/iter.70/bowtie.iter.70.log.gz (stored 0%)
+  adding: Iteration/iter_1/emirge_amp/iter.70/iter.70.cons.fasta.fai (deflated 57%)
+  adding: Iteration/iter_1/emirge_amp/iter.70/priors.iter.70.txt (deflated 60%)
+  adding: Iteration/iter_1/emirge_amp/iter.70/probN.pkl.gz (deflated 1%)
+  adding: Iteration/iter_1/emirge_amp/iter.102/ (stored 0%)
+  adding: Iteration/iter_1/emirge_amp/iter.102/priors.iter.102.txt (deflated 60%)
+  adding: Iteration/iter_1/emirge_amp/iter.102/probN.pkl.gz (deflated 1%)
+  adding: Iteration/iter_1/emirge_amp/iter.102/iter.102.cons.fasta.fai (deflated 57%)
+  adding: Iteration/iter_1/emirge_amp/iter.102/iter.102.cons.fasta (deflated 78%)
+  adding: Iteration/iter_1/emirge_amp/iter.102/bowtie.iter.102.log.gz (stored 0%)
+  adding: Iteration/iter_1/emirge_amp/iter.49/ (stored 0%)
+  adding: Iteration/iter_1/emirge_amp/iter.49/iter.49.cons.fasta (deflated 78%)
+  adding: Iteration/iter_1/emirge_amp/iter.49/bowtie.iter.49.log.gz (stored 0%)
+  adding: Iteration/iter_1/emirge_amp/iter.49/priors.iter.49.txt (deflated 60%)
+  adding: Iteration/iter_1/emirge_amp/iter.49/probN.pkl.gz (deflated 1%)
+  adding: Iteration/iter_1/emirge_amp/iter.49/iter.49.cons.fasta.fai (deflated 57%)
+  adding: Iteration/iter_1/emirge_amp/priors.initialized.txt (deflated 62%)
+  adding: Iteration/iter_2_L/ (stored 0%)
+  adding: Iteration/iter_2_L/iter_2_emirge.log (deflated 75%)
+  adding: Iteration/iter_2_L/emirge_amp/ (stored 0%)
+  adding: Iteration/iter_2_L/emirge_amp/emirge_tmp_reads_1.fastq (deflated 61%)
+  adding: Iteration/iter_2_L/emirge_amp/initial_mapping/ (stored 0%)
+  adding: Iteration/iter_2_L/emirge_amp/initial_mapping/initial_bowtie_mapping.PE.u.bam (deflated 80%)
+  adding: Iteration/iter_2_L/emirge_amp/emirge_tmp_reads_2.fastq (deflated 58%)
+  adding: Iteration/iter_2_L/emirge_amp/iter.00/ (stored 0%)
+  adding: Iteration/iter_2_L/emirge_amp/iter.00/current.sorted.fasta (deflated 78%)
+  adding: Iteration/iter_2_L/emirge_amp/iter.00/all.dedup.fasta (deflated 78%)
+  adding: Iteration/iter_2_L/emirge_amp/iter.00/current.merged.fasta (deflated 78%)
+  adding: Iteration/iter_2_L/emirge_amp/iter.00/dedupe.log (deflated 73%)
+  adding: Iteration/iter_2_L/emirge_amp/iter.00/sort.log (deflated 68%)
+  adding: Iteration/iter_2_L/emirge_amp/iter.00/iter.00.cons.fasta.tmp.fasta (stored 0%)
+  adding: Iteration/iter_2_L/emirge_amp/iter.00/current.uniqname.fasta (deflated 78%)
+  adding: Iteration/iter_2_L/emirge_amp/iter.00/rename.log (deflated 67%)
+  adding: Iteration/iter_2_L/emirge_amp/iter.00/iter.00.cons.fasta (stored 0%)
+  adding: Iteration/iter_2_L/emirge_amp/iter.00/all.dup.fasta (stored 0%)
+  adding: Iteration/iter_2_L/emirge_amp/priors.initialized.txt (deflated 31%)
+/home/oschakoo/RiboTaxa
+Saving results...
+Reconstructing 16S/18S sequences ends successfully on : jeu. 15 avril 2021 14:55:55 CEST
+Calculating relative abundances of reconstructed sequences...
+Saving results...
+Relative abundance calculation ends successfully on : jeu. 15 avril 2021 14:56:08 CEST
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Taxonomic classification using sklearn classifier of QIIME2020.8 ... jeu. 15 avril 2021 14:56:10 CEST
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Sklearn Database = /home/oschakoo/Documents/Databases/qiime2020.8_silva138/silva-138-99-nb-classifier.qza
+/home/oschakoo/Documents/mock_community_GascPeyret2018/MG/testing_RiboTaxa/data
+Importing data ...
+Imported /home/oschakoo/Documents/mock_community_GascPeyret2018/MG/testing_RiboTaxa/SSU_sequences/SRR5381736_SSU_sequences.fasta as DNASequencesDirectoryFormat to /home/oschakoo/Documents/mock_community_GascPeyret2018/MG/testing_RiboTaxa/tax_class_sklearn_qiime2/SRR5381736_SSU_sequences_qiime2.qza
+Classifying reconstructed sequences using sklearn_classifer...

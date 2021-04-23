@@ -40,7 +40,7 @@ SHORTNAME=$(basename ""${NAME[@]}"")
 #echo $SHORTNAME
 echo "" | tee /dev/fd/3
 echo "***********************************************************************************************" | tee /dev/fd/3
-echo "			Running RiboTaxa on $NAME"  | tee /dev/fd/3
+echo "Running RiboTaxa on $NAME"  | tee /dev/fd/3
 echo "***********************************************************************************************" | tee /dev/fd/3
 echo "" | tee /dev/fd/3
 #run RiboTaxa.sh script to perform
@@ -58,4 +58,4 @@ source "$RiboTaxa_DIR"/sklearn_classifier.sh $CONFIG_PATH
 done
 
 mv RiboTaxa.log "$OUTPUT"
-mv "$OUTPUT"/output_MetaRib "$OUTPUT"/SSU_sequences
+#mv "$OUTPUT"/output_MetaRib "$OUTPUT"/SSU_sequences

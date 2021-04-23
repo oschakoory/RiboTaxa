@@ -53,7 +53,7 @@ def parse_cfg(config):
     #SAMPLING_NUM = config.get('METARIB', 'SAMPLING_NUM')
     THREAD = config.getint('BASE','THREAD')
     # EMIRGE
-    global MAX_LENGTH, IDENTITY, NUM_ITERATION, MEAN_INSERT_SIZE, STD_DEV, EMIRGE_DB
+    global MAX_LENGTH, NUM_ITERATION, IDENTITY, MEAN_INSERT_SIZE, STD_DEV, EMIRGE_DB
     #EM_PATH = config.get('EMIRGE', 'EM_PATH')
     #EM_PARA = config.get('EMIRGE', 'EM_PARA')
     #EM_REF = config.get('METARIB', 'EM_REF')
@@ -137,7 +137,7 @@ def subsampling_reads(unmap_fq1, unmap_fq2):
     sampling_num = int(SAMPLING_NUM)
     max_reads = 1000 * sampling_num
     seeds = random.randint(1, 100)
-    cmd = ' '.join(['reformat.sh','in1='+unmap_fq1, 'in2='+unmap_fq2,'out1='+sub_fq1,'out2='+sub_fq2, 'sample='+str(sampling_num), 'sampleseed='+str(seeds),'ow=t', 'reads='+str(max_reads), '2> subsample.log'])
+    cmd = ' '.join(['reformat.sh', '-Xmx2g', 'in1='+unmap_fq1, 'in2='+unmap_fq2,'out1='+sub_fq1,'out2='+sub_fq2, 'sample='+str(sampling_num), 'sampleseed='+str(seeds),'ow=t', 'reads='+str(max_reads), '2> subsample.log'])
     os.system(cmd)
     return(sub_fq1, sub_fq2)
 
@@ -149,30 +149,30 @@ def dedup_contig(old_fa, new_fa):
     os.system(cmd)
     #step2: sort by length
     cur_sort_fa = work_dir+'/current.sorted.fasta'
-    cmd = ' '.join(['sortbyname.sh', 'in='+cur_mg_fa, 'out='+cur_sort_fa, 'length descending', '2> sort.log'])
+    cmd = ' '.join(['sortbyname.sh', '-Xmx2g', 'in='+cur_mg_fa, 'out='+cur_sort_fa, 'length descending', '2> sort.log'])
     os.system(cmd)
     #step3: keep uniq id
     cur_uniq_fa = work_dir+'/current.uniqname.fasta'
-    cmd = ' '.join(['reformat.sh', 'in='+cur_sort_fa, 'out='+cur_uniq_fa, 'uniquenames', '2> rename.log'])
+    cmd = ' '.join(['reformat.sh', '-Xmx2g', 'in='+cur_sort_fa, 'out='+cur_uniq_fa, 'uniquenames', '2> rename.log'])
     os.system(cmd)
     #step4: dedup fasta
     all_dedup_fa = work_dir+'/all.dedup.fasta'
     all_dup_fa = work_dir+'/all.dup.fasta'
-    cmd = ' '.join(['dedupe.sh', 'in='+cur_uniq_fa, 'out='+all_dedup_fa, 'outd='+all_dup_fa, 'fo=t', 'ow=t', 'c=t', 'mcs=1', 'e=5', 'mid=99', '2> dedupe.log'])
+    cmd = ' '.join(['dedupe.sh', '-Xmx2g', 'in='+cur_uniq_fa, 'out='+all_dedup_fa, 'outd='+all_dup_fa, 'fo=t', 'ow=t', 'c=t', 'mcs=1', 'e=5', 'mid=99', '2> dedupe.log'])
     os.system(cmd)
     return(all_dedup_fa)
 
 def run_align_bbmap(current_iter_fa, unmap_fq1, unmap_fq2):
     ref = current_iter_fa
     # run bbmap alignment, since we may have duplicates, cannot calculate stats
-    cmd = ' '.join(['bbmap.sh', 'in1='+unmap_fq1, 'in2='+unmap_fq2, 'ref='+ref,
+    cmd = ' '.join(['bbmap.sh', '-Xmx2g', 'in1='+unmap_fq1, 'in2='+unmap_fq2, 'ref='+ref,
     'threads='+str(THREAD), 'minid=0.96', 'maxindel=1', 'minhits=2', 'idfilter=0.98', 'outu=bbmap.unmap.fq', 'ow=t', 'statsfile=bbmap.statsfile.txt',
     'sortscafs=t', 'scafstats=bbmap.scafstats.txt', 'covstats=bbmap.covstats.txt','2> bbmap.log'])
     os.system(cmd)
     # reformat to two fastq files
     new_unmap_fq1 = os.getcwd()+'/bbmap.unmaped.1.fq'
     new_unmap_fq2 = os.getcwd()+'/bbmap.unmaped.2.fq'
-    cmd = ' '.join(['reformat.sh', 'in=bbmap.unmap.fq', 'out1='+new_unmap_fq1, 'out2='+new_unmap_fq2,
+    cmd = ' '.join(['reformat.sh', '-Xmx2g', 'in=bbmap.unmap.fq', 'out1='+new_unmap_fq1, 'out2='+new_unmap_fq2,
     '2> deinterleave.log'])
     os.system(cmd)
     # remove unmapped fq
@@ -264,7 +264,7 @@ def run_last_iteration(unmap_fq1, unmap_fq2, dedup_fa, iter_time, keep_running):
             sub_fq2 = work_dir+'/sub.2.fq'
             new_sampling_num = 2.0 * float(SAMPLING_NUM)
             max_reads = 100 * new_sampling_num
-            cmd = ' '.join(['reformat.sh','in1='+unmap_fq1, 'in2='+unmap_fq2,'out1='+sub_fq1,'out2='+sub_fq2, 'sample='+str(new_sampling_num), 'ow=t', 'reads='+str(max_reads), '2> subsample.log'])
+            cmd = ' '.join(['reformat.sh', '-Xmx2g', 'in1='+unmap_fq1, 'in2='+unmap_fq2,'out1='+sub_fq1,'out2='+sub_fq2, 'sample='+str(new_sampling_num), 'ow=t', 'reads='+str(max_reads), '2> subsample.log'])
             os.system(cmd)
             # run emrige_amp and dedup
             all_dedup_fa, iter_fa = run_emirge_and_dedup(sub_fq1, sub_fq2, dedup_fa, iter_time)
@@ -299,7 +299,7 @@ def cal_mapping_stats(samples_list, samples_fq1_path, samples_fq2_path, all_dedu
         scafstats = sample_name+'.scafstats.txt'
         covstats = sample_name+'.covstats.txt'
         # run bbmap alignment, but only we only need statistics file, set ozo=f to print all cov info
-        cmd = ' '.join(['bbmap.sh', 'in1='+reads1, 'in2='+reads2, 'ref='+dedup_ref,
+        cmd = ' '.join(['bbmap.sh', '-Xmx2g', 'in1='+reads1, 'in2='+reads2, 'ref='+dedup_ref,
         'threads='+str(THREAD), MAP_PARA, 'ow=t', 'statsfile='+statsfile, 'nzo=f',
         'sortscafs=t', 'scafstats='+scafstats, 'covstats='+covstats, '2> run.'+sample_name+'.log'])
         scafstats = os.getcwd()+'/'+scafstats
@@ -349,7 +349,7 @@ def generate_and_filter_abundance_table(samples_list, all_scafstats_path, all_co
         inp = inp.strip()
         keep_id_f.write(inp+'\n')
     keep_id_f.close()
-    cmd = ' '.join(['filterbyname.sh', 'in='+dedup_ref, 'names=all.keeped.ids.txt','out='+filter_dedup_fa,'include=t', '2>ft.log'])
+    cmd = ' '.join(['filterbyname.sh', '-Xmx2g', 'in='+dedup_ref, 'names=all.keeped.ids.txt','out='+filter_dedup_fa,'include=t', '2>ft.log'])
     os.system(cmd)
     # remove id text file
     os.remove('all.keeped.ids.txt')

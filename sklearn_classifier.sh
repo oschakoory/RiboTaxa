@@ -86,18 +86,18 @@ mv taxonomy.tsv "$OUTPUT"/tax_class_sklearn_qiime2/taxonomy.tsv
 cat "$OUTPUT"/tax_class_sklearn_qiime2/taxonomy.tsv | sed 1d |sort -k1 -k2 | tr ';' \\t > "$OUTPUT"/tax_class_sklearn_qiime2/"$SHORTNAME"_renamed_16S18S_recons_qiime2_taxonomy.tsv
 
 #handling length of reconstructed sequences
-cat "$OUTPUT"/SSU_sequences/"$SHORTNAME"_covstats.txt| sed 1d | awk '{ print $1,$3 }' |sort -k1 -k2 | tr ' ' \\t > "$OUTPUT"/SSU_sequences/"$SHORTNAME"_covstats_readlength.tsv
+cat "$OUTPUT"/SSU_sequences/"$SHORTNAME"_covstats.txt| awk '{ print $1,$3 }' |sort -k1 -k2 | tr ' ' \\t > "$OUTPUT"/SSU_sequences/"$SHORTNAME"_covstats_readlength.tsv
 
 
 #handling relative abundance table from bbmap
-cat "$OUTPUT"/SSU_sequences/"$SHORTNAME"_scafstats.txt | sed 1d | tr ',' \\t | awk '{ print $1,$8 }' | sort -k1 -k2 > "$OUTPUT"/SSU_sequences/"$SHORTNAME"_scafstats_readsCount.tsv
+cat "$OUTPUT"/SSU_sequences/"$SHORTNAME"_scafstats.txt | sort -k1 -k2 | tr ' ' \\t > "$OUTPUT"/SSU_sequences/"$SHORTNAME"_scafstats_readsCount.tsv
 
-cat "$OUTPUT"/SSU_sequences/"$SHORTNAME"_scafstats_readsCount.tsv | tr ' ' \\t > "$OUTPUT"/SSU_sequences/"$SHORTNAME"_scafstats_readsCount1.tsv
+#cat "$OUTPUT"/SSU_sequences/"$SHORTNAME"_scafstats_readsCount.tsv | tr ' ' \\t > "$OUTPUT"/SSU_sequences/"$SHORTNAME"_scafstats_readsCount1.tsv
 
 
-total=$(awk '{s+=$2}END{print s}' "$OUTPUT"/SSU_sequences/"$SHORTNAME"_scafstats_readsCount1.tsv)
+total=$(awk '{s+=$2}END{print s}' "$OUTPUT"/SSU_sequences/"$SHORTNAME"_scafstats_readsCount.tsv)
 
-awk -v total=$total '{ printf ("%s\t%s\t%.2f\n", $1, $2, ($2/total)*100)}' "$OUTPUT"/SSU_sequences/"$SHORTNAME"_scafstats_readsCount1.tsv > "$OUTPUT"/SSU_sequences/"$SHORTNAME"_scafstats_RA.tsv
+awk -v total=$total '{ printf ("%s\t%s\t%.6f\n", $1, $2, ($2/total)*100)}' "$OUTPUT"/SSU_sequences/"$SHORTNAME"_scafstats_readsCount.tsv > "$OUTPUT"/SSU_sequences/"$SHORTNAME"_scafstats_RA.tsv
 
 join "$OUTPUT"/SSU_sequences/"$SHORTNAME"_covstats_readlength.tsv "$OUTPUT"/SSU_sequences/"$SHORTNAME"_scafstats_RA.tsv |tr  ' ' \\t > "$OUTPUT"/tax_class_sklearn_qiime2/"$SHORTNAME"_SSU_length_abundance.tsv
 
@@ -107,12 +107,13 @@ awk 'BEGIN{print "ID\tDomain\tPhylum\tClass\tOrder\tFamily\tGenus\tSpecies\tConf
 
 #cleaning
 rm "$OUTPUT"/SSU_sequences/"$SHORTNAME"_scafstats_readsCount.tsv
-rm "$OUTPUT"/SSU_sequences/"$SHORTNAME"_scafstats_readsCount1.tsv
+#rm "$OUTPUT"/SSU_sequences/"$SHORTNAME"_scafstats_readsCount1.tsv
 rm "$OUTPUT"/tax_class_sklearn_qiime2/"$SHORTNAME"_SSU_taxonomy_abundance_renamed.tsv
 rm "$OUTPUT"/SSU_sequences/"$SHORTNAME"_covstats_readlength.tsv 
 rm "$OUTPUT"/SSU_sequences/"$SHORTNAME"_scafstats_RA.tsv
 rm "$OUTPUT"/tax_class_sklearn_qiime2/"$SHORTNAME"_SSU_length_abundance.tsv
 rm "$OUTPUT"/tax_class_sklearn_qiime2/"$SHORTNAME"_renamed_16S18S_recons_qiime2_taxonomy.tsv
+rm "$OUTPUT"/tax_class_sklearn_qiime2/taxonomy.tsv
 
 echo "Taxonomic classification using sklearn_classifer ends successfully on : "`date` | tee /dev/fd/3
 

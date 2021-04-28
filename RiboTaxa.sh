@@ -33,89 +33,6 @@ OUTPUT=$(awk '/^OUTPUT/{print $3}' "${CONFIG}")
 #rm -rf "$OUTPUT"
 mkdir -p "$OUTPUT"
 
-#fomrat of files (can either be fastq or fastq.gz)
-FORMAT=$(awk '/^FORMAT/{print $3}' "${CONFIG}")
-
-#Set up results sub-directories
-mkdir -p "$OUTPUT/quality_control"
-mkdir -p "$OUTPUT/quality_control/before_fastqc"
-mkdir -p "$OUTPUT/quality_control/before_fastqc/multiqc"
-mkdir -p "$OUTPUT/quality_control/after_fastqc"
-mkdir -p "$OUTPUT/quality_control/after_fastqc/multiqc"
-
-echo ""
-echo "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" | tee /dev/fd/3
-echo "Quality control starting on : "`date` | tee /dev/fd/3
-echo "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" | tee /dev/fd/3
-echo ""
-
-KTRIM=$(awk '/^ktrim/{print $3}' "${CONFIG}")
-
-KMER=$(awk '/^kmer/{print $3}' "${CONFIG}")
-
-MINLENGTH=$(awk '/^minlength/{print $3}' "${CONFIG}")
-
-TRIMQ=$(awk '/^trimq/{print $3}' "${CONFIG}")
-
-QTRIM=$(awk '/^qtrim/{print $3}' "${CONFIG}")
-
-MAXNS=$(awk '/^maxns/{print $3}' "${CONFIG}")
-
-echo "Run the First quality control on raw data... " | tee /dev/fd/3
-
-fastqc "$DATA_DIR"/"$SHORTNAME"_1.$FORMAT  "$DATA_DIR"/"$SHORTNAME"_2.$FORMAT  -dir $OUTPUT -o "$OUTPUT"/quality_control/before_fastqc
-
-echo "Removing adapters from sequences..." | tee /dev/fd/3
-bbduk.sh -Xmx1g \
-	in1="$DATA_DIR"/"$SHORTNAME"_1.$FORMAT  \
-	in2="$DATA_DIR"/"$SHORTNAME"_2.$FORMAT  \
-	out1="$OUTPUT"/quality_control/"$SHORTNAME"_1_noadapt.$FORMAT  \
-	out2="$OUTPUT"/quality_control/"$SHORTNAME"_2_noadapt.$FORMAT  \
-	ref="$RiboTaxa_DIR"/adapters/TruSeq3-PE.fa \
-	ktrim=$KTRIM \
-	k=$KMER \
-	mink=11 \
-	tpe \
-	tbo
-
-echo "Trimming sequences..." | tee /dev/fd/3
-bbduk.sh -Xmx2g \
-	in1="$OUTPUT"/quality_control/"$SHORTNAME"_1_noadapt.$FORMAT  \
-	in2="$OUTPUT"/quality_control/"$SHORTNAME"_2_noadapt.$FORMAT  \
-	out1="$OUTPUT"/quality_control/"$SHORTNAME"_1_trimmed.$FORMAT  \
-	out2="$OUTPUT"/quality_control/"$SHORTNAME"_2_trimmed.$FORMAT  \
-	minlen=$MINLENGTH \
-	qtrim=$QTRIM \
-	trimq=$TRIMQ \
-	maxns=$MAXNS
-
-
-echo "Run the second quality control on trimmed data..." | tee /dev/fd/3
-fastqc "$OUTPUT"/quality_control/"$SHORTNAME"_1_trimmed.$FORMAT  "$OUTPUT"/quality_control/"$SHORTNAME"_2_trimmed.$FORMAT  -dir $OUTPUT -o "$OUTPUT"/quality_control/after_fastqc
-
-echo "Running multiQC..." | tee /dev/fd/3
-
-multiqc -f "$OUTPUT"/quality_control/before_fastqc/* --outdir "$OUTPUT"/quality_control/before_fastqc/multiqc/
-
-multiqc -f "$OUTPUT"/quality_control/after_fastqc/* --outdir "$OUTPUT"/quality_control/after_fastqc/multiqc/
-
-echo "Saving results for quality control..." | tee /dev/fd/3
-
-echo "Quality control ends successfully on : "`date` | tee /dev/fd/3
- 
-rm "$OUTPUT"/quality_control/*_noadapt.$FORMAT 
-
-#unzip fastq files if compressed as sortmeran takes uncompressed files only
-for NAME in `ls "$OUTPUT"/quality_control/*"$SHORTNAME"*`; do
-	FILE=($(basename ""${NAME[@]}""))
-	if [[ ${NAME[@]} == *.gz* ]]; then
-		#echo "$FILE is gzipped"
-		gunzip -f ${NAME[@]}
-	else
-		echo "$FILE is not gzipped"
-	fi
-done
-
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 #
 #				Filtering 16S/18S reads using sortemrna
@@ -146,7 +63,7 @@ THREAD=$(awk '/^THREAD/{print $3}' "${CONFIG}")
 
 echo "Merging paired files into single files... " | tee /dev/fd/3
 #bash merge-paired-reads.sh "$OUTPUT"/quality_control/"$SHORTNAME"_1_trimmed.fastq "$OUTPUT"/quality_control/"$SHORTNAME"_2_trimmed.fastq "$OUTPUT"/output_sortmerna/"$SHORTNAME"_mergedpaired.fastq
-reformat.sh in1="$OUTPUT"/quality_control/"$SHORTNAME"_1_trimmed.fastq in2="$OUTPUT"/quality_control/"$SHORTNAME"_2_trimmed.fastq out="$OUTPUT"/output_sortmerna/"$SHORTNAME"_mergedpaired.fastq overwrite=t
+reformat.sh in1="$OUTPUT"/quality_control/"$SHORTNAME"_1.fastq in2="$OUTPUT"/quality_control/"$SHORTNAME"_2.fastq out="$OUTPUT"/output_sortmerna/"$SHORTNAME"_mergedpaired.fastq overwrite=t
 
 echo "Filtering 16S/18S reads...." | tee /dev/fd/3
 sortmerna --ref "$SORTMERNA_DB"/"$SORTME_NAME".fasta,"$SORTMERNA_DB"/$SORTME_NAME \
@@ -240,33 +157,20 @@ cd "$OUTPUT"/SSU_sequences/output_emirge && zip -rm "$SHORTNAME"_amplicon_16S18S
 
 #rm -r "$OUTPUT"/SSU_sequences/output_emirge/"$SHORTNAME"_amplicon_16S18S_recons
 
-echo "Running MetaRib to reconstruct 16S/18S full length sequences..."`date` | tee /dev/fd/3
-
-SAMPLE=$(awk '{s++}END{print s/4}' "$OUTPUT"/output_sortmerna/"$SHORTNAME"_R1_16S18Sreads.fastq)
-
-python2 "$RiboTaxa_DIR"/run_MetaRib.py -cfg "$CONFIG_PATH" -n "$SAMPLE" -1 output_sortmerna/"$SHORTNAME"_R1_16S18Sreads.fastq -2 output_sortmerna/"$SHORTNAME"_R2_16S18Sreads.fastq -b "$EMIRGE_DB"/$BWT_NAME -l "$EMIRGE_DB"/"$REF_NAME"
-
-mkdir -p "$OUTPUT/SSU_sequences/output_MetaRib/$SHORTNAME"
-
-mv "$OUTPUT"/output_MetaRib/Abundance/all.dedup.fasta "$OUTPUT"/SSU_sequences/output_MetaRib/"$SHORTNAME"
-#rm -r "$OUTPUT"/output_MetaRib/Abundance
-mv "$OUTPUT"/SSU_sequences/output_MetaRib/"$SHORTNAME"/all.dedup.fasta "$OUTPUT"/SSU_sequences/output_MetaRib/"$SHORTNAME"/"$SHORTNAME"_contigs.fasta
-mv "$OUTPUT"/output_MetaRib/Iteration "$OUTPUT"/SSU_sequences/output_MetaRib/"$SHORTNAME"
-#rm "$OUTPUT"/output_MetaRib/dedup_contigs.fasta
 
 echo "Finalising reconstructed sequences..." | tee /dev/fd/3
 
-cat "$OUTPUT"/SSU_sequences/output_emirge/"$SHORTNAME"_renamed_16S18S_recons.fasta "$OUTPUT"/SSU_sequences/output_MetaRib/"$SHORTNAME"/"$SHORTNAME"_contigs.fasta > "$OUTPUT"/SSU_sequences/emirge_metarib_SSU_sequences.fasta
+cat "$OUTPUT"/SSU_sequences/output_emirge/"$SHORTNAME"_renamed_16S18S_recons.fasta "$OUTPUT"/SSU_sequences/output_MetaRib/"$SHORTNAME"_MetaRib_SSU.fasta > "$OUTPUT"/SSU_sequences/emirge_metarib_SSU_sequences.fasta
 
 #clustering at 97%
 vsearch --cluster_fast "$OUTPUT"/SSU_sequences/emirge_metarib_SSU_sequences.fasta --centroids "$OUTPUT"/SSU_sequences/emirge_metarib_clustered_SSU_sequences.fasta --id 0.97
 
 #covert small letters into capital letters
-awk '/^>/ {print($0)}; /^[^>]/ {print(toupper($0))}' "$OUTPUT"/SSU_sequences/emirge_metarib_clustered_SSU_sequences.fasta > "$OUTPUT"/SSU_sequences/"$SHORTNAME"_SSU_sequences.fasta
+awk '/^>/ {print($0)}; /^[^>]/ {print(toupper($0))}' "$OUTPUT"/SSU_sequences/emirge_metarib_clustered_SSU_sequences.fasta > "$OUTPUT"/SSU_sequences/all_SSU_sequences.fasta
 
 #rm -rv "$OUTPUT"/output_MetaRib/"$SHORTNAME"/Iteration/iter_1/emirge_amp/!("initial_mapping"|"iter.$NUM_ITERATION")
 
-cd "$OUTPUT"/SSU_sequences/output_MetaRib/"$SHORTNAME" && zip -rm Iteration.zip Iteration/ && cd -
+#cd "$OUTPUT"/SSU_sequences/output_MetaRib/"$SHORTNAME" && zip -rm Iteration.zip Iteration/ && cd -
 
 #zip -r Iteration.zip "$OUTPUT"/output_MetaRib/"$SHORTNAME"/Iteration/
 
@@ -281,16 +185,34 @@ echo "Reconstructing 16S/18S sequences ends successfully on : "`date` | tee /dev
 echo "Calculating relative abundances of reconstructed sequences..." | tee /dev/fd/3
 
 bbmap.sh -Xmx3g in="$OUTPUT"/output_sortmerna/"$SHORTNAME"_mergedpaired.fastq \
-	ref="$OUTPUT"/SSU_sequences/"$SHORTNAME"_SSU_sequences.fasta \
+	ref="$OUTPUT"/SSU_sequences/all_SSU_sequences.fasta \
 	vslow \
 	k=12 \
-	scafstats="$OUTPUT"/SSU_sequences/"$SHORTNAME"_scafstats.txt \
-	out="$OUTPUT"/SSU_sequences/"$SHORTNAME"_mapped.sam \
-	covstats="$OUTPUT"/SSU_sequences/"$SHORTNAME"_covstats.txt
+	minid=0.96 \
+	maxindel=1 \
+	minhits=2 \
+	idfilter=0.98 \
+	scafstats="$OUTPUT"/SSU_sequences/all_scafstats.txt \
+	covstats="$OUTPUT"/SSU_sequences/all_covstats.txt
+
+cat "$OUTPUT"/SSU_sequences/all_scafstats.txt | sed 1d | tr ',' \\t | awk '{ print $1,$8 }' | sort -k1 -k2 | awk '!($2==0){print}' | awk '{print $1}' > "$OUTPUT"/SSU_sequences/id_file.txt
+
+cat "$OUTPUT"/SSU_sequences/all_scafstats.txt | sed 1d | tr ',' \\t | awk '{ print $1,$8 }' | sort -k1 -k2 | awk '!($2==0){print}' > "$OUTPUT"/SSU_sequences/"$SHORTNAME"_scafstats.txt
+
+awk 'NR==FNR{ids[$0]; next} ($1 in ids){ printf ">" $0 }' "$OUTPUT"/SSU_sequences/id_file.txt RS='>' "$OUTPUT"/SSU_sequences/all_SSU_sequences.fasta > "$OUTPUT"/SSU_sequences/"$SHORTNAME"_SSU_sequences.fasta
+
+awk -F '\t' 'NR==FNR {id[$1]; next} $1 in id' "$OUTPUT"/SSU_sequences/id_file.txt "$OUTPUT"/SSU_sequences/all_covstats.txt > "$OUTPUT"/SSU_sequences/"$SHORTNAME"_covstats.txt
+
+rm "$OUTPUT"/SSU_sequences/all_scafstats.txt
+rm "$OUTPUT"/SSU_sequences/all_covstats.txt
+rm "$OUTPUT"/SSU_sequences/id_file.txt
+rm "$OUTPUT"/SSU_sequences/all_SSU_sequences.fasta
 
 rm "$OUTPUT"/output_sortmerna/"$SHORTNAME"_mergedpaired.fastq
 rm "$OUTPUT"/SSU_sequences/emirge_metarib_SSU_sequences.fasta
 rm "$OUTPUT"/SSU_sequences/emirge_metarib_clustered_SSU_sequences.fasta
+
+
 
 echo "Saving results..." | tee /dev/fd/3
 

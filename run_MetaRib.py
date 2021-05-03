@@ -23,7 +23,7 @@ class MyParser(argparse.ArgumentParser):
 
 def parse_arg():
     example_text = '''Example:
-    python2 run_MetaRib.py -cfg MetaRib.cfg -p data_path -b path_to/bwt_indexes -l path_to/reference database
+    python2 run_MetaRib.py -cfg MetaRib.cfg -p path_to_data -b path_to/bwt_indexes -l path_to/reference database
     '''
     parser = argparse.ArgumentParser(description='Constructing ribosomal genes from large scale total RNA meta-transcriptomic data\n',epilog=example_text, formatter_class=argparse.RawDescriptionHelpFormatter)
     parser._optionals.title = 'Mandatory Arguments'
@@ -55,14 +55,14 @@ def parse_cfg(config):
     SAMPLING_NUM = config.get('METARIB', 'SAMPLING_NUM')
     THREAD = config.getint('BASE','THREAD')
     # EMIRGE
-    global MAX_LENGTH, NUM_ITERATION, IDENTITY, MEAN_INSERT_SIZE, STD_DEV, EMIRGE_DB
+    global MAX_LENGTH, IDENTITY, MEAN_INSERT_SIZE, STD_DEV, EMIRGE_DB
     #EM_PATH = config.get('EMIRGE', 'EM_PATH')
     #EM_PARA = config.get('EMIRGE', 'EM_PARA')
     #EM_REF = config.get('METARIB', 'EM_REF')
     #EM_BT = config.get('METARIB', 'EM_BT')
     MAX_LENGTH = config.get('EMIRGE', 'MAX_LENGTH')
     IDENTITY = config.get('EMIRGE', 'IDENTITY')
-    NUM_ITERATION = config.get('EMIRGE', 'NUM_ITERATION')
+    #NUM_ITERATION = config.get('EMIRGE', 'NUM_ITERATION')
     MEAN_INSERT_SIZE = config.get('EMIRGE', 'MEAN_INSERT_SIZE')
     STD_DEV = config.get('EMIRGE', 'STD_DEV')
     EMIRGE_DB = config.get('EMIRGE', 'EMIRGE_DB')
@@ -85,14 +85,14 @@ def init(config):
     samples_list_path = data_dir+'/samples.list.txt'
     samples_list = []
     samples_fq1_path = {}
-    samples_fq2_path = {}
-    all_fq1 = data_dir+'/all_1.fastq'
-    all_fq2 = data_dir+'/all_2.fastq'
+    samples_fq2_path = {} 
     for i in open(samples_list_path):
-        sample_id = i.strip()
+    	sample_id = i.strip()
         samples_list.append(sample_id)
-        fq1_path = data_dir+'/'+sample_id+'_1.fastq'
-        fq2_path = data_dir+'/'+sample_id+'_2.fastq'
+    	all_fq1 = data_dir+'/'+sample_id+'_1_trimmed.fastq'
+    	all_fq2 = data_dir+'/'+sample_id+'_2_trimmed.fastq'
+        fq1_path = data_dir+'/'+sample_id+'_1_trimmed.fastq'
+        fq2_path = data_dir+'/'+sample_id+'_2_trimmed.fastq'
         samples_fq1_path[sample_id] = fq1_path
         samples_fq2_path[sample_id] = fq2_path
     return(samples_list, samples_fq1_path, samples_fq2_path, all_fq1, all_fq2)
@@ -178,7 +178,7 @@ def run_align_bbmap(current_iter_fa, unmap_fq1, unmap_fq2):
 
 def run_emirge_and_dedup(sub_fq1, sub_fq2, dedup_fa, iter_time):
     cmd = ' '.join(['emirge_amplicon.py', 'emirge_amp/', '-1', sub_fq1, '-2', sub_fq2,
-    '--phred33', '-l', MAX_LENGTH, '-i', MEAN_INSERT_SIZE,'-j', IDENTITY, '-s', STD_DEV, '-a', str(THREAD), '-n', NUM_ITERATION, '-f', EM_REF, '-b', EM_BT, '>> iter_'+str(iter_time)+'_emirge.log','2>> iter_'+str(iter_time)+'_emirge.log'])
+    '--phred33', '-l', MAX_LENGTH, '-i', MEAN_INSERT_SIZE,'-j', IDENTITY, '-s', STD_DEV, '-a', str(THREAD), '-n 40', '-f', EM_REF, '-b', EM_BT, '>> iter_'+str(iter_time)+'_emirge.log','2>> iter_'+str(iter_time)+'_emirge.log'])
    # print(cmd)
     os.system(cmd)
     # change to last iteration folder in EMIRGE
@@ -192,7 +192,7 @@ def run_emirge_and_dedup(sub_fq1, sub_fq2, dedup_fa, iter_time):
     return(all_dedup_fa, iter_fa)
 
 def run_iteration(unmap_fq1, unmap_fq2, dedup_fa, iter_time, keep_running):
-    iter_dir = '/'.join([PROJECT_DIR,'SSU_sequences', 'output_MetaRib', 'Iteration', 'iter_'+str(iter_time)])
+    iter_dir = '/'.join([PROJECT_DIR, 'output_MetaRib', 'Iteration', 'iter_'+str(iter_time)])
     if not os.path.isdir(iter_dir):
         os.mkdir(iter_dir)
     os.chdir(iter_dir)
@@ -229,12 +229,12 @@ def run_iteration(unmap_fq1, unmap_fq2, dedup_fa, iter_time, keep_running):
     if iter_time == 10:
         keep_running = 0
     new_iter_time = iter_time + 1
-    iter_dir = '/'.join([PROJECT_DIR, '/SSU_sequences/output_MetaRib/Iteration'])
+    iter_dir = '/'.join([PROJECT_DIR, '/output_MetaRib/Iteration'])
     os.chdir(iter_dir)
     return (new_unmap_fq1, new_unmap_fq2, all_dedup_fa, new_iter_time, keep_running)
 
 def run_last_iteration(unmap_fq1, unmap_fq2, dedup_fa, iter_time, keep_running):
-    iter_dir = '/'.join([PROJECT_DIR, 'SSU_sequences','output_MetaRib','Iteration','iter_'+str(iter_time)+'_L'])
+    iter_dir = '/'.join([PROJECT_DIR,'output_MetaRib','Iteration','iter_'+str(iter_time)+'_L'])
     if not os.path.isdir(iter_dir):
         os.mkdir(iter_dir)
     os.chdir(iter_dir)
@@ -274,7 +274,7 @@ def run_last_iteration(unmap_fq1, unmap_fq2, dedup_fa, iter_time, keep_running):
 
 
 def cal_mapping_stats(samples_list, samples_fq1_path, samples_fq2_path, all_dedup_fa):
-    ab_dir = PROJECT_DIR+'/SSU_sequences/output_MetaRib/Abundance/'
+    ab_dir = PROJECT_DIR+'/output_MetaRib/Abundance/'
     if not os.path.isdir(ab_dir):
         os.mkdir(ab_dir)
     else:
@@ -307,7 +307,7 @@ def cal_mapping_stats(samples_list, samples_fq1_path, samples_fq2_path, all_dedu
     return(all_scafstats_path, all_covstats_path, dedup_ref)
 
 def generate_and_filter_abundance_table(samples_list, all_scafstats_path, all_covstats_path, dedup_ref):
-    ab_dir = PROJECT_DIR+'/SSU_sequences/output_MetaRib/Abundance/'
+    ab_dir = PROJECT_DIR+'/output_MetaRib/Abundance/'
     os.chdir(ab_dir)
     fa_ids = parse_fa_ids(dedup_ref)
     all_ab_df = pd.DataFrame()
@@ -353,7 +353,7 @@ def generate_and_filter_abundance_table(samples_list, all_scafstats_path, all_co
     # save filtered abundance file
     raw_fa_num = cal_fa_num(os.getcwd()+'/all.dedup.fasta')
     ft_fa_num = cal_fa_num(os.getcwd()+'/all.dedup.filtered.fasta')
-    fa_stat = 'Raw contig:'+str(raw_fa_num)+'\t'+'Filtered contigs: '+str(ft_fa_num)
+    fa_stat = 'Number of reconstructed contig:'+str(raw_fa_num)
     print(fa_stat)
     filter_ab_df = all_ab_df.loc[all_ab_df['Contig_ID'].isin(all_keeped_ctgs)]
     filter_ab_file = os.getcwd()+'/all.dedup.filtered.est.ab.txt'
@@ -372,7 +372,7 @@ def main():
     # INIT
     samples_list, samples_fq1_path, samples_fq2_path, all_fq1, all_fq2  = init(config)
     # build work folder
-    work_dir = PROJECT_DIR+'/SSU_sequences/output_MetaRib'
+    work_dir = PROJECT_DIR+'/output_MetaRib'
     if not os.path.isdir(work_dir):
         os.mkdir(work_dir)
     else:

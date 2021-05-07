@@ -86,11 +86,11 @@ mv taxonomy.tsv "$OUTPUT"/Taxonomy/taxonomy.tsv
 cat "$OUTPUT"/Taxonomy/taxonomy.tsv | sed 1d |sort -k1 -k2 | tr ';' \\t > "$OUTPUT"/Taxonomy/"$SHORTNAME"_renamed_16S18S_recons_qiime2_taxonomy.tsv
 
 #handling length of reconstructed sequences
-cat "$OUTPUT"/SSU_sequences/"$SHORTNAME"_covstats.txt| awk '{ print $1,$3 }' |sort -k1 -k2 | tr ' ' \\t > "$OUTPUT"/SSU_sequences/"$SHORTNAME"_covstats_readlength.tsv
+cat "$OUTPUT"/SSU_sequences/"$SHORTNAME"_covstats.txt| sed 1d | awk '{ print $1,$3 }' |sort -k1 -k2 | tr ' ' \\t > "$OUTPUT"/SSU_sequences/"$SHORTNAME"_covstats_readlength.tsv
 
 
 #handling relative abundance table from bbmap
-cat "$OUTPUT"/SSU_sequences/"$SHORTNAME"_scafstats.txt | sort -k1 -k2 | tr ' ' \\t > "$OUTPUT"/SSU_sequences/"$SHORTNAME"_scafstats_readsCount.tsv
+cat "$OUTPUT"/SSU_sequences/"$SHORTNAME"_scafstats.txt | sed 1d | awk '{ print $1,$8 }' | sort -k1 -k2 | tr ' ' \\t > "$OUTPUT"/SSU_sequences/"$SHORTNAME"_scafstats_readsCount.tsv
 
 #cat "$OUTPUT"/SSU_sequences/"$SHORTNAME"_scafstats_readsCount.tsv | tr ' ' \\t > "$OUTPUT"/SSU_sequences/"$SHORTNAME"_scafstats_readsCount1.tsv
 
@@ -104,6 +104,8 @@ join "$OUTPUT"/SSU_sequences/"$SHORTNAME"_covstats_readlength.tsv "$OUTPUT"/SSU_
 join "$OUTPUT"/Taxonomy/"$SHORTNAME"_renamed_16S18S_recons_qiime2_taxonomy.tsv "$OUTPUT"/Taxonomy/"$SHORTNAME"_SSU_length_abundance.tsv |tr  ' ' \\t > "$OUTPUT"/Taxonomy/"$SHORTNAME"_SSU_taxonomy_abundance_renamed.tsv
 
 awk 'BEGIN{print "ID\tDomain\tPhylum\tClass\tOrder\tFamily\tGenus\tSpecies\tConfidence\tLength\tAssigned_reads\tRelative_abundance "}1' "$OUTPUT"/Taxonomy/"$SHORTNAME"_SSU_taxonomy_abundance_renamed.tsv > "$OUTPUT"/Taxonomy/"$SHORTNAME"_SSU_taxonomy_abundance.tsv
+
+cat "$OUTPUT"/Taxonomy/"$SHORTNAME"_SSU_taxonomy_abundance.tsv | awk '!($11==0){print}' > "$SHORTNAME"_filtered_SSU_taxonomy_abundance.tsv
 
 #cleaning
 rm "$OUTPUT"/SSU_sequences/"$SHORTNAME"_scafstats_readsCount.tsv

@@ -246,7 +246,7 @@ echo "Running MetaRib to reconstruct 16S/18S full length sequences..."`date` | t
 
 echo $SHORTNAME > "$OUTPUT"/quality_control/samples.list.txt
 
-#python2 "$RiboTaxa_DIR"/run_MetaRib.py -cfg "$CONFIG_PATH" -p "$OUTPUT"/quality_control -b "$EMIRGE_DB"/$BWT_NAME -l "$EMIRGE_DB"/"$REF_NAME"
+python2 "$RiboTaxa_DIR"/run_MetaRib.py -cfg "$CONFIG_PATH" -p "$OUTPUT"/quality_control -b "$EMIRGE_DB"/$BWT_NAME -l "$EMIRGE_DB"/"$REF_NAME"
 
 #cd "$OUTPUT"/output_MetaRib && zip -rm Iteration.zip Iteration/ && cd -
 
@@ -277,7 +277,7 @@ cat "$OUTPUT"/SSU_sequences/output_emirge/"$SHORTNAME"_renamed_16S18S_recons.fas
 vsearch --cluster_fast "$OUTPUT"/SSU_sequences/emirge_metarib_SSU_sequences.fasta --centroids "$OUTPUT"/SSU_sequences/emirge_metarib_clustered_SSU_sequences.fasta --id 0.97
 
 #covert small letters into capital letters
-awk '/^>/ {print($0)}; /^[^>]/ {print(toupper($0))}' "$OUTPUT"/SSU_sequences/emirge_metarib_clustered_SSU_sequences.fasta > "$OUTPUT"/SSU_sequences/all_SSU_sequences.fasta
+awk '/^>/ {print($0)}; /^[^>]/ {print(toupper($0))}' "$OUTPUT"/SSU_sequences/emirge_metarib_clustered_SSU_sequences.fasta > "$OUTPUT"/SSU_sequences/"$SHORTNAME"_SSU_sequences.fasta
 
 #rm -rv "$OUTPUT"/output_MetaRib/"$SHORTNAME"/Iteration/iter_1/emirge_amp/!("initial_mapping"|"iter.$NUM_ITERATION")
 
@@ -294,26 +294,25 @@ echo "Reconstructing 16S/18S sequences ends successfully on : "`date` | tee /dev
 
 echo "Calculating relative abundances of reconstructed sequences..." | tee /dev/fd/3
 
-bbmap.sh -Xmx3g in="$OUTPUT"/output_sortmerna/"$SHORTNAME"_mergedpaired.fastq \
-	ref="$OUTPUT"/SSU_sequences/all_SSU_sequences.fasta \
-	vslow \
-	k=12 \
-	scafstats="$OUTPUT"/SSU_sequences/all_scafstats.txt \
-	covstats="$OUTPUT"/SSU_sequences/all_covstats.txt
+bbmap.sh -Xmx3g in1="$OUTPUT"/quality_control/"$SHORTNAME"_1_trimmed.fastq \
+	in2="$OUTPUT"/quality_control/"$SHORTNAME"_2_trimmed.fastq \
+	ref="$OUTPUT"/SSU_sequences/"$SHORTNAME"_SSU_sequences.fasta \
+	scafstats="$OUTPUT"/SSU_sequences/"$SHORTNAME"_scafstats.txt \
+	covstats="$OUTPUT"/SSU_sequences/"$SHORTNAME"_covstats.txt
 
 
-cat "$OUTPUT"/SSU_sequences/all_scafstats.txt | sed 1d | tr ',' \\t | awk '{ print $1,$8 }' | sort -k1 -k2 | awk '!($2==0){print}' | awk '{print $1}' > "$OUTPUT"/SSU_sequences/id_file.txt
+#cat "$OUTPUT"/SSU_sequences/all_scafstats.txt | sed 1d | tr ',' \\t | awk '{ print $1,$8 }' | sort -k1 -k2 | awk '!($2==0){print}' | awk '{print $1}' > "$OUTPUT"/SSU_sequences/id_file.txt
 
-cat "$OUTPUT"/SSU_sequences/all_scafstats.txt | sed 1d | tr ',' \\t | awk '{ print $1,$8 }' | sort -k1 -k2 | awk '!($2==0){print}' > "$OUTPUT"/SSU_sequences/"$SHORTNAME"_scafstats.txt
+#cat "$OUTPUT"/SSU_sequences/all_scafstats.txt | sed 1d | tr ',' \\t | awk '{ print $1,$8 }' | sort -k1 -k2 | awk '!($2==0){print}' > "$OUTPUT"/SSU_sequences/"$SHORTNAME"_scafstats.txt
 
-awk 'NR==FNR{ids[$0]; next} ($1 in ids){ printf ">" $0 }' "$OUTPUT"/SSU_sequences/id_file.txt RS='>' "$OUTPUT"/SSU_sequences/all_SSU_sequences.fasta > "$OUTPUT"/SSU_sequences/"$SHORTNAME"_SSU_sequences.fasta
+#awk 'NR==FNR{ids[$0]; next} ($1 in ids){ printf ">" $0 }' "$OUTPUT"/SSU_sequences/id_file.txt RS='>' "$OUTPUT"/SSU_sequences/all_SSU_sequences.fasta > "$OUTPUT"/SSU_sequences/"$SHORTNAME"_SSU_sequences.fasta
 
-awk -F '\t' 'NR==FNR {id[$1]; next} $1 in id' "$OUTPUT"/SSU_sequences/id_file.txt "$OUTPUT"/SSU_sequences/all_covstats.txt > "$OUTPUT"/SSU_sequences/"$SHORTNAME"_covstats.txt
+#awk -F '\t' 'NR==FNR {id[$1]; next} $1 in id' "$OUTPUT"/SSU_sequences/id_file.txt "$OUTPUT"/SSU_sequences/all_covstats.txt > "$OUTPUT"/SSU_sequences/"$SHORTNAME"_covstats.txt
 
-rm "$OUTPUT"/SSU_sequences/all_scafstats.txt
-rm "$OUTPUT"/SSU_sequences/all_covstats.txt
-rm "$OUTPUT"/SSU_sequences/id_file.txt
-rm "$OUTPUT"/SSU_sequences/all_SSU_sequences.fasta
+#rm "$OUTPUT"/SSU_sequences/all_scafstats.txt
+#rm "$OUTPUT"/SSU_sequences/all_covstats.txt
+#rm "$OUTPUT"/SSU_sequences/id_file.txt
+#rm "$OUTPUT"/SSU_sequences/all_SSU_sequences.fasta
 
 rm "$OUTPUT"/output_sortmerna/"$SHORTNAME"_mergedpaired.fastq
 rm "$OUTPUT"/SSU_sequences/emirge_metarib_SSU_sequences.fasta

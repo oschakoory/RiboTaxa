@@ -1,0 +1,5032 @@
+ 
+RiboTaxa -- A complete pipeline from raw metagenomics to species-level identification
+By Oshma Chakoory, Sophie Marre & Pierre Peyret
+University Clermont Auvergne, France 
+Version: 1.4
+This program is distributed under the AGPL-3.0 License. See LICENSE for more information.
+
+***********************************************************************************************
+Running RiboTaxa on /home/oshchakoory/Documents/MG/Mock/human_indiv_genomes/raw_reads/HG_11
+***********************************************************************************************
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Quality control starting on : lun. 10 mai 2021 15:44:41 CEST
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Run the First quality control on raw data... 
+Analysis complete for HG_11_1.fastq.gz
+Analysis complete for HG_11_2.fastq.gz
+Removing adapters from sequences...
+Trimming sequences...
+Run the second quality control on trimmed data...
+Analysis complete for HG_11_1_trimmed.fastq.gz
+Analysis complete for HG_11_2_trimmed.fastq.gz
+Running multiQC...
+Saving results for quality control...
+Quality control ends successfully on : lun. 10 mai 2021 15:44:59 CEST
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Filtering 16S/18S using sortmerna starting on : lun. 10 mai 2021 15:44:59 CEST
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Database directory for sortmerna = /home/oshchakoory/Documents/Databases/sortmerna_indexed_DB
+Merging paired files into single files... 
+Filtering 16S/18S reads....
+Unmerging single files into paired files....
+Saving results...
+Filtering 16S/18S using sortmerna ends successfully on : lun. 10 mai 2021 15:44:59 CEST
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Reconstructing 16S18S using EMIRGE starting on : lun. 10 mai 2021 15:44:59 CEST
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Database directory for EMIRGE = /home/oshchakoory/Documents/Databases/bowtie_indexed_DB
+Running emirge amplicon to reconstruct 16S/18S full length sequences...
+If you use EMIRGE in your work, please cite these manuscripts, as appropriate.
+
+Miller CS, Baker BJ, Thomas BC, Singer SW, Banfield JF (2011)
+EMIRGE: reconstruction of full-length ribosomal genes from microbial community short read sequencing data.
+Genome biology 12: R44. doi:10.1186/gb-2011-12-5-r44.
+
+Miller CS, Handley KM, Wrighton KC, Frischkorn KR, Thomas BC, Banfield JF (2013)
+Short-Read Assembly of Full-Length 16S Amplicons Reveals Bacterial Diversity in Subsurface Sediments.
+PloS one 8: e56018. doi:10.1371/journal.pone.0056018.
+
+imported _emirge C functions from: /home/oshchakoory/miniconda3/envs/RiboTaxa_py27/lib/python2.7/site-packages/_emirge_amplicon.so
+Command:
+/home/oshchakoory/miniconda3/envs/RiboTaxa_py27/bin/emirge_amplicon.py -1 /home/oshchakoory/Documents/MG/Mock/human_indiv_genomes/quality_control/HG_11_1_trimmed.fastq -f /home/oshchakoory/Documents/Databases/bowtie_indexed_DB/SILVA_138.1_SSURef_NR99_tax_silva_clustered_fixed.fasta -b /home/oshchakoory/Documents/Databases/bowtie_indexed_DB/SILVA_138.1_SSURef_NR99_tax_silva_bowtie_indexed -l 300 -2 /home/oshchakoory/Documents/MG/Mock/human_indiv_genomes/quality_control/HG_11_2_trimmed.fastq -j 1 -n 120 -i 300 -s 100 -a 8 --phred33 /home/oshchakoory/Documents/MG/Mock/human_indiv_genomes/SSU_sequences/output_emirge/HG_11_amplicon_16S18S_recons
+
+EMIRGE started at Mon May 10 15:45:00 2021
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:15
+# reads processed: 100107
+# reads with at least one reported alignment: 46 (0.05%)
+# reads that failed to align: 100061 (99.95%)
+Reported 46 paired-end alignments
+Time searching: 00:00:15
+Overall time: 00:00:15
+usearch v11.0.667_i86linux32, 4.0Gb RAM (32.8Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: sophie.marre@uca.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:01
+# reads processed: 100107
+# reads with at least one reported alignment: 46 (0.05%)
+# reads that failed to align: 100061 (99.95%)
+Reported 113 paired-end alignments
+Time searching: 00:00:01
+Overall time: 00:00:01
+usearch v11.0.667_i86linux32, 4.0Gb RAM (32.8Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: sophie.marre@uca.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:02
+# reads processed: 100107
+# reads with at least one reported alignment: 46 (0.05%)
+# reads that failed to align: 100061 (99.95%)
+Reported 126 paired-end alignments
+Time searching: 00:00:02
+Overall time: 00:00:02
+usearch v11.0.667_i86linux32, 4.0Gb RAM (32.8Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: sophie.marre@uca.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:02
+# reads processed: 100107
+# reads with at least one reported alignment: 46 (0.05%)
+# reads that failed to align: 100061 (99.95%)
+Reported 127 paired-end alignments
+Time searching: 00:00:02
+Overall time: 00:00:02
+usearch v11.0.667_i86linux32, 4.0Gb RAM (32.8Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: sophie.marre@uca.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:01
+# reads processed: 100107
+# reads with at least one reported alignment: 46 (0.05%)
+# reads that failed to align: 100061 (99.95%)
+Reported 126 paired-end alignments
+Time searching: 00:00:01
+Overall time: 00:00:01
+usearch v11.0.667_i86linux32, 4.0Gb RAM (32.8Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: sophie.marre@uca.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:02
+# reads processed: 100107
+# reads with at least one reported alignment: 46 (0.05%)
+# reads that failed to align: 100061 (99.95%)
+Reported 126 paired-end alignments
+Time searching: 00:00:02
+Overall time: 00:00:02
+usearch v11.0.667_i86linux32, 4.0Gb RAM (32.8Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: sophie.marre@uca.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:02
+# reads processed: 100107
+# reads with at least one reported alignment: 46 (0.05%)
+# reads that failed to align: 100061 (99.95%)
+Reported 126 paired-end alignments
+Time searching: 00:00:02
+Overall time: 00:00:02
+usearch v11.0.667_i86linux32, 4.0Gb RAM (32.8Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: sophie.marre@uca.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:01
+# reads processed: 100107
+# reads with at least one reported alignment: 46 (0.05%)
+# reads that failed to align: 100061 (99.95%)
+Reported 126 paired-end alignments
+Time searching: 00:00:01
+Overall time: 00:00:01
+usearch v11.0.667_i86linux32, 4.0Gb RAM (32.8Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: sophie.marre@uca.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:02
+# reads processed: 100107
+# reads with at least one reported alignment: 46 (0.05%)
+# reads that failed to align: 100061 (99.95%)
+Reported 126 paired-end alignments
+Time searching: 00:00:02
+Overall time: 00:00:02
+usearch v11.0.667_i86linux32, 4.0Gb RAM (32.8Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: sophie.marre@uca.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:02
+# reads processed: 100107
+# reads with at least one reported alignment: 46 (0.05%)
+# reads that failed to align: 100061 (99.95%)
+Reported 126 paired-end alignments
+Time searching: 00:00:02
+Overall time: 00:00:02
+usearch v11.0.667_i86linux32, 4.0Gb RAM (32.8Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: sophie.marre@uca.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:02
+# reads processed: 100107
+# reads with at least one reported alignment: 46 (0.05%)
+# reads that failed to align: 100061 (99.95%)
+Reported 126 paired-end alignments
+Time searching: 00:00:02
+Overall time: 00:00:02
+usearch v11.0.667_i86linux32, 4.0Gb RAM (32.8Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: sophie.marre@uca.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:02
+# reads processed: 100107
+# reads with at least one reported alignment: 46 (0.05%)
+# reads that failed to align: 100061 (99.95%)
+Reported 126 paired-end alignments
+Time searching: 00:00:02
+Overall time: 00:00:02
+usearch v11.0.667_i86linux32, 4.0Gb RAM (32.8Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: sophie.marre@uca.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:02
+# reads processed: 100107
+# reads with at least one reported alignment: 46 (0.05%)
+# reads that failed to align: 100061 (99.95%)
+Reported 126 paired-end alignments
+Time searching: 00:00:02
+Overall time: 00:00:02
+usearch v11.0.667_i86linux32, 4.0Gb RAM (32.8Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: sophie.marre@uca.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:02
+# reads processed: 100107
+# reads with at least one reported alignment: 46 (0.05%)
+# reads that failed to align: 100061 (99.95%)
+Reported 126 paired-end alignments
+Time searching: 00:00:02
+Overall time: 00:00:02
+usearch v11.0.667_i86linux32, 4.0Gb RAM (32.8Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: sophie.marre@uca.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:02
+# reads processed: 100107
+# reads with at least one reported alignment: 46 (0.05%)
+# reads that failed to align: 100061 (99.95%)
+Reported 126 paired-end alignments
+Time searching: 00:00:02
+Overall time: 00:00:02
+usearch v11.0.667_i86linux32, 4.0Gb RAM (32.8Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: sophie.marre@uca.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:02
+# reads processed: 100107
+# reads with at least one reported alignment: 46 (0.05%)
+# reads that failed to align: 100061 (99.95%)
+Reported 126 paired-end alignments
+Time searching: 00:00:02
+Overall time: 00:00:02
+usearch v11.0.667_i86linux32, 4.0Gb RAM (32.8Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: sophie.marre@uca.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:02
+# reads processed: 100107
+# reads with at least one reported alignment: 46 (0.05%)
+# reads that failed to align: 100061 (99.95%)
+Reported 126 paired-end alignments
+Time searching: 00:00:02
+Overall time: 00:00:02
+usearch v11.0.667_i86linux32, 4.0Gb RAM (32.8Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: sophie.marre@uca.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:01
+# reads processed: 100107
+# reads with at least one reported alignment: 46 (0.05%)
+# reads that failed to align: 100061 (99.95%)
+Reported 126 paired-end alignments
+Time searching: 00:00:01
+Overall time: 00:00:01
+usearch v11.0.667_i86linux32, 4.0Gb RAM (32.8Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: sophie.marre@uca.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:02
+# reads processed: 100107
+# reads with at least one reported alignment: 46 (0.05%)
+# reads that failed to align: 100061 (99.95%)
+Reported 126 paired-end alignments
+Time searching: 00:00:02
+Overall time: 00:00:02
+usearch v11.0.667_i86linux32, 4.0Gb RAM (32.8Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: sophie.marre@uca.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:02
+# reads processed: 100107
+# reads with at least one reported alignment: 46 (0.05%)
+# reads that failed to align: 100061 (99.95%)
+Reported 126 paired-end alignments
+Time searching: 00:00:02
+Overall time: 00:00:02
+usearch v11.0.667_i86linux32, 4.0Gb RAM (32.8Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: sophie.marre@uca.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:01
+# reads processed: 100107
+# reads with at least one reported alignment: 46 (0.05%)
+# reads that failed to align: 100061 (99.95%)
+Reported 126 paired-end alignments
+Time searching: 00:00:01
+Overall time: 00:00:01
+usearch v11.0.667_i86linux32, 4.0Gb RAM (32.8Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: sophie.marre@uca.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:02
+# reads processed: 100107
+# reads with at least one reported alignment: 46 (0.05%)
+# reads that failed to align: 100061 (99.95%)
+Reported 126 paired-end alignments
+Time searching: 00:00:02
+Overall time: 00:00:02
+usearch v11.0.667_i86linux32, 4.0Gb RAM (32.8Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: sophie.marre@uca.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:02
+# reads processed: 100107
+# reads with at least one reported alignment: 46 (0.05%)
+# reads that failed to align: 100061 (99.95%)
+Reported 126 paired-end alignments
+Time searching: 00:00:02
+Overall time: 00:00:02
+usearch v11.0.667_i86linux32, 4.0Gb RAM (32.8Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: sophie.marre@uca.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:01
+# reads processed: 100107
+# reads with at least one reported alignment: 46 (0.05%)
+# reads that failed to align: 100061 (99.95%)
+Reported 126 paired-end alignments
+Time searching: 00:00:01
+Overall time: 00:00:01
+usearch v11.0.667_i86linux32, 4.0Gb RAM (32.8Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: sophie.marre@uca.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:02
+# reads processed: 100107
+# reads with at least one reported alignment: 46 (0.05%)
+# reads that failed to align: 100061 (99.95%)
+Reported 126 paired-end alignments
+Time searching: 00:00:02
+Overall time: 00:00:02
+usearch v11.0.667_i86linux32, 4.0Gb RAM (32.8Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: sophie.marre@uca.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:02
+# reads processed: 100107
+# reads with at least one reported alignment: 46 (0.05%)
+# reads that failed to align: 100061 (99.95%)
+Reported 126 paired-end alignments
+Time searching: 00:00:02
+Overall time: 00:00:02
+usearch v11.0.667_i86linux32, 4.0Gb RAM (32.8Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: sophie.marre@uca.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:02
+# reads processed: 100107
+# reads with at least one reported alignment: 46 (0.05%)
+# reads that failed to align: 100061 (99.95%)
+Reported 126 paired-end alignments
+Time searching: 00:00:02
+Overall time: 00:00:02
+usearch v11.0.667_i86linux32, 4.0Gb RAM (32.8Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: sophie.marre@uca.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:01
+# reads processed: 100107
+# reads with at least one reported alignment: 46 (0.05%)
+# reads that failed to align: 100061 (99.95%)
+Reported 126 paired-end alignments
+Time searching: 00:00:01
+Overall time: 00:00:01
+usearch v11.0.667_i86linux32, 4.0Gb RAM (32.8Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: sophie.marre@uca.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:02
+# reads processed: 100107
+# reads with at least one reported alignment: 46 (0.05%)
+# reads that failed to align: 100061 (99.95%)
+Reported 126 paired-end alignments
+Time searching: 00:00:02
+Overall time: 00:00:02
+usearch v11.0.667_i86linux32, 4.0Gb RAM (32.8Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: sophie.marre@uca.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:02
+# reads processed: 100107
+# reads with at least one reported alignment: 46 (0.05%)
+# reads that failed to align: 100061 (99.95%)
+Reported 126 paired-end alignments
+Time searching: 00:00:02
+Overall time: 00:00:02
+usearch v11.0.667_i86linux32, 4.0Gb RAM (32.8Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: sophie.marre@uca.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:01
+# reads processed: 100107
+# reads with at least one reported alignment: 46 (0.05%)
+# reads that failed to align: 100061 (99.95%)
+Reported 126 paired-end alignments
+Time searching: 00:00:01
+Overall time: 00:00:01
+usearch v11.0.667_i86linux32, 4.0Gb RAM (32.8Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: sophie.marre@uca.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:02
+# reads processed: 100107
+# reads with at least one reported alignment: 46 (0.05%)
+# reads that failed to align: 100061 (99.95%)
+Reported 126 paired-end alignments
+Time searching: 00:00:02
+Overall time: 00:00:02
+usearch v11.0.667_i86linux32, 4.0Gb RAM (32.8Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: sophie.marre@uca.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:02
+# reads processed: 100107
+# reads with at least one reported alignment: 46 (0.05%)
+# reads that failed to align: 100061 (99.95%)
+Reported 126 paired-end alignments
+Time searching: 00:00:02
+Overall time: 00:00:02
+usearch v11.0.667_i86linux32, 4.0Gb RAM (32.8Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: sophie.marre@uca.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:01
+# reads processed: 100107
+# reads with at least one reported alignment: 46 (0.05%)
+# reads that failed to align: 100061 (99.95%)
+Reported 126 paired-end alignments
+Time searching: 00:00:01
+Overall time: 00:00:01
+usearch v11.0.667_i86linux32, 4.0Gb RAM (32.8Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: sophie.marre@uca.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:02
+# reads processed: 100107
+# reads with at least one reported alignment: 46 (0.05%)
+# reads that failed to align: 100061 (99.95%)
+Reported 126 paired-end alignments
+Time searching: 00:00:02
+Overall time: 00:00:02
+usearch v11.0.667_i86linux32, 4.0Gb RAM (32.8Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: sophie.marre@uca.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:02
+# reads processed: 100107
+# reads with at least one reported alignment: 46 (0.05%)
+# reads that failed to align: 100061 (99.95%)
+Reported 126 paired-end alignments
+Time searching: 00:00:02
+Overall time: 00:00:02
+usearch v11.0.667_i86linux32, 4.0Gb RAM (32.8Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: sophie.marre@uca.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:02
+# reads processed: 100107
+# reads with at least one reported alignment: 46 (0.05%)
+# reads that failed to align: 100061 (99.95%)
+Reported 126 paired-end alignments
+Time searching: 00:00:02
+Overall time: 00:00:02
+usearch v11.0.667_i86linux32, 4.0Gb RAM (32.8Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: sophie.marre@uca.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:01
+# reads processed: 100107
+# reads with at least one reported alignment: 46 (0.05%)
+# reads that failed to align: 100061 (99.95%)
+Reported 126 paired-end alignments
+Time searching: 00:00:01
+Overall time: 00:00:01
+usearch v11.0.667_i86linux32, 4.0Gb RAM (32.8Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: sophie.marre@uca.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:02
+# reads processed: 100107
+# reads with at least one reported alignment: 46 (0.05%)
+# reads that failed to align: 100061 (99.95%)
+Reported 126 paired-end alignments
+Time searching: 00:00:02
+Overall time: 00:00:02
+usearch v11.0.667_i86linux32, 4.0Gb RAM (32.8Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: sophie.marre@uca.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:02
+# reads processed: 100107
+# reads with at least one reported alignment: 46 (0.05%)
+# reads that failed to align: 100061 (99.95%)
+Reported 126 paired-end alignments
+Time searching: 00:00:02
+Overall time: 00:00:02
+usearch v11.0.667_i86linux32, 4.0Gb RAM (32.8Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: sophie.marre@uca.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:01
+# reads processed: 100107
+# reads with at least one reported alignment: 46 (0.05%)
+# reads that failed to align: 100061 (99.95%)
+Reported 126 paired-end alignments
+Time searching: 00:00:01
+Overall time: 00:00:01
+usearch v11.0.667_i86linux32, 4.0Gb RAM (32.8Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: sophie.marre@uca.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:02
+# reads processed: 100107
+# reads with at least one reported alignment: 46 (0.05%)
+# reads that failed to align: 100061 (99.95%)
+Reported 126 paired-end alignments
+Time searching: 00:00:02
+Overall time: 00:00:02
+usearch v11.0.667_i86linux32, 4.0Gb RAM (32.8Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: sophie.marre@uca.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:02
+# reads processed: 100107
+# reads with at least one reported alignment: 46 (0.05%)
+# reads that failed to align: 100061 (99.95%)
+Reported 126 paired-end alignments
+Time searching: 00:00:02
+Overall time: 00:00:02
+usearch v11.0.667_i86linux32, 4.0Gb RAM (32.8Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: sophie.marre@uca.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:01
+# reads processed: 100107
+# reads with at least one reported alignment: 46 (0.05%)
+# reads that failed to align: 100061 (99.95%)
+Reported 126 paired-end alignments
+Time searching: 00:00:01
+Overall time: 00:00:01
+usearch v11.0.667_i86linux32, 4.0Gb RAM (32.8Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: sophie.marre@uca.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:02
+# reads processed: 100107
+# reads with at least one reported alignment: 46 (0.05%)
+# reads that failed to align: 100061 (99.95%)
+Reported 126 paired-end alignments
+Time searching: 00:00:02
+Overall time: 00:00:02
+usearch v11.0.667_i86linux32, 4.0Gb RAM (32.8Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: sophie.marre@uca.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:02
+# reads processed: 100107
+# reads with at least one reported alignment: 46 (0.05%)
+# reads that failed to align: 100061 (99.95%)
+Reported 126 paired-end alignments
+Time searching: 00:00:02
+Overall time: 00:00:02
+usearch v11.0.667_i86linux32, 4.0Gb RAM (32.8Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: sophie.marre@uca.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:02
+# reads processed: 100107
+# reads with at least one reported alignment: 46 (0.05%)
+# reads that failed to align: 100061 (99.95%)
+Reported 126 paired-end alignments
+Time searching: 00:00:02
+Overall time: 00:00:02
+usearch v11.0.667_i86linux32, 4.0Gb RAM (32.8Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: sophie.marre@uca.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:01
+# reads processed: 100107
+# reads with at least one reported alignment: 46 (0.05%)
+# reads that failed to align: 100061 (99.95%)
+Reported 126 paired-end alignments
+Time searching: 00:00:01
+Overall time: 00:00:01
+usearch v11.0.667_i86linux32, 4.0Gb RAM (32.8Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: sophie.marre@uca.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:02
+# reads processed: 100107
+# reads with at least one reported alignment: 46 (0.05%)
+# reads that failed to align: 100061 (99.95%)
+Reported 126 paired-end alignments
+Time searching: 00:00:02
+Overall time: 00:00:02
+usearch v11.0.667_i86linux32, 4.0Gb RAM (32.8Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: sophie.marre@uca.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:02
+# reads processed: 100107
+# reads with at least one reported alignment: 46 (0.05%)
+# reads that failed to align: 100061 (99.95%)
+Reported 126 paired-end alignments
+Time searching: 00:00:02
+Overall time: 00:00:02
+usearch v11.0.667_i86linux32, 4.0Gb RAM (32.8Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: sophie.marre@uca.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:01
+# reads processed: 100107
+# reads with at least one reported alignment: 46 (0.05%)
+# reads that failed to align: 100061 (99.95%)
+Reported 126 paired-end alignments
+Time searching: 00:00:01
+Overall time: 00:00:01
+usearch v11.0.667_i86linux32, 4.0Gb RAM (32.8Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: sophie.marre@uca.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:02
+# reads processed: 100107
+# reads with at least one reported alignment: 46 (0.05%)
+# reads that failed to align: 100061 (99.95%)
+Reported 126 paired-end alignments
+Time searching: 00:00:02
+Overall time: 00:00:02
+usearch v11.0.667_i86linux32, 4.0Gb RAM (32.8Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: sophie.marre@uca.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:02
+# reads processed: 100107
+# reads with at least one reported alignment: 46 (0.05%)
+# reads that failed to align: 100061 (99.95%)
+Reported 126 paired-end alignments
+Time searching: 00:00:02
+Overall time: 00:00:02
+usearch v11.0.667_i86linux32, 4.0Gb RAM (32.8Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: sophie.marre@uca.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:02
+# reads processed: 100107
+# reads with at least one reported alignment: 46 (0.05%)
+# reads that failed to align: 100061 (99.95%)
+Reported 126 paired-end alignments
+Time searching: 00:00:02
+Overall time: 00:00:02
+usearch v11.0.667_i86linux32, 4.0Gb RAM (32.8Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: sophie.marre@uca.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:02
+# reads processed: 100107
+# reads with at least one reported alignment: 46 (0.05%)
+# reads that failed to align: 100061 (99.95%)
+Reported 126 paired-end alignments
+Time searching: 00:00:02
+Overall time: 00:00:02
+usearch v11.0.667_i86linux32, 4.0Gb RAM (32.8Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: sophie.marre@uca.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:02
+# reads processed: 100107
+# reads with at least one reported alignment: 46 (0.05%)
+# reads that failed to align: 100061 (99.95%)
+Reported 126 paired-end alignments
+Time searching: 00:00:02
+Overall time: 00:00:02
+usearch v11.0.667_i86linux32, 4.0Gb RAM (32.8Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: sophie.marre@uca.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:02
+# reads processed: 100107
+# reads with at least one reported alignment: 46 (0.05%)
+# reads that failed to align: 100061 (99.95%)
+Reported 126 paired-end alignments
+Time searching: 00:00:02
+Overall time: 00:00:02
+usearch v11.0.667_i86linux32, 4.0Gb RAM (32.8Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: sophie.marre@uca.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:01
+# reads processed: 100107
+# reads with at least one reported alignment: 46 (0.05%)
+# reads that failed to align: 100061 (99.95%)
+Reported 126 paired-end alignments
+Time searching: 00:00:01
+Overall time: 00:00:01
+usearch v11.0.667_i86linux32, 4.0Gb RAM (32.8Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: sophie.marre@uca.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:02
+# reads processed: 100107
+# reads with at least one reported alignment: 46 (0.05%)
+# reads that failed to align: 100061 (99.95%)
+Reported 126 paired-end alignments
+Time searching: 00:00:02
+Overall time: 00:00:02
+usearch v11.0.667_i86linux32, 4.0Gb RAM (32.8Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: sophie.marre@uca.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:02
+# reads processed: 100107
+# reads with at least one reported alignment: 46 (0.05%)
+# reads that failed to align: 100061 (99.95%)
+Reported 126 paired-end alignments
+Time searching: 00:00:02
+Overall time: 00:00:02
+usearch v11.0.667_i86linux32, 4.0Gb RAM (32.8Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: sophie.marre@uca.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:01
+# reads processed: 100107
+# reads with at least one reported alignment: 46 (0.05%)
+# reads that failed to align: 100061 (99.95%)
+Reported 126 paired-end alignments
+Time searching: 00:00:01
+Overall time: 00:00:01
+usearch v11.0.667_i86linux32, 4.0Gb RAM (32.8Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: sophie.marre@uca.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:02
+# reads processed: 100107
+# reads with at least one reported alignment: 46 (0.05%)
+# reads that failed to align: 100061 (99.95%)
+Reported 126 paired-end alignments
+Time searching: 00:00:02
+Overall time: 00:00:02
+usearch v11.0.667_i86linux32, 4.0Gb RAM (32.8Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: sophie.marre@uca.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:02
+# reads processed: 100107
+# reads with at least one reported alignment: 46 (0.05%)
+# reads that failed to align: 100061 (99.95%)
+Reported 126 paired-end alignments
+Time searching: 00:00:02
+Overall time: 00:00:02
+usearch v11.0.667_i86linux32, 4.0Gb RAM (32.8Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: sophie.marre@uca.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:01
+# reads processed: 100107
+# reads with at least one reported alignment: 46 (0.05%)
+# reads that failed to align: 100061 (99.95%)
+Reported 126 paired-end alignments
+Time searching: 00:00:01
+Overall time: 00:00:01
+usearch v11.0.667_i86linux32, 4.0Gb RAM (32.8Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: sophie.marre@uca.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:02
+# reads processed: 100107
+# reads with at least one reported alignment: 46 (0.05%)
+# reads that failed to align: 100061 (99.95%)
+Reported 126 paired-end alignments
+Time searching: 00:00:02
+Overall time: 00:00:02
+usearch v11.0.667_i86linux32, 4.0Gb RAM (32.8Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: sophie.marre@uca.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:02
+# reads processed: 100107
+# reads with at least one reported alignment: 46 (0.05%)
+# reads that failed to align: 100061 (99.95%)
+Reported 126 paired-end alignments
+Time searching: 00:00:02
+Overall time: 00:00:02
+usearch v11.0.667_i86linux32, 4.0Gb RAM (32.8Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: sophie.marre@uca.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:02
+# reads processed: 100107
+# reads with at least one reported alignment: 46 (0.05%)
+# reads that failed to align: 100061 (99.95%)
+Reported 126 paired-end alignments
+Time searching: 00:00:02
+Overall time: 00:00:02
+usearch v11.0.667_i86linux32, 4.0Gb RAM (32.8Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: sophie.marre@uca.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:02
+# reads processed: 100107
+# reads with at least one reported alignment: 46 (0.05%)
+# reads that failed to align: 100061 (99.95%)
+Reported 126 paired-end alignments
+Time searching: 00:00:02
+Overall time: 00:00:02
+usearch v11.0.667_i86linux32, 4.0Gb RAM (32.8Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: sophie.marre@uca.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:02
+# reads processed: 100107
+# reads with at least one reported alignment: 46 (0.05%)
+# reads that failed to align: 100061 (99.95%)
+Reported 126 paired-end alignments
+Time searching: 00:00:02
+Overall time: 00:00:02
+usearch v11.0.667_i86linux32, 4.0Gb RAM (32.8Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: sophie.marre@uca.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:02
+# reads processed: 100107
+# reads with at least one reported alignment: 46 (0.05%)
+# reads that failed to align: 100061 (99.95%)
+Reported 126 paired-end alignments
+Time searching: 00:00:02
+Overall time: 00:00:02
+usearch v11.0.667_i86linux32, 4.0Gb RAM (32.8Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: sophie.marre@uca.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:01
+# reads processed: 100107
+# reads with at least one reported alignment: 46 (0.05%)
+# reads that failed to align: 100061 (99.95%)
+Reported 126 paired-end alignments
+Time searching: 00:00:01
+Overall time: 00:00:01
+usearch v11.0.667_i86linux32, 4.0Gb RAM (32.8Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: sophie.marre@uca.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:02
+# reads processed: 100107
+# reads with at least one reported alignment: 46 (0.05%)
+# reads that failed to align: 100061 (99.95%)
+Reported 126 paired-end alignments
+Time searching: 00:00:02
+Overall time: 00:00:02
+usearch v11.0.667_i86linux32, 4.0Gb RAM (32.8Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: sophie.marre@uca.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:02
+# reads processed: 100107
+# reads with at least one reported alignment: 46 (0.05%)
+# reads that failed to align: 100061 (99.95%)
+Reported 126 paired-end alignments
+Time searching: 00:00:02
+Overall time: 00:00:02
+usearch v11.0.667_i86linux32, 4.0Gb RAM (32.8Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: sophie.marre@uca.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:01
+# reads processed: 100107
+# reads with at least one reported alignment: 46 (0.05%)
+# reads that failed to align: 100061 (99.95%)
+Reported 126 paired-end alignments
+Time searching: 00:00:01
+Overall time: 00:00:01
+usearch v11.0.667_i86linux32, 4.0Gb RAM (32.8Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: sophie.marre@uca.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:02
+# reads processed: 100107
+# reads with at least one reported alignment: 46 (0.05%)
+# reads that failed to align: 100061 (99.95%)
+Reported 126 paired-end alignments
+Time searching: 00:00:02
+Overall time: 00:00:02
+usearch v11.0.667_i86linux32, 4.0Gb RAM (32.8Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: sophie.marre@uca.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:02
+# reads processed: 100107
+# reads with at least one reported alignment: 46 (0.05%)
+# reads that failed to align: 100061 (99.95%)
+Reported 126 paired-end alignments
+Time searching: 00:00:02
+Overall time: 00:00:02
+usearch v11.0.667_i86linux32, 4.0Gb RAM (32.8Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: sophie.marre@uca.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:02
+# reads processed: 100107
+# reads with at least one reported alignment: 46 (0.05%)
+# reads that failed to align: 100061 (99.95%)
+Reported 126 paired-end alignments
+Time searching: 00:00:02
+Overall time: 00:00:02
+usearch v11.0.667_i86linux32, 4.0Gb RAM (32.8Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: sophie.marre@uca.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:01
+# reads processed: 100107
+# reads with at least one reported alignment: 46 (0.05%)
+# reads that failed to align: 100061 (99.95%)
+Reported 126 paired-end alignments
+Time searching: 00:00:01
+Overall time: 00:00:01
+usearch v11.0.667_i86linux32, 4.0Gb RAM (32.8Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: sophie.marre@uca.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:02
+# reads processed: 100107
+# reads with at least one reported alignment: 46 (0.05%)
+# reads that failed to align: 100061 (99.95%)
+Reported 126 paired-end alignments
+Time searching: 00:00:02
+Overall time: 00:00:02
+usearch v11.0.667_i86linux32, 4.0Gb RAM (32.8Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: sophie.marre@uca.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:02
+# reads processed: 100107
+# reads with at least one reported alignment: 46 (0.05%)
+# reads that failed to align: 100061 (99.95%)
+Reported 126 paired-end alignments
+Time searching: 00:00:02
+Overall time: 00:00:02
+usearch v11.0.667_i86linux32, 4.0Gb RAM (32.8Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: sophie.marre@uca.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:02
+# reads processed: 100107
+# reads with at least one reported alignment: 46 (0.05%)
+# reads that failed to align: 100061 (99.95%)
+Reported 126 paired-end alignments
+Time searching: 00:00:02
+Overall time: 00:00:02
+usearch v11.0.667_i86linux32, 4.0Gb RAM (32.8Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: sophie.marre@uca.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:02
+# reads processed: 100107
+# reads with at least one reported alignment: 46 (0.05%)
+# reads that failed to align: 100061 (99.95%)
+Reported 126 paired-end alignments
+Time searching: 00:00:02
+Overall time: 00:00:02
+usearch v11.0.667_i86linux32, 4.0Gb RAM (32.8Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: sophie.marre@uca.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:01
+# reads processed: 100107
+# reads with at least one reported alignment: 46 (0.05%)
+# reads that failed to align: 100061 (99.95%)
+Reported 126 paired-end alignments
+Time searching: 00:00:01
+Overall time: 00:00:01
+usearch v11.0.667_i86linux32, 4.0Gb RAM (32.8Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: sophie.marre@uca.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:02
+# reads processed: 100107
+# reads with at least one reported alignment: 46 (0.05%)
+# reads that failed to align: 100061 (99.95%)
+Reported 126 paired-end alignments
+Time searching: 00:00:02
+Overall time: 00:00:02
+usearch v11.0.667_i86linux32, 4.0Gb RAM (32.8Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: sophie.marre@uca.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:02
+# reads processed: 100107
+# reads with at least one reported alignment: 46 (0.05%)
+# reads that failed to align: 100061 (99.95%)
+Reported 126 paired-end alignments
+Time searching: 00:00:02
+Overall time: 00:00:02
+usearch v11.0.667_i86linux32, 4.0Gb RAM (32.8Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: sophie.marre@uca.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:02
+# reads processed: 100107
+# reads with at least one reported alignment: 46 (0.05%)
+# reads that failed to align: 100061 (99.95%)
+Reported 126 paired-end alignments
+Time searching: 00:00:02
+Overall time: 00:00:02
+usearch v11.0.667_i86linux32, 4.0Gb RAM (32.8Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: sophie.marre@uca.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:01
+# reads processed: 100107
+# reads with at least one reported alignment: 46 (0.05%)
+# reads that failed to align: 100061 (99.95%)
+Reported 126 paired-end alignments
+Time searching: 00:00:01
+Overall time: 00:00:01
+usearch v11.0.667_i86linux32, 4.0Gb RAM (32.8Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: sophie.marre@uca.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:02
+# reads processed: 100107
+# reads with at least one reported alignment: 46 (0.05%)
+# reads that failed to align: 100061 (99.95%)
+Reported 126 paired-end alignments
+Time searching: 00:00:02
+Overall time: 00:00:02
+usearch v11.0.667_i86linux32, 4.0Gb RAM (32.8Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: sophie.marre@uca.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:02
+# reads processed: 100107
+# reads with at least one reported alignment: 46 (0.05%)
+# reads that failed to align: 100061 (99.95%)
+Reported 126 paired-end alignments
+Time searching: 00:00:02
+Overall time: 00:00:02
+usearch v11.0.667_i86linux32, 4.0Gb RAM (32.8Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: sophie.marre@uca.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:02
+# reads processed: 100107
+# reads with at least one reported alignment: 46 (0.05%)
+# reads that failed to align: 100061 (99.95%)
+Reported 126 paired-end alignments
+Time searching: 00:00:02
+Overall time: 00:00:02
+usearch v11.0.667_i86linux32, 4.0Gb RAM (32.8Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: sophie.marre@uca.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:01
+# reads processed: 100107
+# reads with at least one reported alignment: 46 (0.05%)
+# reads that failed to align: 100061 (99.95%)
+Reported 126 paired-end alignments
+Time searching: 00:00:01
+Overall time: 00:00:01
+usearch v11.0.667_i86linux32, 4.0Gb RAM (32.8Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: sophie.marre@uca.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:02
+# reads processed: 100107
+# reads with at least one reported alignment: 46 (0.05%)
+# reads that failed to align: 100061 (99.95%)
+Reported 126 paired-end alignments
+Time searching: 00:00:02
+Overall time: 00:00:02
+usearch v11.0.667_i86linux32, 4.0Gb RAM (32.8Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: sophie.marre@uca.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:02
+# reads processed: 100107
+# reads with at least one reported alignment: 46 (0.05%)
+# reads that failed to align: 100061 (99.95%)
+Reported 126 paired-end alignments
+Time searching: 00:00:02
+Overall time: 00:00:02
+usearch v11.0.667_i86linux32, 4.0Gb RAM (32.8Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: sophie.marre@uca.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:01
+# reads processed: 100107
+# reads with at least one reported alignment: 46 (0.05%)
+# reads that failed to align: 100061 (99.95%)
+Reported 126 paired-end alignments
+Time searching: 00:00:01
+Overall time: 00:00:01
+usearch v11.0.667_i86linux32, 4.0Gb RAM (32.8Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: sophie.marre@uca.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:02
+# reads processed: 100107
+# reads with at least one reported alignment: 46 (0.05%)
+# reads that failed to align: 100061 (99.95%)
+Reported 126 paired-end alignments
+Time searching: 00:00:02
+Overall time: 00:00:02
+usearch v11.0.667_i86linux32, 4.0Gb RAM (32.8Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: sophie.marre@uca.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:02
+# reads processed: 100107
+# reads with at least one reported alignment: 46 (0.05%)
+# reads that failed to align: 100061 (99.95%)
+Reported 126 paired-end alignments
+Time searching: 00:00:02
+Overall time: 00:00:02
+usearch v11.0.667_i86linux32, 4.0Gb RAM (32.8Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: sophie.marre@uca.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:02
+# reads processed: 100107
+# reads with at least one reported alignment: 46 (0.05%)
+# reads that failed to align: 100061 (99.95%)
+Reported 126 paired-end alignments
+Time searching: 00:00:02
+Overall time: 00:00:02
+usearch v11.0.667_i86linux32, 4.0Gb RAM (32.8Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: sophie.marre@uca.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:02
+# reads processed: 100107
+# reads with at least one reported alignment: 46 (0.05%)
+# reads that failed to align: 100061 (99.95%)
+Reported 126 paired-end alignments
+Time searching: 00:00:02
+Overall time: 00:00:02
+usearch v11.0.667_i86linux32, 4.0Gb RAM (32.8Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: sophie.marre@uca.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:02
+# reads processed: 100107
+# reads with at least one reported alignment: 46 (0.05%)
+# reads that failed to align: 100061 (99.95%)
+Reported 126 paired-end alignments
+Time searching: 00:00:02
+Overall time: 00:00:02
+usearch v11.0.667_i86linux32, 4.0Gb RAM (32.8Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: sophie.marre@uca.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:02
+# reads processed: 100107
+# reads with at least one reported alignment: 46 (0.05%)
+# reads that failed to align: 100061 (99.95%)
+Reported 126 paired-end alignments
+Time searching: 00:00:02
+Overall time: 00:00:02
+usearch v11.0.667_i86linux32, 4.0Gb RAM (32.8Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: sophie.marre@uca.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:01
+# reads processed: 100107
+# reads with at least one reported alignment: 46 (0.05%)
+# reads that failed to align: 100061 (99.95%)
+Reported 126 paired-end alignments
+Time searching: 00:00:01
+Overall time: 00:00:01
+usearch v11.0.667_i86linux32, 4.0Gb RAM (32.8Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: sophie.marre@uca.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:02
+# reads processed: 100107
+# reads with at least one reported alignment: 46 (0.05%)
+# reads that failed to align: 100061 (99.95%)
+Reported 126 paired-end alignments
+Time searching: 00:00:02
+Overall time: 00:00:02
+usearch v11.0.667_i86linux32, 4.0Gb RAM (32.8Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: sophie.marre@uca.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:02
+# reads processed: 100107
+# reads with at least one reported alignment: 46 (0.05%)
+# reads that failed to align: 100061 (99.95%)
+Reported 126 paired-end alignments
+Time searching: 00:00:02
+Overall time: 00:00:02
+usearch v11.0.667_i86linux32, 4.0Gb RAM (32.8Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: sophie.marre@uca.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:01
+# reads processed: 100107
+# reads with at least one reported alignment: 46 (0.05%)
+# reads that failed to align: 100061 (99.95%)
+Reported 126 paired-end alignments
+Time searching: 00:00:01
+Overall time: 00:00:01
+usearch v11.0.667_i86linux32, 4.0Gb RAM (32.8Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: sophie.marre@uca.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:02
+# reads processed: 100107
+# reads with at least one reported alignment: 46 (0.05%)
+# reads that failed to align: 100061 (99.95%)
+Reported 126 paired-end alignments
+Time searching: 00:00:02
+Overall time: 00:00:02
+usearch v11.0.667_i86linux32, 4.0Gb RAM (32.8Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: sophie.marre@uca.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:02
+# reads processed: 100107
+# reads with at least one reported alignment: 46 (0.05%)
+# reads that failed to align: 100061 (99.95%)
+Reported 126 paired-end alignments
+Time searching: 00:00:02
+Overall time: 00:00:02
+usearch v11.0.667_i86linux32, 4.0Gb RAM (32.8Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: sophie.marre@uca.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:02
+# reads processed: 100107
+# reads with at least one reported alignment: 46 (0.05%)
+# reads that failed to align: 100061 (99.95%)
+Reported 126 paired-end alignments
+Time searching: 00:00:02
+Overall time: 00:00:02
+usearch v11.0.667_i86linux32, 4.0Gb RAM (32.8Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: sophie.marre@uca.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:01
+# reads processed: 100107
+# reads with at least one reported alignment: 46 (0.05%)
+# reads that failed to align: 100061 (99.95%)
+Reported 126 paired-end alignments
+Time searching: 00:00:01
+Overall time: 00:00:01
+usearch v11.0.667_i86linux32, 4.0Gb RAM (32.8Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: sophie.marre@uca.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:02
+# reads processed: 100107
+# reads with at least one reported alignment: 46 (0.05%)
+# reads that failed to align: 100061 (99.95%)
+Reported 126 paired-end alignments
+Time searching: 00:00:02
+Overall time: 00:00:02
+usearch v11.0.667_i86linux32, 4.0Gb RAM (32.8Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: sophie.marre@uca.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:02
+# reads processed: 100107
+# reads with at least one reported alignment: 46 (0.05%)
+# reads that failed to align: 100061 (99.95%)
+Reported 126 paired-end alignments
+Time searching: 00:00:02
+Overall time: 00:00:02
+usearch v11.0.667_i86linux32, 4.0Gb RAM (32.8Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: sophie.marre@uca.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:01
+# reads processed: 100107
+# reads with at least one reported alignment: 46 (0.05%)
+# reads that failed to align: 100061 (99.95%)
+Reported 126 paired-end alignments
+Time searching: 00:00:01
+Overall time: 00:00:01
+usearch v11.0.667_i86linux32, 4.0Gb RAM (32.8Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: sophie.marre@uca.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:02
+# reads processed: 100107
+# reads with at least one reported alignment: 46 (0.05%)
+# reads that failed to align: 100061 (99.95%)
+Reported 126 paired-end alignments
+Time searching: 00:00:02
+Overall time: 00:00:02
+usearch v11.0.667_i86linux32, 4.0Gb RAM (32.8Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: sophie.marre@uca.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:02
+# reads processed: 100107
+# reads with at least one reported alignment: 46 (0.05%)
+# reads that failed to align: 100061 (99.95%)
+Reported 126 paired-end alignments
+Time searching: 00:00:02
+Overall time: 00:00:02
+usearch v11.0.667_i86linux32, 4.0Gb RAM (32.8Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: sophie.marre@uca.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:02
+# reads processed: 100107
+# reads with at least one reported alignment: 46 (0.05%)
+# reads that failed to align: 100061 (99.95%)
+Reported 126 paired-end alignments
+Time searching: 00:00:02
+Overall time: 00:00:02
+usearch v11.0.667_i86linux32, 4.0Gb RAM (32.8Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: sophie.marre@uca.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:01
+# reads processed: 100107
+# reads with at least one reported alignment: 46 (0.05%)
+# reads that failed to align: 100061 (99.95%)
+Reported 126 paired-end alignments
+Time searching: 00:00:01
+Overall time: 00:00:01
+usearch v11.0.667_i86linux32, 4.0Gb RAM (32.8Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: sophie.marre@uca.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:02
+# reads processed: 100107
+# reads with at least one reported alignment: 46 (0.05%)
+# reads that failed to align: 100061 (99.95%)
+Reported 126 paired-end alignments
+Time searching: 00:00:02
+Overall time: 00:00:02
+usearch v11.0.667_i86linux32, 4.0Gb RAM (32.8Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: sophie.marre@uca.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:02
+# reads processed: 100107
+# reads with at least one reported alignment: 46 (0.05%)
+# reads that failed to align: 100061 (99.95%)
+Reported 126 paired-end alignments
+Time searching: 00:00:02
+Overall time: 00:00:02
+usearch v11.0.667_i86linux32, 4.0Gb RAM (32.8Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: sophie.marre@uca.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:01
+# reads processed: 100107
+# reads with at least one reported alignment: 46 (0.05%)
+# reads that failed to align: 100061 (99.95%)
+Reported 126 paired-end alignments
+Time searching: 00:00:01
+Overall time: 00:00:01
+usearch v11.0.667_i86linux32, 4.0Gb RAM (32.8Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: sophie.marre@uca.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:02
+# reads processed: 100107
+# reads with at least one reported alignment: 46 (0.05%)
+# reads that failed to align: 100061 (99.95%)
+Reported 126 paired-end alignments
+Time searching: 00:00:02
+Overall time: 00:00:02
+usearch v11.0.667_i86linux32, 4.0Gb RAM (32.8Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: sophie.marre@uca.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:02
+# reads processed: 100107
+# reads with at least one reported alignment: 46 (0.05%)
+# reads that failed to align: 100061 (99.95%)
+Reported 126 paired-end alignments
+Time searching: 00:00:02
+Overall time: 00:00:02
+usearch v11.0.667_i86linux32, 4.0Gb RAM (32.8Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: sophie.marre@uca.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:02
+# reads processed: 100107
+# reads with at least one reported alignment: 46 (0.05%)
+# reads that failed to align: 100061 (99.95%)
+Reported 126 paired-end alignments
+Time searching: 00:00:02
+Overall time: 00:00:02
+usearch v11.0.667_i86linux32, 4.0Gb RAM (32.8Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: sophie.marre@uca.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:01
+# reads processed: 100107
+# reads with at least one reported alignment: 46 (0.05%)
+# reads that failed to align: 100061 (99.95%)
+Reported 126 paired-end alignments
+Time searching: 00:00:01
+Overall time: 00:00:01
+EMIRGE finished at Mon May 10 15:49:57 2021.  Total time: 0:04:56.929357
+Merging iterations into fasta sequence... 
+/home/oshchakoory/Documents/RiboTaxa
+Running MetaRib to reconstruct 16S/18S full length sequences...lun. 10 mai 2021 15:49:58 CEST
+====START ITERATION 1====
+Iteration: 1	Total contigs: 2	New contigs: 2	unmapped fastq (MB): 43.53
+====FINISH ITERATION 1====
+====START LAST ITERATION 2====
+Iteration: 2	Total contigs: 2	New contigs: 0
+====FINISH ITERATION 2====
+====START POSTPROCESSING====
+Number of reconstructed contig:2
+====FINISH POSTPROCESSING====
+====PROGRAM FINISHED!====
+/home/oshchakoory/Documents/RiboTaxa
+Finalising reconstructed sequences...
+Saving results...
+Reconstructing 16S/18S sequences ends successfully on : lun. 10 mai 2021 15:52:02 CEST
+Calculating relative abundances of reconstructed sequences...
+Saving results...
+Relative abundance calculation ends successfully on : lun. 10 mai 2021 15:52:11 CEST
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Taxonomic classification using sklearn classifier of QIIME2020.8 ... lun. 10 mai 2021 15:52:18 CEST
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Importing data ...
+Imported /home/oshchakoory/Documents/MG/Mock/human_indiv_genomes/SSU_sequences/HG_11_SSU_sequences.fasta as DNASequencesDirectoryFormat to /home/oshchakoory/Documents/MG/Mock/human_indiv_genomes/Taxonomy/HG_11_SSU_sequences_qiime2.qza
+Classifying reconstructed sequences using sklearn_classifer...
+Saved FeatureData[Taxonomy] to: /home/oshchakoory/Documents/MG/Mock/human_indiv_genomes/Taxonomy/HG_11_renamed_16S18S_recons_qiime2_taxonomy.qza
+Archive:  /home/oshchakoory/Documents/MG/Mock/human_indiv_genomes/Taxonomy/HG_11_renamed_16S18S_recons_qiime2_taxonomy.qza
+  inflating: taxonomy.tsv            
+Taxonomic classification using sklearn_classifer ends successfully on : lun. 10 mai 2021 15:56:07 CEST
+
+***********************************************************************************************
+Running RiboTaxa on /home/oshchakoory/Documents/MG/Mock/human_indiv_genomes/raw_reads/HG_1
+***********************************************************************************************
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Quality control starting on : lun. 10 mai 2021 15:56:12 CEST
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Run the First quality control on raw data... 
+Analysis complete for HG_1_1.fastq.gz
+Analysis complete for HG_1_2.fastq.gz
+Removing adapters from sequences...
+Trimming sequences...
+Run the second quality control on trimmed data...
+Analysis complete for HG_1_1_trimmed.fastq.gz
+Analysis complete for HG_1_2_trimmed.fastq.gz
+Running multiQC...
+Saving results for quality control...
+Quality control ends successfully on : lun. 10 mai 2021 15:56:35 CEST
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Filtering 16S/18S using sortmerna starting on : lun. 10 mai 2021 15:56:36 CEST
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Database directory for sortmerna = /home/oshchakoory/Documents/Databases/sortmerna_indexed_DB
+Merging paired files into single files... 
+Filtering 16S/18S reads....
+Unmerging single files into paired files....
+Saving results...
+Filtering 16S/18S using sortmerna ends successfully on : lun. 10 mai 2021 15:56:36 CEST
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Reconstructing 16S18S using EMIRGE starting on : lun. 10 mai 2021 15:56:36 CEST
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Database directory for EMIRGE = /home/oshchakoory/Documents/Databases/bowtie_indexed_DB
+Running emirge amplicon to reconstruct 16S/18S full length sequences...
+If you use EMIRGE in your work, please cite these manuscripts, as appropriate.
+
+Miller CS, Baker BJ, Thomas BC, Singer SW, Banfield JF (2011)
+EMIRGE: reconstruction of full-length ribosomal genes from microbial community short read sequencing data.
+Genome biology 12: R44. doi:10.1186/gb-2011-12-5-r44.
+
+Miller CS, Handley KM, Wrighton KC, Frischkorn KR, Thomas BC, Banfield JF (2013)
+Short-Read Assembly of Full-Length 16S Amplicons Reveals Bacterial Diversity in Subsurface Sediments.
+PloS one 8: e56018. doi:10.1371/journal.pone.0056018.
+
+imported _emirge C functions from: /home/oshchakoory/miniconda3/envs/RiboTaxa_py27/lib/python2.7/site-packages/_emirge_amplicon.so
+Command:
+/home/oshchakoory/miniconda3/envs/RiboTaxa_py27/bin/emirge_amplicon.py -1 /home/oshchakoory/Documents/MG/Mock/human_indiv_genomes/quality_control/HG_1_1_trimmed.fastq -f /home/oshchakoory/Documents/Databases/bowtie_indexed_DB/SILVA_138.1_SSURef_NR99_tax_silva_clustered_fixed.fasta -b /home/oshchakoory/Documents/Databases/bowtie_indexed_DB/SILVA_138.1_SSURef_NR99_tax_silva_bowtie_indexed -l 300 -2 /home/oshchakoory/Documents/MG/Mock/human_indiv_genomes/quality_control/HG_1_2_trimmed.fastq -j 1 -n 120 -i 300 -s 100 -a 8 --phred33 /home/oshchakoory/Documents/MG/Mock/human_indiv_genomes/SSU_sequences/output_emirge/HG_1_amplicon_16S18S_recons
+
+EMIRGE started at Mon May 10 15:56:36 2021
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:01
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:21
+# reads processed: 144704
+# reads with at least one reported alignment: 23 (0.02%)
+# reads that failed to align: 144681 (99.98%)
+Reported 23 paired-end alignments
+Time searching: 00:00:22
+Overall time: 00:00:22
+usearch v11.0.667_i86linux32, 4.0Gb RAM (32.8Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: sophie.marre@uca.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:03
+# reads processed: 144704
+# reads with at least one reported alignment: 23 (0.02%)
+# reads that failed to align: 144681 (99.98%)
+Reported 23 paired-end alignments
+Time searching: 00:00:03
+Overall time: 00:00:03
+usearch v11.0.667_i86linux32, 4.0Gb RAM (32.8Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: sophie.marre@uca.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:02
+# reads processed: 144704
+# reads with at least one reported alignment: 23 (0.02%)
+# reads that failed to align: 144681 (99.98%)
+Reported 23 paired-end alignments
+Time searching: 00:00:02
+Overall time: 00:00:02
+usearch v11.0.667_i86linux32, 4.0Gb RAM (32.8Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: sophie.marre@uca.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:02
+# reads processed: 144704
+# reads with at least one reported alignment: 23 (0.02%)
+# reads that failed to align: 144681 (99.98%)
+Reported 23 paired-end alignments
+Time searching: 00:00:02
+Overall time: 00:00:02
+usearch v11.0.667_i86linux32, 4.0Gb RAM (32.8Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: sophie.marre@uca.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:02
+# reads processed: 144704
+# reads with at least one reported alignment: 23 (0.02%)
+# reads that failed to align: 144681 (99.98%)
+Reported 23 paired-end alignments
+Time searching: 00:00:02
+Overall time: 00:00:02
+usearch v11.0.667_i86linux32, 4.0Gb RAM (32.8Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: sophie.marre@uca.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:02
+# reads processed: 144704
+# reads with at least one reported alignment: 23 (0.02%)
+# reads that failed to align: 144681 (99.98%)
+Reported 23 paired-end alignments
+Time searching: 00:00:02
+Overall time: 00:00:02
+usearch v11.0.667_i86linux32, 4.0Gb RAM (32.8Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: sophie.marre@uca.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:02
+# reads processed: 144704
+# reads with at least one reported alignment: 23 (0.02%)
+# reads that failed to align: 144681 (99.98%)
+Reported 23 paired-end alignments
+Time searching: 00:00:02
+Overall time: 00:00:02
+usearch v11.0.667_i86linux32, 4.0Gb RAM (32.8Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: sophie.marre@uca.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:02
+# reads processed: 144704
+# reads with at least one reported alignment: 23 (0.02%)
+# reads that failed to align: 144681 (99.98%)
+Reported 23 paired-end alignments
+Time searching: 00:00:02
+Overall time: 00:00:02
+usearch v11.0.667_i86linux32, 4.0Gb RAM (32.8Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: sophie.marre@uca.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:03
+# reads processed: 144704
+# reads with at least one reported alignment: 23 (0.02%)
+# reads that failed to align: 144681 (99.98%)
+Reported 23 paired-end alignments
+Time searching: 00:00:03
+Overall time: 00:00:03
+usearch v11.0.667_i86linux32, 4.0Gb RAM (32.8Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: sophie.marre@uca.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:03
+# reads processed: 144704
+# reads with at least one reported alignment: 23 (0.02%)
+# reads that failed to align: 144681 (99.98%)
+Reported 23 paired-end alignments
+Time searching: 00:00:03
+Overall time: 00:00:03
+usearch v11.0.667_i86linux32, 4.0Gb RAM (32.8Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: sophie.marre@uca.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:03
+# reads processed: 144704
+# reads with at least one reported alignment: 23 (0.02%)
+# reads that failed to align: 144681 (99.98%)
+Reported 23 paired-end alignments
+Time searching: 00:00:03
+Overall time: 00:00:03
+usearch v11.0.667_i86linux32, 4.0Gb RAM (32.8Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: sophie.marre@uca.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:02
+# reads processed: 144704
+# reads with at least one reported alignment: 23 (0.02%)
+# reads that failed to align: 144681 (99.98%)
+Reported 23 paired-end alignments
+Time searching: 00:00:02
+Overall time: 00:00:02
+usearch v11.0.667_i86linux32, 4.0Gb RAM (32.8Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: sophie.marre@uca.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:02
+# reads processed: 144704
+# reads with at least one reported alignment: 23 (0.02%)
+# reads that failed to align: 144681 (99.98%)
+Reported 23 paired-end alignments
+Time searching: 00:00:02
+Overall time: 00:00:02
+usearch v11.0.667_i86linux32, 4.0Gb RAM (32.8Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: sophie.marre@uca.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:02
+# reads processed: 144704
+# reads with at least one reported alignment: 23 (0.02%)
+# reads that failed to align: 144681 (99.98%)
+Reported 23 paired-end alignments
+Time searching: 00:00:02
+Overall time: 00:00:02
+usearch v11.0.667_i86linux32, 4.0Gb RAM (32.8Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: sophie.marre@uca.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:02
+# reads processed: 144704
+# reads with at least one reported alignment: 23 (0.02%)
+# reads that failed to align: 144681 (99.98%)
+Reported 23 paired-end alignments
+Time searching: 00:00:02
+Overall time: 00:00:02
+usearch v11.0.667_i86linux32, 4.0Gb RAM (32.8Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: sophie.marre@uca.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:03
+# reads processed: 144704
+# reads with at least one reported alignment: 23 (0.02%)
+# reads that failed to align: 144681 (99.98%)
+Reported 23 paired-end alignments
+Time searching: 00:00:03
+Overall time: 00:00:03
+usearch v11.0.667_i86linux32, 4.0Gb RAM (32.8Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: sophie.marre@uca.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:03
+# reads processed: 144704
+# reads with at least one reported alignment: 23 (0.02%)
+# reads that failed to align: 144681 (99.98%)
+Reported 23 paired-end alignments
+Time searching: 00:00:03
+Overall time: 00:00:03
+usearch v11.0.667_i86linux32, 4.0Gb RAM (32.8Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: sophie.marre@uca.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:03
+# reads processed: 144704
+# reads with at least one reported alignment: 23 (0.02%)
+# reads that failed to align: 144681 (99.98%)
+Reported 23 paired-end alignments
+Time searching: 00:00:03
+Overall time: 00:00:03
+usearch v11.0.667_i86linux32, 4.0Gb RAM (32.8Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: sophie.marre@uca.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:02
+# reads processed: 144704
+# reads with at least one reported alignment: 23 (0.02%)
+# reads that failed to align: 144681 (99.98%)
+Reported 23 paired-end alignments
+Time searching: 00:00:02
+Overall time: 00:00:02
+usearch v11.0.667_i86linux32, 4.0Gb RAM (32.8Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: sophie.marre@uca.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:02
+# reads processed: 144704
+# reads with at least one reported alignment: 23 (0.02%)
+# reads that failed to align: 144681 (99.98%)
+Reported 23 paired-end alignments
+Time searching: 00:00:02
+Overall time: 00:00:02
+usearch v11.0.667_i86linux32, 4.0Gb RAM (32.8Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: sophie.marre@uca.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:02
+# reads processed: 144704
+# reads with at least one reported alignment: 23 (0.02%)
+# reads that failed to align: 144681 (99.98%)
+Reported 23 paired-end alignments
+Time searching: 00:00:02
+Overall time: 00:00:02
+usearch v11.0.667_i86linux32, 4.0Gb RAM (32.8Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: sophie.marre@uca.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:02
+# reads processed: 144704
+# reads with at least one reported alignment: 23 (0.02%)
+# reads that failed to align: 144681 (99.98%)
+Reported 23 paired-end alignments
+Time searching: 00:00:02
+Overall time: 00:00:02
+usearch v11.0.667_i86linux32, 4.0Gb RAM (32.8Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: sophie.marre@uca.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:03
+# reads processed: 144704
+# reads with at least one reported alignment: 23 (0.02%)
+# reads that failed to align: 144681 (99.98%)
+Reported 23 paired-end alignments
+Time searching: 00:00:03
+Overall time: 00:00:03
+usearch v11.0.667_i86linux32, 4.0Gb RAM (32.8Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: sophie.marre@uca.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:03
+# reads processed: 144704
+# reads with at least one reported alignment: 23 (0.02%)
+# reads that failed to align: 144681 (99.98%)
+Reported 23 paired-end alignments
+Time searching: 00:00:03
+Overall time: 00:00:03
+usearch v11.0.667_i86linux32, 4.0Gb RAM (32.8Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: sophie.marre@uca.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:03
+# reads processed: 144704
+# reads with at least one reported alignment: 23 (0.02%)
+# reads that failed to align: 144681 (99.98%)
+Reported 23 paired-end alignments
+Time searching: 00:00:03
+Overall time: 00:00:03
+usearch v11.0.667_i86linux32, 4.0Gb RAM (32.8Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: sophie.marre@uca.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:02
+# reads processed: 144704
+# reads with at least one reported alignment: 23 (0.02%)
+# reads that failed to align: 144681 (99.98%)
+Reported 23 paired-end alignments
+Time searching: 00:00:02
+Overall time: 00:00:02
+usearch v11.0.667_i86linux32, 4.0Gb RAM (32.8Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: sophie.marre@uca.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:02
+# reads processed: 144704
+# reads with at least one reported alignment: 23 (0.02%)
+# reads that failed to align: 144681 (99.98%)
+Reported 23 paired-end alignments
+Time searching: 00:00:02
+Overall time: 00:00:02
+usearch v11.0.667_i86linux32, 4.0Gb RAM (32.8Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: sophie.marre@uca.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:02
+# reads processed: 144704
+# reads with at least one reported alignment: 23 (0.02%)
+# reads that failed to align: 144681 (99.98%)
+Reported 23 paired-end alignments
+Time searching: 00:00:02
+Overall time: 00:00:02
+usearch v11.0.667_i86linux32, 4.0Gb RAM (32.8Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: sophie.marre@uca.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:02
+# reads processed: 144704
+# reads with at least one reported alignment: 23 (0.02%)
+# reads that failed to align: 144681 (99.98%)
+Reported 23 paired-end alignments
+Time searching: 00:00:02
+Overall time: 00:00:02
+usearch v11.0.667_i86linux32, 4.0Gb RAM (32.8Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: sophie.marre@uca.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:03
+# reads processed: 144704
+# reads with at least one reported alignment: 23 (0.02%)
+# reads that failed to align: 144681 (99.98%)
+Reported 23 paired-end alignments
+Time searching: 00:00:03
+Overall time: 00:00:03
+usearch v11.0.667_i86linux32, 4.0Gb RAM (32.8Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: sophie.marre@uca.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:03
+# reads processed: 144704
+# reads with at least one reported alignment: 23 (0.02%)
+# reads that failed to align: 144681 (99.98%)
+Reported 23 paired-end alignments
+Time searching: 00:00:03
+Overall time: 00:00:03
+usearch v11.0.667_i86linux32, 4.0Gb RAM (32.8Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: sophie.marre@uca.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:02
+# reads processed: 144704
+# reads with at least one reported alignment: 23 (0.02%)
+# reads that failed to align: 144681 (99.98%)
+Reported 23 paired-end alignments
+Time searching: 00:00:02
+Overall time: 00:00:02
+usearch v11.0.667_i86linux32, 4.0Gb RAM (32.8Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: sophie.marre@uca.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:02
+# reads processed: 144704
+# reads with at least one reported alignment: 23 (0.02%)
+# reads that failed to align: 144681 (99.98%)
+Reported 23 paired-end alignments
+Time searching: 00:00:02
+Overall time: 00:00:02
+usearch v11.0.667_i86linux32, 4.0Gb RAM (32.8Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: sophie.marre@uca.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:02
+# reads processed: 144704
+# reads with at least one reported alignment: 23 (0.02%)
+# reads that failed to align: 144681 (99.98%)
+Reported 23 paired-end alignments
+Time searching: 00:00:02
+Overall time: 00:00:02
+usearch v11.0.667_i86linux32, 4.0Gb RAM (32.8Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: sophie.marre@uca.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:02
+# reads processed: 144704
+# reads with at least one reported alignment: 23 (0.02%)
+# reads that failed to align: 144681 (99.98%)
+Reported 23 paired-end alignments
+Time searching: 00:00:02
+Overall time: 00:00:02
+usearch v11.0.667_i86linux32, 4.0Gb RAM (32.8Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: sophie.marre@uca.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:03
+# reads processed: 144704
+# reads with at least one reported alignment: 23 (0.02%)
+# reads that failed to align: 144681 (99.98%)
+Reported 23 paired-end alignments
+Time searching: 00:00:03
+Overall time: 00:00:03
+usearch v11.0.667_i86linux32, 4.0Gb RAM (32.8Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: sophie.marre@uca.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:03
+# reads processed: 144704
+# reads with at least one reported alignment: 23 (0.02%)
+# reads that failed to align: 144681 (99.98%)
+Reported 23 paired-end alignments
+Time searching: 00:00:03
+Overall time: 00:00:03
+usearch v11.0.667_i86linux32, 4.0Gb RAM (32.8Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: sophie.marre@uca.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:03
+# reads processed: 144704
+# reads with at least one reported alignment: 23 (0.02%)
+# reads that failed to align: 144681 (99.98%)
+Reported 23 paired-end alignments
+Time searching: 00:00:03
+Overall time: 00:00:03
+usearch v11.0.667_i86linux32, 4.0Gb RAM (32.8Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: sophie.marre@uca.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:02
+# reads processed: 144704
+# reads with at least one reported alignment: 23 (0.02%)
+# reads that failed to align: 144681 (99.98%)
+Reported 23 paired-end alignments
+Time searching: 00:00:02
+Overall time: 00:00:02
+usearch v11.0.667_i86linux32, 4.0Gb RAM (32.8Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: sophie.marre@uca.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:02
+# reads processed: 144704
+# reads with at least one reported alignment: 23 (0.02%)
+# reads that failed to align: 144681 (99.98%)
+Reported 23 paired-end alignments
+Time searching: 00:00:02
+Overall time: 00:00:02
+usearch v11.0.667_i86linux32, 4.0Gb RAM (32.8Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: sophie.marre@uca.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:02
+# reads processed: 144704
+# reads with at least one reported alignment: 23 (0.02%)
+# reads that failed to align: 144681 (99.98%)
+Reported 23 paired-end alignments
+Time searching: 00:00:02
+Overall time: 00:00:02
+usearch v11.0.667_i86linux32, 4.0Gb RAM (32.8Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: sophie.marre@uca.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:02
+# reads processed: 144704
+# reads with at least one reported alignment: 23 (0.02%)
+# reads that failed to align: 144681 (99.98%)
+Reported 23 paired-end alignments
+Time searching: 00:00:02
+Overall time: 00:00:02
+usearch v11.0.667_i86linux32, 4.0Gb RAM (32.8Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: sophie.marre@uca.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:02
+# reads processed: 144704
+# reads with at least one reported alignment: 23 (0.02%)
+# reads that failed to align: 144681 (99.98%)
+Reported 23 paired-end alignments
+Time searching: 00:00:02
+Overall time: 00:00:02
+usearch v11.0.667_i86linux32, 4.0Gb RAM (32.8Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: sophie.marre@uca.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:03
+# reads processed: 144704
+# reads with at least one reported alignment: 23 (0.02%)
+# reads that failed to align: 144681 (99.98%)
+Reported 23 paired-end alignments
+Time searching: 00:00:03
+Overall time: 00:00:03
+usearch v11.0.667_i86linux32, 4.0Gb RAM (32.8Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: sophie.marre@uca.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:03
+# reads processed: 144704
+# reads with at least one reported alignment: 23 (0.02%)
+# reads that failed to align: 144681 (99.98%)
+Reported 23 paired-end alignments
+Time searching: 00:00:03
+Overall time: 00:00:03
+usearch v11.0.667_i86linux32, 4.0Gb RAM (32.8Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: sophie.marre@uca.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:02
+# reads processed: 144704
+# reads with at least one reported alignment: 23 (0.02%)
+# reads that failed to align: 144681 (99.98%)
+Reported 23 paired-end alignments
+Time searching: 00:00:02
+Overall time: 00:00:02
+usearch v11.0.667_i86linux32, 4.0Gb RAM (32.8Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: sophie.marre@uca.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:02
+# reads processed: 144704
+# reads with at least one reported alignment: 23 (0.02%)
+# reads that failed to align: 144681 (99.98%)
+Reported 23 paired-end alignments
+Time searching: 00:00:02
+Overall time: 00:00:02
+usearch v11.0.667_i86linux32, 4.0Gb RAM (32.8Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: sophie.marre@uca.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:03
+# reads processed: 144704
+# reads with at least one reported alignment: 23 (0.02%)
+# reads that failed to align: 144681 (99.98%)
+Reported 23 paired-end alignments
+Time searching: 00:00:03
+Overall time: 00:00:03
+usearch v11.0.667_i86linux32, 4.0Gb RAM (32.8Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: sophie.marre@uca.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:03
+# reads processed: 144704
+# reads with at least one reported alignment: 23 (0.02%)
+# reads that failed to align: 144681 (99.98%)
+Reported 23 paired-end alignments
+Time searching: 00:00:03
+Overall time: 00:00:03
+usearch v11.0.667_i86linux32, 4.0Gb RAM (32.8Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: sophie.marre@uca.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:03
+# reads processed: 144704
+# reads with at least one reported alignment: 23 (0.02%)
+# reads that failed to align: 144681 (99.98%)
+Reported 23 paired-end alignments
+Time searching: 00:00:03
+Overall time: 00:00:03
+usearch v11.0.667_i86linux32, 4.0Gb RAM (32.8Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: sophie.marre@uca.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:03
+# reads processed: 144704
+# reads with at least one reported alignment: 23 (0.02%)
+# reads that failed to align: 144681 (99.98%)
+Reported 23 paired-end alignments
+Time searching: 00:00:03
+Overall time: 00:00:03
+usearch v11.0.667_i86linux32, 4.0Gb RAM (32.8Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: sophie.marre@uca.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:03
+# reads processed: 144704
+# reads with at least one reported alignment: 23 (0.02%)
+# reads that failed to align: 144681 (99.98%)
+Reported 23 paired-end alignments
+Time searching: 00:00:03
+Overall time: 00:00:03
+usearch v11.0.667_i86linux32, 4.0Gb RAM (32.8Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: sophie.marre@uca.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:03
+# reads processed: 144704
+# reads with at least one reported alignment: 23 (0.02%)
+# reads that failed to align: 144681 (99.98%)
+Reported 23 paired-end alignments
+Time searching: 00:00:03
+Overall time: 00:00:03
+usearch v11.0.667_i86linux32, 4.0Gb RAM (32.8Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: sophie.marre@uca.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:03
+# reads processed: 144704
+# reads with at least one reported alignment: 23 (0.02%)
+# reads that failed to align: 144681 (99.98%)
+Reported 23 paired-end alignments
+Time searching: 00:00:03
+Overall time: 00:00:03
+usearch v11.0.667_i86linux32, 4.0Gb RAM (32.8Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: sophie.marre@uca.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:03
+# reads processed: 144704
+# reads with at least one reported alignment: 23 (0.02%)
+# reads that failed to align: 144681 (99.98%)
+Reported 23 paired-end alignments
+Time searching: 00:00:03
+Overall time: 00:00:03
+usearch v11.0.667_i86linux32, 4.0Gb RAM (32.8Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: sophie.marre@uca.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:03
+# reads processed: 144704
+# reads with at least one reported alignment: 23 (0.02%)
+# reads that failed to align: 144681 (99.98%)
+Reported 23 paired-end alignments
+Time searching: 00:00:03
+Overall time: 00:00:03
+usearch v11.0.667_i86linux32, 4.0Gb RAM (32.8Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: sophie.marre@uca.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:03
+# reads processed: 144704
+# reads with at least one reported alignment: 23 (0.02%)
+# reads that failed to align: 144681 (99.98%)
+Reported 23 paired-end alignments
+Time searching: 00:00:03
+Overall time: 00:00:03
+usearch v11.0.667_i86linux32, 4.0Gb RAM (32.8Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: sophie.marre@uca.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:03
+# reads processed: 144704
+# reads with at least one reported alignment: 23 (0.02%)
+# reads that failed to align: 144681 (99.98%)
+Reported 23 paired-end alignments
+Time searching: 00:00:03
+Overall time: 00:00:03
+usearch v11.0.667_i86linux32, 4.0Gb RAM (32.8Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: sophie.marre@uca.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:03
+# reads processed: 144704
+# reads with at least one reported alignment: 23 (0.02%)
+# reads that failed to align: 144681 (99.98%)
+Reported 23 paired-end alignments
+Time searching: 00:00:03
+Overall time: 00:00:03
+usearch v11.0.667_i86linux32, 4.0Gb RAM (32.8Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: sophie.marre@uca.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:04
+# reads processed: 144704
+# reads with at least one reported alignment: 23 (0.02%)
+# reads that failed to align: 144681 (99.98%)
+Reported 23 paired-end alignments
+Time searching: 00:00:04
+Overall time: 00:00:04
+usearch v11.0.667_i86linux32, 4.0Gb RAM (32.8Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: sophie.marre@uca.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:03
+# reads processed: 144704
+# reads with at least one reported alignment: 23 (0.02%)
+# reads that failed to align: 144681 (99.98%)
+Reported 23 paired-end alignments
+Time searching: 00:00:03
+Overall time: 00:00:03
+usearch v11.0.667_i86linux32, 4.0Gb RAM (32.8Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: sophie.marre@uca.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:03
+# reads processed: 144704
+# reads with at least one reported alignment: 23 (0.02%)
+# reads that failed to align: 144681 (99.98%)
+Reported 23 paired-end alignments
+Time searching: 00:00:03
+Overall time: 00:00:03
+usearch v11.0.667_i86linux32, 4.0Gb RAM (32.8Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: sophie.marre@uca.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:03
+# reads processed: 144704
+# reads with at least one reported alignment: 23 (0.02%)
+# reads that failed to align: 144681 (99.98%)
+Reported 23 paired-end alignments
+Time searching: 00:00:03
+Overall time: 00:00:03
+usearch v11.0.667_i86linux32, 4.0Gb RAM (32.8Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: sophie.marre@uca.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:03
+# reads processed: 144704
+# reads with at least one reported alignment: 23 (0.02%)
+# reads that failed to align: 144681 (99.98%)
+Reported 23 paired-end alignments
+Time searching: 00:00:03
+Overall time: 00:00:03
+usearch v11.0.667_i86linux32, 4.0Gb RAM (32.8Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: sophie.marre@uca.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:03
+# reads processed: 144704
+# reads with at least one reported alignment: 23 (0.02%)
+# reads that failed to align: 144681 (99.98%)
+Reported 23 paired-end alignments
+Time searching: 00:00:03
+Overall time: 00:00:03
+usearch v11.0.667_i86linux32, 4.0Gb RAM (32.8Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: sophie.marre@uca.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:02
+# reads processed: 144704
+# reads with at least one reported alignment: 23 (0.02%)
+# reads that failed to align: 144681 (99.98%)
+Reported 23 paired-end alignments
+Time searching: 00:00:02
+Overall time: 00:00:02
+usearch v11.0.667_i86linux32, 4.0Gb RAM (32.8Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: sophie.marre@uca.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:02
+# reads processed: 144704
+# reads with at least one reported alignment: 23 (0.02%)
+# reads that failed to align: 144681 (99.98%)
+Reported 23 paired-end alignments
+Time searching: 00:00:02
+Overall time: 00:00:02
+usearch v11.0.667_i86linux32, 4.0Gb RAM (32.8Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: sophie.marre@uca.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:02
+# reads processed: 144704
+# reads with at least one reported alignment: 23 (0.02%)
+# reads that failed to align: 144681 (99.98%)
+Reported 23 paired-end alignments
+Time searching: 00:00:02
+Overall time: 00:00:02
+usearch v11.0.667_i86linux32, 4.0Gb RAM (32.8Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: sophie.marre@uca.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:03
+# reads processed: 144704
+# reads with at least one reported alignment: 23 (0.02%)
+# reads that failed to align: 144681 (99.98%)
+Reported 23 paired-end alignments
+Time searching: 00:00:03
+Overall time: 00:00:03
+usearch v11.0.667_i86linux32, 4.0Gb RAM (32.8Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: sophie.marre@uca.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:02
+# reads processed: 144704
+# reads with at least one reported alignment: 23 (0.02%)
+# reads that failed to align: 144681 (99.98%)
+Reported 23 paired-end alignments
+Time searching: 00:00:02
+Overall time: 00:00:02
+usearch v11.0.667_i86linux32, 4.0Gb RAM (32.8Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: sophie.marre@uca.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:02
+# reads processed: 144704
+# reads with at least one reported alignment: 23 (0.02%)
+# reads that failed to align: 144681 (99.98%)
+Reported 23 paired-end alignments
+Time searching: 00:00:02
+Overall time: 00:00:02
+usearch v11.0.667_i86linux32, 4.0Gb RAM (32.8Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: sophie.marre@uca.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:02
+# reads processed: 144704
+# reads with at least one reported alignment: 23 (0.02%)
+# reads that failed to align: 144681 (99.98%)
+Reported 23 paired-end alignments
+Time searching: 00:00:02
+Overall time: 00:00:02
+usearch v11.0.667_i86linux32, 4.0Gb RAM (32.8Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: sophie.marre@uca.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:03
+# reads processed: 144704
+# reads with at least one reported alignment: 23 (0.02%)
+# reads that failed to align: 144681 (99.98%)
+Reported 23 paired-end alignments
+Time searching: 00:00:03
+Overall time: 00:00:03
+usearch v11.0.667_i86linux32, 4.0Gb RAM (32.8Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: sophie.marre@uca.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:03
+# reads processed: 144704
+# reads with at least one reported alignment: 23 (0.02%)
+# reads that failed to align: 144681 (99.98%)
+Reported 23 paired-end alignments
+Time searching: 00:00:03
+Overall time: 00:00:03
+usearch v11.0.667_i86linux32, 4.0Gb RAM (32.8Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: sophie.marre@uca.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:02
+# reads processed: 144704
+# reads with at least one reported alignment: 23 (0.02%)
+# reads that failed to align: 144681 (99.98%)
+Reported 23 paired-end alignments
+Time searching: 00:00:02
+Overall time: 00:00:02
+usearch v11.0.667_i86linux32, 4.0Gb RAM (32.8Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: sophie.marre@uca.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:02
+# reads processed: 144704
+# reads with at least one reported alignment: 23 (0.02%)
+# reads that failed to align: 144681 (99.98%)
+Reported 23 paired-end alignments
+Time searching: 00:00:02
+Overall time: 00:00:02
+usearch v11.0.667_i86linux32, 4.0Gb RAM (32.8Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: sophie.marre@uca.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:03
+# reads processed: 144704
+# reads with at least one reported alignment: 23 (0.02%)
+# reads that failed to align: 144681 (99.98%)
+Reported 23 paired-end alignments
+Time searching: 00:00:03
+Overall time: 00:00:03
+usearch v11.0.667_i86linux32, 4.0Gb RAM (32.8Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: sophie.marre@uca.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:03
+# reads processed: 144704
+# reads with at least one reported alignment: 23 (0.02%)
+# reads that failed to align: 144681 (99.98%)
+Reported 23 paired-end alignments
+Time searching: 00:00:03
+Overall time: 00:00:03
+usearch v11.0.667_i86linux32, 4.0Gb RAM (32.8Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: sophie.marre@uca.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:02
+# reads processed: 144704
+# reads with at least one reported alignment: 23 (0.02%)
+# reads that failed to align: 144681 (99.98%)
+Reported 23 paired-end alignments
+Time searching: 00:00:02
+Overall time: 00:00:02
+usearch v11.0.667_i86linux32, 4.0Gb RAM (32.8Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: sophie.marre@uca.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:02
+# reads processed: 144704
+# reads with at least one reported alignment: 23 (0.02%)
+# reads that failed to align: 144681 (99.98%)
+Reported 23 paired-end alignments
+Time searching: 00:00:02
+Overall time: 00:00:02
+usearch v11.0.667_i86linux32, 4.0Gb RAM (32.8Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: sophie.marre@uca.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:02
+# reads processed: 144704
+# reads with at least one reported alignment: 23 (0.02%)
+# reads that failed to align: 144681 (99.98%)
+Reported 23 paired-end alignments
+Time searching: 00:00:02
+Overall time: 00:00:02
+usearch v11.0.667_i86linux32, 4.0Gb RAM (32.8Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: sophie.marre@uca.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:03
+# reads processed: 144704
+# reads with at least one reported alignment: 23 (0.02%)
+# reads that failed to align: 144681 (99.98%)
+Reported 23 paired-end alignments
+Time searching: 00:00:03
+Overall time: 00:00:03
+usearch v11.0.667_i86linux32, 4.0Gb RAM (32.8Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: sophie.marre@uca.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:03
+# reads processed: 144704
+# reads with at least one reported alignment: 23 (0.02%)
+# reads that failed to align: 144681 (99.98%)
+Reported 23 paired-end alignments
+Time searching: 00:00:03
+Overall time: 00:00:03
+usearch v11.0.667_i86linux32, 4.0Gb RAM (32.8Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: sophie.marre@uca.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:03
+# reads processed: 144704
+# reads with at least one reported alignment: 23 (0.02%)
+# reads that failed to align: 144681 (99.98%)
+Reported 23 paired-end alignments
+Time searching: 00:00:03
+Overall time: 00:00:03
+usearch v11.0.667_i86linux32, 4.0Gb RAM (32.8Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: sophie.marre@uca.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:03
+# reads processed: 144704
+# reads with at least one reported alignment: 23 (0.02%)
+# reads that failed to align: 144681 (99.98%)
+Reported 23 paired-end alignments
+Time searching: 00:00:03
+Overall time: 00:00:03
+usearch v11.0.667_i86linux32, 4.0Gb RAM (32.8Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: sophie.marre@uca.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:03
+# reads processed: 144704
+# reads with at least one reported alignment: 23 (0.02%)
+# reads that failed to align: 144681 (99.98%)
+Reported 23 paired-end alignments
+Time searching: 00:00:03
+Overall time: 00:00:03
+usearch v11.0.667_i86linux32, 4.0Gb RAM (32.8Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: sophie.marre@uca.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:03
+# reads processed: 144704
+# reads with at least one reported alignment: 23 (0.02%)
+# reads that failed to align: 144681 (99.98%)
+Reported 23 paired-end alignments
+Time searching: 00:00:03
+Overall time: 00:00:03
+usearch v11.0.667_i86linux32, 4.0Gb RAM (32.8Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: sophie.marre@uca.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:03
+# reads processed: 144704
+# reads with at least one reported alignment: 23 (0.02%)
+# reads that failed to align: 144681 (99.98%)
+Reported 23 paired-end alignments
+Time searching: 00:00:03
+Overall time: 00:00:03
+usearch v11.0.667_i86linux32, 4.0Gb RAM (32.8Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: sophie.marre@uca.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:02
+# reads processed: 144704
+# reads with at least one reported alignment: 23 (0.02%)
+# reads that failed to align: 144681 (99.98%)
+Reported 23 paired-end alignments
+Time searching: 00:00:02
+Overall time: 00:00:02
+usearch v11.0.667_i86linux32, 4.0Gb RAM (32.8Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: sophie.marre@uca.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:02
+# reads processed: 144704
+# reads with at least one reported alignment: 23 (0.02%)
+# reads that failed to align: 144681 (99.98%)
+Reported 23 paired-end alignments
+Time searching: 00:00:02
+Overall time: 00:00:02
+usearch v11.0.667_i86linux32, 4.0Gb RAM (32.8Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: sophie.marre@uca.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:03
+# reads processed: 144704
+# reads with at least one reported alignment: 23 (0.02%)
+# reads that failed to align: 144681 (99.98%)
+Reported 23 paired-end alignments
+Time searching: 00:00:03
+Overall time: 00:00:03
+usearch v11.0.667_i86linux32, 4.0Gb RAM (32.8Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: sophie.marre@uca.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:03
+# reads processed: 144704
+# reads with at least one reported alignment: 23 (0.02%)
+# reads that failed to align: 144681 (99.98%)
+Reported 23 paired-end alignments
+Time searching: 00:00:03
+Overall time: 00:00:03
+usearch v11.0.667_i86linux32, 4.0Gb RAM (32.8Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: sophie.marre@uca.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:03
+# reads processed: 144704
+# reads with at least one reported alignment: 23 (0.02%)
+# reads that failed to align: 144681 (99.98%)
+Reported 23 paired-end alignments
+Time searching: 00:00:03
+Overall time: 00:00:03
+usearch v11.0.667_i86linux32, 4.0Gb RAM (32.8Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: sophie.marre@uca.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:03
+# reads processed: 144704
+# reads with at least one reported alignment: 23 (0.02%)
+# reads that failed to align: 144681 (99.98%)
+Reported 23 paired-end alignments
+Time searching: 00:00:03
+Overall time: 00:00:03
+usearch v11.0.667_i86linux32, 4.0Gb RAM (32.8Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: sophie.marre@uca.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:03
+# reads processed: 144704
+# reads with at least one reported alignment: 23 (0.02%)
+# reads that failed to align: 144681 (99.98%)
+Reported 23 paired-end alignments
+Time searching: 00:00:03
+Overall time: 00:00:03
+usearch v11.0.667_i86linux32, 4.0Gb RAM (32.8Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: sophie.marre@uca.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:03
+# reads processed: 144704
+# reads with at least one reported alignment: 23 (0.02%)
+# reads that failed to align: 144681 (99.98%)
+Reported 23 paired-end alignments
+Time searching: 00:00:03
+Overall time: 00:00:03
+usearch v11.0.667_i86linux32, 4.0Gb RAM (32.8Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: sophie.marre@uca.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:03
+# reads processed: 144704
+# reads with at least one reported alignment: 23 (0.02%)
+# reads that failed to align: 144681 (99.98%)
+Reported 23 paired-end alignments
+Time searching: 00:00:03
+Overall time: 00:00:03
+usearch v11.0.667_i86linux32, 4.0Gb RAM (32.8Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: sophie.marre@uca.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:02
+# reads processed: 144704
+# reads with at least one reported alignment: 23 (0.02%)
+# reads that failed to align: 144681 (99.98%)
+Reported 23 paired-end alignments
+Time searching: 00:00:02
+Overall time: 00:00:02
+usearch v11.0.667_i86linux32, 4.0Gb RAM (32.8Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: sophie.marre@uca.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:02
+# reads processed: 144704
+# reads with at least one reported alignment: 23 (0.02%)
+# reads that failed to align: 144681 (99.98%)
+Reported 23 paired-end alignments
+Time searching: 00:00:02
+Overall time: 00:00:02
+usearch v11.0.667_i86linux32, 4.0Gb RAM (32.8Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: sophie.marre@uca.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:02
+# reads processed: 144704
+# reads with at least one reported alignment: 23 (0.02%)
+# reads that failed to align: 144681 (99.98%)
+Reported 23 paired-end alignments
+Time searching: 00:00:02
+Overall time: 00:00:02
+usearch v11.0.667_i86linux32, 4.0Gb RAM (32.8Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: sophie.marre@uca.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:02
+# reads processed: 144704
+# reads with at least one reported alignment: 23 (0.02%)
+# reads that failed to align: 144681 (99.98%)
+Reported 23 paired-end alignments
+Time searching: 00:00:02
+Overall time: 00:00:02
+usearch v11.0.667_i86linux32, 4.0Gb RAM (32.8Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: sophie.marre@uca.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:02
+# reads processed: 144704
+# reads with at least one reported alignment: 23 (0.02%)
+# reads that failed to align: 144681 (99.98%)
+Reported 23 paired-end alignments
+Time searching: 00:00:02
+Overall time: 00:00:02
+usearch v11.0.667_i86linux32, 4.0Gb RAM (32.8Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: sophie.marre@uca.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:02
+# reads processed: 144704
+# reads with at least one reported alignment: 23 (0.02%)
+# reads that failed to align: 144681 (99.98%)
+Reported 23 paired-end alignments
+Time searching: 00:00:02
+Overall time: 00:00:02
+usearch v11.0.667_i86linux32, 4.0Gb RAM (32.8Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: sophie.marre@uca.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:02
+# reads processed: 144704
+# reads with at least one reported alignment: 23 (0.02%)
+# reads that failed to align: 144681 (99.98%)
+Reported 23 paired-end alignments
+Time searching: 00:00:02
+Overall time: 00:00:02
+usearch v11.0.667_i86linux32, 4.0Gb RAM (32.8Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: sophie.marre@uca.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:02
+# reads processed: 144704
+# reads with at least one reported alignment: 23 (0.02%)
+# reads that failed to align: 144681 (99.98%)
+Reported 23 paired-end alignments
+Time searching: 00:00:02
+Overall time: 00:00:02
+usearch v11.0.667_i86linux32, 4.0Gb RAM (32.8Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: sophie.marre@uca.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:02
+# reads processed: 144704
+# reads with at least one reported alignment: 23 (0.02%)
+# reads that failed to align: 144681 (99.98%)
+Reported 23 paired-end alignments
+Time searching: 00:00:02
+Overall time: 00:00:02
+usearch v11.0.667_i86linux32, 4.0Gb RAM (32.8Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: sophie.marre@uca.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:02
+# reads processed: 144704
+# reads with at least one reported alignment: 23 (0.02%)
+# reads that failed to align: 144681 (99.98%)
+Reported 23 paired-end alignments
+Time searching: 00:00:02
+Overall time: 00:00:02
+usearch v11.0.667_i86linux32, 4.0Gb RAM (32.8Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: sophie.marre@uca.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:02
+# reads processed: 144704
+# reads with at least one reported alignment: 23 (0.02%)
+# reads that failed to align: 144681 (99.98%)
+Reported 23 paired-end alignments
+Time searching: 00:00:02
+Overall time: 00:00:02
+usearch v11.0.667_i86linux32, 4.0Gb RAM (32.8Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: sophie.marre@uca.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:03
+# reads processed: 144704
+# reads with at least one reported alignment: 23 (0.02%)
+# reads that failed to align: 144681 (99.98%)
+Reported 23 paired-end alignments
+Time searching: 00:00:03
+Overall time: 00:00:03
+usearch v11.0.667_i86linux32, 4.0Gb RAM (32.8Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: sophie.marre@uca.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:03
+# reads processed: 144704
+# reads with at least one reported alignment: 23 (0.02%)
+# reads that failed to align: 144681 (99.98%)
+Reported 23 paired-end alignments
+Time searching: 00:00:03
+Overall time: 00:00:03
+usearch v11.0.667_i86linux32, 4.0Gb RAM (32.8Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: sophie.marre@uca.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:03
+# reads processed: 144704
+# reads with at least one reported alignment: 23 (0.02%)
+# reads that failed to align: 144681 (99.98%)
+Reported 23 paired-end alignments
+Time searching: 00:00:03
+Overall time: 00:00:03
+usearch v11.0.667_i86linux32, 4.0Gb RAM (32.8Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: sophie.marre@uca.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:02
+# reads processed: 144704
+# reads with at least one reported alignment: 23 (0.02%)
+# reads that failed to align: 144681 (99.98%)
+Reported 23 paired-end alignments
+Time searching: 00:00:02
+Overall time: 00:00:02
+usearch v11.0.667_i86linux32, 4.0Gb RAM (32.8Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: sophie.marre@uca.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:02
+# reads processed: 144704
+# reads with at least one reported alignment: 23 (0.02%)
+# reads that failed to align: 144681 (99.98%)
+Reported 23 paired-end alignments
+Time searching: 00:00:02
+Overall time: 00:00:02
+usearch v11.0.667_i86linux32, 4.0Gb RAM (32.8Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: sophie.marre@uca.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:02
+# reads processed: 144704
+# reads with at least one reported alignment: 23 (0.02%)
+# reads that failed to align: 144681 (99.98%)
+Reported 23 paired-end alignments
+Time searching: 00:00:02
+Overall time: 00:00:02
+usearch v11.0.667_i86linux32, 4.0Gb RAM (32.8Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: sophie.marre@uca.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:02
+# reads processed: 144704
+# reads with at least one reported alignment: 23 (0.02%)
+# reads that failed to align: 144681 (99.98%)
+Reported 23 paired-end alignments
+Time searching: 00:00:02
+Overall time: 00:00:02
+usearch v11.0.667_i86linux32, 4.0Gb RAM (32.8Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: sophie.marre@uca.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:02
+# reads processed: 144704
+# reads with at least one reported alignment: 23 (0.02%)
+# reads that failed to align: 144681 (99.98%)
+Reported 23 paired-end alignments
+Time searching: 00:00:02
+Overall time: 00:00:02
+usearch v11.0.667_i86linux32, 4.0Gb RAM (32.8Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: sophie.marre@uca.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:02
+# reads processed: 144704
+# reads with at least one reported alignment: 23 (0.02%)
+# reads that failed to align: 144681 (99.98%)
+Reported 23 paired-end alignments
+Time searching: 00:00:02
+Overall time: 00:00:02
+usearch v11.0.667_i86linux32, 4.0Gb RAM (32.8Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: sophie.marre@uca.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:02
+# reads processed: 144704
+# reads with at least one reported alignment: 23 (0.02%)
+# reads that failed to align: 144681 (99.98%)
+Reported 23 paired-end alignments
+Time searching: 00:00:02
+Overall time: 00:00:02
+usearch v11.0.667_i86linux32, 4.0Gb RAM (32.8Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: sophie.marre@uca.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:02
+# reads processed: 144704
+# reads with at least one reported alignment: 23 (0.02%)
+# reads that failed to align: 144681 (99.98%)
+Reported 23 paired-end alignments
+Time searching: 00:00:02
+Overall time: 00:00:02
+usearch v11.0.667_i86linux32, 4.0Gb RAM (32.8Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: sophie.marre@uca.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:02
+# reads processed: 144704
+# reads with at least one reported alignment: 23 (0.02%)
+# reads that failed to align: 144681 (99.98%)
+Reported 23 paired-end alignments
+Time searching: 00:00:02
+Overall time: 00:00:02
+usearch v11.0.667_i86linux32, 4.0Gb RAM (32.8Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: sophie.marre@uca.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:02
+# reads processed: 144704
+# reads with at least one reported alignment: 23 (0.02%)
+# reads that failed to align: 144681 (99.98%)
+Reported 23 paired-end alignments
+Time searching: 00:00:02
+Overall time: 00:00:02
+usearch v11.0.667_i86linux32, 4.0Gb RAM (32.8Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: sophie.marre@uca.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:02
+# reads processed: 144704
+# reads with at least one reported alignment: 23 (0.02%)
+# reads that failed to align: 144681 (99.98%)
+Reported 23 paired-end alignments
+Time searching: 00:00:02
+Overall time: 00:00:02
+EMIRGE finished at Mon May 10 16:03:13 2021.  Total time: 0:06:36.717288
+Merging iterations into fasta sequence... 
+/home/oshchakoory/Documents/RiboTaxa
+Running MetaRib to reconstruct 16S/18S full length sequences...lun. 10 mai 2021 16:03:14 CEST
+====START ITERATION 1====
+Iteration: 1	Total contigs: 1	New contigs: 1	unmapped fastq (MB): 63.86
+====FINISH ITERATION 1====
+====START LAST ITERATION 2====
+Iteration: 2	Total contigs: 1	New contigs: 0
+====FINISH ITERATION 2====
+====START POSTPROCESSING====
+Number of reconstructed contig:1
+====FINISH POSTPROCESSING====
+====PROGRAM FINISHED!====
+/home/oshchakoory/Documents/RiboTaxa
+Finalising reconstructed sequences...
+Saving results...
+Reconstructing 16S/18S sequences ends successfully on : lun. 10 mai 2021 16:05:36 CEST
+Calculating relative abundances of reconstructed sequences...
+Saving results...
+Relative abundance calculation ends successfully on : lun. 10 mai 2021 16:05:41 CEST
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Taxonomic classification using sklearn classifier of QIIME2020.8 ... lun. 10 mai 2021 16:05:48 CEST
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Importing data ...
+Imported /home/oshchakoory/Documents/MG/Mock/human_indiv_genomes/SSU_sequences/HG_1_SSU_sequences.fasta as DNASequencesDirectoryFormat to /home/oshchakoory/Documents/MG/Mock/human_indiv_genomes/Taxonomy/HG_1_SSU_sequences_qiime2.qza
+Classifying reconstructed sequences using sklearn_classifer...
+Saved FeatureData[Taxonomy] to: /home/oshchakoory/Documents/MG/Mock/human_indiv_genomes/Taxonomy/HG_1_renamed_16S18S_recons_qiime2_taxonomy.qza
+Archive:  /home/oshchakoory/Documents/MG/Mock/human_indiv_genomes/Taxonomy/HG_1_renamed_16S18S_recons_qiime2_taxonomy.qza
+  inflating: taxonomy.tsv            
+Taxonomic classification using sklearn_classifer ends successfully on : lun. 10 mai 2021 16:09:16 CEST
+
+***********************************************************************************************
+Running RiboTaxa on /home/oshchakoory/Documents/MG/Mock/human_indiv_genomes/raw_reads/HG_12
+***********************************************************************************************
+
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Quality control starting on : lun. 10 mai 2021 16:09:20 CEST
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Run the First quality control on raw data... 
+Analysis complete for HG_12_1.fastq.gz
+Analysis complete for HG_12_2.fastq.gz
+Removing adapters from sequences...
+Trimming sequences...
+Run the second quality control on trimmed data...
+Analysis complete for HG_12_1_trimmed.fastq.gz
+Analysis complete for HG_12_2_trimmed.fastq.gz
+Running multiQC...
+Saving results for quality control...
+Quality control ends successfully on : lun. 10 mai 2021 16:09:47 CEST
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Filtering 16S/18S using sortmerna starting on : lun. 10 mai 2021 16:09:48 CEST
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Database directory for sortmerna = /home/oshchakoory/Documents/Databases/sortmerna_indexed_DB
+Merging paired files into single files... 
+Filtering 16S/18S reads....
+Unmerging single files into paired files....
+Saving results...
+Filtering 16S/18S using sortmerna ends successfully on : lun. 10 mai 2021 16:09:48 CEST
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Reconstructing 16S18S using EMIRGE starting on : lun. 10 mai 2021 16:09:48 CEST
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Database directory for EMIRGE = /home/oshchakoory/Documents/Databases/bowtie_indexed_DB
+Running emirge amplicon to reconstruct 16S/18S full length sequences...
+If you use EMIRGE in your work, please cite these manuscripts, as appropriate.
+
+Miller CS, Baker BJ, Thomas BC, Singer SW, Banfield JF (2011)
+EMIRGE: reconstruction of full-length ribosomal genes from microbial community short read sequencing data.
+Genome biology 12: R44. doi:10.1186/gb-2011-12-5-r44.
+
+Miller CS, Handley KM, Wrighton KC, Frischkorn KR, Thomas BC, Banfield JF (2013)
+Short-Read Assembly of Full-Length 16S Amplicons Reveals Bacterial Diversity in Subsurface Sediments.
+PloS one 8: e56018. doi:10.1371/journal.pone.0056018.
+
+imported _emirge C functions from: /home/oshchakoory/miniconda3/envs/RiboTaxa_py27/lib/python2.7/site-packages/_emirge_amplicon.so
+Command:
+/home/oshchakoory/miniconda3/envs/RiboTaxa_py27/bin/emirge_amplicon.py -1 /home/oshchakoory/Documents/MG/Mock/human_indiv_genomes/quality_control/HG_12_1_trimmed.fastq -f /home/oshchakoory/Documents/Databases/bowtie_indexed_DB/SILVA_138.1_SSURef_NR99_tax_silva_clustered_fixed.fasta -b /home/oshchakoory/Documents/Databases/bowtie_indexed_DB/SILVA_138.1_SSURef_NR99_tax_silva_bowtie_indexed -l 300 -2 /home/oshchakoory/Documents/MG/Mock/human_indiv_genomes/quality_control/HG_12_2_trimmed.fastq -j 1 -n 120 -i 300 -s 100 -a 8 --phred33 /home/oshchakoory/Documents/MG/Mock/human_indiv_genomes/SSU_sequences/output_emirge/HG_12_amplicon_16S18S_recons
+
+EMIRGE started at Mon May 10 16:09:49 2021
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:01
+Time loading mirror index: 00:00:01
+Seeded quality full-index search: 00:00:28
+# reads processed: 189928
+# reads with at least one reported alignment: 9 (0.00%)
+# reads that failed to align: 189919 (100.00%)
+Reported 9 paired-end alignments
+Time searching: 00:00:30
+Overall time: 00:00:30
+usearch v11.0.667_i86linux32, 4.0Gb RAM (32.8Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: sophie.marre@uca.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:03
+# reads processed: 189928
+# reads with at least one reported alignment: 6 (0.00%)
+# reads that failed to align: 189922 (100.00%)
+Reported 6 paired-end alignments
+Time searching: 00:00:03
+Overall time: 00:00:03
+usearch v11.0.667_i86linux32, 4.0Gb RAM (32.8Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: sophie.marre@uca.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:04
+# reads processed: 189928
+# reads with at least one reported alignment: 6 (0.00%)
+# reads that failed to align: 189922 (100.00%)
+Reported 6 paired-end alignments
+Time searching: 00:00:04
+Overall time: 00:00:04
+usearch v11.0.667_i86linux32, 4.0Gb RAM (32.8Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: sophie.marre@uca.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:03
+# reads processed: 189928
+# reads with at least one reported alignment: 6 (0.00%)
+# reads that failed to align: 189922 (100.00%)
+Reported 6 paired-end alignments
+Time searching: 00:00:03
+Overall time: 00:00:03
+usearch v11.0.667_i86linux32, 4.0Gb RAM (32.8Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: sophie.marre@uca.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:03
+# reads processed: 189928
+# reads with at least one reported alignment: 6 (0.00%)
+# reads that failed to align: 189922 (100.00%)
+Reported 6 paired-end alignments
+Time searching: 00:00:03
+Overall time: 00:00:03
+usearch v11.0.667_i86linux32, 4.0Gb RAM (32.8Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: sophie.marre@uca.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:03
+# reads processed: 189928
+# reads with at least one reported alignment: 6 (0.00%)
+# reads that failed to align: 189922 (100.00%)
+Reported 6 paired-end alignments
+Time searching: 00:00:03
+Overall time: 00:00:03
+usearch v11.0.667_i86linux32, 4.0Gb RAM (32.8Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: sophie.marre@uca.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:04
+# reads processed: 189928
+# reads with at least one reported alignment: 6 (0.00%)
+# reads that failed to align: 189922 (100.00%)
+Reported 6 paired-end alignments
+Time searching: 00:00:04
+Overall time: 00:00:04
+usearch v11.0.667_i86linux32, 4.0Gb RAM (32.8Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: sophie.marre@uca.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:03
+# reads processed: 189928
+# reads with at least one reported alignment: 6 (0.00%)
+# reads that failed to align: 189922 (100.00%)
+Reported 6 paired-end alignments
+Time searching: 00:00:03
+Overall time: 00:00:03
+usearch v11.0.667_i86linux32, 4.0Gb RAM (32.8Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: sophie.marre@uca.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:03
+# reads processed: 189928
+# reads with at least one reported alignment: 6 (0.00%)
+# reads that failed to align: 189922 (100.00%)
+Reported 6 paired-end alignments
+Time searching: 00:00:03
+Overall time: 00:00:03
+usearch v11.0.667_i86linux32, 4.0Gb RAM (32.8Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: sophie.marre@uca.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:03
+# reads processed: 189928
+# reads with at least one reported alignment: 6 (0.00%)
+# reads that failed to align: 189922 (100.00%)
+Reported 6 paired-end alignments
+Time searching: 00:00:03
+Overall time: 00:00:03
+usearch v11.0.667_i86linux32, 4.0Gb RAM (32.8Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: sophie.marre@uca.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:03
+# reads processed: 189928
+# reads with at least one reported alignment: 6 (0.00%)
+# reads that failed to align: 189922 (100.00%)
+Reported 6 paired-end alignments
+Time searching: 00:00:03
+Overall time: 00:00:03
+usearch v11.0.667_i86linux32, 4.0Gb RAM (32.8Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: sophie.marre@uca.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:03
+# reads processed: 189928
+# reads with at least one reported alignment: 6 (0.00%)
+# reads that failed to align: 189922 (100.00%)
+Reported 6 paired-end alignments
+Time searching: 00:00:03
+Overall time: 00:00:03
+usearch v11.0.667_i86linux32, 4.0Gb RAM (32.8Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: sophie.marre@uca.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:03
+# reads processed: 189928
+# reads with at least one reported alignment: 6 (0.00%)
+# reads that failed to align: 189922 (100.00%)
+Reported 6 paired-end alignments
+Time searching: 00:00:03
+Overall time: 00:00:03
+usearch v11.0.667_i86linux32, 4.0Gb RAM (32.8Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: sophie.marre@uca.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:03
+# reads processed: 189928
+# reads with at least one reported alignment: 6 (0.00%)
+# reads that failed to align: 189922 (100.00%)
+Reported 6 paired-end alignments
+Time searching: 00:00:03
+Overall time: 00:00:03
+usearch v11.0.667_i86linux32, 4.0Gb RAM (32.8Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: sophie.marre@uca.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:03
+# reads processed: 189928
+# reads with at least one reported alignment: 6 (0.00%)
+# reads that failed to align: 189922 (100.00%)
+Reported 6 paired-end alignments
+Time searching: 00:00:03
+Overall time: 00:00:03
+usearch v11.0.667_i86linux32, 4.0Gb RAM (32.8Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: sophie.marre@uca.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:03
+# reads processed: 189928
+# reads with at least one reported alignment: 6 (0.00%)
+# reads that failed to align: 189922 (100.00%)
+Reported 6 paired-end alignments
+Time searching: 00:00:03
+Overall time: 00:00:03
+usearch v11.0.667_i86linux32, 4.0Gb RAM (32.8Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: sophie.marre@uca.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:03
+# reads processed: 189928
+# reads with at least one reported alignment: 6 (0.00%)
+# reads that failed to align: 189922 (100.00%)
+Reported 6 paired-end alignments
+Time searching: 00:00:03
+Overall time: 00:00:03
+usearch v11.0.667_i86linux32, 4.0Gb RAM (32.8Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: sophie.marre@uca.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:03
+# reads processed: 189928
+# reads with at least one reported alignment: 6 (0.00%)
+# reads that failed to align: 189922 (100.00%)
+Reported 6 paired-end alignments
+Time searching: 00:00:03
+Overall time: 00:00:03
+usearch v11.0.667_i86linux32, 4.0Gb RAM (32.8Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: sophie.marre@uca.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:03
+# reads processed: 189928
+# reads with at least one reported alignment: 6 (0.00%)
+# reads that failed to align: 189922 (100.00%)
+Reported 6 paired-end alignments
+Time searching: 00:00:03
+Overall time: 00:00:03
+usearch v11.0.667_i86linux32, 4.0Gb RAM (32.8Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: sophie.marre@uca.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:03
+# reads processed: 189928
+# reads with at least one reported alignment: 6 (0.00%)
+# reads that failed to align: 189922 (100.00%)
+Reported 6 paired-end alignments
+Time searching: 00:00:03
+Overall time: 00:00:03
+usearch v11.0.667_i86linux32, 4.0Gb RAM (32.8Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: sophie.marre@uca.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:03
+# reads processed: 189928
+# reads with at least one reported alignment: 6 (0.00%)
+# reads that failed to align: 189922 (100.00%)
+Reported 6 paired-end alignments
+Time searching: 00:00:03
+Overall time: 00:00:03
+usearch v11.0.667_i86linux32, 4.0Gb RAM (32.8Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: sophie.marre@uca.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:03
+# reads processed: 189928
+# reads with at least one reported alignment: 6 (0.00%)
+# reads that failed to align: 189922 (100.00%)
+Reported 6 paired-end alignments
+Time searching: 00:00:03
+Overall time: 00:00:03
+usearch v11.0.667_i86linux32, 4.0Gb RAM (32.8Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: sophie.marre@uca.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:04
+# reads processed: 189928
+# reads with at least one reported alignment: 6 (0.00%)
+# reads that failed to align: 189922 (100.00%)
+Reported 6 paired-end alignments
+Time searching: 00:00:04
+Overall time: 00:00:04
+usearch v11.0.667_i86linux32, 4.0Gb RAM (32.8Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: sophie.marre@uca.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:04
+# reads processed: 189928
+# reads with at least one reported alignment: 6 (0.00%)
+# reads that failed to align: 189922 (100.00%)
+Reported 6 paired-end alignments
+Time searching: 00:00:04
+Overall time: 00:00:04
+usearch v11.0.667_i86linux32, 4.0Gb RAM (32.8Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: sophie.marre@uca.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:04
+# reads processed: 189928
+# reads with at least one reported alignment: 6 (0.00%)
+# reads that failed to align: 189922 (100.00%)
+Reported 6 paired-end alignments
+Time searching: 00:00:04
+Overall time: 00:00:04
+usearch v11.0.667_i86linux32, 4.0Gb RAM (32.8Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: sophie.marre@uca.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:03
+# reads processed: 189928
+# reads with at least one reported alignment: 6 (0.00%)
+# reads that failed to align: 189922 (100.00%)
+Reported 6 paired-end alignments
+Time searching: 00:00:03
+Overall time: 00:00:03
+usearch v11.0.667_i86linux32, 4.0Gb RAM (32.8Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: sophie.marre@uca.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:03
+# reads processed: 189928
+# reads with at least one reported alignment: 6 (0.00%)
+# reads that failed to align: 189922 (100.00%)
+Reported 6 paired-end alignments
+Time searching: 00:00:03
+Overall time: 00:00:03
+usearch v11.0.667_i86linux32, 4.0Gb RAM (32.8Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: sophie.marre@uca.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:03
+# reads processed: 189928
+# reads with at least one reported alignment: 6 (0.00%)
+# reads that failed to align: 189922 (100.00%)
+Reported 6 paired-end alignments
+Time searching: 00:00:03
+Overall time: 00:00:03
+usearch v11.0.667_i86linux32, 4.0Gb RAM (32.8Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: sophie.marre@uca.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:03
+# reads processed: 189928
+# reads with at least one reported alignment: 6 (0.00%)
+# reads that failed to align: 189922 (100.00%)
+Reported 6 paired-end alignments
+Time searching: 00:00:03
+Overall time: 00:00:03
+usearch v11.0.667_i86linux32, 4.0Gb RAM (32.8Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: sophie.marre@uca.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:04
+# reads processed: 189928
+# reads with at least one reported alignment: 6 (0.00%)
+# reads that failed to align: 189922 (100.00%)
+Reported 6 paired-end alignments
+Time searching: 00:00:04
+Overall time: 00:00:04
+usearch v11.0.667_i86linux32, 4.0Gb RAM (32.8Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: sophie.marre@uca.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:03
+# reads processed: 189928
+# reads with at least one reported alignment: 6 (0.00%)
+# reads that failed to align: 189922 (100.00%)
+Reported 6 paired-end alignments
+Time searching: 00:00:03
+Overall time: 00:00:03
+usearch v11.0.667_i86linux32, 4.0Gb RAM (32.8Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: sophie.marre@uca.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:03
+# reads processed: 189928
+# reads with at least one reported alignment: 6 (0.00%)
+# reads that failed to align: 189922 (100.00%)
+Reported 6 paired-end alignments
+Time searching: 00:00:03
+Overall time: 00:00:03
+usearch v11.0.667_i86linux32, 4.0Gb RAM (32.8Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: sophie.marre@uca.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:03
+# reads processed: 189928
+# reads with at least one reported alignment: 6 (0.00%)
+# reads that failed to align: 189922 (100.00%)
+Reported 6 paired-end alignments
+Time searching: 00:00:03
+Overall time: 00:00:03
+usearch v11.0.667_i86linux32, 4.0Gb RAM (32.8Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: sophie.marre@uca.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:03
+# reads processed: 189928
+# reads with at least one reported alignment: 6 (0.00%)
+# reads that failed to align: 189922 (100.00%)
+Reported 6 paired-end alignments
+Time searching: 00:00:03
+Overall time: 00:00:03
+usearch v11.0.667_i86linux32, 4.0Gb RAM (32.8Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: sophie.marre@uca.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:03
+# reads processed: 189928
+# reads with at least one reported alignment: 6 (0.00%)
+# reads that failed to align: 189922 (100.00%)
+Reported 6 paired-end alignments
+Time searching: 00:00:03
+Overall time: 00:00:03
+usearch v11.0.667_i86linux32, 4.0Gb RAM (32.8Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: sophie.marre@uca.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:03
+# reads processed: 189928
+# reads with at least one reported alignment: 6 (0.00%)
+# reads that failed to align: 189922 (100.00%)
+Reported 6 paired-end alignments
+Time searching: 00:00:03
+Overall time: 00:00:03
+usearch v11.0.667_i86linux32, 4.0Gb RAM (32.8Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: sophie.marre@uca.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:03
+# reads processed: 189928
+# reads with at least one reported alignment: 6 (0.00%)
+# reads that failed to align: 189922 (100.00%)
+Reported 6 paired-end alignments
+Time searching: 00:00:03
+Overall time: 00:00:03
+usearch v11.0.667_i86linux32, 4.0Gb RAM (32.8Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: sophie.marre@uca.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:03
+# reads processed: 189928
+# reads with at least one reported alignment: 6 (0.00%)
+# reads that failed to align: 189922 (100.00%)
+Reported 6 paired-end alignments
+Time searching: 00:00:03
+Overall time: 00:00:03
+usearch v11.0.667_i86linux32, 4.0Gb RAM (32.8Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: sophie.marre@uca.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:03
+# reads processed: 189928
+# reads with at least one reported alignment: 6 (0.00%)
+# reads that failed to align: 189922 (100.00%)
+Reported 6 paired-end alignments
+Time searching: 00:00:03
+Overall time: 00:00:03
+usearch v11.0.667_i86linux32, 4.0Gb RAM (32.8Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: sophie.marre@uca.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:03
+# reads processed: 189928
+# reads with at least one reported alignment: 6 (0.00%)
+# reads that failed to align: 189922 (100.00%)
+Reported 6 paired-end alignments
+Time searching: 00:00:03
+Overall time: 00:00:03
+usearch v11.0.667_i86linux32, 4.0Gb RAM (32.8Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: sophie.marre@uca.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:04
+# reads processed: 189928
+# reads with at least one reported alignment: 6 (0.00%)
+# reads that failed to align: 189922 (100.00%)
+Reported 6 paired-end alignments
+Time searching: 00:00:04
+Overall time: 00:00:04
+usearch v11.0.667_i86linux32, 4.0Gb RAM (32.8Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: sophie.marre@uca.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:03
+# reads processed: 189928
+# reads with at least one reported alignment: 6 (0.00%)
+# reads that failed to align: 189922 (100.00%)
+Reported 6 paired-end alignments
+Time searching: 00:00:03
+Overall time: 00:00:03
+usearch v11.0.667_i86linux32, 4.0Gb RAM (32.8Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: sophie.marre@uca.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:03
+# reads processed: 189928
+# reads with at least one reported alignment: 6 (0.00%)
+# reads that failed to align: 189922 (100.00%)
+Reported 6 paired-end alignments
+Time searching: 00:00:03
+Overall time: 00:00:03
+usearch v11.0.667_i86linux32, 4.0Gb RAM (32.8Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: sophie.marre@uca.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:03
+# reads processed: 189928
+# reads with at least one reported alignment: 6 (0.00%)
+# reads that failed to align: 189922 (100.00%)
+Reported 6 paired-end alignments
+Time searching: 00:00:03
+Overall time: 00:00:03
+usearch v11.0.667_i86linux32, 4.0Gb RAM (32.8Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: sophie.marre@uca.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:03
+# reads processed: 189928
+# reads with at least one reported alignment: 6 (0.00%)
+# reads that failed to align: 189922 (100.00%)
+Reported 6 paired-end alignments
+Time searching: 00:00:03
+Overall time: 00:00:03
+usearch v11.0.667_i86linux32, 4.0Gb RAM (32.8Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: sophie.marre@uca.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:03
+# reads processed: 189928
+# reads with at least one reported alignment: 6 (0.00%)
+# reads that failed to align: 189922 (100.00%)
+Reported 6 paired-end alignments
+Time searching: 00:00:03
+Overall time: 00:00:03
+usearch v11.0.667_i86linux32, 4.0Gb RAM (32.8Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: sophie.marre@uca.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:04
+# reads processed: 189928
+# reads with at least one reported alignment: 6 (0.00%)
+# reads that failed to align: 189922 (100.00%)
+Reported 6 paired-end alignments
+Time searching: 00:00:04
+Overall time: 00:00:04
+usearch v11.0.667_i86linux32, 4.0Gb RAM (32.8Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: sophie.marre@uca.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:03
+# reads processed: 189928
+# reads with at least one reported alignment: 6 (0.00%)
+# reads that failed to align: 189922 (100.00%)
+Reported 6 paired-end alignments
+Time searching: 00:00:03
+Overall time: 00:00:03
+usearch v11.0.667_i86linux32, 4.0Gb RAM (32.8Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: sophie.marre@uca.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:03
+# reads processed: 189928
+# reads with at least one reported alignment: 6 (0.00%)
+# reads that failed to align: 189922 (100.00%)
+Reported 6 paired-end alignments
+Time searching: 00:00:03
+Overall time: 00:00:03
+usearch v11.0.667_i86linux32, 4.0Gb RAM (32.8Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: sophie.marre@uca.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:03
+# reads processed: 189928
+# reads with at least one reported alignment: 6 (0.00%)
+# reads that failed to align: 189922 (100.00%)
+Reported 6 paired-end alignments
+Time searching: 00:00:03
+Overall time: 00:00:03
+usearch v11.0.667_i86linux32, 4.0Gb RAM (32.8Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: sophie.marre@uca.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:03
+# reads processed: 189928
+# reads with at least one reported alignment: 6 (0.00%)
+# reads that failed to align: 189922 (100.00%)
+Reported 6 paired-end alignments
+Time searching: 00:00:03
+Overall time: 00:00:03
+usearch v11.0.667_i86linux32, 4.0Gb RAM (32.8Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: sophie.marre@uca.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:03
+# reads processed: 189928
+# reads with at least one reported alignment: 6 (0.00%)
+# reads that failed to align: 189922 (100.00%)
+Reported 6 paired-end alignments
+Time searching: 00:00:03
+Overall time: 00:00:03
+usearch v11.0.667_i86linux32, 4.0Gb RAM (32.8Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: sophie.marre@uca.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:03
+# reads processed: 189928
+# reads with at least one reported alignment: 6 (0.00%)
+# reads that failed to align: 189922 (100.00%)
+Reported 6 paired-end alignments
+Time searching: 00:00:03
+Overall time: 00:00:03
+usearch v11.0.667_i86linux32, 4.0Gb RAM (32.8Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: sophie.marre@uca.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:04
+# reads processed: 189928
+# reads with at least one reported alignment: 6 (0.00%)
+# reads that failed to align: 189922 (100.00%)
+Reported 6 paired-end alignments
+Time searching: 00:00:04
+Overall time: 00:00:04
+usearch v11.0.667_i86linux32, 4.0Gb RAM (32.8Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: sophie.marre@uca.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:03
+# reads processed: 189928
+# reads with at least one reported alignment: 6 (0.00%)
+# reads that failed to align: 189922 (100.00%)
+Reported 6 paired-end alignments
+Time searching: 00:00:03
+Overall time: 00:00:03
+usearch v11.0.667_i86linux32, 4.0Gb RAM (32.8Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: sophie.marre@uca.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:04
+# reads processed: 189928
+# reads with at least one reported alignment: 6 (0.00%)
+# reads that failed to align: 189922 (100.00%)
+Reported 6 paired-end alignments
+Time searching: 00:00:04
+Overall time: 00:00:04
+usearch v11.0.667_i86linux32, 4.0Gb RAM (32.8Gb total), 8 cores
+(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
+https://drive5.com/usearch
+
+License: sophie.marre@uca.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:04
+# reads processed: 189928
+# reads with at least one reported alignment: 6 (0.00%)
+# reads that failed to align: 189922 (100.00%)
+Reported 6 paired-end alignments
+Time searching: 00:00:04
+Overall time: 00:00:04

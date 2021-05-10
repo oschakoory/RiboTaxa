@@ -105,7 +105,7 @@ join "$OUTPUT"/Taxonomy/"$SHORTNAME"_renamed_16S18S_recons_qiime2_taxonomy.tsv "
 
 awk 'BEGIN{print "ID\tDomain\tPhylum\tClass\tOrder\tFamily\tGenus\tSpecies\tConfidence\tLength\tAssigned_reads\tRelative_abundance "}1' "$OUTPUT"/Taxonomy/"$SHORTNAME"_SSU_taxonomy_abundance_renamed.tsv > "$OUTPUT"/Taxonomy/"$SHORTNAME"_SSU_taxonomy_abundance.tsv
 
-cat "$OUTPUT"/Taxonomy/"$SHORTNAME"_SSU_taxonomy_abundance.tsv | awk '!($11==0){print}' > "$SHORTNAME"_filtered_SSU_taxonomy_abundance.tsv
+cat "$OUTPUT"/Taxonomy/"$SHORTNAME"_SSU_taxonomy_abundance.tsv | awk '!($11==0){print}' > "$OUTPUT"/Taxonomy/"$SHORTNAME"_filtered_SSU_taxonomy_abundance.tsv
 
 #cleaning
 rm "$OUTPUT"/SSU_sequences/"$SHORTNAME"_scafstats_readsCount.tsv

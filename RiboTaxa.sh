@@ -146,27 +146,27 @@ THREAD=$(awk '/^THREAD/{print $3}' "${CONFIG}")
 
 echo "Merging paired files into single files... " | tee /dev/fd/3
 #bash merge-paired-reads.sh "$OUTPUT"/quality_control/"$SHORTNAME"_1_trimmed.fastq "$OUTPUT"/quality_control/"$SHORTNAME"_2_trimmed.fastq "$OUTPUT"/output_sortmerna/"$SHORTNAME"_mergedpaired.fastq
-reformat.sh in1="$OUTPUT"/quality_control/"$SHORTNAME"_1_trimmed.fastq in2="$OUTPUT"/quality_control/"$SHORTNAME"_2_trimmed.fastq out="$OUTPUT"/output_sortmerna/"$SHORTNAME"_mergedpaired.fastq overwrite=t
+#reformat.sh in1="$OUTPUT"/quality_control/"$SHORTNAME"_1_trimmed.fastq in2="$OUTPUT"/quality_control/"$SHORTNAME"_2_trimmed.fastq out="$OUTPUT"/output_sortmerna/"$SHORTNAME"_mergedpaired.fastq overwrite=t
 
 echo "Filtering 16S/18S reads...." | tee /dev/fd/3
-sortmerna --ref "$SORTMERNA_DB"/"$SORTME_NAME".fasta,"$SORTMERNA_DB"/$SORTME_NAME \
-	--reads "$OUTPUT"/output_sortmerna/"$SHORTNAME"_mergedpaired.fastq \
-	--fastx \
-	--aligned "$OUTPUT"/output_sortmerna/"$SHORTNAME"_16S18S \
-	--paired_in \
-	-a "$THREAD" \
-	--log \
-	-v
+#sortmerna --ref "$SORTMERNA_DB"/"$SORTME_NAME".fasta,"$SORTMERNA_DB"/$SORTME_NAME \
+#	--reads "$OUTPUT"/output_sortmerna/"$SHORTNAME"_mergedpaired.fastq \
+#	--fastx \
+#	--aligned "$OUTPUT"/output_sortmerna/"$SHORTNAME"_16S18S \
+#	--paired_in \
+#	-a "$THREAD" \
+#	--log \
+#	-v
 
 echo "Unmerging single files into paired files...." | tee /dev/fd/3
 #bash unmerge-paired-reads.sh "$OUTPUT"/output_sortmerna/"$SHORTNAME"_16S18S.fastq "$OUTPUT"/output_sortmerna/"$SHORTNAME"_R1_16S18Sreads.fastq "$OUTPUT"/output_sortmerna/"$SHORTNAME"_R2_16S18Sreads.fastq
-reformat.sh in="$OUTPUT"/output_sortmerna/"$SHORTNAME"_16S18S.fastq out1="$OUTPUT"/output_sortmerna/"$SHORTNAME"_R1_16S18Sreads.fastq out2="$OUTPUT"/output_sortmerna/"$SHORTNAME"_R2_16S18Sreads.fastq overwrite=t
+#reformat.sh in="$OUTPUT"/output_sortmerna/"$SHORTNAME"_16S18S.fastq out1="$OUTPUT"/output_sortmerna/"$SHORTNAME"_R1_16S18Sreads.fastq out2="$OUTPUT"/output_sortmerna/"$SHORTNAME"_R2_16S18Sreads.fastq overwrite=t
 
 echo "Saving results..." | tee /dev/fd/3
 
 echo "Filtering 16S/18S using sortmerna ends successfully on : "`date` | tee /dev/fd/3
 
-rm "$OUTPUT"/output_sortmerna/"$SHORTNAME"_16S18S.fastq
+#rm "$OUTPUT"/output_sortmerna/"$SHORTNAME"_16S18S.fastq
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 #
@@ -209,11 +209,11 @@ STD_DEV=$(awk '/^STD_DEV/{print $3}' "${CONFIG}")
 
 echo "Running emirge amplicon to reconstruct 16S/18S full length sequences..." | tee /dev/fd/3
 emirge_amplicon.py \
-	-1 "$OUTPUT"/output_sortmerna/"$SHORTNAME"_R1_16S18Sreads.fastq \
+	-1 "$OUTPUT"/quality_control/"$SHORTNAME"_1_trimmed.fastq \
 	-f "$EMIRGE_DB"/"$REF_NAME" \
 	-b "$EMIRGE_DB"/$BWT_NAME \
 	-l "$MAX_LENGTH" \
-	-2 "$OUTPUT"/output_sortmerna/"$SHORTNAME"_R2_16S18Sreads.fastq \
+	-2 "$OUTPUT"/quality_control/"$SHORTNAME"_2_trimmed.fastq \
 	-j "$IDENTITY" \
 	-n "$NUM_ITERATION" \
 	-i "$MEAN_INSERT_SIZE" \
@@ -236,7 +236,7 @@ emirge_rename_fasta.py --no_N "$OUTPUT"/SSU_sequences/output_emirge/"$SHORTNAME"
 
 #zip -jr  "$SHORTNAME"_amplicon_16S18S_recons.zip "$OUTPUT"/SSU_sequences/output_emirge/"$SHORTNAME"_amplicon_16S18S_recons/*
 
-cd "$OUTPUT"/SSU_sequences/output_emirge && zip -rm "$SHORTNAME"_amplicon_16S18S_recons.zip "$SHORTNAME"_amplicon_16S18S_recons/ && cd -
+cd "$OUTPUT"/SSU_sequences/output_emirge && zip -qrm "$SHORTNAME"_amplicon_16S18S_recons.zip "$SHORTNAME"_amplicon_16S18S_recons/ && cd -
 
 #rm -r "$OUTPUT"/SSU_sequences/output_emirge/"$SHORTNAME"_amplicon_16S18S_recons
 
@@ -248,7 +248,7 @@ echo $SHORTNAME > "$OUTPUT"/quality_control/samples.list.txt
 
 python2 "$RiboTaxa_DIR"/run_MetaRib.py -cfg "$CONFIG_PATH" -p "$OUTPUT"/quality_control -b "$EMIRGE_DB"/$BWT_NAME -l "$EMIRGE_DB"/"$REF_NAME"
 
-#cd "$OUTPUT"/output_MetaRib && zip -rm Iteration.zip Iteration/ && cd -
+cd "$OUTPUT"/output_MetaRib && zip -qrm Iteration.zip Iteration/ && cd -
 
 mkdir -p "$OUTPUT/SSU_sequences/output_MetaRib"
 mkdir -p "$OUTPUT/SSU_sequences/output_MetaRib/$SHORTNAME"
@@ -314,7 +314,7 @@ bbmap.sh -Xmx3g in1="$OUTPUT"/quality_control/"$SHORTNAME"_1_trimmed.fastq \
 #rm "$OUTPUT"/SSU_sequences/id_file.txt
 #rm "$OUTPUT"/SSU_sequences/all_SSU_sequences.fasta
 
-rm "$OUTPUT"/output_sortmerna/"$SHORTNAME"_mergedpaired.fastq
+#rm "$OUTPUT"/output_sortmerna/"$SHORTNAME"_mergedpaired.fastq
 rm "$OUTPUT"/SSU_sequences/emirge_metarib_SSU_sequences.fasta
 rm "$OUTPUT"/SSU_sequences/emirge_metarib_clustered_SSU_sequences.fasta
 #rm -r "$OUTPUT"/SSU_sequences/output_MetaRib/"$SHORTNAME"/Abundance

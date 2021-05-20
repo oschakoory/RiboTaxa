@@ -1,3 +1,6 @@
+<img align="middle" src="docs/RiboTaxa.png" width="200" alt="RiboTaxa Pipeline"/>
+
+
 # RiboTaxa v1.4
 
 by Oshma Chakoory, Sophie Marre, and Pierre Peyret.

@@ -63,12 +63,12 @@ MAXNS=$(awk '/^maxns/{print $3}' "${CONFIG}")
 
 echo "Run the First quality control on raw data... " | tee /dev/fd/3
 
-fastqc "$DATA_DIR"/"$SHORTNAME"_1.$FORMAT  "$DATA_DIR"/"$SHORTNAME"_2.$FORMAT  -dir $OUTPUT -o "$OUTPUT"/quality_control/before_fastqc
+fastqc "$DATA_DIR"/"$SHORTNAME"_R1.$FORMAT  "$DATA_DIR"/"$SHORTNAME"_R2.$FORMAT  -dir $OUTPUT -o "$OUTPUT"/quality_control/before_fastqc
 
 echo "Removing adapters from sequences..." | tee /dev/fd/3
 bbduk.sh -Xmx1g \
-	in1="$DATA_DIR"/"$SHORTNAME"_1.$FORMAT  \
-	in2="$DATA_DIR"/"$SHORTNAME"_2.$FORMAT  \
+	in1="$DATA_DIR"/"$SHORTNAME"_R1.$FORMAT  \
+	in2="$DATA_DIR"/"$SHORTNAME"_R2.$FORMAT  \
 	out1="$OUTPUT"/quality_control/"$SHORTNAME"_1_noadapt.$FORMAT  \
 	out2="$OUTPUT"/quality_control/"$SHORTNAME"_2_noadapt.$FORMAT  \
 	ref="$RiboTaxa_DIR"/adapters/TruSeq3-PE.fa \

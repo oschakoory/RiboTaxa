@@ -146,27 +146,28 @@ THREAD=$(awk '/^THREAD/{print $3}' "${CONFIG}")
 
 echo "Merging paired files into single files... " | tee /dev/fd/3
 #bash merge-paired-reads.sh "$OUTPUT"/quality_control/"$SHORTNAME"_1_trimmed.fastq "$OUTPUT"/quality_control/"$SHORTNAME"_2_trimmed.fastq "$OUTPUT"/output_sortmerna/"$SHORTNAME"_mergedpaired.fastq
-#reformat.sh in1="$OUTPUT"/quality_control/"$SHORTNAME"_1_trimmed.fastq in2="$OUTPUT"/quality_control/"$SHORTNAME"_2_trimmed.fastq out="$OUTPUT"/output_sortmerna/"$SHORTNAME"_mergedpaired.fastq overwrite=t
+reformat.sh in1="$OUTPUT"/quality_control/"$SHORTNAME"_1_trimmed.fastq in2="$OUTPUT"/quality_control/"$SHORTNAME"_2_trimmed.fastq out="$OUTPUT"/output_sortmerna/"$SHORTNAME"_mergedpaired.fastq overwrite=t
 
 echo "Filtering 16S/18S reads...." | tee /dev/fd/3
-#sortmerna --ref "$SORTMERNA_DB"/"$SORTME_NAME".fasta,"$SORTMERNA_DB"/$SORTME_NAME \
-#	--reads "$OUTPUT"/output_sortmerna/"$SHORTNAME"_mergedpaired.fastq \
-#	--fastx \
-#	--aligned "$OUTPUT"/output_sortmerna/"$SHORTNAME"_16S18S \
-#	--paired_in \
-#	-a "$THREAD" \
-#	--log \
-#	-v
+sortmerna --ref "$SORTMERNA_DB"/"$SORTME_NAME".fasta,"$SORTMERNA_DB"/$SORTME_NAME \
+	--reads "$OUTPUT"/output_sortmerna/"$SHORTNAME"_mergedpaired.fastq \
+	--fastx \
+	--aligned "$OUTPUT"/output_sortmerna/"$SHORTNAME"_16S18S \
+	--paired_in \
+	-a "$THREAD" \
+	--log \
+	-v
 
 echo "Unmerging single files into paired files...." | tee /dev/fd/3
 #bash unmerge-paired-reads.sh "$OUTPUT"/output_sortmerna/"$SHORTNAME"_16S18S.fastq "$OUTPUT"/output_sortmerna/"$SHORTNAME"_R1_16S18Sreads.fastq "$OUTPUT"/output_sortmerna/"$SHORTNAME"_R2_16S18Sreads.fastq
-#reformat.sh in="$OUTPUT"/output_sortmerna/"$SHORTNAME"_16S18S.fastq out1="$OUTPUT"/output_sortmerna/"$SHORTNAME"_R1_16S18Sreads.fastq out2="$OUTPUT"/output_sortmerna/"$SHORTNAME"_R2_16S18Sreads.fastq overwrite=t
+reformat.sh in="$OUTPUT"/output_sortmerna/"$SHORTNAME"_16S18S.fastq out1="$OUTPUT"/output_sortmerna/"$SHORTNAME"_R1_16S18Sreads.fastq out2="$OUTPUT"/output_sortmerna/"$SHORTNAME"_R2_16S18Sreads.fastq overwrite=t
 
 echo "Saving results..." | tee /dev/fd/3
 
 echo "Filtering 16S/18S using sortmerna ends successfully on : "`date` | tee /dev/fd/3
 
-#rm "$OUTPUT"/output_sortmerna/"$SHORTNAME"_16S18S.fastq
+rm "$OUTPUT"/output_sortmerna/"$SHORTNAME"_16S18S.fastq
+rm "$OUTPUT"/output_sortmerna/"$SHORTNAME"_mergedpaired.fastq
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 #
@@ -209,11 +210,11 @@ STD_DEV=$(awk '/^STD_DEV/{print $3}' "${CONFIG}")
 
 echo "Running emirge amplicon to reconstruct 16S/18S full length sequences..." | tee /dev/fd/3
 emirge_amplicon.py \
-	-1 "$OUTPUT"/quality_control/"$SHORTNAME"_1_trimmed.fastq \
+	-1 "$OUTPUT"/output_sortmerna/"$SHORTNAME"_R1_16S18Sreads.fastq \
 	-f "$EMIRGE_DB"/"$REF_NAME" \
 	-b "$EMIRGE_DB"/$BWT_NAME \
 	-l "$MAX_LENGTH" \
-	-2 "$OUTPUT"/quality_control/"$SHORTNAME"_2_trimmed.fastq \
+	-2 "$OUTPUT"/output_sortmerna/"$SHORTNAME"_R2_16S18Sreads.fastq \
 	-j "$IDENTITY" \
 	-n "$NUM_ITERATION" \
 	-i "$MEAN_INSERT_SIZE" \
@@ -240,6 +241,13 @@ cd "$OUTPUT"/SSU_sequences/output_emirge && zip -qrm "$SHORTNAME"_amplicon_16S18
 
 #rm -r "$OUTPUT"/SSU_sequences/output_emirge/"$SHORTNAME"_amplicon_16S18S_recons
 
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+#
+#			Reconstructing 16S/18S full length sequences using MetaRib
+#
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
 echo "Running MetaRib to reconstruct 16S/18S full length sequences..."`date` | tee /dev/fd/3
 
 #SAMPLE=$(awk '{s++}END{print s/4}' "$OUTPUT"/output_sortmerna/"$SHORTNAME"_R1_16S18Sreads.fastq)
@@ -260,24 +268,17 @@ mv "$OUTPUT"/SSU_sequences/output_MetaRib/"$SHORTNAME"/all.dedup.fasta "$OUTPUT"
 
 rm -r "$OUTPUT"/output_MetaRib
 
-#for NAME in `cat "$OUTPUT"/quality_control/samples.list.txt`
-#do
-#echo $NAME
-#cat "$OUTPUT"/SSU_sequences/output_MetaRib/"$SHORTNAME"/Abundance/all.dedup.filtered.est.ab.txt | tr -s '\t' ',' | csvcut -c Contig_ID,"$NAME"_estab| tr ',' '\t' | sed 1d | awk '!($2=="0.00000"){print}' |awk '{print $1}' > "$OUTPUT"/SSU_sequences/output_MetaRib/"$SHORTNAME"/file.txt
-#awk 'NR==FNR{ids[$0]; next} ($1 in ids){ printf ">" $0 }' "$OUTPUT"/SSU_sequences/output_MetaRib/"$SHORTNAME"/file.txt RS='>' "$OUTPUT"/SSU_sequences/output_MetaRib/"$SHORTNAME"/Abundance/all.dedup.filtered.fasta > "$OUTPUT"/SSU_sequences/output_MetaRib/"$SHORTNAME"/"$SHORTNAME"_MetaRib_SSU.fasta
-#rm "$OUTPUT"/SSU_sequences/output_MetaRib/"$SHORTNAME"/file.txt
-#done
-
-
 echo "Finalising reconstructed sequences..." | tee /dev/fd/3
 
-cat "$OUTPUT"/SSU_sequences/output_emirge/"$SHORTNAME"_renamed_16S18S_recons.fasta "$OUTPUT"/SSU_sequences/output_MetaRib/"$SHORTNAME"/MetaRib_SSU.fasta > "$OUTPUT"/SSU_sequences/emirge_metarib_SSU_sequences.fasta
+cat "$OUTPUT"/SSU_sequences/output_emirge/"$SHORTNAME"_renamed_16S18S_recons.fasta "$OUTPUT"/SSU_sequences/output_MetaRib/"$SHORTNAME"/MetaRib_SSU.fasta |sed '/>/s/[ ].*//' > "$OUTPUT"/SSU_sequences/emirge_metarib_SSU_sequences.fasta
+
+#cat "$OUTPUT"/SSU_sequences/output_emirge/"$SHORTNAME"_renamed_16S18S_recons.fasta "$OUTPUT"/SSU_sequences/output_MetaRib/"$SHORTNAME"/MetaRib_SSU.fasta > "$OUTPUT"/SSU_sequences/emirge_metarib_SSU_sequences.fasta
 
 #clustering at 97%
-vsearch --cluster_fast "$OUTPUT"/SSU_sequences/emirge_metarib_SSU_sequences.fasta --centroids "$OUTPUT"/SSU_sequences/emirge_metarib_clustered_SSU_sequences.fasta --id 0.97
+#vsearch --cluster_fast "$OUTPUT"/SSU_sequences/emirge_metarib_SSU_sequences.fasta --centroids "$OUTPUT"/SSU_sequences/emirge_metarib_clustered_SSU_sequences.fasta --id 0.97
 
 #covert small letters into capital letters
-awk '/^>/ {print($0)}; /^[^>]/ {print(toupper($0))}' "$OUTPUT"/SSU_sequences/emirge_metarib_clustered_SSU_sequences.fasta > "$OUTPUT"/SSU_sequences/"$SHORTNAME"_SSU_sequences.fasta
+#awk '/^>/ {print($0)}; /^[^>]/ {print(toupper($0))}' "$OUTPUT"/SSU_sequences/emirge_metarib_clustered_SSU_sequences.fasta > "$OUTPUT"/SSU_sequences/"$SHORTNAME"_SSU_sequences.fasta
 
 #rm -rv "$OUTPUT"/output_MetaRib/"$SHORTNAME"/Iteration/iter_1/emirge_amp/!("initial_mapping"|"iter.$NUM_ITERATION")
 
@@ -292,13 +293,66 @@ echo "Saving results..." | tee /dev/fd/3
 
 echo "Reconstructing 16S/18S sequences ends successfully on : "`date` | tee /dev/fd/3
 
+
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+#
+#			Abundance calculation
+#
+#~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 echo "Calculating relative abundances of reconstructed sequences..." | tee /dev/fd/3
 
 bbmap.sh -Xmx3g in1="$OUTPUT"/quality_control/"$SHORTNAME"_1_trimmed.fastq \
 	in2="$OUTPUT"/quality_control/"$SHORTNAME"_2_trimmed.fastq \
-	ref="$OUTPUT"/SSU_sequences/"$SHORTNAME"_SSU_sequences.fasta \
-	scafstats="$OUTPUT"/SSU_sequences/"$SHORTNAME"_scafstats.txt \
-	covstats="$OUTPUT"/SSU_sequences/"$SHORTNAME"_covstats.txt
+	ref="$OUTPUT"/SSU_sequences/emirge_metarib_SSU_sequences.fasta \
+	covstats="$OUTPUT"/SSU_sequences/"$SHORTNAME"_covstats.txt \
+	scafstats="$OUTPUT"/SSU_sequences/"$SHORTNAME"_scafstats.txt 
+
+vsearch --cluster_fast "$OUTPUT"/SSU_sequences/emirge_metarib_SSU_sequences.fasta --centroids "$OUTPUT"/SSU_sequences/emirge_metarib_clustered_SSU_sequences.fasta --id 0.97 --uc "$OUTPUT"/SSU_sequences/emirge_metarib_clustered_SSU_sequences.tsv
+
+awk '/^>/ {print($0)}; /^[^>]/ {print(toupper($0))}' "$OUTPUT"/SSU_sequences/emirge_metarib_clustered_SSU_sequences.tsv > "$OUTPUT"/SSU_sequences/"$SHORTNAME"_SSU_sequences.fasta
+
+cat "$OUTPUT"/SSU_sequences/"$SHORTNAME"_scafstats.txt  | sed 1d | awk '{ print $1,$8 }' | sort -k1 -k2 | tr ' ' \\t > "$OUTPUT"/SSU_sequences/sorted_emirge_metarib_scafstats.txt
+cat "$OUTPUT"/SSU_sequences/emirge_metarib_clustered_SSU_sequences.tsv |awk '!($1=="C"){print}'|awk '{ print $2,$9 }' |sort -k2 |awk '{ print $2,$1 }' > "$OUTPUT"/SSU_sequences/sorted_emirge_metarib_clustered_SSU_sequences.tsv
+join "$OUTPUT"/SSU_sequences/sorted_emirge_metarib_scafstats.txt "$OUTPUT"/SSU_sequences/sorted_emirge_metarib_clustered_SSU_sequences.tsv |tr  ' ' \\t > "$OUTPUT"/SSU_sequences/reads_count.tsv
+
+cat "$OUTPUT"/SSU_sequences/reads_count.tsv | awk '{ print $3,$2 }' |sort -k1 |awk '{ sum[$1] += $2; count[$1] += 1 } END { for ( key in count ) { print key, count[key], sum[key] } }'|sort -k1 -n|tr  ' ' \\t > "$OUTPUT"/SSU_sequences/reads_count_byCluster.tsv
+cat "$OUTPUT"/SSU_sequences/emirge_metarib_clustered_SSU_sequences.tsv|awk '($1=="C"){print}'|awk '{ print $2,$9 }'|sort -k1 -n|tr  ' ' \\t > "$OUTPUT"/SSU_sequences/Cluster_refseq.tsv
+join "$OUTPUT"/SSU_sequences/reads_count_byCluster.tsv "$OUTPUT"/SSU_sequences/Cluster_refseq.tsv  |awk '{ print $4,$1,$2,$3 }'|tr  ' ' \\t |sort -k1 > "$OUTPUT"/SSU_sequences/reads_count_bySeq.tsv
+
+
+cat "$OUTPUT"/SSU_sequences/reads_count_bySeq.tsv | awk '{ print $1 }' |sort -k1 > "$OUTPUT"/SSU_sequences/id.tsv
+cat "$OUTPUT"/SSU_sequences/"$SHORTNAME"_covstats.txt |sed 1d |awk '{ print $1,$3 }' |tr  ' ' \\t |sort -k1 > "$OUTPUT"/SSU_sequences/table.tsv
+
+awk -F '\t' 'NR==FNR {id[$1]; next} $1 in id' "$OUTPUT"/SSU_sequences/id.tsv "$OUTPUT"/SSU_sequences/table.tsv | tr  ' ' \\t |sort -k1 > "$OUTPUT"/SSU_sequences/length_bySeq.tsv
+join "$OUTPUT"/SSU_sequences/reads_count_bySeq.tsv "$OUTPUT"/SSU_sequences/length_bySeq.tsv |awk '{ print $1,$4,$5,$2,$3 }' |tr  ' ' \\t > "$OUTPUT"/SSU_sequences/readsCount_length.tsv
+
+total=$(awk '{s+=$2}END{print s}' "$OUTPUT"/SSU_sequences/readsCount_length.tsv)
+
+awk -v total=$total '{ printf ("%s\t%s\t%.6f\n", $1, $2, ($2/total)*100)}' "$OUTPUT"/SSU_sequences/readsCount_length.tsv | tr  ' ' \\t |sort -k1  > "$OUTPUT"/SSU_sequences/RA_length.tsv
+
+join "$OUTPUT"/SSU_sequences/RA_length.tsv "$OUTPUT"/SSU_sequences/length_bySeq.tsv | tr  ' ' \\t |sort -k1 |awk '{ print $1,$4,$2,$3 }'|awk 'BEGIN{print "Seq_ID\tlength\treads_count\tRelative_abundance"}1' > "$OUTPUT"/SSU_sequences/"$SHORTNAME"_Abundance.tsv
+
+rm "$OUTPUT"/SSU_sequences/sorted_emirge_metarib_scafstats.txt 
+rm "$OUTPUT"/SSU_sequences/sorted_emirge_metarib_clustered_SSU_sequences.tsv
+rm "$OUTPUT"/SSU_sequences/emirge_metarib_clustered_SSU_sequences.tsv
+rm "$OUTPUT"/SSU_sequences/reads_count.tsv
+rm "$OUTPUT"/SSU_sequences/Cluster_refseq.tsv
+rm "$OUTPUT"/SSU_sequences/reads_count_byCluster.tsv
+rm "$OUTPUT"/SSU_sequences/table.tsv 
+rm "$OUTPUT"/SSU_sequences/id.tsv
+rm "$OUTPUT"/SSU_sequences/reads_count_bySeq.tsv
+rm "$OUTPUT"/SSU_sequences/length_bySeq.tsv
+rm "$OUTPUT"/SSU_sequences/readsCount_length.tsv
+rm "$OUTPUT"/SSU_sequences/RA_length.tsv
+rm "$OUTPUT"/SSU_sequences/emirge_metarib_SSU_sequences.fasta
+######
+
+
+#bbmap.sh -Xmx3g in1="$OUTPUT"/quality_control/"$SHORTNAME"_1_trimmed.fastq \
+#	in2="$OUTPUT"/quality_control/"$SHORTNAME"_2_trimmed.fastq \
+#	ref="$OUTPUT"/SSU_sequences/"$SHORTNAME"_SSU_sequences.fasta \
+#	scafstats="$OUTPUT"/SSU_sequences/"$SHORTNAME"_scafstats.txt \
+#	covstats="$OUTPUT"/SSU_sequences/"$SHORTNAME"_covstats.txt
 
 
 #cat "$OUTPUT"/SSU_sequences/all_scafstats.txt | sed 1d | tr ',' \\t | awk '{ print $1,$8 }' | sort -k1 -k2 | awk '!($2==0){print}' | awk '{print $1}' > "$OUTPUT"/SSU_sequences/id_file.txt
@@ -314,9 +368,8 @@ bbmap.sh -Xmx3g in1="$OUTPUT"/quality_control/"$SHORTNAME"_1_trimmed.fastq \
 #rm "$OUTPUT"/SSU_sequences/id_file.txt
 #rm "$OUTPUT"/SSU_sequences/all_SSU_sequences.fasta
 
-#rm "$OUTPUT"/output_sortmerna/"$SHORTNAME"_mergedpaired.fastq
-rm "$OUTPUT"/SSU_sequences/emirge_metarib_SSU_sequences.fasta
-rm "$OUTPUT"/SSU_sequences/emirge_metarib_clustered_SSU_sequences.fasta
+
+#rm "$OUTPUT"/SSU_sequences/emirge_metarib_clustered_SSU_sequences.fasta
 #rm -r "$OUTPUT"/SSU_sequences/output_MetaRib/"$SHORTNAME"/Abundance
 
 echo "Saving results..." | tee /dev/fd/3

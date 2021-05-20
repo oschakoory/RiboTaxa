@@ -83,37 +83,37 @@ done
 
 mv taxonomy.tsv "$OUTPUT"/Taxonomy/taxonomy.tsv
 
-cat "$OUTPUT"/Taxonomy/taxonomy.tsv | sed 1d |sort -k1 -k2 | tr ';' \\t > "$OUTPUT"/Taxonomy/"$SHORTNAME"_renamed_16S18S_recons_qiime2_taxonomy.tsv
+cat "$OUTPUT"/Taxonomy/taxonomy.tsv | sed 1d |sort -k1| tr ';' \\t > "$OUTPUT"/Taxonomy/"$SHORTNAME"_renamed_16S18S_recons_qiime2_taxonomy.tsv
 
 #handling length of reconstructed sequences
-cat "$OUTPUT"/SSU_sequences/"$SHORTNAME"_covstats.txt| sed 1d | awk '{ print $1,$3 }' |sort -k1 -k2 | tr ' ' \\t > "$OUTPUT"/SSU_sequences/"$SHORTNAME"_covstats_readlength.tsv
+#cat "$OUTPUT"/SSU_sequences/"$SHORTNAME"_covstats.txt| sed 1d | awk '{ print $1,$3 }' |sort -k1 -k2 | tr ' ' \\t > "$OUTPUT"/SSU_sequences/"$SHORTNAME"_covstats_readlength.tsv
 
 
 #handling relative abundance table from bbmap
-cat "$OUTPUT"/SSU_sequences/"$SHORTNAME"_scafstats.txt | sed 1d | awk '{ print $1,$8 }' | sort -k1 -k2 | tr ' ' \\t > "$OUTPUT"/SSU_sequences/"$SHORTNAME"_scafstats_readsCount.tsv
+#cat "$OUTPUT"/SSU_sequences/"$SHORTNAME"_scafstats.txt | sed 1d | awk '{ print $1,$8 }' | sort -k1 -k2 | tr ' ' \\t > "$OUTPUT"/SSU_sequences/"$SHORTNAME"_scafstats_readsCount.tsv
 
 #cat "$OUTPUT"/SSU_sequences/"$SHORTNAME"_scafstats_readsCount.tsv | tr ' ' \\t > "$OUTPUT"/SSU_sequences/"$SHORTNAME"_scafstats_readsCount1.tsv
 
 
-total=$(awk '{s+=$2}END{print s}' "$OUTPUT"/SSU_sequences/"$SHORTNAME"_scafstats_readsCount.tsv)
+#total=$(awk '{s+=$2}END{print s}' "$OUTPUT"/SSU_sequences/"$SHORTNAME"_scafstats_readsCount.tsv)
 
-awk -v total=$total '{ printf ("%s\t%s\t%.6f\n", $1, $2, ($2/total)*100)}' "$OUTPUT"/SSU_sequences/"$SHORTNAME"_scafstats_readsCount.tsv > "$OUTPUT"/SSU_sequences/"$SHORTNAME"_scafstats_RA.tsv
+#awk -v total=$total '{ printf ("%s\t%s\t%.6f\n", $1, $2, ($2/total)*100)}' "$OUTPUT"/SSU_sequences/"$SHORTNAME"_scafstats_readsCount.tsv > "$OUTPUT"/SSU_sequences/"$SHORTNAME"_scafstats_RA.tsv
 
-join "$OUTPUT"/SSU_sequences/"$SHORTNAME"_covstats_readlength.tsv "$OUTPUT"/SSU_sequences/"$SHORTNAME"_scafstats_RA.tsv |tr  ' ' \\t > "$OUTPUT"/Taxonomy/"$SHORTNAME"_SSU_length_abundance.tsv
+#join "$OUTPUT"/SSU_sequences/"$SHORTNAME"_covstats_readlength.tsv "$OUTPUT"/SSU_sequences/"$SHORTNAME"_scafstats_RA.tsv |tr  ' ' \\t > "$OUTPUT"/Taxonomy/"$SHORTNAME"_SSU_length_abundance.tsv
 
-join "$OUTPUT"/Taxonomy/"$SHORTNAME"_renamed_16S18S_recons_qiime2_taxonomy.tsv "$OUTPUT"/Taxonomy/"$SHORTNAME"_SSU_length_abundance.tsv |tr  ' ' \\t > "$OUTPUT"/Taxonomy/"$SHORTNAME"_SSU_taxonomy_abundance_renamed.tsv
+join "$OUTPUT"/Taxonomy/"$SHORTNAME"_renamed_16S18S_recons_qiime2_taxonomy.tsv "$OUTPUT"/SSU_sequences/"$SHORTNAME"_Abundance.tsv |tr  ' ' \\t > "$OUTPUT"/Taxonomy/"$SHORTNAME"_SSU_taxonomy_abundance_renamed.tsv
 
 awk 'BEGIN{print "ID\tDomain\tPhylum\tClass\tOrder\tFamily\tGenus\tSpecies\tConfidence\tLength\tAssigned_reads\tRelative_abundance "}1' "$OUTPUT"/Taxonomy/"$SHORTNAME"_SSU_taxonomy_abundance_renamed.tsv > "$OUTPUT"/Taxonomy/"$SHORTNAME"_SSU_taxonomy_abundance.tsv
 
-cat "$OUTPUT"/Taxonomy/"$SHORTNAME"_SSU_taxonomy_abundance.tsv | awk '!($11==0){print}' > "$OUTPUT"/Taxonomy/"$SHORTNAME"_filtered_SSU_taxonomy_abundance.tsv
+#cat "$OUTPUT"/Taxonomy/"$SHORTNAME"_SSU_taxonomy_abundance.tsv | awk '!($11==0){print}' > "$OUTPUT"/Taxonomy/"$SHORTNAME"_filtered_SSU_taxonomy_abundance.tsv
 
 #cleaning
-rm "$OUTPUT"/SSU_sequences/"$SHORTNAME"_scafstats_readsCount.tsv
+#rm "$OUTPUT"/SSU_sequences/"$SHORTNAME"_scafstats_readsCount.tsv
 #rm "$OUTPUT"/SSU_sequences/"$SHORTNAME"_scafstats_readsCount1.tsv
 rm "$OUTPUT"/Taxonomy/"$SHORTNAME"_SSU_taxonomy_abundance_renamed.tsv
-rm "$OUTPUT"/SSU_sequences/"$SHORTNAME"_covstats_readlength.tsv 
-rm "$OUTPUT"/SSU_sequences/"$SHORTNAME"_scafstats_RA.tsv
-rm "$OUTPUT"/Taxonomy/"$SHORTNAME"_SSU_length_abundance.tsv
+#rm "$OUTPUT"/SSU_sequences/"$SHORTNAME"_covstats_readlength.tsv 
+#rm "$OUTPUT"/SSU_sequences/"$SHORTNAME"_scafstats_RA.tsv
+#rm "$OUTPUT"/Taxonomy/"$SHORTNAME"_SSU_length_abundance.tsv
 rm "$OUTPUT"/Taxonomy/"$SHORTNAME"_renamed_16S18S_recons_qiime2_taxonomy.tsv
 rm "$OUTPUT"/Taxonomy/taxonomy.tsv
 

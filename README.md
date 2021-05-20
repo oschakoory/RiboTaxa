@@ -106,7 +106,7 @@ RiboTaxa_DIR = /home/user/Documents/RiboTaxa
 
 [Setting up database path...]
 
-####set up database path
+####set up database path+database file in fasta format
 DB_DIR = /home/user/Documents/Databases/SILVA_138_SSURef_Nr99_tax_silva.fasta
 
 #### Set up output directory
@@ -127,7 +127,7 @@ bash -i indexDB_RiboTaxa.sh PATH_TO/indexDB_arguments.conf
 
 Indexing database takes a while. Using the maximum number of available threads/CPUs will save time. This step will produce two directories in your ```OUTPUT``` path:
 - sortemerna_indexed_DB : containing indexed files for sortmeRNA
-- bowtie_indexed_DB : containing indexed files by <a class="reference external" href="http://bowtie-bio.sourceforge.net/manual.shtml" target="_blank" rel="noopener noreferrer">Bowtie</a> to be used for emirge
+- bowtie_indexed_DB : containing indexed files by <a class="reference external" href="http://bowtie-bio.sourceforge.net/manual.shtml" target="_blank" rel="noopener noreferrer">Bowtie</a> to be used for EMIRGE and MetaRib
 
 ### Running RiboTaxa pipeline
 
@@ -150,8 +150,8 @@ The configuration file is very important and each parameter needs to be filled t
 ####set up RiboTaxa directory
 RiboTaxa_DIR = /home/user/Documents/RiboTaxa
 
-####set up data directory containing only raw reads in fastq format
-###paired end read should be _1.fastq and _2.fastq
+####set up data directory containing only raw reads in fastq/fastq.gz format
+###paired end read should be _R1.fastq and _R2.fastq
 DATA_DIR = /home/user/Documents/MetaGenomics/raw_data
 
 ####set up output directory
@@ -201,8 +201,9 @@ SORTMERNA_DB = /home/user/Documents/Databases/sortmerna_indexed_silva_138
 THREAD = 8
 
 
-[Reconstructing 16S/18S sequences uisng EMIRGE]
+[Reconstructing 16S/18S sequences uisng EMIRGE and MetaRib]
 
+[EMIRGE]
 ####indexed database diretory for emirge indexed file
 EMIRGE_DB = /home/user/Documents/Databases/bowtie_indexed_silva_138_for_emirge
 
@@ -221,6 +222,9 @@ MEAN_INSERT_SIZE = 300
 ####standard deviation
 STD_DEV = 100 
 
+[METARIB]
+##number of subsampling (reads) to be used by MetaRib at each iteration
+SAMPLING_NUM = 1000000
 
 [Taxonomic classfication using sklearn_classifier of qiime2]
 
@@ -247,29 +251,17 @@ RiboTaxa produces the 4 following directories in your OUTPUT path of your ```Rib
 
 - ```output_sortmerna``` : This folder contains filtered 16S/18S sequences from your trimmed (meta)genomics sequence files: ```$FILE_R1_16S18Sreads.fastq```,```$FILE_R2_16S18Sreads.fastq``` and  and a ```$FILE.log``` indicating the % of 16S/18S reads filtered from your (meta)genomics dataset. Reads not matching the SSU database are saved in ```$FILE_other_than_16S18S.fastq```.
 
--  ```output_emirge``` : This folder contains the full-length SSU rRNA sequences reconstructed by EMIRGE, matched to given 16S/18S database in the form of ```$FILE_renamed_16S18S_recons.fasta```. Dissecting a single example header:
+-  ```SSU_sequences``` : This folder contains two subfolders: ```output_emirge``` and ```output_metarib```. These subfolders contain iterations perfomed by EMIRGE and MetaRib to reconstruct full-length/nearly full-length rRNA 16S/18S gene sequences. 
 
-```bash
->18|AE001437.168613.170132 Prior=0.439114 Length=1433 NormPrior=0.421739
-  1        2           3        4            5                6
-
-1. The internal EMIRGE ID -- unique for each sequence
-2. The accession number of the starting candidate sequence
-3. an optional suffix indicating this sequence was split out from another due to evidence in the mapping reads of 2 or more "strains."
-4. The Prior, or abundance estimate 
-5. The length of the sequence
-6. The length-normalized abundance estimate (More accurate when the sequences are of different lengths)
-```
-
-This folder contains sub-folders of all your input (meta)genomics dataset containing the mapping and iterations files performed by EMIRGE which was used to produce the above ```$FILE_renamed_16S18S_recons.fasta``` file.
+The file ```$FILE_SSU_sequences.fasta``` contains the final full-length/nearly full-length rRNA 16S/18S gene sequences recontructed by EMIRGE and MetaRib.
 	
-- tax_class_sklearn_qiime2 : This folder contains the taxonomic classification of the full-length SSU rRNA sequences reconstructed by EMIRGE. It takes ```$FILE_renamed_16S18S_recons.fasta``` as input, converts it to ```$FILE_renamed_16S18S_recons_qiime2.qza``` and returns the classification of each sequence as ```$FILE_renamed_16S18S_recons_qiime2_taxonomy.qza```. To view the classification of each sequence, open ```$FILE_renamed_16S18S_recons_qiime2_taxonomy.tsv```.
+- Taxonomy : This folder contains the taxonomic classification of the full-length SSU rRNA sequences reconstructed by EMIRGE. It takes ```$FILE_renamed_16S18S_recons.fasta``` as input, converts it to ```$FILE_renamed_16S18S_recons_qiime2.qza``` and returns the classification of each sequence as ```$FILE_renamed_16S18S_recons_qiime2_taxonomy.qza```. To calculate relative abundace of each reconstructed SSU sequence, BBmap is used to map short reads onto SSU sequence and the number of assigned reads per sequence is divided by the sum of all the assigned reads (and multiplied by 100). Relative abundance is thus expressed in %. To view the classification and relative abundance of each sequence, open ```$FILE_SSU_taxonomy_abundance.tsv```.
 
-To get the abundance of each reconstructed SSU sequence, the length-normalized abundance estimate is retrived from emirge output. The ```$FILE_SSU_taxonomy_abundance.tsv``` contains the following column names:
+. The ```$FILE_SSU_taxonomy_abundance.tsv``` contains the following column names:
 
 ```bash
-Sequence_ID		Domain		Phylum			Class			Order		Family		Genus			Species		Length(bp)		Abundance
-3|EU334524.1.1558	Bacteria	Desulfobacterota	Desulfuromonadia	Geobacterales	Geobacteraceae	Trichlorobacter	Geobacter_lovleyi	1425	0.046687
+Sequence_ID		Domain		Phylum			Class			Order		Family		Genus			Species		Confidence 	Length(bp)	Assigned reads		Relative_Abundance(%)
+3|EU334524.1.1558	Bacteria	Desulfobacterota	Desulfuromonadia	Geobacterales	Geobacteraceae	Trichlorobacter	Geobacter_lovleyi	0.999874566	1425	68	4.6687
 ```
 
 

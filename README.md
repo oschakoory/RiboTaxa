@@ -1,5 +1,3 @@
-<img align="middle" src="docs/RiboTaxa.png" width="200" alt="RiboTaxa Pipeline"/>
-
 
 # RiboTaxa v1.4
 
@@ -16,6 +14,7 @@ Tools used in RiboTaxa pipeline:
 - To reconstruct full-length SSU rRNA sequences: <a class="reference external" href="https://genomebiology.biomedcentral.com/articles/10.1186/gb-2011-12-5-r44" target="_blank" rel="noopener noreferrer">EMIRGE</a>, <a class="reference external" href="https://pubmed.ncbi.nlm.nih.gov/32167532/" target="_blank" rel="noopener noreferrer">MetaRib</a> 
 - Classify the full-length reconstructed SSU sequences: <a class="reference external" href="https://docs.qiime2.org/2020.8/plugins/available/feature-classifier/classify-sklearn/">sklearn classifier</a> of <a class="reference external" href="https://docs.qiime2.org/2020.8/" target="_blank" rel="noopener noreferrer">QIIME2</a>
 
+<img align="middle" src="docs/RiboTaxa.png" width="600" alt="RiboTaxa Pipeline"/>
 
 ## Quick-start
 

@@ -34,7 +34,7 @@ RiboTaxa_DIR=$(awk '/^RiboTaxa_DIR/{print $3}' "${CONFIG}")
 FORMAT=$(awk '/^FORMAT/{print $3}' "${CONFIG}")
 #echo $FORMAT
 
-for NAME in `ls "$DATA_DIR"/*_1.$FORMAT | sed 's/_1.'$FORMAT'//'` 
+for NAME in `ls "$DATA_DIR"/*_R1.$FORMAT | sed 's/_R1.'$FORMAT'//'` 
 do
 SHORTNAME=$(basename ""${NAME[@]}"") 
 #echo $SHORTNAME

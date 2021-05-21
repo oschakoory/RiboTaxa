@@ -55,14 +55,14 @@ def parse_cfg(config):
     SAMPLING_NUM = config.get('METARIB', 'SAMPLING_NUM')
     THREAD = config.getint('BASE','THREAD')
     # EMIRGE
-    global MAX_LENGTH, IDENTITY, MEAN_INSERT_SIZE, STD_DEV, EMIRGE_DB
+    global MAX_LENGTH, IDENTITY, MEAN_INSERT_SIZE, STD_DEV, EMIRGE_DB, NUM_ITERATION
     #EM_PATH = config.get('EMIRGE', 'EM_PATH')
     #EM_PARA = config.get('EMIRGE', 'EM_PARA')
     #EM_REF = config.get('METARIB', 'EM_REF')
     #EM_BT = config.get('METARIB', 'EM_BT')
     MAX_LENGTH = config.get('EMIRGE', 'MAX_LENGTH')
     IDENTITY = config.get('EMIRGE', 'IDENTITY')
-    #NUM_ITERATION = config.get('EMIRGE', 'NUM_ITERATION')
+    NUM_ITERATION = config.get('EMIRGE', 'NUM_ITERATION')
     MEAN_INSERT_SIZE = config.get('EMIRGE', 'MEAN_INSERT_SIZE')
     STD_DEV = config.get('EMIRGE', 'STD_DEV')
     EMIRGE_DB = config.get('EMIRGE', 'EMIRGE_DB')
@@ -178,7 +178,7 @@ def run_align_bbmap(current_iter_fa, unmap_fq1, unmap_fq2):
 
 def run_emirge_and_dedup(sub_fq1, sub_fq2, dedup_fa, iter_time):
     cmd = ' '.join(['emirge_amplicon.py', 'emirge_amp/', '-1', sub_fq1, '-2', sub_fq2,
-    '--phred33', '-l', MAX_LENGTH, '-i', MEAN_INSERT_SIZE,'-j', IDENTITY, '-s', STD_DEV, '-a', str(THREAD), '-n 40', '-f', EM_REF, '-b', EM_BT, '>> iter_'+str(iter_time)+'_emirge.log','2>> iter_'+str(iter_time)+'_emirge.log'])
+    '--phred33', '-l', MAX_LENGTH, '-i', MEAN_INSERT_SIZE,'-j', IDENTITY, '-s', STD_DEV, '-a', str(THREAD), '-n', NUM_ITERATION, '-f', EM_REF, '-b', EM_BT, '>> iter_'+str(iter_time)+'_emirge.log','2>> iter_'+str(iter_time)+'_emirge.log'])
    # print(cmd)
     os.system(cmd)
     # change to last iteration folder in EMIRGE

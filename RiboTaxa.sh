@@ -260,6 +260,7 @@ cd "$OUTPUT"/output_MetaRib && zip -qrm Iteration.zip Iteration/ && cd -
 
 mkdir -p "$OUTPUT/SSU_sequences/output_MetaRib"
 mkdir -p "$OUTPUT/SSU_sequences/output_MetaRib/$SHORTNAME"
+mkdir -p "$OUTPUT/SSU_sequences/Abundance_calc"
 
 mv "$OUTPUT"/output_MetaRib/Abundance "$OUTPUT"/SSU_sequences/output_MetaRib/"$SHORTNAME"
 mv "$OUTPUT"/output_MetaRib/Iteration.zip "$OUTPUT"/SSU_sequences/output_MetaRib/"$SHORTNAME"
@@ -309,7 +310,7 @@ bbmap.sh -Xmx3g in1="$OUTPUT"/quality_control/"$SHORTNAME"_1_trimmed.fastq \
 
 vsearch --cluster_fast "$OUTPUT"/SSU_sequences/emirge_metarib_SSU_sequences.fasta --centroids "$OUTPUT"/SSU_sequences/emirge_metarib_clustered_SSU_sequences.fasta --id 0.97 --uc "$OUTPUT"/SSU_sequences/emirge_metarib_clustered_SSU_sequences.tsv
 
-awk '/^>/ {print($0)}; /^[^>]/ {print(toupper($0))}' "$OUTPUT"/SSU_sequences/emirge_metarib_clustered_SSU_sequences.tsv > "$OUTPUT"/SSU_sequences/"$SHORTNAME"_SSU_sequences.fasta
+awk '/^>/ {print($0)}; /^[^>]/ {print(toupper($0))}' "$OUTPUT"/SSU_sequences/emirge_metarib_clustered_SSU_sequences.fasta > "$OUTPUT"/SSU_sequences/"$SHORTNAME"_SSU_sequences.fasta
 
 cat "$OUTPUT"/SSU_sequences/"$SHORTNAME"_scafstats.txt  | sed 1d | awk '{ print $1,$8 }' | sort -k1 -k2 | tr ' ' \\t > "$OUTPUT"/SSU_sequences/sorted_emirge_metarib_scafstats.txt
 cat "$OUTPUT"/SSU_sequences/emirge_metarib_clustered_SSU_sequences.tsv |awk '!($1=="C"){print}'|awk '{ print $2,$9 }' |sort -k2 |awk '{ print $2,$1 }' > "$OUTPUT"/SSU_sequences/sorted_emirge_metarib_clustered_SSU_sequences.tsv
@@ -330,22 +331,29 @@ total=$(awk '{s+=$2}END{print s}' "$OUTPUT"/SSU_sequences/readsCount_length.tsv)
 
 awk -v total=$total '{ printf ("%s\t%s\t%.6f\n", $1, $2, ($2/total)*100)}' "$OUTPUT"/SSU_sequences/readsCount_length.tsv | tr  ' ' \\t |sort -k1  > "$OUTPUT"/SSU_sequences/RA_length.tsv
 
-join "$OUTPUT"/SSU_sequences/RA_length.tsv "$OUTPUT"/SSU_sequences/length_bySeq.tsv | tr  ' ' \\t |sort -k1 |awk '{ print $1,$4,$2,$3 }'|awk 'BEGIN{print "Seq_ID\tlength\treads_count\tRelative_abundance"}1' > "$OUTPUT"/SSU_sequences/"$SHORTNAME"_Abundance.tsv
+join "$OUTPUT"/SSU_sequences/RA_length.tsv "$OUTPUT"/SSU_sequences/length_bySeq.tsv |awk '{ print $1,$4,$2,$3 }'|tr  ' ' \\t |sort -k1 |awk 'BEGIN{print "Seq_ID\tlength\treads_count\tRelative_abundance"}1' > "$OUTPUT"/SSU_sequences/"$SHORTNAME"_Abundance.tsv
 
+mv "$OUTPUT"/SSU_sequences/emirge_metarib_clustered_SSU_sequences.tsv "$OUTPUT"/SSU_sequences/Abundance_calc
+mv "$OUTPUT"/SSU_sequences/Abundance_calc/emirge_metarib_clustered_SSU_sequences.tsv "$OUTPUT"/SSU_sequences/Abundance_calc/"$SHORTNAME"_allclusters.tsv
+mv "$OUTPUT"/SSU_sequences/readsCount_length.tsv "$OUTPUT"/SSU_sequences/Abundance_calc
+mv "$OUTPUT"/SSU_sequences/Abundance_calc/readsCount_length.tsv "$OUTPUT"/SSU_sequences/Abundance_calc/"$SHORTNAME"_RCountsLen_byCluster.tsv
+mv "$OUTPUT"/SSU_sequences/reads_count.tsv "$OUTPUT"/SSU_sequences/Abundance_calc
+mv "$OUTPUT"/SSU_sequences/Abundance_calc/reads_count.tsv "$OUTPUT"/SSU_sequences/Abundance_calc/"$SHORTNAME"_Rcounts_allClusters.tsv
+mv "$OUTPUT"/SSU_sequences/"$SHORTNAME"_scafstats.txt "$OUTPUT"/SSU_sequences/Abundance_calc
+mv "$OUTPUT"/SSU_sequences/"$SHORTNAME"_covstats.txt "$OUTPUT"/SSU_sequences/Abundance_calc
+
+#cleaning
 rm "$OUTPUT"/SSU_sequences/sorted_emirge_metarib_scafstats.txt 
 rm "$OUTPUT"/SSU_sequences/sorted_emirge_metarib_clustered_SSU_sequences.tsv
-rm "$OUTPUT"/SSU_sequences/emirge_metarib_clustered_SSU_sequences.tsv
-rm "$OUTPUT"/SSU_sequences/reads_count.tsv
 rm "$OUTPUT"/SSU_sequences/Cluster_refseq.tsv
 rm "$OUTPUT"/SSU_sequences/reads_count_byCluster.tsv
 rm "$OUTPUT"/SSU_sequences/table.tsv 
 rm "$OUTPUT"/SSU_sequences/id.tsv
 rm "$OUTPUT"/SSU_sequences/reads_count_bySeq.tsv
 rm "$OUTPUT"/SSU_sequences/length_bySeq.tsv
-rm "$OUTPUT"/SSU_sequences/readsCount_length.tsv
 rm "$OUTPUT"/SSU_sequences/RA_length.tsv
 rm "$OUTPUT"/SSU_sequences/emirge_metarib_SSU_sequences.fasta
-######
+rm "$OUTPUT"/SSU_sequences/emirge_metarib_clustered_SSU_sequences.fasta
 
 
 #bbmap.sh -Xmx3g in1="$OUTPUT"/quality_control/"$SHORTNAME"_1_trimmed.fastq \

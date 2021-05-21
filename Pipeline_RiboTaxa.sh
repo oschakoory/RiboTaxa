@@ -1,13 +1,19 @@
 #!/bin/sh
 
-exec 3>&1 1>RiboTaxa.log 2>&3
-
 # Program configuration
 __author__='Oshma Chakoory'
 __email__='oshma.chakoory@uca.fr'
 __credits__=["Oshma"]
 __status__='Development'
 __version__='1.4'
+
+
+CONFIG_PATH=$1
+CONFIG="${CONFIG_PATH[@]}"
+
+Jobname=$(awk '/^JOB_NAME/{print $3}' "${CONFIG}")
+
+exec 3>&1 1>RiboTaxa_"$Jobname".log 2>&3
 
 echo " "
 echo "RiboTaxa -- A complete pipeline from raw metagenomics to species-level identification" | tee /dev/fd/3
@@ -21,8 +27,6 @@ echo "This program is distributed under the AGPL-3.0 License. See LICENSE for mo
 #set -x # debug mode on
 set -o errexit # ensure script will stop in case of ignored error
 
-CONFIG_PATH=$1
-CONFIG="${CONFIG_PATH[@]}"
 
 DATA_DIR=$(awk '/^DATA_DIR/{print $3}' "${CONFIG}")
 #echo "Data path = $DATA_DIR" | tee /dev/fd/3
@@ -57,5 +61,5 @@ source "$RiboTaxa_DIR"/sklearn_classifier.sh $CONFIG_PATH
 
 done
 
-mv RiboTaxa.log "$OUTPUT"
+mv RiboTaxa_"$Jobname".log "$OUTPUT"
 #mv "$OUTPUT"/output_MetaRib "$OUTPUT"/SSU_sequences

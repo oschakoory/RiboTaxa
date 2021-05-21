@@ -268,6 +268,7 @@ mv "$OUTPUT"/SSU_sequences/output_MetaRib/"$SHORTNAME"/Abundance/all.dedup.fasta
 mv "$OUTPUT"/SSU_sequences/output_MetaRib/"$SHORTNAME"/all.dedup.fasta "$OUTPUT"/SSU_sequences/output_MetaRib/"$SHORTNAME"/MetaRib_SSU.fasta
 
 rm -r "$OUTPUT"/output_MetaRib
+rm "$OUTPUT"/quality_control/samples.list.txt
 
 echo "Finalising reconstructed sequences..." | tee /dev/fd/3
 

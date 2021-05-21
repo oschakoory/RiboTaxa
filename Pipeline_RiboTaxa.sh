@@ -44,7 +44,7 @@ SHORTNAME=$(basename ""${NAME[@]}"")
 #echo $SHORTNAME
 echo "" | tee /dev/fd/3
 echo "***********************************************************************************************" | tee /dev/fd/3
-echo "Running RiboTaxa on $NAME"  | tee /dev/fd/3
+echo ">Running RiboTaxa on $NAME"  | tee /dev/fd/3
 echo "***********************************************************************************************" | tee /dev/fd/3
 echo "" | tee /dev/fd/3
 #run RiboTaxa.sh script to perform

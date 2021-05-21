@@ -45,7 +45,7 @@ mkdir -p "$OUTPUT/quality_control/after_fastqc/multiqc"
 
 echo ""
 echo "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" | tee /dev/fd/3
-echo "Quality control starting on : "`date` | tee /dev/fd/3
+echo ">Quality control starting on : "`date` | tee /dev/fd/3
 echo "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" | tee /dev/fd/3
 echo ""
 
@@ -100,7 +100,7 @@ multiqc -f "$OUTPUT"/quality_control/after_fastqc/* --outdir "$OUTPUT"/quality_c
 
 echo "Saving results for quality control..." | tee /dev/fd/3
 
-echo "Quality control ends successfully on : "`date` | tee /dev/fd/3
+echo ">Quality control ends successfully on : "`date` | tee /dev/fd/3
  
 rm "$OUTPUT"/quality_control/*_noadapt.$FORMAT 
 
@@ -125,7 +125,7 @@ done
 #echo "Setting up directories for sortmerna..." | tee /dev/fd/3
 echo ""
 echo "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" | tee /dev/fd/3
-echo "Filtering 16S/18S using sortmerna starting on : "`date` | tee /dev/fd/3
+echo ">Filtering 16S/18S using sortmerna starting on : "`date` | tee /dev/fd/3
 echo "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" | tee /dev/fd/3
 echo ""
 
@@ -164,7 +164,7 @@ reformat.sh in="$OUTPUT"/output_sortmerna/"$SHORTNAME"_16S18S.fastq out1="$OUTPU
 
 echo "Saving results..." | tee /dev/fd/3
 
-echo "Filtering 16S/18S using sortmerna ends successfully on : "`date` | tee /dev/fd/3
+echo ">Filtering 16S/18S using sortmerna ends successfully on : "`date` | tee /dev/fd/3
 
 rm "$OUTPUT"/output_sortmerna/"$SHORTNAME"_16S18S.fastq
 rm "$OUTPUT"/output_sortmerna/"$SHORTNAME"_mergedpaired.fastq
@@ -177,7 +177,7 @@ rm "$OUTPUT"/output_sortmerna/"$SHORTNAME"_mergedpaired.fastq
 
 echo ""
 echo "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" | tee /dev/fd/3
-echo "Reconstructing 16S18S using EMIRGE starting on : "`date` | tee /dev/fd/3
+echo ">Reconstructing 16S18S using EMIRGE starting on : "`date` | tee /dev/fd/3
 echo "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" | tee /dev/fd/3
 echo ""
 
@@ -248,7 +248,7 @@ cd "$OUTPUT"/SSU_sequences/output_emirge && zip -qrm "$SHORTNAME"_amplicon_16S18
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
-echo "Running MetaRib to reconstruct 16S/18S full length sequences..."`date` | tee /dev/fd/3
+echo ">Running MetaRib to reconstruct 16S/18S full length sequences..."`date` | tee /dev/fd/3
 
 #SAMPLE=$(awk '{s++}END{print s/4}' "$OUTPUT"/output_sortmerna/"$SHORTNAME"_R1_16S18Sreads.fastq)
 
@@ -292,7 +292,7 @@ cat "$OUTPUT"/SSU_sequences/output_emirge/"$SHORTNAME"_renamed_16S18S_recons.fas
 
 echo "Saving results..." | tee /dev/fd/3
 
-echo "Reconstructing 16S/18S sequences ends successfully on : "`date` | tee /dev/fd/3
+echo ">Reconstructing 16S/18S sequences ends successfully on : "`date` | tee /dev/fd/3
 
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -300,7 +300,7 @@ echo "Reconstructing 16S/18S sequences ends successfully on : "`date` | tee /dev
 #			Abundance calculation
 #
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-echo "Calculating relative abundances of reconstructed sequences..." | tee /dev/fd/3
+echo ">Calculating relative abundances of reconstructed sequences..." | tee /dev/fd/3
 
 bbmap.sh -Xmx3g in1="$OUTPUT"/quality_control/"$SHORTNAME"_1_trimmed.fastq \
 	in2="$OUTPUT"/quality_control/"$SHORTNAME"_2_trimmed.fastq \
@@ -382,7 +382,7 @@ rm "$OUTPUT"/SSU_sequences/emirge_metarib_clustered_SSU_sequences.fasta
 
 echo "Saving results..." | tee /dev/fd/3
 
-echo "Relative abundance calculation ends successfully on : "`date` | tee /dev/fd/3
+echo ">Relative abundance calculation ends successfully on : "`date` | tee /dev/fd/3
 
 conda deactivate
 #echo "RiboTaxa virtual environment has been deactivated successfully..." | tee /dev/fd/3

@@ -22,7 +22,7 @@ conda activate RiboTaxa_py36
 
 echo ""
 echo "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" | tee /dev/fd/3
-echo "Taxonomic classification using sklearn classifier of QIIME2020.8 ..." `date`| tee /dev/fd/3
+echo ">Taxonomic classification using sklearn classifier of QIIME2020.8 ..." `date`| tee /dev/fd/3
 echo "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" | tee /dev/fd/3
 echo ""
 
@@ -121,7 +121,7 @@ rm "$OUTPUT"/Taxonomy/abundance.tsv
 
 rm -d "$OUTPUT"/data
 
-echo "Taxonomic classification using sklearn_classifer ends successfully on : "`date` | tee /dev/fd/3
+echo ">Taxonomic classification using sklearn_classifer ends successfully on : "`date` | tee /dev/fd/3
 
 conda deactivate
 #echo "Qiime2 virtual environment has been deactivated successfully..." | tee /dev/fd/3

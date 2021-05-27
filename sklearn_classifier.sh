@@ -56,14 +56,33 @@ CONFIDENCE=$(awk '/^CONFIDENCE/{print $3}' "${CONFIG}")
 BATCH=$(awk '/^BATCH/{print $3}' "${CONFIG}")
 #echo "Number of reads to process per batch = $BATCH" | tee /dev/fd/3
 
+
 echo "Importing data ..." | tee /dev/fd/3
+echo "command line :" | tee /dev/fd/3
+echo "qiime tools import \
+  --input-path $OUTPUT/SSU_sequences/"$SHORTNAME"_SSU_sequences.fasta \
+  --output-path $OUTPUT/Taxonomy/"$SHORTNAME"_SSU_sequences_qiime2.qza \
+  --type FeatureData[Sequence]" | tee /dev/fd/3
+  
 #--------Importation des données dans QIIME 2
 qiime tools import \
   --input-path "$OUTPUT"/SSU_sequences/"$SHORTNAME"_SSU_sequences.fasta \
   --output-path "$OUTPUT"/Taxonomy/"$SHORTNAME"_SSU_sequences_qiime2.qza \
   --type FeatureData[Sequence]
 
-echo "Classifying reconstructed sequences using sklearn_classifer..." | tee /dev/fd/3
+
+echo ">Classifying reconstructed sequences using sklearn_classifer..." | tee /dev/fd/3
+
+echo "command line :" | tee /dev/fd/3
+echo "qiime feature-classifier classify-sklearn \
+  --i-classifier $SKLEARN_DB \
+  --i-reads $OUTPUT/Taxonomy/"$SHORTNAME"_SSU_sequences_qiime2.qza  \
+  --o-classification $OUTPUT/Taxonomy/"$SHORTNAME"_renamed_16S18S_recons_qiime2_taxonomy \
+  --p-n-jobs 1 \
+  --p-confidence $CONFIDENCE \
+  --p-reads-per-batch $BATCH \
+  --verbose" | tee /dev/fd/3
+
 qiime feature-classifier classify-sklearn \
   --i-classifier $SKLEARN_DB \
   --i-reads "$OUTPUT"/Taxonomy/"$SHORTNAME"_SSU_sequences_qiime2.qza  \

@@ -13,15 +13,14 @@ CONFIG="${CONFIG_PATH[@]}"
 
 Jobname=$(awk '/^JOB_NAME/{print $3}' "${CONFIG}")
 
-exec 3>&1 1>RiboTaxa_"$Jobname".log 2>&3
-
+exec 3>&1 1>RiboTaxa_"$Jobname".stdout 2>&3 2>>RiboTaxa_"$Jobname".stderr 
 echo " "
 echo "RiboTaxa -- A complete pipeline from raw metagenomics to species-level identification" | tee /dev/fd/3
 echo "By Oshma Chakoory, Sophie Marre & Pierre Peyret" | tee /dev/fd/3
 echo "University Clermont Auvergne, France " | tee /dev/fd/3
-echo "Version: 1.4"
+echo "Version: 1.4" | tee /dev/fd/3
 
-echo "This program is distributed under the AGPL-3.0 License. See LICENSE for more information."
+echo "This program is distributed under the AGPL-3.0 License. See LICENSE for more information." | tee /dev/fd/3
 
 # Handling errors
 #set -x # debug mode on
@@ -61,5 +60,6 @@ source "$RiboTaxa_DIR"/sklearn_classifier.sh $CONFIG_PATH
 
 done
 
-mv RiboTaxa_"$Jobname".log "$OUTPUT"
+mv RiboTaxa_"$Jobname".stdout "$OUTPUT"
+mv RiboTaxa_"$Jobname".stderr "$OUTPUT"
 #mv "$OUTPUT"/output_MetaRib "$OUTPUT"/SSU_sequences

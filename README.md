@@ -198,6 +198,12 @@ qtrim = rl
 ####reads with more Ns than this (after trimming) will be discarded
 maxns = 1
 
+[BBMAP]
+##RAM Limit to be used by BBTOOLS/BBMAP during quality control and mapping
+##depends of the computer RAM. Use approx 80% of available RAM
+##exemple: Available RAM = 16GB, therefore RAM = 80/100*16 = 12GB
+RAM = 12
+
 
 [Filter 16S/18S reads using SortmeRNA]
 ####indexed database directory for sortmerna indexed files

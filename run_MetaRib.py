@@ -55,7 +55,7 @@ def parse_cfg(config):
     SAMPLING_NUM = config.get('METARIB', 'SAMPLING_NUM')
     THREAD = config.getint('BASE','THREAD')
     # EMIRGE
-    global MAX_LENGTH, IDENTITY, MEAN_INSERT_SIZE, STD_DEV, EMIRGE_DB, NUM_ITERATION
+    global MAX_LENGTH, IDENTITY, MEAN_INSERT_SIZE, STD_DEV, EMIRGE_DB, NUM_ITERATION, RAM
     #EM_PATH = config.get('EMIRGE', 'EM_PATH')
     #EM_PARA = config.get('EMIRGE', 'EM_PARA')
     #EM_REF = config.get('METARIB', 'EM_REF')
@@ -66,6 +66,7 @@ def parse_cfg(config):
     MEAN_INSERT_SIZE = config.get('EMIRGE', 'MEAN_INSERT_SIZE')
     STD_DEV = config.get('EMIRGE', 'STD_DEV')
     EMIRGE_DB = config.get('EMIRGE', 'EMIRGE_DB')
+    RAM = config.get('BBMAP', 'RAM')
    
     # BBTOOL
     #global BM_PATH, MAP_PARA, CLS_PARA
@@ -161,7 +162,7 @@ def dedup_contig(old_fa, new_fa):
 def run_align_bbmap(current_iter_fa, unmap_fq1, unmap_fq2):
     ref = current_iter_fa
     # run bbmap alignment, since we may have duplicates, cannot calculate stats
-    cmd = ' '.join(['bbmap.sh', '-Xmx6g', 'in1='+unmap_fq1, 'in2='+unmap_fq2, 'ref='+ref,
+    cmd = ' '.join(['bbmap.sh', '-Xmx'+RAM+'g', 'in1='+unmap_fq1, 'in2='+unmap_fq2, 'ref='+ref,
     'threads='+str(THREAD), 'minid=0.96', 'maxindel=1', 'minhits=2', 'idfilter=0.98', 'outu=bbmap.unmap.fq', '32bit=t', 'ow=t', 'statsfile=bbmap.statsfile.txt',
     'sortscafs=t', 'scafstats=bbmap.scafstats.txt', 'covstats=bbmap.covstats.txt','2> bbmap.log'])
     os.system(cmd)
@@ -295,7 +296,7 @@ def cal_mapping_stats(samples_list, samples_fq1_path, samples_fq2_path, all_dedu
         scafstats = sample_name+'.scafstats.txt'
         covstats = sample_name+'.covstats.txt'
         # run bbmap alignment, but only we only need statistics file, set ozo=f to print all cov info
-        cmd = ' '.join(['bbmap.sh', '-Xmx6g', 'in1='+reads1, 'in2='+reads2, 'ref='+dedup_ref,
+        cmd = ' '.join(['bbmap.sh', '-Xmx'+RAM+'g', 'in1='+reads1, 'in2='+reads2, 'ref='+dedup_ref,
         'threads='+str(THREAD), 'minid=0.96', 'maxindel=1', 'minhits=2', 'idfilter=0.98', 'ow=t', '32bit=t', 'statsfile='+statsfile, 'nzo=f',
         'sortscafs=t', 'scafstats='+scafstats, 'covstats='+covstats, '2> run.'+sample_name+'.log'])
         scafstats = os.getcwd()+'/'+scafstats

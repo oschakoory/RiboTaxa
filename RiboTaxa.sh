@@ -49,6 +49,8 @@ echo ">Quality control starting on : "`date` | tee /dev/fd/3
 echo "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" | tee /dev/fd/3
 echo "" | tee /dev/fd/3
 
+RAM=$(awk '/^RAM/{print $3}' "${CONFIG}")
+
 KTRIM=$(awk '/^ktrim/{print $3}' "${CONFIG}")
 
 KMER=$(awk '/^kmer/{print $3}' "${CONFIG}")
@@ -70,7 +72,7 @@ fastqc "$DATA_DIR"/"$SHORTNAME"_R1.$FORMAT  "$DATA_DIR"/"$SHORTNAME"_R2.$FORMAT 
 
 echo "Removing adapters from sequences..." | tee /dev/fd/3
 echo "command line :" | tee /dev/fd/3
-echo "bbduk.sh -Xmx1g \
+echo "bbduk.sh -Xmx${RAM}g \
 	in1=$DATA_DIR/"$SHORTNAME"_R1.$FORMAT  \
 	in2=$DATA_DIR/"$SHORTNAME"_R2.$FORMAT  \
 	out1=$OUTPUT/quality_control/"$SHORTNAME"_1_noadapt.$FORMAT  \
@@ -82,7 +84,7 @@ echo "bbduk.sh -Xmx1g \
 	tpe \
 	tbo" | tee /dev/fd/3
 
-bbduk.sh -Xmx1g \
+bbduk.sh -Xmx${RAM}g \
 	in1="$DATA_DIR"/"$SHORTNAME"_R1.$FORMAT  \
 	in2="$DATA_DIR"/"$SHORTNAME"_R2.$FORMAT  \
 	out1="$OUTPUT"/quality_control/"$SHORTNAME"_1_noadapt.$FORMAT  \
@@ -97,7 +99,7 @@ bbduk.sh -Xmx1g \
 
 echo "Trimming sequences..." | tee /dev/fd/3
 echo "command line :" | tee /dev/fd/3
-echo "bbduk.sh -Xmx2g \
+echo "bbduk.sh -Xmx${RAM}g \
 	in1=$OUTPUT/quality_control/"$SHORTNAME"_1_noadapt.$FORMAT  \
 	in2=$OUTPUT/quality_control/"$SHORTNAME"_2_noadapt.$FORMAT  \
 	out1=$OUTPUT/quality_control/"$SHORTNAME"_1_trimmed.$FORMAT  \
@@ -107,7 +109,7 @@ echo "bbduk.sh -Xmx2g \
 	trimq=$TRIMQ \
 	maxns=$MAXNS" | tee /dev/fd/3
 
-bbduk.sh -Xmx2g \
+bbduk.sh -Xmx${RAM}g \
 	in1="$OUTPUT"/quality_control/"$SHORTNAME"_1_noadapt.$FORMAT  \
 	in2="$OUTPUT"/quality_control/"$SHORTNAME"_2_noadapt.$FORMAT  \
 	out1="$OUTPUT"/quality_control/"$SHORTNAME"_1_trimmed.$FORMAT  \
@@ -371,16 +373,17 @@ echo ">Reconstructing 16S/18S sequences ends successfully on : "`date` | tee /de
 #			Abundance calculation
 #
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 echo ">Calculating relative abundances of reconstructed sequences..." | tee /dev/fd/3
 
 echo "command line :" | tee /dev/fd/3
-echo "bbmap.sh -Xmx6g in1=$OUTPUT/quality_control/"$SHORTNAME"_1_trimmed.fastq \
+echo "bbmap.sh -Xmx${RAM}g in1=$OUTPUT/quality_control/"$SHORTNAME"_1_trimmed.fastq \
 	in2=$OUTPUT/quality_control/"$SHORTNAME"_2_trimmed.fastq \
 	ref=$OUTPUT/SSU_sequences/emirge_metarib_SSU_sequences.fasta \
 	covstats=$OUTPUT/SSU_sequences/"$SHORTNAME"_covstats.txt \
 	scafstats=$OUTPUT/SSU_sequences/"$SHORTNAME"_scafstats.txt " | tee /dev/fd/3
 
-bbmap.sh -Xmx6g in1="$OUTPUT"/quality_control/"$SHORTNAME"_1_trimmed.fastq \
+bbmap.sh -Xmx${RAM}g in1="$OUTPUT"/quality_control/"$SHORTNAME"_1_trimmed.fastq \
 	in2="$OUTPUT"/quality_control/"$SHORTNAME"_2_trimmed.fastq \
 	ref="$OUTPUT"/SSU_sequences/emirge_metarib_SSU_sequences.fasta \
 	covstats="$OUTPUT"/SSU_sequences/"$SHORTNAME"_covstats.txt \

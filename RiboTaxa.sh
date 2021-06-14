@@ -380,12 +380,14 @@ echo "command line :" | tee /dev/fd/3
 echo "bbmap.sh -Xmx${RAM}g in1=$OUTPUT/quality_control/"$SHORTNAME"_1_trimmed.fastq \
 	in2=$OUTPUT/quality_control/"$SHORTNAME"_2_trimmed.fastq \
 	ref=$OUTPUT/SSU_sequences/emirge_metarib_SSU_sequences.fasta \
+	path=$OUTPUT/SSU_sequences/ \
 	covstats=$OUTPUT/SSU_sequences/"$SHORTNAME"_covstats.txt \
 	scafstats=$OUTPUT/SSU_sequences/"$SHORTNAME"_scafstats.txt " | tee /dev/fd/3
 
 bbmap.sh -Xmx${RAM}g in1="$OUTPUT"/quality_control/"$SHORTNAME"_1_trimmed.fastq \
 	in2="$OUTPUT"/quality_control/"$SHORTNAME"_2_trimmed.fastq \
 	ref="$OUTPUT"/SSU_sequences/emirge_metarib_SSU_sequences.fasta \
+	path="$OUTPUT"/SSU_sequences/ \
 	covstats="$OUTPUT"/SSU_sequences/"$SHORTNAME"_covstats.txt \
 	scafstats="$OUTPUT"/SSU_sequences/"$SHORTNAME"_scafstats.txt \
 	32bit=t
@@ -395,7 +397,7 @@ vsearch --cluster_fast "$OUTPUT"/SSU_sequences/emirge_metarib_SSU_sequences.fast
 
 awk '/^>/ {print($0)}; /^[^>]/ {print(toupper($0))}' "$OUTPUT"/SSU_sequences/emirge_metarib_clustered_SSU_sequences.fasta > "$OUTPUT"/SSU_sequences/"$SHORTNAME"_SSU_sequences.fasta
 
-cat "$OUTPUT"/SSU_sequences/"$SHORTNAME"_scafstats.txt  | sed 1d | awk '{ print $1,$8 }' | sort -k1 -k2 | tr ' ' \\t > "$OUTPUT"/SSU_sequences/sorted_emirge_metarib_scafstats.txt
+cat "$OUTPUT"/SSU_sequences/"$SHORTNAME"_scafstats.txt  | sed 1d | awk '{ print $1,$8 }' | sort -k1 | tr ' ' \\t > "$OUTPUT"/SSU_sequences/sorted_emirge_metarib_scafstats.txt
 cat "$OUTPUT"/SSU_sequences/emirge_metarib_clustered_SSU_sequences.tsv |awk '!($1=="C"){print}'|awk '{ print $2,$9 }' |sort -k2 |awk '{ print $2,$1 }' > "$OUTPUT"/SSU_sequences/sorted_emirge_metarib_clustered_SSU_sequences.tsv
 join "$OUTPUT"/SSU_sequences/sorted_emirge_metarib_scafstats.txt "$OUTPUT"/SSU_sequences/sorted_emirge_metarib_clustered_SSU_sequences.tsv |tr  ' ' \\t > "$OUTPUT"/SSU_sequences/reads_count.tsv
 

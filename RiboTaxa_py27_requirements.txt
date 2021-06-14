@@ -42,7 +42,6 @@ libstdcxx-ng=9.3.0=h2ae2ef3_17
 libuuid=2.32.1=h14c3975_1000
 libxml2=2.9.10=h68273f3_2
 markupsafe=1.1.1=py27hdf8410d_1
-multiqc=0.4=pypi_0
 ncurses=6.2=h58526e2_4
 numpy=1.16.5=py27h95a1406_0
 openjdk=10.0.2=h14c3975_1015

@@ -63,6 +63,16 @@ QTRIM=$(awk '/^qtrim/{print $3}' "${CONFIG}")
 
 MAXNS=$(awk '/^maxns/{print $3}' "${CONFIG}")
 
+FORWARD="$OUTPUT/quality_control/"$SHORTNAME"_1_trimmed.fastq"
+REVERSE="$OUTPUT/quality_control/"$SHORTNAME"_2_trimmed.fastq"
+
+if [ -f "$FORWARD" ];
+then
+   echo "Forward file : '${FORWARD}' is present."
+   echo "Reverse file : '${REVERSE}' is present."
+else
+#echo "File '${FORWARD}' not found."
+
 echo "Run the First quality control on raw data... " | tee /dev/fd/3
 
 echo "command line :" | tee /dev/fd/3
@@ -139,6 +149,8 @@ echo ">Quality control ends successfully on : "`date` | tee /dev/fd/3
  
 rm "$OUTPUT"/quality_control/*_noadapt.$FORMAT 
 
+fi
+
 #unzip fastq files if compressed as sortmerna takes uncompressed files only
 for NAME in `ls "$OUTPUT"/quality_control/*"$SHORTNAME"*`; do
 	FILE=($(basename ""${NAME[@]}""))
@@ -179,6 +191,15 @@ SORTME_NAME=$(basename ""${NAME[@]}"")
 THREAD=$(awk '/^THREAD/{print $3}' "${CONFIG}")
 #echo "Number of threads used = $THREAD" | tee /dev/fd/3
 
+FORWARD="$OUTPUT/output_sortmerna/"$SHORTNAME"_R1_16S18Sreads.fastq"
+REVERSE="$OUTPUT/output_sortmerna/"$SHORTNAME"_R2_16S18Sreads.fastq"
+
+if [ -f "$FORWARD" ];
+then
+	echo "Forward file : '${FORWARD}' is present."
+	echo "Reverse file : '${REVERSE}' is present."
+
+else
 echo "Merging paired files into single files... " | tee /dev/fd/3
 echo "command line :" | tee /dev/fd/3
 echo "reformat.sh in1=$OUTPUT/quality_control/"$SHORTNAME"_1_trimmed.fastq in2=$OUTPUT/quality_control/"$SHORTNAME"_2_trimmed.fastq out=$OUTPUT/output_sortmerna/"$SHORTNAME"_mergedpaired.fastq overwrite=t" | tee /dev/fd/3
@@ -214,13 +235,15 @@ echo "reformat.sh in=$OUTPUT/output_sortmerna/"$SHORTNAME"_16S18S.fastq out1=$OU
 
 reformat.sh in="$OUTPUT"/output_sortmerna/"$SHORTNAME"_16S18S.fastq out1="$OUTPUT"/output_sortmerna/"$SHORTNAME"_R1_16S18Sreads.fastq out2="$OUTPUT"/output_sortmerna/"$SHORTNAME"_R2_16S18Sreads.fastq overwrite=t
 
-
 echo "Saving results..." | tee /dev/fd/3
-
-echo ">Filtering 16S/18S using sortmerna ends successfully on : "`date` | tee /dev/fd/3
 
 rm "$OUTPUT"/output_sortmerna/"$SHORTNAME"_16S18S.fastq
 rm "$OUTPUT"/output_sortmerna/"$SHORTNAME"_mergedpaired.fastq
+
+fi
+
+echo ">Filtering 16S/18S using sortmerna ends successfully on : "`date` | tee /dev/fd/3
+
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 #
@@ -260,6 +283,13 @@ NUM_ITERATION=$(awk '/^NUM_ITERATION/{print $3}' "${CONFIG}")
 MEAN_INSERT_SIZE=$(awk '/^MEAN_INSERT_SIZE/{print $3}' "${CONFIG}")
 STD_DEV=$(awk '/^STD_DEV/{print $3}' "${CONFIG}")
 
+
+EMIRGE_FILE="$OUTPUT/SSU_sequences/output_emirge/"$SHORTNAME"_renamed_16S18S_recons.fasta"
+
+if [ -f "$EMIRGE_FILE" ];
+then
+	echo "Emirge file : '${EMIRGE_FILE}' is present."
+else
 echo "command line :" | tee /dev/fd/3
 echo "emirge_amplicon.py \
 	-1 $OUTPUT/output_sortmerna/"$SHORTNAME"_R1_16S18Sreads.fastq \
@@ -309,13 +339,20 @@ cd "$OUTPUT"/SSU_sequences/output_emirge && zip -qrm "$SHORTNAME"_amplicon_16S18
 
 #rm -r "$OUTPUT"/SSU_sequences/output_emirge/"$SHORTNAME"_amplicon_16S18S_recons
 
+fi
+
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 #
 #			Reconstructing 16S/18S full length sequences using MetaRib
 #
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+MetaRib_FILE="$OUTPUT/SSU_sequences/output_MetaRib/"$SHORTNAME"/MetaRib_SSU.fasta"
 
+if [ -f "$MetaRib_FILE" ];
+then
+	echo "MetaRib file : '${MetaRib_FILE}' is present."
+else
 echo ">Running MetaRib to reconstruct 16S/18S full length sequences..."`date` | tee /dev/fd/3
 
 #SAMPLE=$(awk '{s++}END{print s/4}' "$OUTPUT"/output_sortmerna/"$SHORTNAME"_R1_16S18Sreads.fastq)
@@ -365,8 +402,9 @@ cat "$OUTPUT"/SSU_sequences/output_emirge/"$SHORTNAME"_renamed_16S18S_recons.fas
 
 echo "Saving results..." | tee /dev/fd/3
 
-echo ">Reconstructing 16S/18S sequences ends successfully on : "`date` | tee /dev/fd/3
+fi
 
+echo ">Reconstructing 16S/18S sequences ends successfully on : "`date` | tee /dev/fd/3
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 #
@@ -374,6 +412,13 @@ echo ">Reconstructing 16S/18S sequences ends successfully on : "`date` | tee /de
 #
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+ABUNDANCE_FILE=""$OUTPUT"/SSU_sequences/"$SHORTNAME"_Abundance.tsv"
+
+if [ -f "$ABUNDANCE_FILE" ];
+then
+	echo "Abundance file : '${ABUNDANCE_FILE}' is present."
+
+else
 echo ">Calculating relative abundances of reconstructed sequences..." | tee /dev/fd/3
 
 echo "command line :" | tee /dev/fd/3
@@ -466,6 +511,8 @@ rm "$OUTPUT"/SSU_sequences/emirge_metarib_clustered_SSU_sequences.fasta
 #rm -r "$OUTPUT"/SSU_sequences/output_MetaRib/"$SHORTNAME"/Abundance
 
 echo "Saving results..." | tee /dev/fd/3
+
+fi
 
 echo ">Relative abundance calculation ends successfully on : "`date` | tee /dev/fd/3
 

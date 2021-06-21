@@ -13,7 +13,7 @@ CONFIG="${CONFIG_PATH[@]}"
 
 Jobname=$(awk '/^JOB_NAME/{print $3}' "${CONFIG}")
 
-exec 3>&1 1>RiboTaxa_"$Jobname".log 2>&3 
+exec 3>&1 1>RiboTaxa_"$Jobname".log 2>&3 2>RiboTaxa_"$Jobname".stderr
 echo " "
 echo "RiboTaxa -- A complete pipeline from raw metagenomics to species-level identification" | tee /dev/fd/3
 echo "By Oshma Chakoory, Sophie Marre & Pierre Peyret" | tee /dev/fd/3
@@ -61,4 +61,5 @@ source "$RiboTaxa_DIR"/sklearn_classifier.sh $CONFIG_PATH
 done
 
 mv RiboTaxa_"$Jobname".log "$OUTPUT"
+mv RiboTaxa_"$Jobname".stderr "$OUTPUT"
 #mv "$OUTPUT"/output_MetaRib "$OUTPUT"/SSU_sequences

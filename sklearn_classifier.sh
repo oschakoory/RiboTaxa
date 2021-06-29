@@ -9,6 +9,7 @@ __version__='1.4'
 # Handling errors
 #set -x # debug mode on
 set -o errexit # ensure script will stop in case of ignored error
+set -e
 
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 #
@@ -56,7 +57,13 @@ CONFIDENCE=$(awk '/^CONFIDENCE/{print $3}' "${CONFIG}")
 BATCH=$(awk '/^BATCH/{print $3}' "${CONFIG}")
 #echo "Number of reads to process per batch = $BATCH" | tee /dev/fd/3
 
+TAXONOMY="$OUTPUT"/Taxonomy/"$SHORTNAME"_SSU_taxonomy_abundance.tsv
 
+
+if [ -f "$TAXONOMY" ];
+then
+  echo "Taxonomoy file : '${TAXONOMY}' is present."
+else
 echo "Importing data ..." | tee /dev/fd/3
 echo "command line :" | tee /dev/fd/3
 echo "qiime tools import \
@@ -102,9 +109,27 @@ done
 
 mv taxonomy.tsv "$OUTPUT"/Taxonomy/taxonomy.tsv
 
-cat "$OUTPUT"/Taxonomy/taxonomy.tsv | sed 1d |sort -k1| tr ';' \\t > "$OUTPUT"/Taxonomy/"$SHORTNAME"_renamed_16S18S_recons_qiime2_taxonomy.tsv
+cat "$OUTPUT"/Taxonomy/taxonomy.tsv | sed 1d |sort -k1 | tr ' ' ';' | awk '{ print $1,$2 }'| tr ' ' \\t  > "$OUTPUT"/Taxonomy/sorted_taxonomy.tsv
+cat "$OUTPUT"/Taxonomy/sorted_taxonomy.tsv | tr ';;' \\t |sed 's/\t\+/\t/g;s/^\t//' > "$OUTPUT"/Taxonomy/sorted_tab_taxonomy.tsv
+rm "$OUTPUT"/Taxonomy/sorted_taxonomy.tsv
+awk -v c=8 'BEGIN{FS=OFS="\t"} {for(i=NF+1; i<=c; i++) $i="\t"} 1' "$OUTPUT"/Taxonomy/sorted_tab_taxonomy.tsv > "$OUTPUT"/Taxonomy/sorted_taxonomy.tsv
+
+cat "$OUTPUT"/Taxonomy/taxonomy.tsv | sed 1d |sort -k1 | tr ' ' ';' | awk '{ print $1,$3 }' > "$OUTPUT"/Taxonomy/sorted_confidence.tsv
+
+join "$OUTPUT"/Taxonomy/sorted_confidence.tsv "$OUTPUT"/Taxonomy/sorted_taxonomy.tsv  |sort -k1| tr ' ' \\t > "$OUTPUT"/Taxonomy/"$SHORTNAME"_renamed_16S18S_recons_qiime2_taxonomy.tsv
+rm "$OUTPUT"/Taxonomy/sorted_taxonomy.tsv 
+rm "$OUTPUT"/Taxonomy/sorted_confidence.tsv
+rm "$OUTPUT"/Taxonomy/sorted_tab_taxonomy.tsv
 
 cat "$OUTPUT"/SSU_sequences/"$SHORTNAME"_Abundance.tsv | sed 1d |sort -k1| tr ' ' \\t > "$OUTPUT"/Taxonomy/abundance.tsv
+
+
+join "$OUTPUT"/Taxonomy/abundance.tsv "$OUTPUT"/Taxonomy/"$SHORTNAME"_renamed_16S18S_recons_qiime2_taxonomy.tsv  |awk '!($11==0){print}' |tr  ' ' \\t | awk -v c=12 'BEGIN{FS=OFS="\t"} {for(i=NF+1; i<=c; i++) $i="\t"} 1' | awk '{ print $1,$6,$7,$8,$9,$10,$11,$12,$5,$2,$3,$4}' |awk 'BEGIN{print "ID\tDomain\tPhylum\tClass\tOrder\tFamily\tGenus\tSpecies\tConfidence\tLength\tAssigned_reads\tRelative_abundance "}1' |tr  ' ' \\t  > "$OUTPUT"/Taxonomy/"$SHORTNAME"_SSU_taxonomy_abundance.tsv
+
+
+#cat "$OUTPUT"/Taxonomy/taxonomy.tsv | sed 1d |sort -k1| tr ';' \\t > "$OUTPUT"/Taxonomy/"$SHORTNAME"_renamed_16S18S_recons_qiime2_taxonomy.tsv
+
+#cat "$OUTPUT"/SSU_sequences/"$SHORTNAME"_Abundance.tsv | sed 1d |sort -k1| tr ' ' \\t > "$OUTPUT"/Taxonomy/abundance.tsv
 
 #handling length of reconstructed sequences
 #cat "$OUTPUT"/SSU_sequences/"$SHORTNAME"_covstats.txt| sed 1d | awk '{ print $1,$3 }' |sort -k1 -k2 | tr ' ' \\t > "$OUTPUT"/SSU_sequences/"$SHORTNAME"_covstats_readlength.tsv
@@ -122,7 +147,7 @@ cat "$OUTPUT"/SSU_sequences/"$SHORTNAME"_Abundance.tsv | sed 1d |sort -k1| tr ' 
 
 #join "$OUTPUT"/SSU_sequences/"$SHORTNAME"_covstats_readlength.tsv "$OUTPUT"/SSU_sequences/"$SHORTNAME"_scafstats_RA.tsv |tr  ' ' \\t > "$OUTPUT"/Taxonomy/"$SHORTNAME"_SSU_length_abundance.tsv
 
-join "$OUTPUT"/Taxonomy/"$SHORTNAME"_renamed_16S18S_recons_qiime2_taxonomy.tsv "$OUTPUT"/Taxonomy/abundance.tsv |tr  ' ' \\t |awk '!($11==0){print}'|awk 'BEGIN{print "ID\tDomain\tPhylum\tClass\tOrder\tFamily\tGenus\tSpecies\tConfidence\tLength\tAssigned_reads\tRelative_abundance "}1' > "$OUTPUT"/Taxonomy/"$SHORTNAME"_SSU_taxonomy_abundance.tsv
+#join "$OUTPUT"/Taxonomy/"$SHORTNAME"_renamed_16S18S_recons_qiime2_taxonomy.tsv "$OUTPUT"/Taxonomy/abundance.tsv |tr  ' ' \\t |awk '!($11==0){print}'|awk 'BEGIN{print "ID\tDomain\tPhylum\tClass\tOrder\tFamily\tGenus\tSpecies\tConfidence\tLength\tAssigned_reads\tRelative_abundance "}1' > "$OUTPUT"/Taxonomy/"$SHORTNAME"_SSU_taxonomy_abundance.tsv
 
 #cat "$OUTPUT"/Taxonomy/"$SHORTNAME"_SSU_taxonomy_abundance.tsv | awk '!($11==0){print}' > "$OUTPUT"/Taxonomy/"$SHORTNAME"_filtered_SSU_taxonomy_abundance.tsv
 
@@ -138,7 +163,9 @@ rm "$OUTPUT"/Taxonomy/taxonomy.tsv
 rm "$OUTPUT"/Taxonomy/"$SHORTNAME"_SSU_sequences_qiime2.qza
 rm "$OUTPUT"/Taxonomy/abundance.tsv
 
-rm -d "$OUTPUT"/data
+rm -rf "$OUTPUT"/data
+
+fi
 
 echo ">Taxonomic classification using sklearn_classifer ends successfully on : "`date` | tee /dev/fd/3
 

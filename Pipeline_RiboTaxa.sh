@@ -8,6 +8,12 @@ __status__='Development'
 __version__='1.4'
 
 
+# Handling errors
+#set -x # debug mode on
+set -o errexit # ensure script will stop in case of ignored error
+set -e
+
+
 CONFIG_PATH=$1
 CONFIG="${CONFIG_PATH[@]}"
 
@@ -21,10 +27,6 @@ echo "University Clermont Auvergne, France " | tee /dev/fd/3
 echo "Version: 1.4" | tee /dev/fd/3
 
 echo "This program is distributed under the AGPL-3.0 License. See LICENSE for more information." | tee /dev/fd/3
-
-# Handling errors
-#set -x # debug mode on
-set -o errexit # ensure script will stop in case of ignored error
 
 
 DATA_DIR=$(awk '/^DATA_DIR/{print $3}' "${CONFIG}")

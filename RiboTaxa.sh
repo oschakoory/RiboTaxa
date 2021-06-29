@@ -11,6 +11,7 @@ __version__='1.4'
 # Handling errors
 #set -x # debug mode on
 set -o errexit # ensure script will stop in case of ignored error
+set -e
 
 #activate virtual environment for RiboTaxa
 conda activate RiboTaxa_py27
@@ -411,6 +412,12 @@ echo ">Reconstructing 16S/18S sequences ends successfully on : "`date` | tee /de
 #			Abundance calculation
 #
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+echo "" | tee /dev/fd/3
+echo "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" | tee /dev/fd/3
+echo ">Relative abundance calculation starting on : "`date` | tee /dev/fd/3
+echo "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" | tee /dev/fd/3
+echo "" | tee /dev/fd/3
 
 ABUNDANCE_FILE=""$OUTPUT"/SSU_sequences/"$SHORTNAME"_Abundance.tsv"
 

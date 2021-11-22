@@ -17,16 +17,7 @@ set -e
 CONFIG_PATH=$1
 CONFIG="${CONFIG_PATH[@]}"
 
-Jobname=$(awk '/^JOB_NAME/{print $3}' "${CONFIG}")
-
-exec 3>&1 1>RiboTaxa_"$Jobname".log 2>&3 2>RiboTaxa_"$Jobname".stderr
-echo " "
-echo "RiboTaxa -- A complete pipeline from raw metagenomics to species-level identification" | tee /dev/fd/3
-echo "By Oshma Chakoory, Sophie Marre & Pierre Peyret" | tee /dev/fd/3
-echo "University Clermont Auvergne, France " | tee /dev/fd/3
-echo "Version: 1.4" | tee /dev/fd/3
-
-echo "This program is distributed under the AGPL-3.0 License. See LICENSE for more information." | tee /dev/fd/3
+#Jobname=$(awk '/^JOB_NAME/{print $3}' "${CONFIG}")
 
 
 DATA_DIR=$(awk '/^DATA_DIR/{print $3}' "${CONFIG}")
@@ -39,10 +30,24 @@ RiboTaxa_DIR=$(awk '/^RiboTaxa_DIR/{print $3}' "${CONFIG}")
 FORMAT=$(awk '/^FORMAT/{print $3}' "${CONFIG}")
 #echo $FORMAT
 
-for NAME in `ls "$DATA_DIR"/*_R1.$FORMAT | sed 's/_R1.'$FORMAT'//'` 
+for NAME in `ls "$DATA_DIR"/*_R1."$FORMAT"` 
 do
-SHORTNAME=$(basename ""${NAME[@]}"") 
+JOBNAME=$(basename ""${NAME[@]}"" | sed 's/_R1.'$FORMAT'//') 
+#SHORTNAME=$(basename ""${NAME[@]}"") 
 #echo $SHORTNAME
+
+RESULTS="$OUTPUT/$JOBNAME"
+mkdir -p $RESULTS
+
+exec 3>&1 1>"$RESULTS"/RiboTaxa_"$JOBNAME".log 2>&3 2>"$RESULTS"/RiboTaxa_"$JOBNAME".stderr
+echo " "
+echo "RiboTaxa -- A complete pipeline from raw metagenomics to species-level identification" | tee /dev/fd/3
+echo "By Oshma Chakoory, Sophie Marre & Pierre Peyret" | tee /dev/fd/3
+echo "University Clermont Auvergne, France " | tee /dev/fd/3
+echo "Version: 1.4" | tee /dev/fd/3
+
+echo "This program is distributed under the AGPL-3.0 License. See LICENSE for more information." | tee /dev/fd/3
+
 echo "" | tee /dev/fd/3
 echo "***********************************************************************************************" | tee /dev/fd/3
 echo ">Running RiboTaxa on $NAME"  | tee /dev/fd/3
@@ -53,15 +58,15 @@ echo "" | tee /dev/fd/3
 ### Filter 16S/18S reads using SORTMERNA
 ### Reconstruct full length 16S/18S rRNA sequences using EMIRGE
 
-source "$RiboTaxa_DIR"/RiboTaxa.sh $CONFIG_PATH 
+source "$RiboTaxa_DIR"/RiboTaxa.sh $CONFIG_PATH $NAME
 
 #run sklearn_classfier.sh script to perform
 ### Taxonomic classification of full length reconstrcuted sequences using sklearn classifier of Qiime2
 
-source "$RiboTaxa_DIR"/sklearn_classifier.sh $CONFIG_PATH 
+source "$RiboTaxa_DIR"/sklearn_classifier.sh $CONFIG_PATH $NAME
 
 done
 
-mv RiboTaxa_"$Jobname".log "$OUTPUT"
-mv RiboTaxa_"$Jobname".stderr "$OUTPUT"
-#mv "$OUTPUT"/output_MetaRib "$OUTPUT"/SSU_sequences
+#mv RiboTaxa_"$Jobname".log "$RESULTS"
+#mv RiboTaxa_"$Jobname".stderr "$RESULTS"
+#mv "$RESULTS"/output_MetaRib "$RESULTS"/SSU_sequences

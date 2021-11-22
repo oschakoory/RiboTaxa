@@ -34,7 +34,8 @@ def parse_arg():
     #parser.add_argument('-2', required=True, help="Reverse file in fastq format", dest="reverse")
     parser.add_argument('-b', required=True, help="Bowtie indexed database files", dest="bwt")
     parser.add_argument('-l', required=True, help="Reference database file in fasta format", dest="ref")
-    global data_dir, EM_REF, EM_BT
+    parser.add_argument('-o', required=True, help="output of MetaRib", dest="output")
+    global PROJECT_DIR, data_dir, EM_REF, EM_BT
     args = parser.parse_args()
     #SAMPLING_NUM = args.subsampling
     #forward_file = args.forward
@@ -43,15 +44,16 @@ def parse_arg():
     data_dir = args.data
     EM_BT = args.bwt
     EM_REF = args.ref
+    PROJECT_DIR = args.output
     #print('args.forward = ', args.forward)
     return(parser)
 
 
 def parse_cfg(config):
     # BASE
-    global PROJECT_DIR, SAMPLING_NUM, THREAD
+    global SAMPLING_NUM, THREAD
     #DATA_DIR = config.get('BASE', 'DATA_DIR')
-    PROJECT_DIR = config.get('BASE', 'OUTPUT')
+    #PROJECT_DIR = config.get('BASE', 'OUTPUT')
     SAMPLING_NUM = config.get('METARIB', 'SAMPLING_NUM')
     THREAD = config.getint('BASE','THREAD')
     # EMIRGE
@@ -83,7 +85,7 @@ def parse_cfg(config):
 
 def init(config):
     #data_dir = str(config.get('BASE', 'DATA_DIR'))
-    samples_list_path = data_dir+'/samples.list.txt'
+    samples_list_path = PROJECT_DIR+'/samples.list.txt'
     samples_list = []
     samples_fq1_path = {}
     samples_fq2_path = {} 
@@ -134,7 +136,7 @@ def subsampling_reads(unmap_fq1, unmap_fq2):
     sampling_num = int(SAMPLING_NUM)
     max_reads = 1000 * sampling_num
     seeds = random.randint(1, 100)
-    cmd = ' '.join(['reformat.sh', '-Xmx'+RAM+'g', 'in1='+unmap_fq1, '-Xmx2g', 'in2='+unmap_fq2,'out1='+sub_fq1,'out2='+sub_fq2, 'sample='+str(sampling_num), 'sampleseed='+str(seeds),'ow=t', 'reads='+str(max_reads), '2> subsample.log'])
+    cmd = ' '.join(['reformat.sh', '-Xmx'+RAM+'g', 'in1='+unmap_fq1, '-Xmx'+RAM+'g', 'in2='+unmap_fq2,'out1='+sub_fq1,'out2='+sub_fq2, 'sample='+str(sampling_num), 'sampleseed='+str(seeds),'ow=t', 'reads='+str(max_reads), '2> subsample.log'])
     os.system(cmd)
     return(sub_fq1, sub_fq2)
 
@@ -169,7 +171,7 @@ def run_align_bbmap(current_iter_fa, unmap_fq1, unmap_fq2):
     # reformat to two fastq files
     new_unmap_fq1 = os.getcwd()+'/bbmap.unmaped.1.fq'
     new_unmap_fq2 = os.getcwd()+'/bbmap.unmaped.2.fq'
-    cmd = ' '.join(['reformat.sh', '-Xmx'+RAM+'g', 'in=bbmap.unmap.fq', 'out1='+new_unmap_fq1, 'out2='+new_unmap_fq2,
+    cmd = ' '.join(['reformat.sh', '-Xmx2g', 'in=bbmap.unmap.fq', 'out1='+new_unmap_fq1, 'out2='+new_unmap_fq2,
     '2> deinterleave.log'])
     os.system(cmd)
     # remove unmapped fq
@@ -193,7 +195,7 @@ def run_emirge_and_dedup(sub_fq1, sub_fq2, dedup_fa, iter_time):
     return(all_dedup_fa, iter_fa)
 
 def run_iteration(unmap_fq1, unmap_fq2, dedup_fa, iter_time, keep_running):
-    iter_dir = '/'.join([PROJECT_DIR, 'output_MetaRib', 'Iteration', 'iter_'+str(iter_time)])
+    iter_dir = '/'.join([PROJECT_DIR, 'Iteration', 'iter_'+str(iter_time)])
     if not os.path.isdir(iter_dir):
         os.mkdir(iter_dir)
     os.chdir(iter_dir)
@@ -230,12 +232,12 @@ def run_iteration(unmap_fq1, unmap_fq2, dedup_fa, iter_time, keep_running):
     if iter_time == 10:
         keep_running = 0
     new_iter_time = iter_time + 1
-    iter_dir = '/'.join([PROJECT_DIR, '/output_MetaRib/Iteration'])
+    iter_dir = '/'.join([PROJECT_DIR, '/Iteration'])
     os.chdir(iter_dir)
     return (new_unmap_fq1, new_unmap_fq2, all_dedup_fa, new_iter_time, keep_running)
 
 def run_last_iteration(unmap_fq1, unmap_fq2, dedup_fa, iter_time, keep_running):
-    iter_dir = '/'.join([PROJECT_DIR,'output_MetaRib','Iteration','iter_'+str(iter_time)+'_L'])
+    iter_dir = '/'.join([PROJECT_DIR,'Iteration','iter_'+str(iter_time)+'_L'])
     if not os.path.isdir(iter_dir):
         os.mkdir(iter_dir)
     os.chdir(iter_dir)
@@ -275,7 +277,7 @@ def run_last_iteration(unmap_fq1, unmap_fq2, dedup_fa, iter_time, keep_running):
 
 
 def cal_mapping_stats(samples_list, samples_fq1_path, samples_fq2_path, all_dedup_fa):
-    ab_dir = PROJECT_DIR+'/output_MetaRib/Abundance/'
+    ab_dir = PROJECT_DIR+'/Abundance/'
     if not os.path.isdir(ab_dir):
         os.mkdir(ab_dir)
     else:
@@ -308,7 +310,7 @@ def cal_mapping_stats(samples_list, samples_fq1_path, samples_fq2_path, all_dedu
     return(all_scafstats_path, all_covstats_path, dedup_ref)
 
 def generate_and_filter_abundance_table(samples_list, all_scafstats_path, all_covstats_path, dedup_ref):
-    ab_dir = PROJECT_DIR+'/output_MetaRib/Abundance/'
+    ab_dir = PROJECT_DIR+'/Abundance/'
     os.chdir(ab_dir)
     fa_ids = parse_fa_ids(dedup_ref)
     all_ab_df = pd.DataFrame()
@@ -373,7 +375,7 @@ def main():
     # INIT
     samples_list, samples_fq1_path, samples_fq2_path, all_fq1, all_fq2  = init(config)
     # build work folder
-    work_dir = PROJECT_DIR+'/output_MetaRib'
+    work_dir = PROJECT_DIR +'/'
     if not os.path.isdir(work_dir):
         os.mkdir(work_dir)
     else:
@@ -409,7 +411,7 @@ def main():
     # calculate mapping stats for each sample
     all_scafstats_path, all_covstats_path, dedup_ref = cal_mapping_stats(samples_list, samples_fq1_path, samples_fq2_path, all_dedup_fa)
     # generate abundance table based on scafstats, and filter by coverage info
-    (filter_ab_file)  = generate_and_filter_abundance_table(samples_list, all_scafstats_path, all_covstats_path, dedup_ref)
+    #(filter_ab_file)  = generate_and_filter_abundance_table(samples_list, all_scafstats_path, all_covstats_path, dedup_ref)
     print('====FINISH POSTPROCESSING====')
     # print final fasta stat
     os.remove(orig_dedup_fa)

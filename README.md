@@ -163,11 +163,6 @@ OUTPUT = /home/user/Documents/MetaGenomics/results
 ## fastq.gz: if files are compressed in gz format
 FORMAT = fastq
 
-#####Name of the job
-##log file will use this name : Exemple RiboTaxa_MG.log
-JOB_NAME = MG
-
-
 [Quality control uing BBTOOLS]
 
 ####Trim reads to remove bases matching reference kmers
@@ -247,7 +242,7 @@ SKLEARN_DB = /home/user/Documents/RiboTaxa/silva-138-99-nb-classifier.qza
 CONFIDENCE = 0.7
 
 #Number of reads to process in each batch (default = 0)
-BATCH = 1
+BATCH = 0
 ```
 
 For the taxonomic classification by sklearn classifier, the database used is the trained classifier ```SILVA 138 reference sequence``` downloaded from the <a class="reference external" href="https://docs.qiime2.org/2020.8/data-resources/" target="_blank" rel="noopener noreferrer">Data resources</a> of <a class="reference external" href="https://docs.qiime2.org/2020.8/" target="_blank" rel="noopener noreferrer">Qiime2</a>. To use other databases such as Greengenes or UNITE, you can download already trained classifer or train your own database by following the <a class="reference external" href="https://docs.qiime2.org/2020.8/data-resources/" target="_blank" rel="noopener noreferrer">Data resources</a> instructions.
@@ -258,7 +253,7 @@ Once it is filled with all the necessary information, you can use the following 
 bash -i Pipeline_RiboTaxa.sh PATH_TO/RiboTaxa_arguments.conf
 ```
 
-RiboTaxa produces the 4 following directories in your OUTPUT path of your ```RiboTaxa_arguments.conf``` file:
+For each paired-end sample, RiboTaxa produces the 4 following directories in your OUTPUT path of your ```RiboTaxa_arguments.conf``` file:
 - ```quality_control``` : This directory contains your (meta)genomics (paired-end) files after adpaters removal and trimming. It also has two sub_directories ```before_fastqc``` and ```after_fastqc``` containing quality reports of your sequence files before and after trimming. You may look at the ```.html``` files in each sub-directory to have an overview of each (meta)genomics file or look into ```multiqc``` folder to have an overview of all the (meta)genomics files given to this pipeline.
 
 - ```output_sortmerna``` : This folder contains filtered 16S/18S sequences from your trimmed (meta)genomics sequence files: ```$FILE_R1_16S18Sreads.fastq```,```$FILE_R2_16S18Sreads.fastq``` and  and a ```$FILE.log``` indicating the % of 16S/18S reads filtered from your (meta)genomics dataset.

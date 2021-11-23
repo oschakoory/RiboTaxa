@@ -90,10 +90,9 @@ Now, you are ready to use RiboTaxa !!!
 
 ### Indexing databases
 
-RiboTaxa pipeline includes tools like sortmerna and emirge, both of which need indexed databases of their own. The latest SILVA SSU 138.1 
-can be downloaded <a class="reference external" href="https://www.arb-silva.de/" target="_blank" rel="noopener noreferrer">here</a>.
+RiboTaxa pipeline includes tools like sortmerna and emirge, both of which need indexed databases of their own. The latest database SILVA SSU 138.1 can be downloaded <a class="reference external" href="https://www.arb-silva.de/" target="_blank" rel="noopener noreferrer">here</a> and the indexed database SILVA SSU 138.1 for RiboTaxa are available <a class="reference external" href="https://ucafr-my.sharepoint.com/:f:/g/personal/oshma_chakoory_uca_fr/EkqL_9bA2UpApbEHiB8cfJ4B4BBsMB25O9Xtl29wi2QSIw?e=VqqWM9" target="_blank" rel="noopener noreferrer">here</a>. 
 
-To index your database, you will need to fill the config file ```indexDB_arguments.conf```.If you are not sure of certains parameters, leave as defined except for directories and input files.
+To index your own database, you will need to fill the config file ```indexDB_arguments.conf```.If you are not sure of certains parameters, leave as defined except for directories and input files.
 
 ```bash
 The configuration file is very important and each parameter needs to be filled to avoid errors.
@@ -139,7 +138,7 @@ RiboTaxa pipeline will
 - Classify the full-length reconstructed SSU sequences using <a class="reference external" href="https://docs.qiime2.org/2020.8/plugins/available/feature-classifier/classify-sklearn/">sklearn classifier</a> of <a class="reference external" href="https://docs.qiime2.org/2020.8/" target="_blank" rel="noopener noreferrer">QIIME2</a>
 
 
-RiboTaxa can used for one paired-end dataset or multiple paired-end datasets in the same folder.
+RiboTaxa can be used for one paired-end dataset or multiple paired-end datasets in the same folder.
 
 To run RiboTaxa, you will need to fill the config file ```RiboTaxa_arguments.conf```. If you are not sure of certains parameters, leave as defined except for directories and input files.
 
@@ -253,7 +252,7 @@ Once it is filled with all the necessary information, you can use the following 
 bash -i Pipeline_RiboTaxa.sh PATH_TO/RiboTaxa_arguments.conf
 ```
 
-For each paired-end sample, RiboTaxa produces the 4 following directories in your OUTPUT path of your ```RiboTaxa_arguments.conf``` file:
+For each paired-end sample, RiboTaxa will create one directory using the sample name in your OUTPUT path of your ```RiboTaxa_arguments.conf``` file. Each sample directory will contain the 4 following sub-directories:
 - ```quality_control``` : This directory contains your (meta)genomics (paired-end) files after adpaters removal and trimming. It also has two sub_directories ```before_fastqc``` and ```after_fastqc``` containing quality reports of your sequence files before and after trimming. You may look at the ```.html``` files in each sub-directory to have an overview of each (meta)genomics file or look into ```multiqc``` folder to have an overview of all the (meta)genomics files given to this pipeline.
 
 - ```output_sortmerna``` : This folder contains filtered 16S/18S sequences from your trimmed (meta)genomics sequence files: ```$FILE_R1_16S18Sreads.fastq```,```$FILE_R2_16S18Sreads.fastq``` and  and a ```$FILE.log``` indicating the % of 16S/18S reads filtered from your (meta)genomics dataset.

@@ -23,8 +23,8 @@ conda activate RiboTaxa_py27
 CONFIG_PATH=$1
 CONFIG="${CONFIG_PATH[@]}"
 
-NAME=$2
-SHORTNAME=$(basename ""${NAME[@]}"" | sed 's/_R1.'$FORMAT'//') 
+SHORTNAME=$2
+#SHORTNAME=$(basename ""${NAME[@]}"" | sed 's/_R1.'$FORMAT'//') 
 echo "SHORTNAME = " >&2
 printf '%s\n' "$SHORTNAME" >&2
 
@@ -213,10 +213,10 @@ then
 else
 echo "Merging paired files into single files... " | tee /dev/fd/3
 echo "command line :" | tee /dev/fd/3
-echo "reformat.sh in1=$RESULTS/quality_control/"$SHORTNAME"_1_trimmed.fastq in2=$RESULTS/quality_control/"$SHORTNAME"_2_trimmed.fastq out=$RESULTS/output_sortmerna/"$SHORTNAME"_mergedpaired.fastq overwrite=t" | tee /dev/fd/3
+echo "reformat.sh -Xmx${RAM}g in1=$RESULTS/quality_control/"$SHORTNAME"_1_trimmed.fastq in2=$RESULTS/quality_control/"$SHORTNAME"_2_trimmed.fastq out=$RESULTS/output_sortmerna/"$SHORTNAME"_mergedpaired.fastq overwrite=t" | tee /dev/fd/3
 
 #bash merge-paired-reads.sh "$RESULTS"/quality_control/"$SHORTNAME"_1_trimmed.fastq "$RESULTS"/quality_control/"$SHORTNAME"_2_trimmed.fastq "$RESULTS"/output_sortmerna/"$SHORTNAME"_mergedpaired.fastq
-reformat.sh in1="$RESULTS"/quality_control/"$SHORTNAME"_1_trimmed.fastq in2="$RESULTS"/quality_control/"$SHORTNAME"_2_trimmed.fastq out="$RESULTS"/output_sortmerna/"$SHORTNAME"_mergedpaired.fastq overwrite=t
+reformat.sh -Xmx${RAM}g in1="$RESULTS"/quality_control/"$SHORTNAME"_1_trimmed.fastq in2="$RESULTS"/quality_control/"$SHORTNAME"_2_trimmed.fastq out="$RESULTS"/output_sortmerna/"$SHORTNAME"_mergedpaired.fastq overwrite=t
 
 
 echo "Filtering 16S/18S reads...." | tee /dev/fd/3
@@ -244,7 +244,7 @@ echo "Unmerging single files into paired files...." | tee /dev/fd/3
 echo "command line :" | tee /dev/fd/3
 echo "reformat.sh in=$RESULTS/output_sortmerna/"$SHORTNAME"_16S18S.fastq out1=$RESULTS/output_sortmerna/"$SHORTNAME"_R1_16S18Sreads.fastq out2=$RESULTS/output_sortmerna/"$SHORTNAME"_R2_16S18Sreads.fastq overwrite=t" | tee /dev/fd/3
 
-reformat.sh in="$RESULTS"/output_sortmerna/"$SHORTNAME"_16S18S.fastq out1="$RESULTS"/output_sortmerna/"$SHORTNAME"_R1_16S18Sreads.fastq out2="$RESULTS"/output_sortmerna/"$SHORTNAME"_R2_16S18Sreads.fastq overwrite=t
+reformat.sh -Xmx${RAM}g in="$RESULTS"/output_sortmerna/"$SHORTNAME"_16S18S.fastq out1="$RESULTS"/output_sortmerna/"$SHORTNAME"_R1_16S18Sreads.fastq out2="$RESULTS"/output_sortmerna/"$SHORTNAME"_R2_16S18Sreads.fastq overwrite=t
 
 echo "Saving results..." | tee /dev/fd/3
 
@@ -275,11 +275,11 @@ mkdir -p "$RESULTS/SSU_sequences/output_emirge"
 EMIRGE_DB=$(awk '/^EMIRGE_DB/{print $3}' "${CONFIG}")
 echo "Database directory for EMIRGE = $EMIRGE_DB" | tee /dev/fd/3
 
-NAMEDB=($(ls "$EMIRGE_DB"/*.fasta*)) 
+DBNAME=($(ls "$EMIRGE_DB"/*.fasta*)) 
 #echo "name = " | tee /dev/fd/3
 #printf '%s\n' "${DBNAME[@]}" | tee /dev/fd/3
 
-REF_NAME=$(basename ""${NAMEDB[@]}"")  
+REF_NAME=$(basename ""${DBNAME[@]}"")  
 
 DBNAME=($(ls "$EMIRGE_DB"/*.4.ebwt* | sed 's/.4.ebwt//')) 
 #echo "name = " | tee /dev/fd/3
@@ -292,6 +292,7 @@ IDENTITY=$(awk '/^IDENTITY/{print $3}' "${CONFIG}")
 NUM_ITERATION=$(awk '/^NUM_ITERATION/{print $3}' "${CONFIG}")
 MEAN_INSERT_SIZE=$(awk '/^MEAN_INSERT_SIZE/{print $3}' "${CONFIG}")
 STD_DEV=$(awk '/^STD_DEV/{print $3}' "${CONFIG}")
+MIN_COV=$(awk '/^MIN_COV/{print $3}' "${CONFIG}")
 
 
 EMIRGE_FILE="$RESULTS/SSU_sequences/output_emirge/"$SHORTNAME"_renamed_16S18S_recons.fasta"
@@ -315,6 +316,7 @@ echo "emirge_amplicon.py \
 	-i $MEAN_INSERT_SIZE \
 	-s $STD_DEV \
 	-a $THREAD \
+	-c "$MIN_COV" \
 	--phred33 $RESULTS/SSU_sequences/output_emirge/"$SHORTNAME"_amplicon_16S18S_recons" | tee /dev/fd/3
 
 
@@ -329,6 +331,7 @@ emirge_amplicon.py \
 	-i "$MEAN_INSERT_SIZE" \
 	-s "$STD_DEV" \
 	-a "$THREAD" \
+	-c "$MIN_COV" \
 	--phred33 "$RESULTS"/SSU_sequences/output_emirge/"$SHORTNAME"_amplicon_16S18S_recons
 
 #-j 1 : 100 % identity
@@ -360,7 +363,6 @@ fi
 
 
 fi
-
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 #
 #			Reconstructing 16S/18S full length sequences using MetaRib
@@ -382,9 +384,9 @@ mkdir -p  "$RESULTS"/SSU_sequences/output_MetaRib/"$SHORTNAME"
 echo $SHORTNAME > ""$RESULTS"/SSU_sequences/output_MetaRib/samples.list.txt"
 
 echo "command line :" | tee /dev/fd/3
-echo "python2 $RiboTaxa_DIR/run_MetaRib.py -cfg $CONFIG_PATH -p $RESULTS/quality_control -b $EMIRGE_DB/$BWT_NAME -l $EMIRGE_DB/$REF_NAME" -o "$RESULTS"/SSU_sequences/output_MetaRib | tee /dev/fd/3
+echo "python2 $RiboTaxa_DIR/scripts/run_MetaRib_PE.py -cfg $CONFIG_PATH -p $RESULTS/quality_control -b $EMIRGE_DB/$BWT_NAME -l $EMIRGE_DB/$REF_NAME" -o "$RESULTS"/SSU_sequences/output_MetaRib | tee /dev/fd/3
 
-python2 "$RiboTaxa_DIR"/run_MetaRib.py -cfg "$CONFIG_PATH" -p "$RESULTS"/quality_control -b "$EMIRGE_DB"/$BWT_NAME -l "$EMIRGE_DB"/"$REF_NAME" -o "$RESULTS"/SSU_sequences/output_MetaRib
+python2 "$RiboTaxa_DIR"/scripts/run_MetaRib_PE.py -cfg "$CONFIG_PATH" -p "$RESULTS"/quality_control -b "$EMIRGE_DB"/$BWT_NAME -l "$EMIRGE_DB"/"$REF_NAME" -o "$RESULTS"/SSU_sequences/output_MetaRib
 
 #cd "$RESULTS"/output_MetaRib && zip -qrm Iteration.zip Iteration/ && cd -
 
@@ -504,7 +506,7 @@ cat "$RESULTS"/SSU_sequences/"$SHORTNAME"_reads_count_bySeq.tsv | awk '{ print $
 cat "$RESULTS"/SSU_sequences/"$SHORTNAME"_covstats.txt |sed 1d |awk '{ print $1,$3 }' |tr  ' ' \\t |sort -k1 > "$RESULTS"/SSU_sequences/"$SHORTNAME"_table.tsv
 
 awk -F '\t' 'NR==FNR {id[$1]; next} $1 in id' "$RESULTS"/SSU_sequences/"$SHORTNAME"_id.tsv "$RESULTS"/SSU_sequences/"$SHORTNAME"_table.tsv | tr  ' ' \\t |sort -k1 > "$RESULTS"/SSU_sequences/"$SHORTNAME"_length_bySeq.tsv
-join "$RESULTS"/SSU_sequences/"$SHORTNAME"_reads_count_bySeq.tsv "$RESULTS"/SSU_sequences/"$SHORTNAME"_length_bySeq.tsv |awk '{ print $1,$4,$5,$2,$3 }' |tr  ' ' \\t > "$RESULTS"/SSU_sequences/"$SHORTNAME"_readsCount_length.tsv
+join "$RESULTS"/SSU_sequences/"$SHORTNAME"_reads_count_bySeq.tsv "$RESULTS"/SSU_sequences/"$SHORTNAME"_length_bySeq.tsv |awk '{ print $1,$4,$5,$2,$3 }' | awk '{sub("0","1", $2)}1' | tr  ' ' \\t > "$RESULTS"/SSU_sequences/"$SHORTNAME"_readsCount_length.tsv
 
 total=$(awk '{s+=$2}END{print s}' "$RESULTS"/SSU_sequences/"$SHORTNAME"_readsCount_length.tsv)
 

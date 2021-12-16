@@ -32,14 +32,14 @@ FORMAT=$(awk '/^FORMAT/{print $3}' "${CONFIG}")
 
 for NAME in `ls "$DATA_DIR"/*_R1."$FORMAT"` 
 do
-JOBNAME=$(basename ""${NAME[@]}"" | sed 's/_R1.'$FORMAT'//') 
+SHORTNAME=$(basename ""${NAME[@]}"" | sed 's/_R1.'$FORMAT'//') 
 #SHORTNAME=$(basename ""${NAME[@]}"") 
 #echo $SHORTNAME
 
-RESULTS="$OUTPUT/$JOBNAME"
+RESULTS="$OUTPUT/$SHORTNAME"
 mkdir -p $RESULTS
 
-exec 3>&1 1>"$RESULTS"/RiboTaxa_"$JOBNAME".log 2>&3 2>"$RESULTS"/RiboTaxa_"$JOBNAME".stderr
+exec 3>&1 1>"$RESULTS"/RiboTaxa_"$SHORTNAME".log 2>&3 2>"$RESULTS"/RiboTaxa_"$SHORTNAME".stderr
 echo " "
 echo "RiboTaxa -- A complete pipeline from raw metagenomics to species-level identification" | tee /dev/fd/3
 echo "By Oshma Chakoory, Sophie Marre & Pierre Peyret" | tee /dev/fd/3
@@ -58,12 +58,12 @@ echo "" | tee /dev/fd/3
 ### Filter 16S/18S reads using SORTMERNA
 ### Reconstruct full length 16S/18S rRNA sequences using EMIRGE
 
-source "$RiboTaxa_DIR"/RiboTaxa.sh $CONFIG_PATH $NAME
+source "$RiboTaxa_DIR"/scripts/RiboTaxa_PE.sh $CONFIG_PATH $SHORTNAME
 
 #run sklearn_classfier.sh script to perform
 ### Taxonomic classification of full length reconstrcuted sequences using sklearn classifier of Qiime2
 
-source "$RiboTaxa_DIR"/sklearn_classifier.sh $CONFIG_PATH $NAME
+source "$RiboTaxa_DIR"/scripts/sklearn_classifier.sh $CONFIG_PATH $SHORTNAME
 
 done
 

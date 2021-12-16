@@ -48,7 +48,6 @@ def parse_arg():
     #print('args.forward = ', args.forward)
     return(parser)
 
-
 def parse_cfg(config):
     # BASE
     global SAMPLING_NUM, THREAD
@@ -57,7 +56,7 @@ def parse_cfg(config):
     SAMPLING_NUM = config.get('METARIB', 'SAMPLING_NUM')
     THREAD = config.getint('BASE','THREAD')
     # EMIRGE
-    global MAX_LENGTH, IDENTITY, MEAN_INSERT_SIZE, STD_DEV, EMIRGE_DB, NUM_ITERATION, RAM
+    global MAX_LENGTH, IDENTITY, MEAN_INSERT_SIZE, STD_DEV, EMIRGE_DB, NUM_ITERATION, RAM, MIN_COV
     #EM_PATH = config.get('EMIRGE', 'EM_PATH')
     #EM_PARA = config.get('EMIRGE', 'EM_PARA')
     #EM_REF = config.get('METARIB', 'EM_REF')
@@ -69,6 +68,7 @@ def parse_cfg(config):
     STD_DEV = config.get('EMIRGE', 'STD_DEV')
     EMIRGE_DB = config.get('EMIRGE', 'EMIRGE_DB')
     RAM = config.get('BBMAP', 'RAM')
+    MIN_COV = config.get('EMIRGE', 'MIN_COV')
    
     # BBTOOL
     #global BM_PATH, MAP_PARA, CLS_PARA
@@ -88,17 +88,16 @@ def init(config):
     samples_list_path = PROJECT_DIR+'/samples.list.txt'
     samples_list = []
     samples_fq1_path = {}
-    samples_fq2_path = {} 
+
     for i in open(samples_list_path):
     	sample_id = i.strip()
         samples_list.append(sample_id)
-    	all_fq1 = data_dir+'/'+sample_id+'_1_trimmed.fastq'
-    	all_fq2 = data_dir+'/'+sample_id+'_2_trimmed.fastq'
-        fq1_path = data_dir+'/'+sample_id+'_1_trimmed.fastq'
-        fq2_path = data_dir+'/'+sample_id+'_2_trimmed.fastq'
+    	all_fq1 = data_dir+'/'+sample_id+'_trimmed.fastq'
+    
+        fq1_path = data_dir+'/'+sample_id+'_trimmed.fastq'
         samples_fq1_path[sample_id] = fq1_path
-        samples_fq2_path[sample_id] = fq2_path
-    return(samples_list, samples_fq1_path, samples_fq2_path, all_fq1, all_fq2)
+
+    return(samples_list, samples_fq1_path, all_fq1)
 
 def cal_fastq_num(fastq):
     fastq = fastq
@@ -129,16 +128,15 @@ def parse_fa_ids(fa_file):
             continue
     return(fa_ids)
 
-def subsampling_reads(unmap_fq1, unmap_fq2):
+def subsampling_reads(unmap_fq1):
     curr_dir = os.getcwd()
     sub_fq1 = curr_dir+'/sub.1.fq'
-    sub_fq2 = curr_dir+'/sub.2.fq'
     sampling_num = int(SAMPLING_NUM)
     max_reads = 1000 * sampling_num
     seeds = random.randint(1, 100)
-    cmd = ' '.join(['reformat.sh', '-Xmx'+RAM+'g', 'in1='+unmap_fq1, '-Xmx'+RAM+'g', 'in2='+unmap_fq2,'out1='+sub_fq1,'out2='+sub_fq2, 'sample='+str(sampling_num), 'sampleseed='+str(seeds),'ow=t', 'reads='+str(max_reads), '2> subsample.log'])
+    cmd = ' '.join(['reformat.sh', '-Xmx'+RAM+'g', 'in='+unmap_fq1, '-Xmx'+RAM+'g','out='+sub_fq1, 'sample='+str(sampling_num), 'sampleseed='+str(seeds),'ow=t', 'reads='+str(max_reads), '2> subsample.log'])
     os.system(cmd)
-    return(sub_fq1, sub_fq2)
+    return(sub_fq1)
 
 def dedup_contig(old_fa, new_fa):
     work_dir = os.getcwd()
@@ -161,27 +159,25 @@ def dedup_contig(old_fa, new_fa):
     os.system(cmd)
     return(all_dedup_fa)
 
-def run_align_bbmap(current_iter_fa, unmap_fq1, unmap_fq2):
+def run_align_bbmap(current_iter_fa, unmap_fq1):
     ref = current_iter_fa
     # run bbmap alignment, since we may have duplicates, cannot calculate stats
-    cmd = ' '.join(['bbmap.sh', '-Xmx'+RAM+'g', 'in1='+unmap_fq1, 'in2='+unmap_fq2, 'ref='+ref,
-    'threads='+str(THREAD), 'minid=0.96', 'maxindel=1', 'minhits=2', 'idfilter=0.98', 'outu=bbmap.unmap.fq', '32bit=t', 'ow=t', 'statsfile=bbmap.statsfile.txt',
-    'sortscafs=t', 'scafstats=bbmap.scafstats.txt', 'covstats=bbmap.covstats.txt','2> bbmap.log'])
+    cmd = ' '.join(['bbmap.sh', '-Xmx'+RAM+'g', 'in='+unmap_fq1, 'ref='+ref,
+    'threads='+str(THREAD), 'minid=0.96', 'maxindel=1', 'minhits=2', 'idfilter=0.98', 'outu=bbmap.unmap.fq', '32bit=t', 'ow=t', 'statsfile=bbmap.statsfile.txt','sortscafs=t', 'scafstats=bbmap.scafstats.txt', 'covstats=bbmap.covstats.txt','2> bbmap.log'])
     os.system(cmd)
     # reformat to two fastq files
     new_unmap_fq1 = os.getcwd()+'/bbmap.unmaped.1.fq'
-    new_unmap_fq2 = os.getcwd()+'/bbmap.unmaped.2.fq'
-    cmd = ' '.join(['reformat.sh', '-Xmx2g', 'in=bbmap.unmap.fq', 'out1='+new_unmap_fq1, 'out2='+new_unmap_fq2,
+    cmd = ' '.join(['reformat.sh', '-Xmx'+RAM+'g', 'in=bbmap.unmap.fq', 'out='+new_unmap_fq1,
     '2> deinterleave.log'])
     os.system(cmd)
     # remove unmapped fq
     cmd = 'rm bbmap.unmap.fq'
     os.system(cmd)
-    return(new_unmap_fq1, new_unmap_fq2)
+    return(new_unmap_fq1)
 
-def run_emirge_and_dedup(sub_fq1, sub_fq2, dedup_fa, iter_time):
-    cmd = ' '.join(['emirge_amplicon.py', 'emirge_amp/', '-1', sub_fq1, '-2', sub_fq2,
-    '--phred33', '-l', MAX_LENGTH, '-i', MEAN_INSERT_SIZE,'-j', IDENTITY, '-s', STD_DEV, '-a', str(THREAD), '-n', NUM_ITERATION, '-f', EM_REF, '-b', EM_BT, '>> iter_'+str(iter_time)+'_emirge.log','2>> iter_'+str(iter_time)+'_emirge.log'])
+def run_emirge_and_dedup(sub_fq1, dedup_fa, iter_time):
+    cmd = ' '.join(['emirge_amplicon.py', 'emirge_amp/', '-1', sub_fq1,
+    '--phred33', '-l', MAX_LENGTH, '-i', MEAN_INSERT_SIZE,'-j', IDENTITY, '-s', STD_DEV, '-c', MIN_COV, '-a', str(THREAD), '-n', NUM_ITERATION, '-f', EM_REF, '-b', EM_BT, '>> iter_'+str(iter_time)+'_emirge.log','2>> iter_'+str(iter_time)+'_emirge.log'])
    # print(cmd)
     os.system(cmd)
     # change to last iteration folder in EMIRGE
@@ -194,26 +190,26 @@ def run_emirge_and_dedup(sub_fq1, sub_fq2, dedup_fa, iter_time):
     all_dedup_fa = dedup_contig(dedup_fa, iter_fa)
     return(all_dedup_fa, iter_fa)
 
-def run_iteration(unmap_fq1, unmap_fq2, dedup_fa, iter_time, keep_running):
+def run_iteration(unmap_fq1, dedup_fa, iter_time, keep_running):
     iter_dir = '/'.join([PROJECT_DIR, 'Iteration', 'iter_'+str(iter_time)])
     if not os.path.isdir(iter_dir):
         os.mkdir(iter_dir)
     os.chdir(iter_dir)
-    sub_fq1, sub_fq2 = '', ''
-    (sub_fq1, sub_fq2) = subsampling_reads(unmap_fq1, unmap_fq2)
+    sub_fq1= ''
+    (sub_fq1) = subsampling_reads(unmap_fq1)
     # run emirge and dedup
-    all_dedup_fa, iter_fa = run_emirge_and_dedup(sub_fq1, sub_fq2, dedup_fa, iter_time)
+    all_dedup_fa, iter_fa = run_emirge_and_dedup(sub_fq1, dedup_fa, iter_time)
     # EMIRGE stop: no more new contigs
     if os.stat(iter_fa).st_size == 0:
         keep_running = 0
         new_iter_time = iter_time + 1
-        return(unmap_fq1, unmap_fq2, all_dedup_fa, new_iter_time, keep_running)
+        return(unmap_fq1, all_dedup_fa, new_iter_time, keep_running)
     # print fasta stats
     prev_fa_num = cal_fa_num(dedup_fa)
     cur_fa_num = cal_fa_num(all_dedup_fa)
     new_fa_num = cur_fa_num - prev_fa_num
     fa_stat = 'Iteration: '+str(iter_time)+'\tTotal contigs: '+str(cur_fa_num)+'\tNew contigs: '+str(new_fa_num)
-    (new_unmap_fq1, new_unmap_fq2) = run_align_bbmap(all_dedup_fa, unmap_fq1, unmap_fq2)
+    (new_unmap_fq1) = run_align_bbmap(all_dedup_fa, unmap_fq1)
     # calculate unmapped fq size (MB)
     new_unmap_fq_size = os.stat(new_unmap_fq1).st_size/(1024.0*1024)
     old_unmap_fq_size = os.stat(unmap_fq1).st_size/(1024.0*1024)
@@ -234,9 +230,9 @@ def run_iteration(unmap_fq1, unmap_fq2, dedup_fa, iter_time, keep_running):
     new_iter_time = iter_time + 1
     iter_dir = '/'.join([PROJECT_DIR, '/Iteration'])
     os.chdir(iter_dir)
-    return (new_unmap_fq1, new_unmap_fq2, all_dedup_fa, new_iter_time, keep_running)
+    return (new_unmap_fq1, all_dedup_fa, new_iter_time, keep_running)
 
-def run_last_iteration(unmap_fq1, unmap_fq2, dedup_fa, iter_time, keep_running):
+def run_last_iteration(unmap_fq1, dedup_fa, iter_time, keep_running):
     iter_dir = '/'.join([PROJECT_DIR,'Iteration','iter_'+str(iter_time)+'_L'])
     if not os.path.isdir(iter_dir):
         os.mkdir(iter_dir)
@@ -244,29 +240,29 @@ def run_last_iteration(unmap_fq1, unmap_fq2, dedup_fa, iter_time, keep_running):
     # case1: rest unmaped reads <= subsamping reads
     if (keep_running == 1):
         # use all unmaped reads
-        sub_fq1, sub_fq2 = unmap_fq1, unmap_fq2
+        sub_fq1= unmap_fq1
         # run emrige_amp and dedup
-        all_dedup_fa, iter_fa = run_emirge_and_dedup(sub_fq1, sub_fq2, dedup_fa, iter_time)
+        all_dedup_fa, iter_fa = run_emirge_and_dedup(sub_fq1,dedup_fa, iter_time)
 
     # case2 and 3: only a few new contigs or reach the last iteration
     if (keep_running == 0):
         num_unmap_fq = cal_fastq_num(unmap_fq1)
         if (num_unmap_fq <= 2.0*float(SAMPLING_NUM)):
             # use all unmaped reads
-            sub_fq1, sub_fq2 = unmap_fq1, unmap_fq2
+            sub_fq1 = unmap_fq1
             # run emrige_amp and dedup
-            all_dedup_fa, iter_fa = run_emirge_and_dedup(sub_fq1, sub_fq2, dedup_fa, iter_time)
+            all_dedup_fa, iter_fa = run_emirge_and_dedup(sub_fq1, dedup_fa, iter_time)
         else:
             # increase subsampling reads * 2
             work_dir = os.getcwd()
             sub_fq1 = work_dir+'/sub.1.fq'
-            sub_fq2 = work_dir+'/sub.2.fq'
+
             new_sampling_num = 2.0 * float(SAMPLING_NUM)
             max_reads = 100 * new_sampling_num
-            cmd = ' '.join(['reformat.sh', '-Xmx'+RAM+'g', 'in1='+unmap_fq1, 'in2='+unmap_fq2,'out1='+sub_fq1,'out2='+sub_fq2, 'sample='+str(new_sampling_num), 'ow=t', 'reads='+str(max_reads), '2> subsample.log'])
+            cmd = ' '.join(['reformat.sh', '-Xmx'+RAM+'g', 'in='+unmap_fq1, 'out='+sub_fq1, 'sample='+str(new_sampling_num), 'ow=t', 'reads='+str(max_reads), '2> subsample.log'])
             os.system(cmd)
             # run emrige_amp and dedup
-            all_dedup_fa, iter_fa = run_emirge_and_dedup(sub_fq1, sub_fq2, dedup_fa, iter_time)
+            all_dedup_fa, iter_fa = run_emirge_and_dedup(sub_fq1, dedup_fa, iter_time)
     # print iter fasta stat
     prev_fa_num = cal_fa_num(dedup_fa)
     cur_fa_num = cal_fa_num(all_dedup_fa)
@@ -276,7 +272,7 @@ def run_last_iteration(unmap_fq1, unmap_fq2, dedup_fa, iter_time, keep_running):
     return(all_dedup_fa)
 
 
-def cal_mapping_stats(samples_list, samples_fq1_path, samples_fq2_path, all_dedup_fa):
+def cal_mapping_stats(samples_list, samples_fq1_path, all_dedup_fa):
     ab_dir = PROJECT_DIR+'/Abundance/'
     if not os.path.isdir(ab_dir):
         os.mkdir(ab_dir)
@@ -293,12 +289,11 @@ def cal_mapping_stats(samples_list, samples_fq1_path, samples_fq2_path, all_dedu
         sample_idx = idx
         sample_name = str(val)
         reads1 = samples_fq1_path[sample_name]
-        reads2 = samples_fq2_path[sample_name]
         statsfile = sample_name+'.statsfile.txt'
         scafstats = sample_name+'.scafstats.txt'
         covstats = sample_name+'.covstats.txt'
         # run bbmap alignment, but only we only need statistics file, set ozo=f to print all cov info
-        cmd = ' '.join(['bbmap.sh', '-Xmx'+RAM+'g', 'in1='+reads1, 'in2='+reads2, 'ref='+dedup_ref,
+        cmd = ' '.join(['bbmap.sh', '-Xmx'+RAM+'g', 'in='+reads1, 'ref='+dedup_ref,
         'threads='+str(THREAD), 'minid=0.96', 'maxindel=1', 'minhits=2', 'idfilter=0.98', 'ow=t', '32bit=t', 'statsfile='+statsfile, 'nzo=f',
         'sortscafs=t', 'scafstats='+scafstats, 'covstats='+covstats, '2> run.'+sample_name+'.log'])
         scafstats = os.getcwd()+'/'+scafstats
@@ -334,9 +329,9 @@ def generate_and_filter_abundance_table(samples_list, all_scafstats_path, all_co
         # parse coverage info
         cov_df = pd.read_csv(all_covstats_path[sample_name], sep= '\t')
         min_cov = float(2)
-        min_per = float(80)
+        #min_per = float(80)
         # filter low avg fold and low covered percent
-        cov_df_filter = cov_df.loc[(cov_df['Avg_fold'] >=min_cov) & (cov_df['Covered_percent'] >=min_per)]
+        cov_df_filter = cov_df.loc[(cov_df['Avg_fold'] >=min_cov)]
         keeped_ids = cov_df_filter['#ID'].tolist()
         for ids in keeped_ids:
             if ids not in all_keeped_ctgs:
@@ -373,7 +368,7 @@ def main():
     config.read(config_file)
     run_cfg = parse_cfg(config)
     # INIT
-    samples_list, samples_fq1_path, samples_fq2_path, all_fq1, all_fq2  = init(config)
+    samples_list, samples_fq1_path, all_fq1 = init(config)
     # build work folder
     work_dir = PROJECT_DIR +'/'
     if not os.path.isdir(work_dir):
@@ -386,7 +381,7 @@ def main():
     open(dedup_fa,'w').close()
     orig_dedup_fa = dedup_fa
     # iteration parameters
-    unmap_fq1, unmap_fq2, iter_time = all_fq1, all_fq2, 1
+    unmap_fq1, iter_time = all_fq1, 1
     keep_running = 1
     max_iter = 10 # set maximum 10 iterations
     keep_running = 1
@@ -397,7 +392,7 @@ def main():
     while (keep_running == 1 and iter_time <= max_iter):
         curr_iter_time = iter_time
         print('====START ITERATION '+str(curr_iter_time)+'====')
-        (unmap_fq1, unmap_fq2, dedup_fa, iter_time, keep_running) = run_iteration(unmap_fq1, unmap_fq2, dedup_fa, iter_time, keep_running)
+        (unmap_fq1, dedup_fa, iter_time, keep_running) = run_iteration(unmap_fq1,dedup_fa, iter_time, keep_running)
         print('====FINISH ITERATION '+str(curr_iter_time)+'====')
     # it reaches maximum iteration
     if (curr_iter_time == max_iter):
@@ -405,14 +400,14 @@ def main():
     #  run last iteration
     curr_iter_time = iter_time
     print('====START LAST ITERATION '+str(curr_iter_time)+'====')
-    all_dedup_fa = run_last_iteration(unmap_fq1, unmap_fq2, dedup_fa, iter_time, keep_running)
+    all_dedup_fa = run_last_iteration(unmap_fq1, dedup_fa, iter_time, keep_running)
     print('====FINISH ITERATION '+str(curr_iter_time)+'====')
-    print('====START POSTPROCESSING====')
+    #print('====START POSTPROCESSING====')
     # calculate mapping stats for each sample
-    all_scafstats_path, all_covstats_path, dedup_ref = cal_mapping_stats(samples_list, samples_fq1_path, samples_fq2_path, all_dedup_fa)
+    all_scafstats_path, all_covstats_path, dedup_ref = cal_mapping_stats(samples_list, samples_fq1_path, all_dedup_fa)
     # generate abundance table based on scafstats, and filter by coverage info
     #(filter_ab_file)  = generate_and_filter_abundance_table(samples_list, all_scafstats_path, all_covstats_path, dedup_ref)
-    print('====FINISH POSTPROCESSING====')
+    #print('====FINISH POSTPROCESSING====')
     # print final fasta stat
     os.remove(orig_dedup_fa)
     print('====PROGRAM FINISHED!====')

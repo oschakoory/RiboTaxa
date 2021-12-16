@@ -84,7 +84,7 @@ echo ""
 
 echo "Remove ambiguous characters and replacing non-standard base characters in reference database..." | tee /dev/fd/3
 
-python "$RiboTaxa_DIR"/fix_nonstandard_chars.py < "$OUTPUT"/sortmerna_indexed_DB/*.clustered.fasta* > "$OUTPUT"/bowtie_indexed_DB/"$SHORTNAME"_clustered_fixed.fasta 
+python "$RiboTaxa_DIR"/scripts/fix_nonstandard_chars.py < "$OUTPUT"/sortmerna_indexed_DB/*.clustered.fasta* > "$OUTPUT"/bowtie_indexed_DB/"$SHORTNAME"_clustered_fixed.fasta 
 
 echo "Finished fixing database for emirge..."| tee /dev/fd/3
 

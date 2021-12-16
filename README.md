@@ -5,7 +5,7 @@ by Oshma Chakoory, Sophie Marre, and Pierre Peyret.
 
 RiboTaxa is a complete pipeline to rapidly filter and reconstruct the full length SSU rRNA gene from Illumina (meta)genomic dataset and perform taxonomic classification on the reconstructed sequences.
 
-RiboTaxa takes as input paired end files which can be in compressed format (fastq.gz) or uncompressed format (.fastq).
+RiboTaxa takes as input singled-end or paired-end files which can be in compressed format (fastq.gz) or uncompressed format (.fastq).
 
 Tools used in RiboTaxa pipeline:
 - For quality control :<a class="reference external" href="http://www.bioinformatics.babraham.ac.uk/projects/fastqc/" target="_blank" rel="noopener noreferrer">FastQC</a>, <a class="reference external" href="https://multiqc.info/" target="_blank" rel="noopener noreferrer">MultiQC</a>
@@ -138,31 +138,40 @@ RiboTaxa pipeline will
 - Classify the full-length reconstructed SSU sequences using <a class="reference external" href="https://docs.qiime2.org/2020.8/plugins/available/feature-classifier/classify-sklearn/">sklearn classifier</a> of <a class="reference external" href="https://docs.qiime2.org/2020.8/" target="_blank" rel="noopener noreferrer">QIIME2</a>
 
 
-RiboTaxa can be used for one paired-end dataset or multiple paired-end datasets in the same folder.
+RiboTaxa can be used for one singled-end/paired-end dataset or multiple singled-end/paired-end datasets in the same folder.
 
 To run RiboTaxa, you will need to fill the config file ```RiboTaxa_arguments.conf```. If you are not sure of certains parameters, leave as defined except for directories and input files.
 
 ```bash
-The configuration file is very important and each parameter needs to be filled to avoid errors.
+##The configuration file is very important and each parameter needs to be filled to avoid errors.
 
-[Setting up directories...]
+#-----------------------
+#Setting up directories
+#-----------------------
 
+[BASE]
 ####set up RiboTaxa directory
-RiboTaxa_DIR = /home/user/Documents/RiboTaxa
+RiboTaxa_DIR = /home/user/RiboTaxa
 
 ####set up data directory containing only raw reads in fastq/fastq.gz format
-###paired end read should be _R1.fastq and _R2.fastq
-DATA_DIR = /home/user/Documents/MetaGenomics/raw_data
-
-####set up output directory
-OUTPUT = /home/user/Documents/MetaGenomics/results
+###paired-end files should be metagenome_R1.fastq/fastq.gz and metagenome_R2.fastq/fastq.gz
+###singled-end file should be metagenome.fastq/fastq.gz
+DATA_DIR = /home/user/Documents/raw_reads
 
 ####format of your paired end files 
 ## fastq : if files are not compressed
 ## fastq.gz: if files are compressed in gz format
 FORMAT = fastq
 
-[Quality control uing BBTOOLS]
+####set up output directory
+OUTPUT = /home/user/Documents/RiboTaxa_results
+
+####number of threads/CPUS to be used through the pipeline
+THREAD = 8
+
+#-----------------------------
+#Quality control using BBTOOLS
+#-----------------------------
 
 ####Trim reads to remove bases matching reference kmers
 # f (don't trim)
@@ -198,26 +207,30 @@ maxns = 1
 ##exemple: Available RAM = 16GB, therefore RAM = 80/100*16 = 12GB
 RAM = 12
 
+#------------------------------------
+#Filter 16S/18S reads using SortmeRNA
+#------------------------------------
 
-[Filter 16S/18S reads using SortmeRNA]
-####indexed database directory for sortmerna indexed files
-SORTMERNA_DB = /home/user/Documents/Databases/sortmerna_indexed_silva_138
-
-####number of threads/CPUS to be used through the pipeline
-THREAD = 8
+####indexed database directory for sortmerna
+##This directory should contain one .clustered.fasta and several .clustered. files
+SORTMERNA_DB = /home/user/Documents/Databases/sortmerna_indexed_DB
 
 
-[Reconstructing 16S/18S sequences uisng EMIRGE and MetaRib]
+#----------------------------------------------------------
+#Reconstructing 16S/18S sequences using EMIRGE and MetaRIB
+#----------------------------------------------------------
 
 [EMIRGE]
-####indexed database diretory for emirge indexed file
-EMIRGE_DB = /home/user/Documents/Databases/bowtie_indexed_silva_138_for_emirge
+
+####set up database directory containing indexed files for emirge
+##This directory should contain one fasta file and several .ebwt files
+EMIRGE_DB = /home/user/Documents/Databases/bowtie_indexed_DB
 
 ####length of longest reads 
 MAX_LENGTH = 300
 
-####identity (Value between 0.8 - 1)
-IDENTITY = 0.97 
+####identity
+IDENTITY = 1 
 
 ####number of iterations (Default value = 40)
 NUM_ITERATION = 40
@@ -228,42 +241,58 @@ MEAN_INSERT_SIZE = 300
 ####standard deviation
 STD_DEV = 100 
 
+
+####minimum fraction of the length of a candidate
+####reference sequence that must be covered by mapped
+####reads (Default=0.3) Range [0.0,1.0]
+MIN_COV = 0.3
+
 [METARIB]
-##number of subsampling (reads) to be used by MetaRib at each iteration
 SAMPLING_NUM = 1000000
 
-[Taxonomic classfication using sklearn_classifier of qiime2]
+#-----------------------------------------------------------
+#Taxonomic classfication using sklearn_classifier of qiime2
+#-----------------------------------------------------------
 
-####set up database directory and name for sklearn classifier
-SKLEARN_DB = /home/user/Documents/RiboTaxa/silva-138-99-nb-classifier.qza
+####set up path+database name for sklearn classifier
+SKLEARN_DB = /home/user/Documents/Databases/qiime2020.8_silva138/silva-138-99-nb-classifier.qza
 
 #Confidence threshold for limiting taxonomic depth (default = 0.7)
 CONFIDENCE = 0.7
 
 #Number of reads to process in each batch (default = 0)
+#use BATCH = 1 if you have less than 16GB RAM to avoid errors
 BATCH = 0
 ```
 
 For the taxonomic classification by sklearn classifier, the database used is the trained classifier ```SILVA 138 reference sequence``` downloaded from the <a class="reference external" href="https://docs.qiime2.org/2020.8/data-resources/" target="_blank" rel="noopener noreferrer">Data resources</a> of <a class="reference external" href="https://docs.qiime2.org/2020.8/" target="_blank" rel="noopener noreferrer">Qiime2</a>. To use other databases such as Greengenes or UNITE, you can download already trained classifer or train your own database by following the <a class="reference external" href="https://docs.qiime2.org/2020.8/data-resources/" target="_blank" rel="noopener noreferrer">Data resources</a> instructions.
 
-Once it is filled with all the necessary information, you can use the following command to run the RiboTaxa pipeline
+Once it is filled with all the necessary information, you can use the following command to run the RiboTaxa pipeline for
+
+##### Singled-end dataset(s)
 
 ```bash
-bash -i Pipeline_RiboTaxa.sh PATH_TO/RiboTaxa_arguments.conf
+bash -i Pipeline_RiboTaxa_SE.sh PATH_TO/RiboTaxa_arguments.conf
 ```
 
-For each paired-end sample, RiboTaxa will create one directory using the sample name in your OUTPUT path of your ```RiboTaxa_arguments.conf``` file. Each sample directory will contain the 4 following sub-directories:
-- ```quality_control``` : This directory contains your (meta)genomics (paired-end) files after adpaters removal and trimming. It also has two sub_directories ```before_fastqc``` and ```after_fastqc``` containing quality reports of your sequence files before and after trimming. You may look at the ```.html``` files in each sub-directory to have an overview of each (meta)genomics file or look into ```multiqc``` folder to have an overview of all the (meta)genomics files given to this pipeline.
+##### Paired-end datset(s)
 
-- ```output_sortmerna``` : This folder contains filtered 16S/18S sequences from your trimmed (meta)genomics sequence files: ```$FILE_R1_16S18Sreads.fastq```,```$FILE_R2_16S18Sreads.fastq``` and  and a ```$FILE.log``` indicating the % of 16S/18S reads filtered from your (meta)genomics dataset.
+```bash
+bash -i Pipeline_RiboTaxa_PE.sh PATH_TO/RiboTaxa_arguments.conf
+```
+
+For each singled-end/paired-end sample, RiboTaxa will create one directory using the sample name in your OUTPUT path of your ```RiboTaxa_arguments.conf``` file. Each sample directory will contain the 4 following sub-directories:
+- ```quality_control``` : This directory contains your (meta)genomics files after adpaters removal and trimming. It also has two sub_directories ```before_fastqc``` and ```after_fastqc``` containing quality reports of your sequence files before and after trimming. You may look at the ```.html``` files in each sub-directory to have an overview of each (meta)genomics file or look into ```multiqc``` folder to have an overview of all the (meta)genomics files given to this pipeline.
+
+- ```output_sortmerna``` : This folder contains filtered 16S/18S sequences from your trimmed (meta)genomics sequence files: ```metagenome_R1_16S18Sreads.fastq```,```metagenome_R2_16S18Sreads.fastq```(for paired-end) or ```metagenome_16S18Sreads.fastq``` (for singled-end) and a ```metagenome.log``` indicating the % of 16S/18S reads filtered from your (meta)genomics dataset.
 
 -  ```SSU_sequences``` : This folder contains two subfolders: ```output_emirge``` and ```output_metarib```. These subfolders contain iterations perfomed by EMIRGE and MetaRib to reconstruct full-length/nearly full-length rRNA 16S/18S gene sequences. 
 
-- The file ```$FILE_SSU_sequences.fasta``` contains the final full-length/nearly full-length rRNA 16S/18S gene sequences recontructed by EMIRGE and MetaRib.
+- The file ```metagenome_SSU_sequences.fasta``` contains the final full-length/nearly full-length rRNA 16S/18S gene sequences recontructed by EMIRGE and MetaRib.
 	
-- Taxonomy : This folder contains the taxonomic classification of the full-length SSU rRNA sequences reconstructed by EMIRGE. It takes ```$FILE_SSU_sequences.fasta``` as input, converts it to ```FILE_SSU_sequences_qiime2.qza``` and returns the classification of each sequence as ```$FILE_renamed_16S18S_recons_qiime2_taxonomy.qza```. To calculate relative abundace of each reconstructed SSU sequence, BBmap is used to map short reads onto SSU sequence and the number of assigned reads per sequence is divided by the sum of all the assigned reads (and multiplied by 100). Relative abundance is thus expressed in %. To view the classification and relative abundance of each sequence, open ```$FILE_SSU_taxonomy_abundance.tsv```.
+- Taxonomy : This folder contains the taxonomic classification of the full-length SSU rRNA sequences reconstructed by EMIRGE. It takes ```metagenome_SSU_sequences.fasta``` as input, converts it to ```metagenome_SSU_sequences_qiime2.qza``` and returns the classification of each sequence as ```metagenome_renamed_16S18S_recons_qiime2_taxonomy.qza```. To calculate relative abundace of each reconstructed SSU sequence, BBmap is used to map short reads onto SSU sequence and the number of assigned reads per sequence is divided by the sum of all the assigned reads (and multiplied by 100). Relative abundance is thus expressed in %. To view the classification and relative abundance of each sequence, open ```metagenome_SSU_taxonomy_abundance.tsv```.
 
-. The ```$FILE_SSU_taxonomy_abundance.tsv``` contains the following column names:
+. The ```metagenome_SSU_taxonomy_abundance.tsv``` contains the following column names:
 
 ```bash
 Sequence_ID		Domain		Phylum			Class			Order		Family		Genus			Species		Confidence 	Length(bp)	Assigned reads		Relative_Abundance(%)

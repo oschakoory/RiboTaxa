@@ -32,8 +32,8 @@ echo ""
 CONFIG_PATH=$1
 CONFIG="${CONFIG_PATH[@]}"
 
-NAME=$2
-SHORTNAME=$(basename ""${NAME[@]}"" | sed 's/_R1.'$FORMAT'//') 
+SHORTNAME=$2
+#SHORTNAME=$(basename ""${NAME[@]}"" | sed 's/_R1.'$FORMAT'//') 
 echo "SHORTNAME = " >&2
 printf '%s\n' "$SHORTNAME" >&2
 
@@ -124,8 +124,15 @@ done
 
 mv "$SHORTNAME"_taxonomy.tsv "$RESULTS"/Taxonomy/"$SHORTNAME"_taxonomy.tsv
 
-cat "$RESULTS"/Taxonomy/"$SHORTNAME"_taxonomy.tsv | sed 1d |sort -k1 | tr ' ' ';' | awk '{ print $1,$2 }'| tr ' ' \\t  > "$RESULTS"/Taxonomy/"$SHORTNAME"_sorted_taxonomy.tsv
-cat "$RESULTS"/Taxonomy/"$SHORTNAME"_sorted_taxonomy.tsv | tr ';;' \\t |sed 's/\t\+/\t/g;s/^\t//' > "$RESULTS"/Taxonomy/"$SHORTNAME"_sorted_tab_taxonomy.tsv
+if [[ ${SKLEARN_DB[@]} == *GTDB* ]]; then
+    #echo "$FILE is gzipped"
+    cat "$RESULTS"/Taxonomy/"$SHORTNAME"_taxonomy.tsv | sed 1d |sort -k1 | tr ' ' '_' | awk '{ print $1,$2 }'| tr ' ' \\t  > "$RESULTS"/Taxonomy/"$SHORTNAME"_sorted_taxonomy.tsv
+else
+   cat "$RESULTS"/Taxonomy/"$SHORTNAME"_taxonomy.tsv | sed 1d |sort -k1 | tr -d ' ' | awk '{ print $1,$2 }'| tr ' ' \\t  > "$RESULTS"/Taxonomy/"$SHORTNAME"_sorted_taxonomy.tsv
+fi
+
+#cat "$RESULTS"/Taxonomy/"$SHORTNAME"_taxonomy.tsv | sed 1d |sort -k1 | tr ' ' ';' | awk '{ print $1,$2 }'| tr ' ' \\t  > "$RESULTS"/Taxonomy/"$SHORTNAME"_sorted_taxonomy.tsv
+cat "$RESULTS"/Taxonomy/"$SHORTNAME"_sorted_taxonomy.tsv | tr ';' \\t |sed 's/\t\+/\t/g;s/^\t//' > "$RESULTS"/Taxonomy/"$SHORTNAME"_sorted_tab_taxonomy.tsv
 rm "$RESULTS"/Taxonomy/"$SHORTNAME"_sorted_taxonomy.tsv
 awk -v c=8 'BEGIN{FS=OFS="\t"} {for(i=NF+1; i<=c; i++) $i="\t"} 1' "$RESULTS"/Taxonomy/"$SHORTNAME"_sorted_tab_taxonomy.tsv > "$RESULTS"/Taxonomy/"$SHORTNAME"_sorted_taxonomy.tsv
 
@@ -139,7 +146,7 @@ rm "$RESULTS"/Taxonomy/"$SHORTNAME"_sorted_tab_taxonomy.tsv
 cat "$RESULTS"/SSU_sequences/"$SHORTNAME"_Abundance.tsv | sed 1d |sort -k1| tr ' ' \\t > "$RESULTS"/Taxonomy/"$SHORTNAME"_abundance.tsv
 
 
-join "$RESULTS"/Taxonomy/"$SHORTNAME"_abundance.tsv "$RESULTS"/Taxonomy/"$SHORTNAME"_renamed_16S18S_recons_qiime2_taxonomy.tsv  |awk '!($11==0){print}' |tr  ' ' \\t | awk -v c=12 'BEGIN{FS=OFS="\t"} {for(i=NF+1; i<=c; i++) $i="\t"} 1' | awk '{ print $1,$6,$7,$8,$9,$10,$11,$12,$5,$2,$3,$4}' |awk 'BEGIN{print "ID\tDomain\tPhylum\tClass\tOrder\tFamily\tGenus\tSpecies\tConfidence\tLength\tAssigned_reads\tRelative_abundance "}1' |tr  ' ' \\t  > "$RESULTS"/Taxonomy/"$SHORTNAME"_SSU_taxonomy_abundance.tsv
+join "$RESULTS"/Taxonomy/"$SHORTNAME"_abundance.tsv "$RESULTS"/Taxonomy/"$SHORTNAME"_renamed_16S18S_recons_qiime2_taxonomy.tsv |tr  ' ' \\t | awk -v c=12 'BEGIN{FS=OFS="\t"} {for(i=NF+1; i<=c; i++) $i="\t"} 1' | awk '{ print $1,$6,$7,$8,$9,$10,$11,$12,$5,$2,$3,$4}' |awk 'BEGIN{print "ID\tDomain\tPhylum\tClass\tOrder\tFamily\tGenus\tSpecies\tConfidence\tLength\tAssigned_reads\tRelative_abundance "}1' |tr  ' ' \\t  > "$RESULTS"/Taxonomy/"$SHORTNAME"_SSU_taxonomy_abundance.tsv
 
 
 #cat "$RESULTS"/Taxonomy/taxonomy.tsv | sed 1d |sort -k1| tr ';' \\t > "$RESULTS"/Taxonomy/"$SHORTNAME"_renamed_16S18S_recons_qiime2_taxonomy.tsv

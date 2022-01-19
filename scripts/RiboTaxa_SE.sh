@@ -73,6 +73,9 @@ QTRIM=$(awk '/^qtrim/{print $3}' "${CONFIG}")
 
 MAXNS=$(awk '/^maxns/{print $3}' "${CONFIG}")
 
+THREAD=$(awk '/^THREAD/{print $3}' "${CONFIG}")
+#echo "Number of threads used = $THREAD" | tee /dev/fd/3
+
 FORWARD="$RESULTS/quality_control/"$SHORTNAME"_trimmed.fastq"
 
 if [ -f "$FORWARD" ];
@@ -97,6 +100,7 @@ echo "bbduk.sh -Xmx${RAM}g \
 	ktrim=$KTRIM \
 	k=$KMER \
 	mink=11 \
+	threads=$THREAD \
 	tpe \
 	tbo" | tee /dev/fd/3
 
@@ -107,6 +111,7 @@ bbduk.sh -Xmx${RAM}g \
 	ktrim=$KTRIM \
 	k=$KMER \
 	mink=11 \
+	threads=$THREAD \
 	tpe \
 	tbo
 
@@ -119,6 +124,7 @@ echo "bbduk.sh -Xmx${RAM}g \
 	minlen=$MINLENGTH \
 	qtrim=$QTRIM \
 	trimq=$TRIMQ \
+	threads=$THREAD \
 	maxns=$MAXNS" | tee /dev/fd/3
 
 bbduk.sh -Xmx${RAM}g \
@@ -127,6 +133,7 @@ bbduk.sh -Xmx${RAM}g \
 	minlen=$MINLENGTH \
 	qtrim=$QTRIM \
 	trimq=$TRIMQ \
+	threads=$THREAD \
 	maxns=$MAXNS
 
 
@@ -188,8 +195,6 @@ SMRNAME=($(ls "$SORTMERNA_DB"/*.clustered.fasta* | sed 's/.fasta//'))
 
 SORTME_NAME=$(basename ""${SMRNAME[@]}"")  
 
-THREAD=$(awk '/^THREAD/{print $3}' "${CONFIG}")
-#echo "Number of threads used = $THREAD" | tee /dev/fd/3
 
 FORWARD="$RESULTS/output_sortmerna/"$SHORTNAME"_16S18S.fastq"
 
@@ -467,6 +472,8 @@ echo "bbmap.sh -Xmx${RAM}g in=$RESULTS/quality_control/"$SHORTNAME"_trimmed.fast
 	ref=$RESULTS/SSU_sequences/"$SHORTNAME"_emirge_metarib_SSU_sequences.fasta \
 	path=$RESULTS/SSU_sequences/ \
 	covstats=$RESULTS/SSU_sequences/"$SHORTNAME"_covstats.txt \
+	threads=$THREAD \
+	32bit=t \
 	scafstats=$RESULTS/SSU_sequences/"$SHORTNAME"_scafstats.txt " | tee /dev/fd/3
 
 bbmap.sh -Xmx${RAM}g in="$RESULTS"/quality_control/"$SHORTNAME"_trimmed.fastq \
@@ -474,6 +481,7 @@ bbmap.sh -Xmx${RAM}g in="$RESULTS"/quality_control/"$SHORTNAME"_trimmed.fastq \
 	path="$RESULTS"/SSU_sequences/ \
 	covstats="$RESULTS"/SSU_sequences/"$SHORTNAME"_covstats.txt \
 	scafstats="$RESULTS"/SSU_sequences/"$SHORTNAME"_scafstats.txt \
+	threads=$THREAD \
 	32bit=t
 
 

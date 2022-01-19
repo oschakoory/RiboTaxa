@@ -73,6 +73,9 @@ QTRIM=$(awk '/^qtrim/{print $3}' "${CONFIG}")
 
 MAXNS=$(awk '/^maxns/{print $3}' "${CONFIG}")
 
+THREAD=$(awk '/^THREAD/{print $3}' "${CONFIG}")
+#echo "Number of threads used = $THREAD" | tee /dev/fd/3
+
 FORWARD="$RESULTS/quality_control/"$SHORTNAME"_1_trimmed.fastq"
 REVERSE="$RESULTS/quality_control/"$SHORTNAME"_2_trimmed.fastq"
 
@@ -99,6 +102,7 @@ echo "bbduk.sh -Xmx${RAM}g \
 	out2=$RESULTS/quality_control/"$SHORTNAME"_2_noadapt.$FORMAT  \
 	ref=$RiboTaxa_DIR/adapters/TruSeq3-PE.fa \
 	ktrim=$KTRIM \
+	threads=$THREAD \
 	k=$KMER \
 	mink=11 \
 	tpe \
@@ -111,6 +115,7 @@ bbduk.sh -Xmx${RAM}g \
 	out2="$RESULTS"/quality_control/"$SHORTNAME"_2_noadapt.$FORMAT  \
 	ref="$RiboTaxa_DIR"/adapters/TruSeq3-PE.fa \
 	ktrim=$KTRIM \
+	threads=$THREAD \
 	k=$KMER \
 	mink=11 \
 	tpe \
@@ -126,6 +131,7 @@ echo "bbduk.sh -Xmx${RAM}g \
 	out2=$RESULTS/quality_control/"$SHORTNAME"_2_trimmed.$FORMAT  \
 	minlen=$MINLENGTH \
 	qtrim=$QTRIM \
+	threads=$THREAD \
 	trimq=$TRIMQ \
 	maxns=$MAXNS" | tee /dev/fd/3
 
@@ -136,6 +142,7 @@ bbduk.sh -Xmx${RAM}g \
 	out2="$RESULTS"/quality_control/"$SHORTNAME"_2_trimmed.$FORMAT  \
 	minlen=$MINLENGTH \
 	qtrim=$QTRIM \
+	threads=$THREAD \
 	trimq=$TRIMQ \
 	maxns=$MAXNS
 
@@ -199,8 +206,6 @@ SMRNAME=($(ls "$SORTMERNA_DB"/*.clustered.fasta* | sed 's/.fasta//'))
 
 SORTME_NAME=$(basename ""${SMRNAME[@]}"")  
 
-THREAD=$(awk '/^THREAD/{print $3}' "${CONFIG}")
-#echo "Number of threads used = $THREAD" | tee /dev/fd/3
 
 FORWARD="$RESULTS/output_sortmerna/"$SHORTNAME"_R1_16S18Sreads.fastq"
 REVERSE="$RESULTS/output_sortmerna/"$SHORTNAME"_R2_16S18Sreads.fastq"
@@ -478,6 +483,7 @@ echo "bbmap.sh -Xmx${RAM}g in1=$RESULTS/quality_control/"$SHORTNAME"_1_trimmed.f
 	ref="$RESULTS"/SSU_sequences/"$SHORTNAME"_emirge_metarib_SSU_sequences.fasta \
 	path=$RESULTS/SSU_sequences/ \
 	covstats=$RESULTS/SSU_sequences/"$SHORTNAME"_covstats.txt \
+	threads=$THREAD \
 	scafstats=$RESULTS/SSU_sequences/"$SHORTNAME"_scafstats.txt " | tee /dev/fd/3
 
 bbmap.sh -Xmx${RAM}g in1="$RESULTS"/quality_control/"$SHORTNAME"_1_trimmed.fastq \
@@ -485,6 +491,7 @@ bbmap.sh -Xmx${RAM}g in1="$RESULTS"/quality_control/"$SHORTNAME"_1_trimmed.fastq
 	ref="$RESULTS"/SSU_sequences/"$SHORTNAME"_emirge_metarib_SSU_sequences.fasta \
 	path="$RESULTS"/SSU_sequences/ \
 	covstats="$RESULTS"/SSU_sequences/"$SHORTNAME"_covstats.txt \
+	threads=$THREAD \
 	scafstats="$RESULTS"/SSU_sequences/"$SHORTNAME"_scafstats.txt \
 	32bit=t
 

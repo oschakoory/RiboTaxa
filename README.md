@@ -119,10 +119,10 @@ THREAD = 8
 CLUSTER_ID = 0.97
 ```
 
-Once it is filled with all the necessary information, you can run the following command and index your database
+Once it is filled with all the necessary information, you can run the following command and index your database.
 
 ```bash
-bash -i indexDB_RiboTaxa.sh PATH_TO/indexDB_arguments.conf
+bash -i RiboTaxa_DIR/indexDB_RiboTaxa.sh PATH_TO/indexDB_arguments.conf
 ```
 
 Indexing database takes a while. Using the maximum number of available threads/CPUs will save time. This step will produce two directories in your ```OUTPUT``` path:
@@ -272,13 +272,13 @@ Once it is filled with all the necessary information, you can use the following 
 ##### Singled-end dataset(s)
 
 ```bash
-bash -i Pipeline_RiboTaxa_SE.sh PATH_TO/RiboTaxa_arguments.conf
+bash -i RiboTaxa_DIR/Pipeline_RiboTaxa_SE.sh PATH_TO/RiboTaxa_arguments.conf
 ```
 
 ##### Paired-end datset(s)
 
 ```bash
-bash -i Pipeline_RiboTaxa_PE.sh PATH_TO/RiboTaxa_arguments.conf
+bash -i RiboTaxa_DIR/Pipeline_RiboTaxa_PE.sh PATH_TO/RiboTaxa_arguments.conf
 ```
 
 For each singled-end/paired-end sample, RiboTaxa will create one directory using the sample name in your OUTPUT path of your ```RiboTaxa_arguments.conf``` file. Each sample directory will contain the 4 following sub-directories:

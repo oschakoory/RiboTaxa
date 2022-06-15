@@ -101,15 +101,15 @@ script used: indexDB_RiboTaxa.sh
 
 [Setting up directories...]
 
-####set up RiboTaxa directory path
+####set up RiboTaxa directory path **
 RiboTaxa_DIR = /home/user/Documents/RiboTaxa
 
 [Setting up database path...]
 
-####set up database path+database file in fasta format
+####set up database path+database file in fasta format **
 DB_DIR = /home/user/Documents/Databases/SILVA_138_SSURef_Nr99_tax_silva.fasta
 
-#### Set up output directory
+#### Set up output directory **
 OUTPUT = /home/user/Documents/Databases
 
 #### set up the number of threads/CPUs to be used for indexing
@@ -140,7 +140,7 @@ RiboTaxa pipeline will
 
 RiboTaxa can be used for one singled-end/paired-end dataset or multiple singled-end/paired-end datasets in the same folder.
 
-To run RiboTaxa, you will need to fill the config file ```RiboTaxa_arguments.conf```. If you are not sure of certains parameters, leave as defined except for directories and input files.
+To run RiboTaxa, you will need to fill the config file ```RiboTaxa_arguments.conf```. If you are not sure of certains parameters, leave as defined except for fields denoted by **.
 
 ```bash
 ##The configuration file is very important and each parameter needs to be filled to avoid errors.
@@ -150,10 +150,10 @@ To run RiboTaxa, you will need to fill the config file ```RiboTaxa_arguments.con
 #-----------------------
 
 [BASE]
-####set up RiboTaxa directory
+####set up RiboTaxa directory **
 RiboTaxa_DIR = /home/user/RiboTaxa
 
-####set up data directory containing only raw reads in fastq/fastq.gz format
+####set up data directory containing only raw reads in fastq/fastq.gz format **
 ###paired-end files should be metagenome_R1.fastq/fastq.gz and metagenome_R2.fastq/fastq.gz
 ###singled-end file should be metagenome.fastq/fastq.gz
 DATA_DIR = /home/user/Documents/raw_reads
@@ -163,11 +163,17 @@ DATA_DIR = /home/user/Documents/raw_reads
 ## fastq.gz: if files are compressed in gz format
 FORMAT = fastq
 
-####set up output directory
+####set up output directory **
 OUTPUT = /home/user/Documents/RiboTaxa_results
 
 ####number of threads/CPUS to be used through the pipeline
 THREAD = 8
+
+[BBMAP]
+##RAM Limit to be used by BBTOOLS/BBMAP during quality control and mapping
+##depends of the computer RAM. Use approx 80% of available RAM
+##exemple: Available RAM = 16GB, therefore RAM = 80/100*16 = 12GB
+RAM = 12
 
 #-----------------------------
 #Quality control using BBTOOLS
@@ -201,17 +207,11 @@ qtrim = rl
 ####reads with more Ns than this (after trimming) will be discarded
 maxns = 1
 
-[BBMAP]
-##RAM Limit to be used by BBTOOLS/BBMAP during quality control and mapping
-##depends of the computer RAM. Use approx 80% of available RAM
-##exemple: Available RAM = 16GB, therefore RAM = 80/100*16 = 12GB
-RAM = 12
-
 #------------------------------------
 #Filter 16S/18S reads using SortmeRNA
 #------------------------------------
 
-####indexed database directory for sortmerna
+####indexed database directory for sortmerna **
 ##This directory should contain one .clustered.fasta and several .clustered. files
 SORTMERNA_DB = /home/user/Documents/Databases/sortmerna_indexed_DB
 
@@ -222,11 +222,11 @@ SORTMERNA_DB = /home/user/Documents/Databases/sortmerna_indexed_DB
 
 [EMIRGE]
 
-####set up database directory containing indexed files for emirge
+####set up database directory containing indexed files for emirge **
 ##This directory should contain one fasta file and several .ebwt files
 EMIRGE_DB = /home/user/Documents/Databases/bowtie_indexed_DB
 
-####length of longest reads 
+####length of longest reads **
 MAX_LENGTH = 300
 
 ####identity
@@ -254,7 +254,7 @@ SAMPLING_NUM = 1000000
 #Taxonomic classfication using sklearn_classifier of qiime2
 #-----------------------------------------------------------
 
-####set up path+database name for sklearn classifier
+####set up path+database name for sklearn classifier **
 SKLEARN_DB = /home/user/Documents/Databases/qiime2020.8_silva138/silva-138-99-nb-classifier.qza
 
 #Confidence threshold for limiting taxonomic depth (default = 0.7)

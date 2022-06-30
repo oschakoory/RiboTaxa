@@ -1,0 +1,11 @@
+java -ea -Xmx12g -Xms12g -cp /home/oschakoo/miniconda3/envs/RiboTaxa_py27/opt/bbmap-38.87-0/current/ jgi.ReformatReads -Xmx12g in=/home/oschakoo/RiboTaxa/test_data/RiboTaxa_results/sample01/SSU_sequences/output_MetaRib/Iteration/iter_2_L/emirge_amp/iter.20/current.sorted.fasta out=/home/oschakoo/RiboTaxa/test_data/RiboTaxa_results/sample01/SSU_sequences/output_MetaRib/Iteration/iter_2_L/emirge_amp/iter.20/current.uniqname.fasta threads=8 uniquenames
+Executing jgi.ReformatReads [-Xmx12g, in=/home/oschakoo/RiboTaxa/test_data/RiboTaxa_results/sample01/SSU_sequences/output_MetaRib/Iteration/iter_2_L/emirge_amp/iter.20/current.sorted.fasta, out=/home/oschakoo/RiboTaxa/test_data/RiboTaxa_results/sample01/SSU_sequences/output_MetaRib/Iteration/iter_2_L/emirge_amp/iter.20/current.uniqname.fasta, threads=8, uniquenames]
+
+Set threads to 8
+Input is being processed as unpaired
+Input:                  	14 reads          	20634 bases
+Output:                 	14 reads (100.00%) 	20634 bases (100.00%)
+
+Time:                         	0.065 seconds.
+Reads Processed:          14 	0.21k reads/sec
+Bases Processed:       20634 	0.32m bases/sec

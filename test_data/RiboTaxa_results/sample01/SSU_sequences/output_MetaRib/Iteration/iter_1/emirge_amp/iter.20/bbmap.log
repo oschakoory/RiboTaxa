@@ -1,0 +1,53 @@
+java -ea -Xmx12g -Xms12g -cp /home/oschakoo/miniconda3/envs/RiboTaxa_py27/opt/bbmap-38.87-0/current/ align2.BBMap build=1 overwrite=true fastareadlen=500 -Xmx12g in1=/home/oschakoo/RiboTaxa/test_data/RiboTaxa_results/sample01/quality_control/sample01_1_trimmed.fastq in2=/home/oschakoo/RiboTaxa/test_data/RiboTaxa_results/sample01/quality_control/sample01_2_trimmed.fastq ref=/home/oschakoo/RiboTaxa/test_data/RiboTaxa_results/sample01/SSU_sequences/output_MetaRib/Iteration/iter_1/emirge_amp/iter.20/all.dedup.fasta threads=8 minid=0.96 maxindel=1 minhits=2 idfilter=0.98 outu=bbmap.unmap.fq 32bit=t ow=t statsfile=bbmap.statsfile.txt sortscafs=t threads=8 scafstats=bbmap.scafstats.txt covstats=bbmap.covstats.txt
+Executing align2.BBMap [build=1, overwrite=true, fastareadlen=500, -Xmx12g, in1=/home/oschakoo/RiboTaxa/test_data/RiboTaxa_results/sample01/quality_control/sample01_1_trimmed.fastq, in2=/home/oschakoo/RiboTaxa/test_data/RiboTaxa_results/sample01/quality_control/sample01_2_trimmed.fastq, ref=/home/oschakoo/RiboTaxa/test_data/RiboTaxa_results/sample01/SSU_sequences/output_MetaRib/Iteration/iter_1/emirge_amp/iter.20/all.dedup.fasta, threads=8, minid=0.96, maxindel=1, minhits=2, idfilter=0.98, outu=bbmap.unmap.fq, 32bit=t, ow=t, statsfile=bbmap.statsfile.txt, sortscafs=t, threads=8, scafstats=bbmap.scafstats.txt, covstats=bbmap.covstats.txt]
+Version 38.87
+
+Set threads to 8
+Set threads to 8
+Scaffold statistics will be written to bbmap.scafstats.txt
+Retaining first best site only for ambiguous mappings.
+Writing reference.
+Executing dna.FastaToChromArrays2 [/home/oschakoo/RiboTaxa/test_data/RiboTaxa_results/sample01/SSU_sequences/output_MetaRib/Iteration/iter_1/emirge_amp/iter.20/all.dedup.fasta, 1, writeinthread=false, genscaffoldinfo=true, retain, waitforwriting=false, gz=true, maxlen=536670912, writechroms=true, minscaf=1, midpad=300, startpad=8000, stoppad=8000, nodisk=false]
+
+Set genScaffoldInfo=true
+Writing chunk 1
+Set genome to 1
+
+Loaded Reference:	0.004 seconds.
+Loading index for chunk 1-1, build 1
+No index available; generating from reference genome: /home/oschakoo/RiboTaxa/test_data/RiboTaxa_results/sample01/SSU_sequences/output_MetaRib/Iteration/iter_1/emirge_amp/iter.20/ref/index/1/chr1_index_k13_c15_b1.block
+Indexing threads started for block 0-1
+Indexing threads finished for block 0-1
+Generated Index:	1.371 seconds.
+Analyzed Index:   	2.630 seconds.
+Started output stream:	0.006 seconds.
+Creating scaffold statistics table:   	0.001 seconds.
+Cleared Memory:    	0.109 seconds.
+Processing reads in paired-ended mode.
+Started read stream.
+Started 8 mapping threads.
+Detecting finished threads: 0, 1, 2, 3, 4, 5, 6, 7
+
+   ------------------   Results   ------------------   
+
+Genome:                	1
+Key Length:            	13
+Max Indel:             	1
+Minimum Score Ratio:  	0.56
+Mapping Mode:         	normal
+
+Reads:                               	224140
+Mapped reads:                        	703
+Mapped bases:                        	130636
+Ref scaffolds:                       	13
+Ref bases:                           	19203
+
+Percent mapped:                      	0.314
+Percent proper pairs:                	0.292
+Average coverage:                    	6.803
+Average coverage with deletions:     	6.680
+Standard deviation:                    	13.645
+Percent scaffolds with any coverage: 	100.00
+Percent of reference bases covered:  	79.12
+
+Total time:     	6.137 seconds.

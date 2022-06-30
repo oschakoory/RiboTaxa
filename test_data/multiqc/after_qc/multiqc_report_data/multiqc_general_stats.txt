@@ -1,0 +1,3 @@
+Sample	fastqc_percent_duplicates	fastqc_percent_gc	fastqc_avg_sequence_length	fastqc_total_sequences
+sample01_1_trimmed	0.773547976642	55.0	216.75214598	112070.0
+sample01_2_trimmed	0.651013000145	54.0	138.701731061	112070.0

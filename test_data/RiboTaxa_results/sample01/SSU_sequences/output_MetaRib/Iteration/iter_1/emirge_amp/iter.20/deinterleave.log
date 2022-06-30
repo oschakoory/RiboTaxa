@@ -1,0 +1,12 @@
+java -ea -Xmx2g -Xms2g -cp /home/oschakoo/miniconda3/envs/RiboTaxa_py27/opt/bbmap-38.87-0/current/ jgi.ReformatReads -Xmx2g in=bbmap.unmap.fq threads=8 out1=/home/oschakoo/RiboTaxa/test_data/RiboTaxa_results/sample01/SSU_sequences/output_MetaRib/Iteration/iter_1/emirge_amp/iter.20/bbmap.unmaped.1.fq out2=/home/oschakoo/RiboTaxa/test_data/RiboTaxa_results/sample01/SSU_sequences/output_MetaRib/Iteration/iter_1/emirge_amp/iter.20/bbmap.unmaped.2.fq
+Executing jgi.ReformatReads [-Xmx2g, in=bbmap.unmap.fq, threads=8, out1=/home/oschakoo/RiboTaxa/test_data/RiboTaxa_results/sample01/SSU_sequences/output_MetaRib/Iteration/iter_1/emirge_amp/iter.20/bbmap.unmaped.1.fq, out2=/home/oschakoo/RiboTaxa/test_data/RiboTaxa_results/sample01/SSU_sequences/output_MetaRib/Iteration/iter_1/emirge_amp/iter.20/bbmap.unmaped.2.fq]
+
+Set threads to 8
+Set INTERLEAVED to true
+Input is being processed as paired
+Input:                  	223394 reads          	39698598 bases
+Output:                 	223394 reads (100.00%) 	39698598 bases (100.00%)
+
+Time:                         	0.358 seconds.
+Reads Processed:        223k 	624.00k reads/sec
+Bases Processed:      39698k 	110.89m bases/sec

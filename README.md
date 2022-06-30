@@ -126,7 +126,7 @@ bash -i RiboTaxa_DIR/indexDB_RiboTaxa.sh PATH_TO/indexDB_arguments.conf
 ```
 
 Indexing database takes a while. Using the maximum number of available threads/CPUs will save time. This step will produce two directories in your ```OUTPUT``` path:
-- sortemerna_indexed_DB : containing indexed files for sortmeRNA
+- sortmerna_indexed_DB : containing indexed files for sortmeRNA
 - bowtie_indexed_DB : containing indexed files by <a class="reference external" href="http://bowtie-bio.sourceforge.net/manual.shtml" target="_blank" rel="noopener noreferrer">Bowtie</a> to be used for EMIRGE and MetaRib
 
 For the taxonomic classification by sklearn classifier, the database used is the trained classifier ```SILVA 138 reference sequence``` downloaded from the <a class="reference external" href="https://docs.qiime2.org/2020.8/data-resources/" target="_blank" rel="noopener noreferrer">Data resources</a> of <a class="reference external" href="https://docs.qiime2.org/2020.8/" target="_blank" rel="noopener noreferrer">Qiime2</a>. To use other databases such as Greengenes or UNITE, you can download already trained classifer or train your own database by following the <a class="reference external" href="https://docs.qiime2.org/2020.8/data-resources/" target="_blank" rel="noopener noreferrer">Data resources</a> instructions.
@@ -300,3 +300,18 @@ Sequence_ID		Domain		Phylum			Class			Order		Family		Genus			Species		Confidence
 ```
 
 
+### Running RiboTaxa pipeline on test data
+
+To run RiboTaxa pipeline on test data, you need to download the indexed database of SILVA SSU 138.1 available <a class="reference external" href="https://ucafr-my.sharepoint.com/:f:/g/personal/oshma_chakoory_uca_fr/EkqL_9bA2UpApbEHiB8cfJ4B4BBsMB25O9Xtl29wi2QSIw?e=VqqWM9" target="_blank" rel="noopener noreferrer">here</a>
+
+For the taxonomic classification by sklearn classifier, the database used is the trained classifier ```SILVA 138 reference sequence``` downloaded from the <a class="reference external" href="https://docs.qiime2.org/2020.8/data-resources/" target="_blank" rel="noopener noreferrer">Data resources</a> of <a class="reference external" href="https://docs.qiime2.org/2020.8/" target="_blank" rel="noopener noreferrer">Qiime2</a>.
+
+Once all the indexed databases are successfully downloaded into ```~/database```, you need to update the directory path of each. The parameters can be left as default.
+
+Then run: 
+
+```bash
+bash -i RiboTaxa_DIR/Pipeline_RiboTaxa_PE.sh RiboTaxa_DIR/test_data/RiboTaxa_arguments.conf
+```
+
+The test data directory also contains the results of RiboTaxa of the test sample.

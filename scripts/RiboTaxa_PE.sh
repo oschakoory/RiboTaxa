@@ -218,10 +218,10 @@ then
 else
 echo "Merging paired files into single files... " | tee /dev/fd/3
 echo "command line :" | tee /dev/fd/3
-echo "reformat.sh -Xmx${RAM}g in1=$RESULTS/quality_control/"$SHORTNAME"_1_trimmed.fastq in2=$RESULTS/quality_control/"$SHORTNAME"_2_trimmed.fastq out=$RESULTS/output_sortmerna/"$SHORTNAME"_mergedpaired.fastq overwrite=t" | tee /dev/fd/3
+echo "reformat.sh -Xmx${RAM}g threads=$THREAD in1=$RESULTS/quality_control/"$SHORTNAME"_1_trimmed.fastq in2=$RESULTS/quality_control/"$SHORTNAME"_2_trimmed.fastq out=$RESULTS/output_sortmerna/"$SHORTNAME"_mergedpaired.fastq overwrite=t" | tee /dev/fd/3
 
 #bash merge-paired-reads.sh "$RESULTS"/quality_control/"$SHORTNAME"_1_trimmed.fastq "$RESULTS"/quality_control/"$SHORTNAME"_2_trimmed.fastq "$RESULTS"/output_sortmerna/"$SHORTNAME"_mergedpaired.fastq
-reformat.sh -Xmx${RAM}g in1="$RESULTS"/quality_control/"$SHORTNAME"_1_trimmed.fastq in2="$RESULTS"/quality_control/"$SHORTNAME"_2_trimmed.fastq out="$RESULTS"/output_sortmerna/"$SHORTNAME"_mergedpaired.fastq overwrite=t
+reformat.sh -Xmx${RAM}g threads=$THREAD in1="$RESULTS"/quality_control/"$SHORTNAME"_1_trimmed.fastq in2="$RESULTS"/quality_control/"$SHORTNAME"_2_trimmed.fastq out="$RESULTS"/output_sortmerna/"$SHORTNAME"_mergedpaired.fastq overwrite=t
 
 
 echo "Filtering 16S/18S reads...." | tee /dev/fd/3
@@ -247,9 +247,9 @@ sortmerna --ref "$SORTMERNA_DB"/"$SORTME_NAME".fasta,"$SORTMERNA_DB"/$SORTME_NAM
 echo "Unmerging single files into paired files...." | tee /dev/fd/3
 #bash unmerge-paired-reads.sh "$RESULTS"/output_sortmerna/"$SHORTNAME"_16S18S.fastq "$RESULTS"/output_sortmerna/"$SHORTNAME"_R1_16S18Sreads.fastq "$RESULTS"/output_sortmerna/"$SHORTNAME"_R2_16S18Sreads.fastq
 echo "command line :" | tee /dev/fd/3
-echo "reformat.sh in=$RESULTS/output_sortmerna/"$SHORTNAME"_16S18S.fastq out1=$RESULTS/output_sortmerna/"$SHORTNAME"_R1_16S18Sreads.fastq out2=$RESULTS/output_sortmerna/"$SHORTNAME"_R2_16S18Sreads.fastq overwrite=t" | tee /dev/fd/3
+echo "reformat.sh threads=$THREAD in=$RESULTS/output_sortmerna/"$SHORTNAME"_16S18S.fastq out1=$RESULTS/output_sortmerna/"$SHORTNAME"_R1_16S18Sreads.fastq out2=$RESULTS/output_sortmerna/"$SHORTNAME"_R2_16S18Sreads.fastq overwrite=t" | tee /dev/fd/3
 
-reformat.sh -Xmx${RAM}g in="$RESULTS"/output_sortmerna/"$SHORTNAME"_16S18S.fastq out1="$RESULTS"/output_sortmerna/"$SHORTNAME"_R1_16S18Sreads.fastq out2="$RESULTS"/output_sortmerna/"$SHORTNAME"_R2_16S18Sreads.fastq overwrite=t
+reformat.sh -Xmx${RAM}g threads=$THREAD in="$RESULTS"/output_sortmerna/"$SHORTNAME"_16S18S.fastq out1="$RESULTS"/output_sortmerna/"$SHORTNAME"_R1_16S18Sreads.fastq out2="$RESULTS"/output_sortmerna/"$SHORTNAME"_R2_16S18Sreads.fastq overwrite=t
 
 echo "Saving results..." | tee /dev/fd/3
 
@@ -495,6 +495,28 @@ bbmap.sh -Xmx${RAM}g in1="$RESULTS"/quality_control/"$SHORTNAME"_1_trimmed.fastq
 	scafstats="$RESULTS"/SSU_sequences/"$SHORTNAME"_scafstats.txt \
 	32bit=t
 
+#unzip fastq files if compressed as sortmerna takes uncompressed files only
+for IDNAME in `ls "$RESULTS"/quality_control/*.fastq*`; do
+	FILE=($(basename ""${IDNAME[@]}""))
+	#echo $FILE
+	if [[ ${IDNAME[@]} != *.gz* ]]; then
+		#echo "$FILE is gzipped"
+		gzip -f $IDNAME
+#	else
+#		echo "$FILE is not gzipped"
+	fi
+done
+
+for IDNAME in `ls "$RESULTS"/output_sortmerna/*.fastq*`; do
+	FILE=($(basename ""${IDNAME[@]}""))
+	#echo $FILE
+	if [[ ${IDNAME[@]} != *.gz* ]]; then
+		#echo "$FILE is gzipped"
+		gzip -f $IDNAME
+#	else
+#		echo "$FILE is not gzipped"
+	fi
+done
 
 vsearch --cluster_fast "$RESULTS"/SSU_sequences/"$SHORTNAME"_emirge_metarib_SSU_sequences.fasta --centroids "$RESULTS"/SSU_sequences/"$SHORTNAME"_emirge_metarib_clustered_SSU_sequences.fasta --id 0.97 --uc "$RESULTS"/SSU_sequences/"$SHORTNAME"_emirge_metarib_clustered_SSU_sequences.tsv
 

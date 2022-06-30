@@ -1,0 +1,13 @@
+#Summary
+#Generated on	Thu Jun 30 15:10:34 CEST 2022
+#Version	5
+chroms	1
+bases	38803
+defined	19203
+undefined	19600
+contigs	13
+scaffolds	13
+interpad	300
+source	/home/oschakoo/RiboTaxa/test_data/RiboTaxa_results/sample01/SSU_sequences/output_MetaRib/Iteration/iter_1/emirge_amp/iter.20/all.dedup.fasta
+bytes	19744
+last modified	1656594634517

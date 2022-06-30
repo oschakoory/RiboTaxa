@@ -275,7 +275,7 @@ Once it is filled with all the necessary information, you can use the following 
 bash -i RiboTaxa_DIR/Pipeline_RiboTaxa_SE.sh PATH_TO/RiboTaxa_arguments.conf
 ```
 
-##### Paired-end datset(s)
+##### Paired-end dataset(s)
 
 ```bash
 bash -i RiboTaxa_DIR/Pipeline_RiboTaxa_PE.sh PATH_TO/RiboTaxa_arguments.conf

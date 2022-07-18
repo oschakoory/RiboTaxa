@@ -306,7 +306,7 @@ To run RiboTaxa pipeline on test data, you need to download the indexed database
 
 For the taxonomic classification by sklearn classifier, the database used is the trained classifier ```SILVA 138 reference sequence``` downloaded from the <a class="reference external" href="https://docs.qiime2.org/2020.8/data-resources/" target="_blank" rel="noopener noreferrer">Data resources</a> of <a class="reference external" href="https://docs.qiime2.org/2020.8/" target="_blank" rel="noopener noreferrer">Qiime2</a>.
 
-Once all the indexed databases are successfully downloaded into ```~/database```, you need to update the directory path of each. The parameters can be left as default.
+Once all the indexed databases are successfully downloaded into ```~/database```, you need to update the directory path of each in your ```RiboTaxa_arguments.conf```. The remaining parameters can be left as default.
 
 Then run: 
 

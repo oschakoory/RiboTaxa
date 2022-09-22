@@ -1,3 +1,4 @@
+<img align="right" src="docs/RiboaTaxa_Icon.png" width="200" alt="RiboTaxa logo"/>
 
 # RiboTaxa v1.4
 

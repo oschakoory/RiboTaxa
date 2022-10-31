@@ -359,6 +359,7 @@ whereby:
 ```$OUTPUT_PATH``` is the desired output path
 
 An exemple test has been conducted with the following parameters:
+
 ```$INPUT_PATH``` = ```RiboTaxa_DIR/test_data/multiple_samples_Taxonomy```
 
 ```$OUTPUT_PATH``` = ```RiboTaxa_DIR/test_data/multiple_samples_Taxonomy/Output```
@@ -378,7 +379,6 @@ Example of the ```Species_abundance.csv```:
 | Study                     | Control  | Control     | Control     | Treated     | Treated     | Treated     |
 |---------------------------|----------|-------------|-------------|-------------|-------------|-------------|
 | Sample                    | Sample01 | Sample02    | Sample03    | Sample04    | Sample05    | Sample06    |
-|---------------------------|----------|-------------|-------------|-------------|-------------|-------------|
 | Bifidobacterium_bifidum   | 0        |  0.2050580  |  0.4260770  | 12.6970194  |  7.3577775  |  0.5264176  |
 | Bifidobacterium_sp.       | 0        | 0.008041001 | 0.098325006 | 0.007881000 | 0.045245990 | 0.642682495 |
 | Cosenzaea_myxofaciens     | 0        | 0.04422800  | 0           | 0           | 0           | 0.03552537  |

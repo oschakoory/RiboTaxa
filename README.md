@@ -352,13 +352,20 @@ Then run:
 ```bash
 cd RiboTaxa_DIR/scripts
 
-./RiboTaxa_group_taxonomy.sh RiboTaxa_DIR/test_data/multiple_samples_Taxonomy RiboTaxa_DIR/test_data/multiple_samples_Taxonomy/Output
+./RiboTaxa_group_taxonomy.sh $INPUT_PATH $OUTPUT_PATH
 ```
 whereby:
-```RiboTaxa_DIR/test_data/multiple_samples_Taxonomy``` is the input path containing the files
-```RiboTaxa_DIR/test_data/multiple_samples_Taxonomy/Output``` is the desired output path
+```$INPUT_PATH``` is the input path containing the files
+```$OUTPUT_PATH``` is the desired output path
 
-The results of this test is in ```RiboTaxa_DIR/test_data/multiple_samples_Taxonomy/Output```.
+An exemple test has been conducted with the following parameters:
+```$INPUT_PATH``` = ```RiboTaxa_DIR/test_data/multiple_samples_Taxonomy```
+
+```$OUTPUT_PATH``` = ```RiboTaxa_DIR/test_data/multiple_samples_Taxonomy/Output```
+
+The results are in ```RiboTaxa_DIR/test_data/multiple_samples_Taxonomy/Output```.
+
+
 
 In the output folder, there are 4 files:
 1. ```Complete_taxonomy_abundance.csv```: containing the abundance of the complete taxonomy in all the samples
@@ -369,6 +376,7 @@ In the output folder, there are 4 files:
 Example of the ```Species_abundance.csv```:
 
 | Study                     | Control  | Control     | Control     | Treated     | Treated     | Treated     |
+|---------------------------|----------|-------------|-------------|-------------|-------------|-------------|
 | Sample                    | Sample01 | Sample02    | Sample03    | Sample04    | Sample05    | Sample06    |
 |---------------------------|----------|-------------|-------------|-------------|-------------|-------------|
 | Bifidobacterium_bifidum   | 0        |  0.2050580  |  0.4260770  | 12.6970194  |  7.3577775  |  0.5264176  |

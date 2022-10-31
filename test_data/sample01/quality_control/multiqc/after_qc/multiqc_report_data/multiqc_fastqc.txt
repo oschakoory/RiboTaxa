@@ -1,3 +1,0 @@
-Sample	avg_sequence_length	percent_dedup	percent_duplicates	seq_len_read_count	seq_len_bp	sequence_length	total_sequences	percent_gc
-sample01_1_trimmed	216.75214598	99.2264440873	0.773555912712	112070.0	24291413.0	60-300	112070.0	55.0
-sample01_2_trimmed	138.701731061	99.348984821	0.65101517899	112070.0	15544303.0	60-300	112070.0	54.0

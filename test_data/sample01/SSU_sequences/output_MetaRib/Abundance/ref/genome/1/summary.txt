@@ -1,13 +1,13 @@
 #Summary
-#Generated on	Thu Jun 30 15:11:59 CEST 2022
+#Generated on	Mon Oct 31 13:42:46 CET 2022
 #Version	5
 chroms	1
-bases	40534
-defined	20634
-undefined	19900
-contigs	14
-scaffolds	14
+bases	42088
+defined	21888
+undefined	20200
+contigs	15
+scaffolds	15
 interpad	300
-source	/home/oschakoo/RiboTaxa/test_data/RiboTaxa_results/sample01/SSU_sequences/output_MetaRib/Abundance/all.dedup.fasta
-bytes	21213
-last modified	1656594718957
+source	/home/oschakoo/RiboTaxa_test/test_data/sample01/SSU_sequences/output_MetaRib/Abundance/all.dedup.fasta
+bytes	22497
+last modified	1667220165960

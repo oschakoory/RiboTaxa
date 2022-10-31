@@ -332,3 +332,52 @@ bash -i RiboTaxa_DIR/Pipeline_RiboTaxa_PE.sh RiboTaxa_DIR/test_data/RiboTaxa_arg
 ```
 
 The test data directory also contains the results of RiboTaxa of the test sample.
+
+
+### Group multiple samples taxonomy files into one
+
+To group taxonomic files of multiple samples into one, you will need to copy all taxonomic files (```*_SSU_taxonomy_abundance.tsv```) into the same folder along with a ```sample.csv``` (see in ```RiboTaxa_DIR/test_data/multiple_samples_Taxonomy```):
+
+```bash
+Sample01,Control
+Sample02,Control
+Sample03,Control
+Sample04,Treated
+Sample05,Treated
+Sample06,Treated
+```
+
+Then run:
+
+```bash
+cd RiboTaxa_DIR/scripts
+
+./RiboTaxa_group_taxonomy.sh RiboTaxa_DIR/test_data/multiple_samples_Taxonomy RiboTaxa_DIR/test_data/multiple_samples_Taxonomy/Output
+```
+whereby:
+```RiboTaxa_DIR/test_data/multiple_samples_Taxonomy``` is the input path containing the files
+```RiboTaxa_DIR/test_data/multiple_samples_Taxonomy/Output``` is the desired output path
+
+The results of this test is in ```RiboTaxa_DIR/test_data/multiple_samples_Taxonomy/Output```.
+
+In the output folder, there are 4 files:
+1. ```Complete_taxonomy_abundance.csv```: containing the abundance of the complete taxonomy in all the samples
+2. ```Family_abundance.csv```: containing the abundance of the families in all the samples
+3. ```Genus_abundance.csv```: containing the abundance of the genera in all the samples
+4. ```Species_abundance.csv```: containing the abundance of the species in all the samples
+
+Example of the ```Species_abundance.csv```:
+
+| Study                     | Control  | Control     | Control     | Treated     | Treated     | Treated     |
+| Sample                    | Sample01 | Sample02    | Sample03    | Sample04    | Sample05    | Sample06    |
+|---------------------------|----------|-------------|-------------|-------------|-------------|-------------|
+| Bifidobacterium_bifidum   | 0        |  0.2050580  |  0.4260770  | 12.6970194  |  7.3577775  |  0.5264176  |
+| Bifidobacterium_sp.       | 0        | 0.008041001 | 0.098325006 | 0.007881000 | 0.045245990 | 0.642682495 |
+| Cosenzaea_myxofaciens     | 0        | 0.04422800  | 0           | 0           | 0           | 0.03552537  |
+| Enterobacter_sp.          | 0        | 1.881710    | 0.732972    | 0.165496    | 0.010442    | 0           |
+| Lactobacillus_acidophilus | 0        |  2.850710   |  7.460818   |  0.058543   |  4.284497   | 12.540370   |
+| Lactobacillus_kitasatonis | 0        | 0.0241240   | 0.5095060   | 0           | 0.8405428   | 1.8279293   |
+| Proteus_mirabilis         | 0        |  0.05629001 | 18.44943811 |  6.40029719 | 14.55544994 | 42.99186000 |
+| Proteus_sp.               | 0        | 0.036187    | 0           | 0           | 0           | 0           |
+| Streptomyces_cinnamoneus  | 0        | 0.06433201  | 0           | 0           | 0.01044200  | 0           |
+| uncultured_Syntrophomonas | 0        | 0.016083    | 0           | 0           | 0           | 0           |

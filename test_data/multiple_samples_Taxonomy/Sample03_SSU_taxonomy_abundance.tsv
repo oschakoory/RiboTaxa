@@ -1,0 +1,198 @@
+ID	Domain	Phylum	Class	Order	Family	Genus	Species	Confidence	Length	Assigned_reads	Relative_abundance	
+110|CP022723.252533.254071	d__Bacteria	p__Actinobacteriota	c__Actinobacteria	o__Bifidobacteriales	f__Bifidobacteriaceae	g__Bifidobacterium	s__Bifidobacterium_bifidum	0.9999952137022494	1539	143	0.426077
+111|CQEC01000020.91536.93074	d__Bacteria	p__Proteobacteria	c__Gammaproteobacteria	o__Enterobacterales	f__Morganellaceae	g__Proteus		0.9994274105267857	1539	18	0.053632
+11|JQ805621.1.1581	d__Bacteria	p__Firmicutes	c__Bacilli	o__Lactobacillales	f__Lactobacillaceae	g__Lactobacillus	s__Lactobacillus_kitasatonis	0.7021586774379476	1581	9	0.026816
+123|JQ446509.1.1535	d__Bacteria	p__Firmicutes	c__Bacilli	o__Lactobacillales	f__Enterococcaceae	g__Enterococcus	s__Enterococcus_faecalis	0.9542460364897271	1535	41	0.122162
+128|KR137544.1.1534	d__Bacteria	p__Firmicutes	c__Bacilli	o__Lactobacillales	f__Enterococcaceae	g__Enterococcus	s__Enterococcus_faecalis	0.7921742943107182	1534	6	0.017877
+133|JQ410863.1.1532	d__Bacteria	p__Proteobacteria	c__Gammaproteobacteria	o__Enterobacterales				0.9999961495118481	1532	49	0.145998
+137|KY744694.1.1531	d__Bacteria	p__Proteobacteria	c__Gammaproteobacteria	o__Enterobacterales	f__Morganellaceae	g__Proteus		0.9992558252639314	1531	31	0.092366
+14|CP006030.1372953.1374530	d__Bacteria	p__Firmicutes	c__Bacilli	o__Lactobacillales	f__Enterococcaceae	g__Enterococcus	s__Enterococcus_faecalis	0.9748616078346889	1578	1162	3.462249
+150|KM819162.1.1527	d__Bacteria	p__Firmicutes	c__Bacilli	o__Lactobacillales	f__Lactobacillaceae	g__Lactobacillus		0.9999064745263284	1527	13	0.038734
+151|KU951446.1.1527	d__Bacteria	p__Firmicutes	c__Bacilli	o__Lactobacillales	f__Enterococcaceae	g__Enterococcus	s__human_gut	0.7622282300366118	1527	7	0.020857
+15|JUOP01000215.81.1657	d__Bacteria	p__Firmicutes	c__Bacilli	o__Lactobacillales	f__Enterococcaceae	g__Enterococcus	s__Enterococcus_faecalis	0.8757368338070115	1577	11	0.032775
+16|KC150145.1.1577	d__Bacteria	p__Firmicutes	c__Bacilli	o__Lactobacillales	f__Lactobacillaceae	g__Lactobacillus	s__Lactobacillus_acidophilus	0.9714857566249993	1577	97	0.289017
+181|KF021273.1.1521	d__Bacteria	p__Proteobacteria	c__Gammaproteobacteria	o__Enterobacterales	f__Morganellaceae	g__Proteus		0.9973558262858075	1521	12	0.035755
+182|KF928779.1.1521	d__Bacteria	p__Proteobacteria	c__Gammaproteobacteria	o__Enterobacterales	f__Morganellaceae	g__Proteus		0.9960742810613792	1521	144	0.429057
+185|MH285991.1.1521	d__Bacteria	p__Firmicutes	c__Bacilli	o__Lactobacillales	f__Enterococcaceae	g__Enterococcus		0.9973628595036295	1521	7	0.020857
+186|MH748456.1.1521	d__Bacteria	p__Firmicutes	c__Bacilli	o__Lactobacillales	f__Enterococcaceae	g__Enterococcus		0.9326981699816174	1521	11	0.032775
+189|AB976542.1.1518	d__Bacteria	p__Firmicutes	c__Bacilli	o__Lactobacillales	f__Lactobacillaceae	g__Lactobacillus	s__Lactobacillus_kitasatonis	0.8496785082562829	1518	9	0.026816
+18|AY167958.1.1576	d__Bacteria	p__Firmicutes	c__Bacilli	o__Lactobacillales	f__Enterococcaceae	g__Enterococcus	s__swine_manure	0.9910850286827967	1576	3	0.008939
+1|MH285986.1.1594	d__Bacteria	p__Firmicutes	c__Bacilli	o__Lactobacillales	f__Enterococcaceae	g__Enterococcus		0.9738168424967445	1594	4	0.011918
+202|AY521240.1.1515	d__Bacteria	p__Proteobacteria	c__Gammaproteobacteria	o__Enterobacterales	f__Morganellaceae	g__Proteus		0.9984649443906862	1515	14	0.041714
+20|CP002338.1743991.1745565	d__Bacteria	p__Firmicutes	c__Bacilli	o__Lactobacillales	f__Lactobacillaceae	g__Lactobacillus	s__Lactobacillus_acidophilus	0.9942819527494765	1575	2377	7.082415
+212|HQ697919.1.1514	d__Bacteria	p__Proteobacteria	c__Gammaproteobacteria	o__Enterobacterales	f__Morganellaceae			0.9975295172280881	1514	44	0.131101
+213|JX391803.1.1514	d__Bacteria	p__Proteobacteria	c__Gammaproteobacteria	o__Enterobacterales	f__Morganellaceae	g__Proteus		0.9980261761521452	1514	15	0.044693
+23|KC707577.1.1572	d__Bacteria	p__Firmicutes	c__Bacilli	o__Lactobacillales	f__Enterococcaceae	g__Enterococcus		0.9972997281878432	1572	3	0.008939
+241|EU024335.1.1507	d__Bacteria	p__Proteobacteria	c__Gammaproteobacteria	o__Enterobacterales	f__Morganellaceae	g__Morganellaceae	s__Enterobacter_sp.	0.9268590882853187	1507	11	0.032775
+243|KY465772.1.1507	d__Bacteria	p__Proteobacteria	c__Gammaproteobacteria	o__Enterobacterales	f__Morganellaceae	g__Proteus		0.9989704031126732	1507	95	0.283058
+24|CP018809.1347636.1349206	d__Bacteria	p__Firmicutes	c__Bacilli	o__Lactobacillales	f__Lactobacillaceae	g__Lactobacillus		0.9999984339082905	1571	22	0.065550
+250|MUER01000009.98528.100032	d__Bacteria	p__Proteobacteria	c__Gammaproteobacteria	o__Enterobacterales	f__Morganellaceae	g__Proteus		0.9983956948895334	1505	343	1.021989
+254|KJ161325.1.1504	d__Bacteria	p__Proteobacteria	c__Gammaproteobacteria	o__Enterobacterales	f__Morganellaceae	g__Proteus		0.999816802373273	1504	41	0.122162
+25|EU559594.1.1571	d__Bacteria	p__Firmicutes	c__Bacilli	o__Lactobacillales	f__Lactobacillaceae	g__Lactobacillus		0.9999999839198901	1571	7	0.020857
+260|AF349929.1.1503	d__Bacteria	p__Firmicutes	c__Bacilli	o__Lactobacillales	f__Enterococcaceae	g__Enterococcus		0.9963478517733374	1503	5	0.014898
+264|JF766430.1.1503	d__Bacteria	p__Proteobacteria	c__Gammaproteobacteria	o__Enterobacterales				0.999999948887009	1503	21	0.062571
+26|JN628990.1.1569	d__Bacteria	p__Firmicutes	c__Bacilli	o__Lactobacillales	f__Enterococcaceae	g__Enterococcus	s__Enterococcus_faecalis	0.9324245171272953	1569	516	1.537453
+270|EF685272.1.1501	d__Bacteria	p__Proteobacteria	c__Gammaproteobacteria	o__Enterobacterales				0.9999997860967548	1501	11	0.032775
+278|AJ233419.1.1499	d__Bacteria	p__Proteobacteria	c__Gammaproteobacteria	o__Enterobacterales	f__Enterobacteriaceae			0.772204671108233	1499	11	0.032775
+27|JX255677.1.1569	d__Bacteria	p__Firmicutes	c__Bacilli	o__Lactobacillales	f__Lactobacillaceae	g__Lactobacillus		0.9999999999875288	1569	6	0.017877
+284|EF451956.1.1498	d__Bacteria	p__Proteobacteria	c__Gammaproteobacteria	o__Enterobacterales	f__Morganellaceae	g__Proteus		0.99701473669687	1498	142	0.423098
+291|MH285987.1.1497	d__Bacteria	p__Firmicutes	c__Bacilli	o__Lactobacillales	f__Enterococcaceae	g__Enterococcus		0.9997429977052957	1497	6	0.017877
+292|AY959011.1.1496	d__Bacteria	p__Proteobacteria	c__Gammaproteobacteria	o__Enterobacterales	f__Enterobacteriaceae	g__Escherichia-Shigella		0.958688014396002	1496	25	0.074489
+299|KJ719576.1.1495	d__Bacteria	p__Firmicutes	c__Bacilli	o__Lactobacillales	f__Enterococcaceae	g__Enterococcus		0.9997913569734497	1495	7	0.020857
+304|JN173076.1.1493	d__Bacteria	p__Firmicutes	c__Bacilli	o__Lactobacillales	f__Enterococcaceae	g__Enterococcus	s__Enterococcus_faecalis	0.788665830939616	1493	4	0.011918
+327|KF060261.1.1489	d__Bacteria	p__Firmicutes	c__Bacilli	o__Lactobacillales	f__Enterococcaceae	g__Enterococcus		0.9998824658418709	1489	6	0.017877
+330|KJ567609.1.1488	d__Bacteria	p__Firmicutes	c__Bacilli	o__Lactobacillales	f__Lactobacillaceae	g__Lactobacillus		0.9999999999917839	1488	8	0.023836
+331|AB538871.1.1487	d__Bacteria	p__Proteobacteria	c__Gammaproteobacteria	o__Enterobacterales	f__Morganellaceae	g__Proteus		0.9999758734706055	1487	392	1.167988
+339|EU075114.1.1486	d__Bacteria	p__Proteobacteria	c__Gammaproteobacteria	o__Enterobacterales				0.9999985825237033	1486	23	0.068530
+348|KU057042.1.1485	d__Bacteria	p__Proteobacteria	c__Gammaproteobacteria	o__Enterobacterales	f__Morganellaceae	g__Proteus		0.9999412098702165	1485	195	0.581014
+350|M59292.1.1485	d__Bacteria	p__Proteobacteria	c__Gammaproteobacteria	o__Enterobacterales	f__Morganellaceae	g__Morganellaceae	s__Enterobacter_sp.	0.9213855923543044	1485	112	0.333711
+352|KM497522.1.1484	d__Bacteria	p__Firmicutes	c__Bacilli	o__Lactobacillales	f__Enterococcaceae	g__Enterococcus		0.999975985078626	1484	49	0.145998
+353|KX456406.1.1484	d__Bacteria	p__Proteobacteria	c__Gammaproteobacteria	o__Enterobacterales	f__Morganellaceae	g__Proteus		0.9998938209817939	1484	22	0.065550
+356|KM257721.1.1483	d__Bacteria	p__Firmicutes	c__Bacilli	o__Lactobacillales	f__Enterococcaceae	g__Enterococcus	s__Enterococcus_faecalis	0.9412935974416318	1483	87	0.259222
+363|AY830408.1.1481	d__Bacteria	p__Firmicutes	c__Bacilli	o__Lactobacillales	f__Enterococcaceae	g__Enterococcus		0.999756815471976	1481	7	0.020857
+368|DQ818552.1.1480	d__Bacteria	p__Firmicutes	c__Bacilli	o__Lactobacillales	f__Enterococcaceae	g__Enterococcus	s__Enterococcus_faecalis	0.8322674990895884	1480	7	0.020857
+385|LN558652.1.1476	d__Bacteria	p__Proteobacteria	c__Gammaproteobacteria	o__Enterobacterales	f__Morganellaceae	g__Proteus		0.9997857087717081	1476	431	1.284190
+401|MH734727.1.1472	d__Bacteria	p__Firmicutes	c__Bacilli	o__Lactobacillales	f__Enterococcaceae	g__Enterococcus		0.9977156726226248	1472	6	0.017877
+412|GU815106.1.1469	d__Bacteria	p__Proteobacteria	c__Gammaproteobacteria	o__Enterobacterales	f__Morganellaceae	g__Proteus		0.9998727587693832	1469	119	0.354568
+419|HQ807677.1.1468	d__Bacteria	p__Proteobacteria	c__Gammaproteobacteria	o__Enterobacterales	f__Morganellaceae	g__Proteus		0.9973066101481143	1468	13	0.038734
+427|FJ849631.1.1466	d__Bacteria	p__Proteobacteria	c__Gammaproteobacteria	o__Enterobacterales	f__Morganellaceae	g__Morganellaceae	s__Enterobacter_sp.	0.8547654874313958	1466	16	0.047673
+433|JF327482.1.1465	d__Bacteria	p__Proteobacteria	c__Gammaproteobacteria	o__Enterobacterales	f__Morganellaceae			0.9233454280523358	1465	441	1.313986
+435|KF939118.1.1465	d__Bacteria	p__Proteobacteria	c__Gammaproteobacteria	o__Enterobacterales	f__Morganellaceae	g__Proteus		0.9998883788681847	1465	13	0.038734
+438|MG807427.1.1465	d__Bacteria	p__Proteobacteria	c__Gammaproteobacteria	o__Enterobacterales	f__Morganellaceae	g__Proteus		0.9998811883137758	1465	81	0.241344
+43|AB822946.1.1557	d__Bacteria	p__Firmicutes	c__Bacilli	o__Lactobacillales	f__Lactobacillaceae	g__Lactobacillus	s__Lactobacillus_kitasatonis	0.966886549879457	1557	26	0.077469
+444|JQ918043.1.1463	d__Bacteria	p__Proteobacteria	c__Gammaproteobacteria	o__Enterobacterales	f__Morganellaceae	g__Proteus		0.9978603880170039	1463	65	0.193671
+445|FASB01000830.224.1685	d__Bacteria	p__Proteobacteria	c__Gammaproteobacteria	o__Enterobacterales	f__Morganellaceae	g__Proteus		0.9987263796971737	1462	118	0.351588
+448|KT986174.1.1462	d__Bacteria	p__Proteobacteria	c__Gammaproteobacteria	o__Enterobacterales	f__Morganellaceae	g__Proteus		0.999693545304104	1462	11	0.032775
+456|MF521964.1.1460	d__Bacteria	p__Proteobacteria	c__Gammaproteobacteria	o__Enterobacterales	f__Morganellaceae	g__Proteus		0.9860449497832514	1460	8	0.023836
+470|KX378947.1.1456	d__Bacteria	p__Proteobacteria	c__Gammaproteobacteria	o__Enterobacterales				0.9999973521200827	1456	62	0.184733
+479|MUEL01000018.87340.88794	d__Bacteria	p__Proteobacteria	c__Gammaproteobacteria	o__Enterobacterales	f__Morganellaceae	g__Proteus	s__Proteus_mirabilis	0.7458735282074161	1455	2869	8.548358
+492|KP030687.1.1452	d__Bacteria	p__Proteobacteria	c__Gammaproteobacteria	o__Enterobacterales				0.9999998279770167	1452	23	0.068530
+494|KT766063.1.1452	d__Bacteria	p__Proteobacteria	c__Gammaproteobacteria	o__Enterobacterales	f__Enterobacteriaceae	g__Enterobacter		0.7841672101213313	1452	27	0.080448
+500|DQ297950.1.1449	d__Bacteria	p__Proteobacteria	c__Gammaproteobacteria	o__Enterobacterales	f__Morganellaceae			0.9789180705405368	1449	8	0.023836
+507|JX048526.1.1448	d__Bacteria	p__Proteobacteria	c__Gammaproteobacteria	o__Enterobacterales	f__Morganellaceae	g__Proteus		0.9999750486179954	1448	535	1.594065
+510|KF149726.1.1447	d__Bacteria	p__Firmicutes	c__Bacilli	o__Lactobacillales	f__Lactobacillaceae	g__Lactobacillus	s__Lactobacillus_kitasatonis	0.7801706978846467	1447	9	0.026816
+511|KF939116.1.1447	d__Bacteria	p__Proteobacteria	c__Gammaproteobacteria	o__Enterobacterales	f__Morganellaceae	g__Proteus		0.9997629635909895	1447	174	0.518443
+51|AY253657.1.1555	d__Bacteria	p__Firmicutes	c__Bacilli	o__Lactobacillales	f__Lactobacillaceae	g__Lactobacillus		0.9999999997057483	1555	11	0.032775
+527|HF677503.1.1441	d__Bacteria	p__Firmicutes	c__Bacilli	o__Lactobacillales	f__Enterococcaceae	g__Enterococcus		0.9993749920499168	1441	4	0.011918
+541|KU057050.1.1436	d__Bacteria	p__Proteobacteria	c__Gammaproteobacteria	o__Enterobacterales	f__Morganellaceae	g__Proteus		0.9983185325279702	1436	518	1.543412
+550|KY962967.1.1434	d__Bacteria	p__Firmicutes	c__Bacilli	o__Lactobacillales	f__Enterococcaceae	g__Enterococcus		0.9979582147938114	1434	12	0.035755
+55|CP016176.2117170.2118724	d__Bacteria	p__Proteobacteria	c__Gammaproteobacteria	o__Enterobacterales	f__Morganellaceae	g__Proteus		0.9998817430411417	1555	81	0.241344
+563|EU457886.1.1431	d__Bacteria	p__Firmicutes	c__Bacilli	o__Lactobacillales	f__Lactobacillaceae	g__Lactobacillus	s__uncultured_bacterium	0.9623164106744219	1431	6	0.017877
+567|EU777803.1.1431	d__Bacteria	p__Firmicutes	c__Bacilli	o__Lactobacillales	f__Enterococcaceae	g__Enterococcus		0.9767285514112717	1431	5	0.014898
+56|AJ301829.1.1554	d__Bacteria	p__Firmicutes	c__Bacilli	o__Lactobacillales	f__Enterococcaceae	g__Enterococcus		0.9998318231997442	1554	12	0.035755
+572|JQ363620.1.1430	d__Bacteria	p__Firmicutes	c__Bacilli	o__Lactobacillales	f__Enterococcaceae	g__Enterococcus		0.9998686232369949	1430	9	0.026816
+574|HQ224604.1.1429	d__Bacteria	p__Proteobacteria	c__Gammaproteobacteria	o__Enterobacterales	f__Morganellaceae	g__Proteus		0.7214535507113893	1429	13	0.038734
+592|MH158266.1.1424	d__Bacteria	p__Firmicutes	c__Bacilli	o__Lactobacillales	f__Enterococcaceae	g__Enterococcus	s__Enterococcus_faecalis	0.7706593134466339	1424	76	0.226447
+594|EU504504.1.1423	d__Bacteria	p__Firmicutes	c__Bacilli	o__Lactobacillales	f__Lactobacillaceae	g__Lactobacillus	s__uncultured_bacterium	0.7397092841488048	1423	6	0.017877
+597|LC270226.1.1423	d__Bacteria	p__Proteobacteria	c__Gammaproteobacteria	o__Enterobacterales	f__Morganellaceae	g__Proteus		0.9999755587260309	1423	14	0.041714
+5|AE009952.1024389.1025973	d__Bacteria	p__Proteobacteria	c__Gammaproteobacteria	o__Enterobacterales	f__Morganellaceae	g__Proteus		0.999427537856542	1585	7274	21.673321
+600|EU774881.1.1422	d__Bacteria	p__Firmicutes	c__Bacilli	o__Lactobacillales	f__Lactobacillaceae	g__Lactobacillus		0.9999999750343741	1422	4	0.011918
+605|EU460274.1.1420	d__Bacteria	p__Firmicutes	c__Bacilli	o__Lactobacillales	f__Enterococcaceae	g__Enterococcus	s__Enterococcus_faecalis	0.7973654763981889	1420	42	0.125142
+611|JQ608003.1.1418	d__Bacteria	p__Proteobacteria	c__Gammaproteobacteria	o__Enterobacterales	f__Morganellaceae	g__Proteus		0.9999951730224805	1418	19	0.056612
+622|KF571465.1.1412	d__Bacteria	p__Firmicutes	c__Bacilli	o__Lactobacillales	f__Enterococcaceae	g__Enterococcus	s__Enterococcus_faecalis	0.8709036164828533	1412	9	0.026816
+624|KF842573.1.1410	d__Bacteria	p__Proteobacteria	c__Gammaproteobacteria	o__Enterobacterales	f__Morganellaceae	g__Proteus		0.9999478667188708	1410	237	0.706156
+629|EF097176.1.1407	d__Bacteria	p__Firmicutes	c__Bacilli	o__Lactobacillales	f__Lactobacillaceae	g__Lactobacillus		0.9999999945010053	1407	31	0.092366
+630|KF842552.1.1406	d__Bacteria	p__Proteobacteria	c__Gammaproteobacteria	o__Enterobacterales	f__Morganellaceae	g__Proteus		0.9995830214497498	1406	35	0.104285
+634|KF698725.1.1405	d__Bacteria	p__Proteobacteria	c__Gammaproteobacteria	o__Enterobacterales	f__Morganellaceae	g__Proteus		0.999986047806885	1405	947	2.821644
+639|KF842584.1.1403	d__Bacteria	p__Proteobacteria	c__Gammaproteobacteria	o__Enterobacterales	f__Morganellaceae	g__Proteus		0.9996455209437084	1403	31	0.092366
+63|CP009706.105711.107263	d__Bacteria	p__Proteobacteria	c__Gammaproteobacteria	o__Enterobacterales	f__Morganellaceae			0.9014730687304597	1553	18	0.053632
+644|JQ914107.1.1401	d__Bacteria	p__Firmicutes	c__Bacilli	o__Lactobacillales	f__Enterococcaceae	g__Enterococcus		0.9995633273798977	1401	35	0.104285
+654|HQ807703.1.1397	d__Bacteria	p__Proteobacteria	c__Gammaproteobacteria	o__Enterobacterales	f__Morganellaceae			0.861472739713689	1397	11	0.032775
+672|KX073761.1.1390	d__Bacteria	p__Firmicutes	c__Bacilli	o__Lactobacillales	f__Enterococcaceae	g__Enterococcus		0.9989224731158871	1390	3	0.008939
+674|MF293787.1.1389	d__Bacteria	p__Firmicutes	c__Bacilli	o__Lactobacillales	f__Enterococcaceae	g__Enterococcus		0.9988140748801634	1389	6	0.017877
+677|KF842526.1.1388	d__Bacteria	p__Proteobacteria	c__Gammaproteobacteria	o__Enterobacterales	f__Morganellaceae	g__Proteus		0.9999287164942057	1388	19	0.056612
+682|KY962893.1.1385	d__Bacteria	p__Firmicutes	c__Bacilli	o__Lactobacillales	f__Enterococcaceae	g__Enterococcus	s__Enterococcus_faecalis	0.8285088661088353	1385	43	0.128121
+697|HM057881.1.1378	d__Bacteria	p__Firmicutes	c__Bacilli	o__Lactobacillales	f__Lactobacillaceae	g__Lactobacillus	s__Lactobacillus_acidophilus	0.8659434219148615	1378	24	0.071509
+713|FXNP01000045.296.1670	d__Bacteria	p__Proteobacteria	c__Gammaproteobacteria	o__Enterobacterales	f__Enterobacteriaceae			0.7397955408603968	1375	96	0.286038
+715|FWIV01000002.481.1854	d__Bacteria	p__Proteobacteria	c__Gammaproteobacteria	o__Enterobacterales	f__Morganellaceae	g__Proteus	s__Proteus_mirabilis	0.7364550571668576	1374	128	0.381384
+719|GQ154808.1.1373	d__Bacteria	p__Proteobacteria	c__Gammaproteobacteria	o__Enterobacterales	f__Morganellaceae	g__Proteus		0.8853967927645537	1373	8	0.023836
+724|GQ155993.1.1370	d__Bacteria	p__Firmicutes	c__Bacilli	o__Lactobacillales	f__Enterococcaceae	g__Enterococcus		0.9938336191790533	1370	6	0.017877
+72|KY810690.1.1551	d__Bacteria	p__Proteobacteria	c__Gammaproteobacteria	o__Enterobacterales	f__Yersiniaceae			0.8129547445722529	1551	13	0.038734
+732|LGZH01000012.970.2337	d__Bacteria	p__Proteobacteria	c__Gammaproteobacteria	o__Enterobacterales	f__Morganellaceae	g__Proteus		0.9951908699541412	1368	127	0.378404
+736|KX665614.1.1367	d__Bacteria	p__Proteobacteria	c__Gammaproteobacteria	o__Enterobacterales	f__Morganellaceae	g__Proteus		0.9999438421742577	1367	214	0.637626
+744|AM179915.1.1364	d__Bacteria	p__Proteobacteria	c__Gammaproteobacteria	o__Enterobacterales	f__Morganellaceae	g__Proteus		0.9999788710552729	1364	25	0.074489
+746|AM179917.1.1363	d__Bacteria	p__Proteobacteria	c__Gammaproteobacteria	o__Enterobacterales	f__Morganellaceae			0.8824267179520862	1363	35	0.104285
+750|MF787937.1.1361	d__Bacteria	p__Firmicutes	c__Bacilli	o__Lactobacillales	f__Enterococcaceae	g__Enterococcus		0.9998039596445789	1361	6	0.017877
+751|HM063910.1.1360	d__Bacteria	p__Proteobacteria	c__Gammaproteobacteria	o__Enterobacterales	f__Morganellaceae	g__Proteus		0.9999771321169568	1360	119	0.354568
+754|AY995252.1.1359	d__Bacteria	p__Firmicutes	c__Bacilli	o__Lactobacillales	f__Lactobacillaceae	g__Lactobacillus	s__Lactobacillus_kitasatonis	0.8566554751512659	1359	5	0.014898
+757|FJ975926.1.1358	d__Bacteria	p__Firmicutes	c__Bacilli	o__Lactobacillales	f__Lactobacillaceae	g__Lactobacillus	s__Lactobacillus_kitasatonis	0.7198841736725198	1358	51	0.151958
+760|JQ074018.1.1352	d__Bacteria	p__Proteobacteria	c__Gammaproteobacteria	o__Enterobacterales	f__Morganellaceae	g__Proteus		0.9999849041574577	1352	398	1.185865
+767|KU644578.1.1347	d__Bacteria	p__Firmicutes	c__Bacilli	o__Lactobacillales	f__Lactobacillaceae	g__Lactobacillus	s__Lactobacillus_kitasatonis	0.8601001477408177	1347	6	0.017877
+768|MUFO01000069.1144.2488	d__Bacteria	p__Proteobacteria	c__Gammaproteobacteria	o__Enterobacterales	f__Morganellaceae	g__Proteus		0.9737157441485196	1345	234	0.697217
+770|HQ398278.1.1342	d__Bacteria	p__Firmicutes	c__Bacilli	o__Lactobacillales	f__Enterococcaceae	g__Enterococcus		0.9999608660794755	1342	5	0.014898
+773|LN907738.1.1335	d__Bacteria	p__Actinobacteriota	c__Actinobacteria	o__Bifidobacteriales	f__Bifidobacteriaceae	g__Bifidobacterium	s__Bifidobacterium_sp.	0.9995728932261186	1335	31	0.092366
+778|EU452206.1.1324	d__Bacteria	p__Firmicutes	c__Bacilli	o__Lactobacillales	f__Lactobacillaceae	g__Lactobacillus		0.9999999965791534	1324	7	0.020857
+785|FPLN01000462.13.1326	d__Bacteria	p__Proteobacteria	c__Gammaproteobacteria	o__Enterobacterales	f__Morganellaceae	g__Proteus		0.9994286674492519	1314	341	1.016030
+787|MH634690.1.1305	d__Bacteria	p__Actinobacteriota	c__Actinobacteria	o__Bifidobacteriales	f__Bifidobacteriaceae	g__Bifidobacterium	s__Bifidobacterium_sp.	0.999510268811911	1305	2	0.005959
+788|FKHS01000081.1.1304	d__Bacteria	p__Proteobacteria	c__Gammaproteobacteria	o__Enterobacterales	f__Enterobacteriaceae			0.9712894292188504	1304	149	0.443954
+794|KU569623.1.1287	d__Bacteria	p__Proteobacteria	c__Gammaproteobacteria	o__Enterobacterales	f__Morganellaceae	g__Proteus		0.9999339511193381	1287	129	0.384363
+79|LGYQ01000249.69.1617	d__Bacteria	p__Proteobacteria	c__Gammaproteobacteria	o__Enterobacterales	f__Morganellaceae	g__Proteus		0.9994793227109776	1549	1288	3.837674
+800|KX225290.1.1273	d__Bacteria	p__Proteobacteria	c__Gammaproteobacteria	o__Enterobacterales	f__Morganellaceae	g__Proteus		0.9799789661189887	1273	8	0.023836
+801|JX095949.1.1272	d__Bacteria	p__Firmicutes	c__Bacilli	o__Lactobacillales	f__Lactobacillaceae	g__Lactobacillus	s__Lactobacillus_kitasatonis	0.798836519776549	1272	5	0.014898
+805|KU324893.1.1263	d__Bacteria	p__Firmicutes	c__Bacilli	o__Lactobacillales	f__Enterococcaceae	g__Enterococcus		0.9996483965608888	1263	37	0.110244
+806|JQ074009.1.1261	d__Bacteria	p__Proteobacteria	c__Gammaproteobacteria	o__Enterobacterales	f__Morganellaceae	g__Proteus		0.999991549721699	1261	216	0.643585
+807|KU324918.1.1260	d__Bacteria	p__Firmicutes	c__Bacilli	o__Lactobacillales	f__Lactobacillaceae	g__Lactobacillus	s__Lactobacillus_kitasatonis	0.9084743764155998	1260	6	0.017877
+808|MG754449.1.1259	d__Bacteria	p__Firmicutes	c__Bacilli	o__Lactobacillales	f__Enterococcaceae	g__Enterococcus		0.9992067828462187	1259	5	0.014898
+837|KU324919.1.1228	d__Bacteria	p__Firmicutes	c__Bacilli	o__Lactobacillales	f__Lactobacillaceae	g__Lactobacillus	s__Lactobacillus_acidophilus	0.8579025922565529	1228	6	0.017877
+839|MH588071.1.1228	d__Bacteria	p__Proteobacteria	c__Gammaproteobacteria	o__Enterobacterales	f__Morganellaceae	g__Proteus		0.9999332676930108	1228	52	0.154937
+848|KR866070.1.1208	d__Bacteria	p__Proteobacteria	c__Gammaproteobacteria	o__Enterobacterales	f__Morganellaceae	g__Proteus		0.9999646419690669	1208	116	0.345629
+851|KU324904.1.1206	d__Bacteria	p__Firmicutes	c__Bacilli	o__Lactobacillales	f__Enterococcaceae	g__Enterococcus		0.9999592024105298	1206	56	0.166855
+852|KF945090.1.1201	d__Bacteria	p__Proteobacteria	c__Gammaproteobacteria	o__Enterobacterales	f__Morganellaceae	g__Proteus		0.9574961720156101	1201	26	0.077469
+855|MH197051.1.1200	d__Bacteria	p__Firmicutes	c__Bacilli	o__Lactobacillales	f__Enterococcaceae	g__Enterococcus		0.9991523562825211	1200	11	0.032775
+86|HM218873.1.1547	d__Bacteria	p__Firmicutes	c__Bacilli	o__Lactobacillales	f__Lactobacillaceae	g__Lactobacillus	s__Lactobacillus_kitasatonis	0.8070792513750858	1547	42	0.125142
+89|AY959210.1.1546	d__Bacteria	p__Firmicutes	c__Bacilli	o__Lactobacillales	f__Lactobacillaceae	g__Lactobacillus		0.9999999999834428	1546	84	0.250283
+AB822949.1.1574	d__Bacteria	p__Firmicutes	c__Bacilli	o__Lactobacillales	f__Lactobacillaceae	g__Lactobacillus	s__Lactobacillus_kitasatonis	0.8294360452673284	1574	3	0.008939
+AF227838.1.1510	d__Bacteria	p__Proteobacteria	c__Gammaproteobacteria	o__Enterobacterales	f__Morganellaceae	g__Proteus		0.9996246502266669	1510	38	0.113223
+AJ233419.1.1499	d__Bacteria	p__Proteobacteria	c__Gammaproteobacteria	o__Enterobacterales	f__Morganellaceae	g__Proteus		0.9999687896121296	1499	1161	3.459269
+AM179915.1.1364	d__Bacteria	p__Proteobacteria	c__Gammaproteobacteria	o__Enterobacterales	f__Morganellaceae	g__Proteus		0.9999933026407515	1364	361	1.075621
+AY587831.1.1515	d__Bacteria	p__Firmicutes	c__Bacilli	o__Lactobacillales	f__Enterococcaceae	g__Enterococcus	s__bacterium_Te65R	0.9719119220203684	1515	1	0.002980
+CHZI01000009.132878.134372	d__Bacteria	p__Proteobacteria	c__Gammaproteobacteria	o__Enterobacterales	f__Morganellaceae	g__Morganellaceae	s__Enterobacter_sp.	0.7892364348729829	1495	84	0.250283
+CP015749.2917418.2918972	d__Bacteria	p__Proteobacteria	c__Gammaproteobacteria	o__Enterobacterales	f__Morganellaceae	g__Morganellaceae	s__Enterobacter_sp.	0.8178391423743885	1555	12	0.035755
+CP032329.2920460.2922005	d__Bacteria	p__Proteobacteria	c__Gammaproteobacteria	o__Enterobacterales	f__Morganellaceae	g__Proteus	s__Proteus_mirabilis	0.8270885006137179	1546	3195	9.519695
+DI164723.2701.3945	d__Bacteria	p__Firmicutes	c__Bacilli	o__Lactobacillales	f__Lactobacillaceae	g__Lactobacillus	s__unidentified	0.9018322244268492	1245	1	0.002980
+DQ818552.1.1480	d__Bacteria	p__Firmicutes	c__Bacilli	o__Lactobacillales	f__Enterococcaceae	g__Enterococcus	s__Enterococcus_faecalis	0.7196074148255671	1480	4	0.011918
+EF097176.1.1407	d__Bacteria	p__Firmicutes	c__Bacilli	o__Lactobacillales	f__Lactobacillaceae	g__Lactobacillus	s__uncultured_bacterium	0.8180531739481793	1407	7	0.020857
+EF194104.1.1471	d__Bacteria	p__Proteobacteria	c__Gammaproteobacteria	o__Enterobacterales	f__Morganellaceae	g__Proteus		0.9998941402766706	1471	119	0.354568
+EF451956.1.1498	d__Bacteria	p__Proteobacteria	c__Gammaproteobacteria	o__Enterobacterales	f__Morganellaceae	g__Proteus		0.9992246571001289	1498	225	0.670401
+EU075114.1.1486	d__Bacteria	p__Proteobacteria	c__Gammaproteobacteria	o__Enterobacterales	f__Morganellaceae			0.9760689482680304	1486	19	0.056612
+FJ975901.1.1358	d__Bacteria	p__Firmicutes	c__Bacilli	o__Lactobacillales	f__Enterococcaceae	g__Enterococcus		0.9990466217922654	1358	6	0.017877
+FWIV01000002.481.1854	d__Bacteria	p__Proteobacteria	c__Gammaproteobacteria	o__Enterobacterales	f__Morganellaceae	g__Proteus		0.999672729498848	1374	366	1.090519
+GQ154808.1.1373	d__Bacteria	p__Proteobacteria	c__Gammaproteobacteria	o__Enterobacterales	f__Morganellaceae	g__Proteus		0.9965220293751322	1373	44	0.131101
+GU815106.1.1469	d__Bacteria	p__Proteobacteria	c__Gammaproteobacteria	o__Enterobacterales	f__Morganellaceae	g__Proteus		0.9928029895272231	1469	51	0.151958
+HG518159.1.1478	d__Bacteria	p__Firmicutes	c__Bacilli	o__Lactobacillales	f__Lactobacillaceae	g__Lactobacillus		0.9999999999985698	1478	8	0.023836
+HQ224604.1.1429	d__Bacteria	p__Proteobacteria	c__Gammaproteobacteria	o__Enterobacterales	f__Morganellaceae	g__Proteus		0.965959515985391	1429	7	0.020857
+HQ224640.1.1409	d__Bacteria	p__Proteobacteria	c__Gammaproteobacteria	o__Enterobacterales	f__Morganellaceae	g__Proteus		0.9999899512202572	1409	147	0.437995
+HQ398231.1.1483	d__Bacteria	p__Proteobacteria	c__Gammaproteobacteria	o__Enterobacterales	f__Morganellaceae	g__Proteus		0.9994142785227383	1483	26	0.077469
+HQ774671.1.1453	d__Bacteria	p__Proteobacteria	c__Gammaproteobacteria	o__Enterobacterales	f__Morganellaceae			0.9142673123721703	1453	27	0.080448
+HQ807677.1.1468	d__Bacteria	p__Proteobacteria	c__Gammaproteobacteria	o__Enterobacterales	f__Morganellaceae	g__Proteus		0.9952004733258497	1468	12	0.035755
+JQ074009.1.1261	d__Bacteria	p__Proteobacteria	c__Gammaproteobacteria	o__Enterobacterales	f__Morganellaceae	g__Proteus		0.9999922927303654	1261	91	0.271140
+JQ608003.1.1418	d__Bacteria	p__Proteobacteria	c__Gammaproteobacteria	o__Enterobacterales	f__Morganellaceae	g__Proteus		0.9999548881977033	1418	11	0.032775
+JQ608008.1.1430	d__Bacteria	p__Proteobacteria	c__Gammaproteobacteria	o__Enterobacterales	f__Morganellaceae	g__Proteus		0.9998315127751751	1430	11	0.032775
+JQ608013.1.1437	d__Bacteria	p__Proteobacteria	c__Gammaproteobacteria	o__Enterobacterales	f__Morganellaceae	g__Proteus		0.9999935554804658	1437	12	0.035755
+JQ695940.1.1432	d__Bacteria	p__Proteobacteria	c__Gammaproteobacteria	o__Enterobacterales	f__Morganellaceae	g__Proteus		0.9999129406340895	1432	11	0.032775
+KC150145.1.1577	d__Bacteria	p__Firmicutes	c__Bacilli	o__Lactobacillales	f__Lactobacillaceae	g__Lactobacillus		0.9999999970299521	1577	5	0.014898
+KJ459008.1.1526	d__Bacteria	p__Proteobacteria	c__Gammaproteobacteria	o__Enterobacterales	f__Morganellaceae	g__Proteus		0.999879380308537	1526	298	0.887909
+KM257719.1.1550	d__Bacteria	p__Firmicutes	c__Bacilli	o__Lactobacillales	f__Enterococcaceae	g__Enterococcus	s__Enterococcus_faecalis	0.9875558417267885	1550	396	1.179906
+KR258768.1.1442	d__Bacteria	p__Proteobacteria	c__Gammaproteobacteria	o__Enterobacterales	f__Morganellaceae	g__Proteus		0.9999946377858303	1442	17	0.050653
+KR858547.1.1471	d__Bacteria	p__Firmicutes	c__Bacilli	o__Lactobacillales	f__Enterococcaceae	g__Enterococcus	s__bacterium_M3-29	0.7159681872710123	1471	8	0.023836
+KT438730.1.1546	d__Bacteria	p__Proteobacteria	c__Gammaproteobacteria	o__Enterobacterales	f__Morganellaceae	g__Proteus	s__Proteus_hauseri	0.7362135683958486	1546	11	0.032775
+KT582292.1.1469	d__Bacteria	p__Firmicutes	c__Bacilli	o__Lactobacillales	f__Enterococcaceae	g__Enterococcus	s__Enterococcus_faecalis	0.8802949654694238	1469	1	0.002980
+KT985410.1.1469	d__Bacteria	p__Firmicutes	c__Bacilli	o__Lactobacillales	f__Lactobacillaceae	g__Lactobacillus		0.9999999999446819	1469	1	0.002980
+KU057002.1.1479	d__Bacteria	p__Proteobacteria	c__Gammaproteobacteria	o__Enterobacterales	f__Morganellaceae	g__Proteus		0.8737300598372196	1479	74	0.220487
+KU057050.1.1436	d__Bacteria	p__Proteobacteria	c__Gammaproteobacteria	o__Enterobacterales	f__Morganellaceae	g__Proteus		0.9999726943322997	1436	35	0.104285
+KU881628.1.1200	d__Bacteria	p__Proteobacteria	c__Gammaproteobacteria	o__Enterobacterales	f__Morganellaceae	g__Proteus		0.9999456779314326	1200	32	0.095346
+KX665614.1.1367	d__Bacteria	p__Proteobacteria	c__Gammaproteobacteria	o__Enterobacterales	f__Morganellaceae	g__Proteus		0.9999785695048846	1367	182	0.542280
+KX898582.1.1471	d__Bacteria	p__Proteobacteria	c__Gammaproteobacteria	o__Enterobacterales	f__Morganellaceae	g__Proteus		0.9999802452218038	1471	16	0.047673
+KY465772.1.1507	d__Bacteria	p__Proteobacteria	c__Gammaproteobacteria	o__Enterobacterales	f__Morganellaceae	g__Morganellaceae	s__Enterobacter_sp.	0.9843146659068942	1507	11	0.032775
+KY673182.1.1465	d__Bacteria	p__Proteobacteria	c__Gammaproteobacteria	o__Enterobacterales	f__Morganellaceae	g__Proteus		0.9999874886776337	1465	171	0.509505
+LC270226.1.1423	d__Bacteria	p__Proteobacteria	c__Gammaproteobacteria	o__Enterobacterales	f__Morganellaceae	g__Proteus		0.99997000420092	1423	11	0.032775
+LN558620.1.1207	d__Bacteria	p__Proteobacteria	c__Gammaproteobacteria	o__Enterobacterales	f__Morganellaceae	g__Proteus		0.9961812731689556	1207	32	0.095346
+LN558629.1.1384	d__Bacteria	p__Proteobacteria	c__Gammaproteobacteria	o__Enterobacterales	f__Morganellaceae	g__Proteus		0.9926640802304854	1384	4	0.011918
+LN558631.1.1438	d__Bacteria	p__Proteobacteria	c__Gammaproteobacteria	o__Enterobacterales	f__Morganellaceae	g__Proteus		0.99750043301927	1438	4	0.011918
+LN558652.1.1476	d__Bacteria	p__Proteobacteria	c__Gammaproteobacteria	o__Enterobacterales	f__Morganellaceae	g__Proteus		0.999956589935012	1476	529	1.576187
+LUTP01000101.49.1595	d__Bacteria	p__Proteobacteria	c__Gammaproteobacteria	o__Enterobacterales	f__Morganellaceae	g__Proteus		0.9997115731378993	1547	88	0.262201
+MG674654.1.1391	d__Bacteria	p__Proteobacteria	c__Gammaproteobacteria	o__Enterobacterales	f__Morganellaceae	g__Proteus		0.9998951369329498	1391	32	0.095346
+MG807427.1.1465	d__Bacteria	p__Proteobacteria	c__Gammaproteobacteria	o__Enterobacterales	f__Morganellaceae	g__Proteus		0.9999874210637792	1465	68	0.202610
+MH109012.1.1472	d__Bacteria	p__Firmicutes	c__Bacilli	o__Lactobacillales	f__Enterococcaceae	g__Enterococcus		0.99981545457473	1472	8	0.023836
+MH158259.1.1425	d__Bacteria	p__Firmicutes	c__Bacilli	o__Lactobacillales	f__Enterococcaceae	g__Enterococcus		0.9994542521245977	1425	8	0.023836
+MUER01000009.98528.100032	d__Bacteria	p__Proteobacteria	c__Gammaproteobacteria	o__Enterobacterales	f__Morganellaceae	g__Proteus		0.9974309520887166	1505	346	1.030928

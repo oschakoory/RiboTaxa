@@ -78,11 +78,13 @@ THREAD=$(awk '/^THREAD/{print $3}' "${CONFIG}")
 
 FORWARD="$RESULTS/quality_control/"$SHORTNAME"_1_trimmed.fastq"
 REVERSE="$RESULTS/quality_control/"$SHORTNAME"_2_trimmed.fastq"
+FORWARD1="$RESULTS/quality_control/"$SHORTNAME"_1_trimmed.fastq.gz"
+REVERSE1="$RESULTS/quality_control/"$SHORTNAME"_2_trimmed.fastq.gz"
 
-if [ -f "$FORWARD" ];
+if [ -f "$FORWARD" ] || [ -f "$FORWARD1" ];
 then
-   echo "Forward file : '${FORWARD}' is present."
-   echo "Reverse file : '${REVERSE}' is present."
+   echo "Forward file is present."
+   echo "Reverse file is present."
 else
 #echo "File '${FORWARD}' not found."
 
@@ -206,14 +208,15 @@ SMRNAME=($(ls "$SORTMERNA_DB"/*.clustered.fasta* | sed 's/.fasta//'))
 
 SORTME_NAME=$(basename ""${SMRNAME[@]}"")  
 
-
 FORWARD="$RESULTS/output_sortmerna/"$SHORTNAME"_R1_16S18Sreads.fastq"
 REVERSE="$RESULTS/output_sortmerna/"$SHORTNAME"_R2_16S18Sreads.fastq"
+FORWARD1="$RESULTS/output_sortmerna/"$SHORTNAME"_R1_16S18Sreads.fastq.gz"
+REVERSE1="$RESULTS/output_sortmerna/"$SHORTNAME"_R2_16S18Sreads.fastq.gz"
 
-if [ -f "$FORWARD" ];
+if [ -f "$FORWARD" ] || [ -f "$FORWARD1" ];
 then
-	echo "Forward file : '${FORWARD}' is present."
-	echo "Reverse file : '${REVERSE}' is present."
+	echo "Forward file is present."
+	echo "Reverse file is present."
 
 else
 echo "Merging paired files into single files... " | tee /dev/fd/3

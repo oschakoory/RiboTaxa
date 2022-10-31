@@ -1,5 +1,5 @@
-java -ea -Xmx12g -Xms12g -cp /home/oschakoo/miniconda3/envs/RiboTaxa_py27/opt/bbmap-38.87-0/current/ jgi.Dedupe -Xmx12g in=/home/oschakoo/RiboTaxa/test_data/RiboTaxa_results/sample01/SSU_sequences/output_MetaRib/Iteration/iter_1/emirge_amp/iter.20/current.uniqname.fasta out=/home/oschakoo/RiboTaxa/test_data/RiboTaxa_results/sample01/SSU_sequences/output_MetaRib/Iteration/iter_1/emirge_amp/iter.20/all.dedup.fasta outd=/home/oschakoo/RiboTaxa/test_data/RiboTaxa_results/sample01/SSU_sequences/output_MetaRib/Iteration/iter_1/emirge_amp/iter.20/all.dup.fasta threads=8 fo=t ow=t c=t mcs=1 e=5 mid=99
-Executing jgi.Dedupe [-Xmx12g, in=/home/oschakoo/RiboTaxa/test_data/RiboTaxa_results/sample01/SSU_sequences/output_MetaRib/Iteration/iter_1/emirge_amp/iter.20/current.uniqname.fasta, out=/home/oschakoo/RiboTaxa/test_data/RiboTaxa_results/sample01/SSU_sequences/output_MetaRib/Iteration/iter_1/emirge_amp/iter.20/all.dedup.fasta, outd=/home/oschakoo/RiboTaxa/test_data/RiboTaxa_results/sample01/SSU_sequences/output_MetaRib/Iteration/iter_1/emirge_amp/iter.20/all.dup.fasta, threads=8, fo=t, ow=t, c=t, mcs=1, e=5, mid=99]
+java -ea -Xmx12g -Xms12g -cp /home/oschakoo/miniconda3/envs/RiboTaxa_py27/opt/bbmap-38.87-0/current/ jgi.Dedupe -Xmx12g in=/home/oschakoo/RiboTaxa_test/test_data/sample01/SSU_sequences/output_MetaRib/Iteration/iter_1/emirge_amp/iter.20/current.uniqname.fasta out=/home/oschakoo/RiboTaxa_test/test_data/sample01/SSU_sequences/output_MetaRib/Iteration/iter_1/emirge_amp/iter.20/all.dedup.fasta outd=/home/oschakoo/RiboTaxa_test/test_data/sample01/SSU_sequences/output_MetaRib/Iteration/iter_1/emirge_amp/iter.20/all.dup.fasta threads=8 fo=t ow=t c=t mcs=1 e=5 mid=99
+Executing jgi.Dedupe [-Xmx12g, in=/home/oschakoo/RiboTaxa_test/test_data/sample01/SSU_sequences/output_MetaRib/Iteration/iter_1/emirge_amp/iter.20/current.uniqname.fasta, out=/home/oschakoo/RiboTaxa_test/test_data/sample01/SSU_sequences/output_MetaRib/Iteration/iter_1/emirge_amp/iter.20/all.dedup.fasta, outd=/home/oschakoo/RiboTaxa_test/test_data/sample01/SSU_sequences/output_MetaRib/Iteration/iter_1/emirge_amp/iter.20/all.dup.fasta, threads=8, fo=t, ow=t, c=t, mcs=1, e=5, mid=99]
 Version 38.87
 
 Set threads to 8
@@ -7,11 +7,11 @@ Initial:
 Memory: max=12884m, total=12884m, free=12876m, used=8m
 
 Found 0 duplicates.
-Finished exact matches.    Time: 0.029 seconds.
+Finished exact matches.    Time: 0.021 seconds.
 Memory: max=12884m, total=12884m, free=12817m, used=67m
 
 Found 0 contained sequences.
-Finished containment.      Time: 0.112 seconds.
+Finished containment.      Time: 0.110 seconds.
 Memory: max=12884m, total=12884m, free=12805m, used=79m
 
 Removed 0 invalid entries.
@@ -19,17 +19,17 @@ Finished invalid removal.  Time: 0.000 seconds.
 Memory: max=12884m, total=12884m, free=12805m, used=79m
 
 Found 0 overlaps.
-Finished finding overlaps. Time: 0.125 seconds.
+Finished finding overlaps. Time: 0.128 seconds.
 Memory: max=12884m, total=12884m, free=12792m, used=92m
 
 Overlaps:       0,  	length: 0
 Counted overlaps.          Time: 0.000 seconds.
 Memory: max=12884m, total=12884m, free=12792m, used=92m
 
-Clusters:         13
+Clusters:         15
 
 Size Range        Clusters          Reads             Bases
-1                 13                13                19203
+1                 15                15                21888
 2                 0                 0                 0
 
 Largest:          1
@@ -40,15 +40,15 @@ Removed 0 invalid entries.
 Finished invalid removal.  Time: 0.000 seconds.
 Memory: max=12884m, total=12884m, free=12792m, used=92m
 
-Input:                  	13 reads 		19203 bases.
+Input:                  	15 reads 		21888 bases.
 Duplicates:             	0 reads (0.00%) 	0 bases (0.00%)     	0 collisions.
-Containments:           	0 reads (0.00%) 	0 bases (0.00%)    	9 collisions.
-Overlaps:               	0 reads (0.00%) 	0 bases (0.00%)    	9 collisions.
-Result:                 	13 reads (100.00%) 	19203 bases (100.00%)
+Containments:           	0 reads (0.00%) 	0 bases (0.00%)    	6 collisions.
+Overlaps:               	0 reads (0.00%) 	0 bases (0.00%)    	6 collisions.
+Result:                 	15 reads (100.00%) 	21888 bases (100.00%)
 
 Printed output.            Time: 0.019 seconds.
 Memory: max=12884m, total=12884m, free=12789m, used=95m
 
-Time:                         	0.321 seconds.
-Reads Processed:          13 	0.04k reads/sec
-Bases Processed:       19203 	0.06m bases/sec
+Time:                         	0.317 seconds.
+Reads Processed:          15 	0.05k reads/sec
+Bases Processed:       21888 	0.07m bases/sec

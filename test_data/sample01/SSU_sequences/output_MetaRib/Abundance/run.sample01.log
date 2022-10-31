@@ -1,5 +1,5 @@
-java -ea -Xmx12g -Xms12g -cp /home/oschakoo/miniconda3/envs/RiboTaxa_py27/opt/bbmap-38.87-0/current/ align2.BBMap build=1 overwrite=true fastareadlen=500 -Xmx12g in1=/home/oschakoo/RiboTaxa/test_data/RiboTaxa_results/sample01/quality_control/sample01_1_trimmed.fastq in2=/home/oschakoo/RiboTaxa/test_data/RiboTaxa_results/sample01/quality_control/sample01_2_trimmed.fastq ref=/home/oschakoo/RiboTaxa/test_data/RiboTaxa_results/sample01/SSU_sequences/output_MetaRib/Abundance/all.dedup.fasta threads=8 minid=0.96 maxindel=1 minhits=2 idfilter=0.98 ow=t 32bit=t statsfile=sample01.statsfile.txt nzo=f sortscafs=t scafstats=sample01.scafstats.txt covstats=sample01.covstats.txt
-Executing align2.BBMap [build=1, overwrite=true, fastareadlen=500, -Xmx12g, in1=/home/oschakoo/RiboTaxa/test_data/RiboTaxa_results/sample01/quality_control/sample01_1_trimmed.fastq, in2=/home/oschakoo/RiboTaxa/test_data/RiboTaxa_results/sample01/quality_control/sample01_2_trimmed.fastq, ref=/home/oschakoo/RiboTaxa/test_data/RiboTaxa_results/sample01/SSU_sequences/output_MetaRib/Abundance/all.dedup.fasta, threads=8, minid=0.96, maxindel=1, minhits=2, idfilter=0.98, ow=t, 32bit=t, statsfile=sample01.statsfile.txt, nzo=f, sortscafs=t, scafstats=sample01.scafstats.txt, covstats=sample01.covstats.txt]
+java -ea -Xmx12g -Xms12g -cp /home/oschakoo/miniconda3/envs/RiboTaxa_py27/opt/bbmap-38.87-0/current/ align2.BBMap build=1 overwrite=true fastareadlen=500 -Xmx12g in1=/home/oschakoo/RiboTaxa_test/test_data/sample01/quality_control/sample01_1_trimmed.fastq in2=/home/oschakoo/RiboTaxa_test/test_data/sample01/quality_control/sample01_2_trimmed.fastq ref=/home/oschakoo/RiboTaxa_test/test_data/sample01/SSU_sequences/output_MetaRib/Abundance/all.dedup.fasta threads=8 minid=0.96 maxindel=1 minhits=2 idfilter=0.98 ow=t 32bit=t statsfile=sample01.statsfile.txt nzo=f sortscafs=t scafstats=sample01.scafstats.txt covstats=sample01.covstats.txt
+Executing align2.BBMap [build=1, overwrite=true, fastareadlen=500, -Xmx12g, in1=/home/oschakoo/RiboTaxa_test/test_data/sample01/quality_control/sample01_1_trimmed.fastq, in2=/home/oschakoo/RiboTaxa_test/test_data/sample01/quality_control/sample01_2_trimmed.fastq, ref=/home/oschakoo/RiboTaxa_test/test_data/sample01/SSU_sequences/output_MetaRib/Abundance/all.dedup.fasta, threads=8, minid=0.96, maxindel=1, minhits=2, idfilter=0.98, ow=t, 32bit=t, statsfile=sample01.statsfile.txt, nzo=f, sortscafs=t, scafstats=sample01.scafstats.txt, covstats=sample01.covstats.txt]
 Version 38.87
 
 Set threads to 8
@@ -7,7 +7,7 @@ Scaffold statistics will be written to sample01.scafstats.txt
 Retaining first best site only for ambiguous mappings.
 No output file.
 Writing reference.
-Executing dna.FastaToChromArrays2 [/home/oschakoo/RiboTaxa/test_data/RiboTaxa_results/sample01/SSU_sequences/output_MetaRib/Abundance/all.dedup.fasta, 1, writeinthread=false, genscaffoldinfo=true, retain, waitforwriting=false, gz=true, maxlen=536670912, writechroms=true, minscaf=1, midpad=300, startpad=8000, stoppad=8000, nodisk=false]
+Executing dna.FastaToChromArrays2 [/home/oschakoo/RiboTaxa_test/test_data/sample01/SSU_sequences/output_MetaRib/Abundance/all.dedup.fasta, 1, writeinthread=false, genscaffoldinfo=true, retain, waitforwriting=false, gz=true, maxlen=536670912, writechroms=true, minscaf=1, midpad=300, startpad=8000, stoppad=8000, nodisk=false]
 
 Set genScaffoldInfo=true
 Writing chunk 1
@@ -15,13 +15,13 @@ Set genome to 1
 
 Loaded Reference:	0.002 seconds.
 Loading index for chunk 1-1, build 1
-No index available; generating from reference genome: /home/oschakoo/RiboTaxa/test_data/RiboTaxa_results/sample01/SSU_sequences/output_MetaRib/Abundance/ref/index/1/chr1_index_k13_c15_b1.block
+No index available; generating from reference genome: /home/oschakoo/RiboTaxa_test/test_data/sample01/SSU_sequences/output_MetaRib/Abundance/ref/index/1/chr1_index_k13_c15_b1.block
 Indexing threads started for block 0-1
 Indexing threads finished for block 0-1
-Generated Index:	0.926 seconds.
-Analyzed Index:   	2.556 seconds.
+Generated Index:	0.957 seconds.
+Analyzed Index:   	2.656 seconds.
 Creating scaffold statistics table:   	0.005 seconds.
-Cleared Memory:    	0.110 seconds.
+Cleared Memory:    	0.109 seconds.
 Processing reads in paired-ended mode.
 Started read stream.
 Started 8 mapping threads.
@@ -36,17 +36,17 @@ Minimum Score Ratio:  	0.56
 Mapping Mode:         	normal
 
 Reads:                               	224140
-Mapped reads:                        	715
-Mapped bases:                        	132443
-Ref scaffolds:                       	14
-Ref bases:                           	20634
+Mapped reads:                        	718
+Mapped bases:                        	133338
+Ref scaffolds:                       	15
+Ref bases:                           	21888
 
-Percent mapped:                      	0.319
-Percent proper pairs:                	0.296
-Average coverage:                    	6.419
-Average coverage with deletions:     	6.302
-Standard deviation:                    	13.240
+Percent mapped:                      	0.320
+Percent proper pairs:                	0.299
+Average coverage:                    	6.092
+Average coverage with deletions:     	5.971
+Standard deviation:                    	12.529
 Percent scaffolds with any coverage: 	100.00
-Percent of reference bases covered:  	76.77
+Percent of reference bases covered:  	76.73
 
-Total time:     	6.800 seconds.
+Total time:     	5.537 seconds.

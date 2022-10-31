@@ -187,6 +187,17 @@ rm "$RESULTS"/Taxonomy/"$SHORTNAME"_abundance.tsv
 
 rm -rf "$RESULTS"/data
 
+echo "Finalising abundance table..."
+
+
+cp $RiboTaxa_DIR/scripts/PostRiboTaxa.sh "$RESULTS"/Taxonomy
+
+cd "$RESULTS"/Taxonomy
+
+./PostRiboTaxa.sh "$SHORTNAME"
+
+rm PostRiboTaxa.sh
+
 fi
 
 echo ">Taxonomic classification using sklearn_classifer ends successfully on : "`date` | tee /dev/fd/3

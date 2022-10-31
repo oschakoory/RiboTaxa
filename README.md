@@ -355,7 +355,8 @@ cd RiboTaxa_DIR/scripts
 ./RiboTaxa_group_taxonomy.sh $INPUT_PATH $OUTPUT_PATH
 ```
 whereby:
-```$INPUT_PATH``` is the input path containing the files
+```$INPUT_PATH``` is the input path containing the input files
+
 ```$OUTPUT_PATH``` is the desired output path
 
 An exemple test has been conducted with the following parameters:

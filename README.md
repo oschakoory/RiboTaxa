@@ -383,10 +383,10 @@ Example of the ```Species_abundance.csv```:
 | Bifidobacterium_bifidum   | 0        |  0.2050580  |  0.4260770  | 12.6970194  |  7.3577775  |  0.5264176  |
 | Bifidobacterium_sp.       | 0        | 0.008041001 | 0.098325006 | 0.007881000 | 0.045245990 | 0.642682495 |
 | Cosenzaea_myxofaciens     | 0        | 0.04422800  | 0           | 0           | 0           | 0.03552537  |
-| Enterobacter_sp.          | 0        | 1.881710    | 0.732972    | 0.165496    | 0.010442    | 0           |
+| Enterobacter_sp.          | 0.5      | 1.881710    | 0.732972    | 0.165496    | 0.010442    | 0           |
 | Lactobacillus_acidophilus | 0        |  2.850710   |  7.460818   |  0.058543   |  4.284497   | 12.540370   |
 | Lactobacillus_kitasatonis | 0        | 0.0241240   | 0.5095060   | 0           | 0.8405428   | 1.8279293   |
 | Proteus_mirabilis         | 0        |  0.05629001 | 18.44943811 |  6.40029719 | 14.55544994 | 42.99186000 |
 | Proteus_sp.               | 0        | 0.036187    | 0           | 0           | 0           | 0           |
 | Streptomyces_cinnamoneus  | 0        | 0.06433201  | 0           | 0           | 0.01044200  | 0           |
-| uncultured_Syntrophomonas | 0        | 0.016083    | 0           | 0           | 0           | 0           |
+| uncultured_Syntrophomonas | 15.85    | 0.016083    | 0           | 0           | 0           | 0           |

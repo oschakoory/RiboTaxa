@@ -77,8 +77,9 @@ THREAD=$(awk '/^THREAD/{print $3}' "${CONFIG}")
 #echo "Number of threads used = $THREAD" | tee /dev/fd/3
 
 FORWARD="$RESULTS/quality_control/"$SHORTNAME"_trimmed.fastq"
+FORWARD1="$RESULTS/quality_control/"$SHORTNAME"_trimmed.fastq.gz"
 
-if [ -f "$FORWARD" ];
+if [ -f "$FORWARD" ] || [ -f "$FORWARD1" ];
 then
    echo "Forward file : '${FORWARD}' is present."
 else
@@ -197,8 +198,9 @@ SORTME_NAME=$(basename ""${SMRNAME[@]}"")
 
 
 FORWARD="$RESULTS/output_sortmerna/"$SHORTNAME"_16S18S.fastq"
+FORWARD1="$RESULTS/output_sortmerna/"$SHORTNAME"_16S18S.fastq.gz"
 
-if [ -f "$FORWARD" ];
+if [ -f "$FORWARD" ] || [ -f "$FORWARD1" ];
 then
 	echo "Forward file : '${FORWARD}' is present."
 else
@@ -531,6 +533,8 @@ rm "$RESULTS"/SSU_sequences/"$SHORTNAME"_length_bySeq.tsv
 rm "$RESULTS"/SSU_sequences/"$SHORTNAME"_RA_length.tsv
 rm "$RESULTS"/SSU_sequences/"$SHORTNAME"_emirge_metarib_SSU_sequences.fasta
 rm "$RESULTS"/SSU_sequences/"$SHORTNAME"_emirge_metarib_clustered_SSU_sequences.fasta
+rm "$RESULTS"/SSU_sequences/output_MetaRib/Iteration/*/*.fq
+rm "$RESULTS"/SSU_sequences/output_MetaRib/Iteration/*/emirge_amp/*/*unmaped*
 
 rm -rf "$RESULTS"/SSU_sequences/ref
 

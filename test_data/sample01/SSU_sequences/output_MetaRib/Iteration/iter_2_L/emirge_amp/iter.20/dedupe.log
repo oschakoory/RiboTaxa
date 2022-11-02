@@ -1,0 +1,54 @@
+java -ea -Xmx12g -Xms12g -cp /home/oschakoo/miniconda3/envs/RiboTaxa_py27/opt/bbmap-38.87-0/current/ jgi.Dedupe -Xmx12g in=/home/oschakoo/RiboTaxa/test_data/sample01/SSU_sequences/output_MetaRib/Iteration/iter_2_L/emirge_amp/iter.20/current.uniqname.fasta out=/home/oschakoo/RiboTaxa/test_data/sample01/SSU_sequences/output_MetaRib/Iteration/iter_2_L/emirge_amp/iter.20/all.dedup.fasta outd=/home/oschakoo/RiboTaxa/test_data/sample01/SSU_sequences/output_MetaRib/Iteration/iter_2_L/emirge_amp/iter.20/all.dup.fasta threads=8 fo=t ow=t c=t mcs=1 e=5 mid=99
+Executing jgi.Dedupe [-Xmx12g, in=/home/oschakoo/RiboTaxa/test_data/sample01/SSU_sequences/output_MetaRib/Iteration/iter_2_L/emirge_amp/iter.20/current.uniqname.fasta, out=/home/oschakoo/RiboTaxa/test_data/sample01/SSU_sequences/output_MetaRib/Iteration/iter_2_L/emirge_amp/iter.20/all.dedup.fasta, outd=/home/oschakoo/RiboTaxa/test_data/sample01/SSU_sequences/output_MetaRib/Iteration/iter_2_L/emirge_amp/iter.20/all.dup.fasta, threads=8, fo=t, ow=t, c=t, mcs=1, e=5, mid=99]
+Version 38.87
+
+Set threads to 8
+Initial:
+Memory: max=12884m, total=12884m, free=12876m, used=8m
+
+Found 0 duplicates.
+Finished exact matches.    Time: 0.027 seconds.
+Memory: max=12884m, total=12884m, free=12817m, used=67m
+
+Found 0 contained sequences.
+Finished containment.      Time: 0.117 seconds.
+Memory: max=12884m, total=12884m, free=12805m, used=79m
+
+Removed 0 invalid entries.
+Finished invalid removal.  Time: 0.000 seconds.
+Memory: max=12884m, total=12884m, free=12805m, used=79m
+
+Found 0 overlaps.
+Finished finding overlaps. Time: 0.035 seconds.
+Memory: max=12884m, total=12884m, free=12792m, used=92m
+
+Overlaps:       0,  	length: 0
+Counted overlaps.          Time: 0.000 seconds.
+Memory: max=12884m, total=12884m, free=12792m, used=92m
+
+Clusters:         18
+
+Size Range        Clusters          Reads             Bases
+1                 18                18                25694
+2                 0                 0                 0
+
+Largest:          1
+Finished making clusters.  Time: 0.002 seconds.
+Memory: max=12884m, total=12884m, free=12792m, used=92m
+
+Removed 0 invalid entries.
+Finished invalid removal.  Time: 0.000 seconds.
+Memory: max=12884m, total=12884m, free=12792m, used=92m
+
+Input:                  	18 reads 		25694 bases.
+Duplicates:             	0 reads (0.00%) 	0 bases (0.00%)     	0 collisions.
+Containments:           	0 reads (0.00%) 	0 bases (0.00%)    	7 collisions.
+Overlaps:               	0 reads (0.00%) 	0 bases (0.00%)    	7 collisions.
+Result:                 	18 reads (100.00%) 	25694 bases (100.00%)
+
+Printed output.            Time: 0.012 seconds.
+Memory: max=12884m, total=12884m, free=12789m, used=95m
+
+Time:                         	0.220 seconds.
+Reads Processed:          18 	0.08k reads/sec
+Bases Processed:       25694 	0.12m bases/sec

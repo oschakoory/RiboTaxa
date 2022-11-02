@@ -1,12 +1,12 @@
-java -ea -Xmx2g -Xms2g -cp /home/oschakoo/miniconda3/envs/RiboTaxa_py27/opt/bbmap-38.87-0/current/ jgi.ReformatReads -Xmx2g in=bbmap.unmap.fq threads=8 out1=/home/oschakoo/RiboTaxa_test/test_data/sample01/SSU_sequences/output_MetaRib/Iteration/iter_1/emirge_amp/iter.20/bbmap.unmaped.1.fq out2=/home/oschakoo/RiboTaxa_test/test_data/sample01/SSU_sequences/output_MetaRib/Iteration/iter_1/emirge_amp/iter.20/bbmap.unmaped.2.fq
-Executing jgi.ReformatReads [-Xmx2g, in=bbmap.unmap.fq, threads=8, out1=/home/oschakoo/RiboTaxa_test/test_data/sample01/SSU_sequences/output_MetaRib/Iteration/iter_1/emirge_amp/iter.20/bbmap.unmaped.1.fq, out2=/home/oschakoo/RiboTaxa_test/test_data/sample01/SSU_sequences/output_MetaRib/Iteration/iter_1/emirge_amp/iter.20/bbmap.unmaped.2.fq]
+java -ea -Xmx2g -Xms2g -cp /home/oschakoo/miniconda3/envs/RiboTaxa_py27/opt/bbmap-38.87-0/current/ jgi.ReformatReads -Xmx2g in=bbmap.unmap.fq threads=8 out1=/home/oschakoo/RiboTaxa/test_data/sample01/SSU_sequences/output_MetaRib/Iteration/iter_1/emirge_amp/iter.20/bbmap.unmaped.1.fq out2=/home/oschakoo/RiboTaxa/test_data/sample01/SSU_sequences/output_MetaRib/Iteration/iter_1/emirge_amp/iter.20/bbmap.unmaped.2.fq
+Executing jgi.ReformatReads [-Xmx2g, in=bbmap.unmap.fq, threads=8, out1=/home/oschakoo/RiboTaxa/test_data/sample01/SSU_sequences/output_MetaRib/Iteration/iter_1/emirge_amp/iter.20/bbmap.unmaped.1.fq, out2=/home/oschakoo/RiboTaxa/test_data/sample01/SSU_sequences/output_MetaRib/Iteration/iter_1/emirge_amp/iter.20/bbmap.unmaped.2.fq]
 
 Set threads to 8
 Set INTERLEAVED to true
 Input is being processed as paired
-Input:                  	223380 reads          	39696193 bases
-Output:                 	223380 reads (100.00%) 	39696193 bases (100.00%)
+Input:                  	223376 reads          	39695753 bases
+Output:                 	223376 reads (100.00%) 	39695753 bases (100.00%)
 
-Time:                         	0.466 seconds.
-Reads Processed:        223k 	479.41k reads/sec
-Bases Processed:      39696k 	85.19m bases/sec
+Time:                         	0.581 seconds.
+Reads Processed:        223k 	384.27k reads/sec
+Bases Processed:      39695k 	68.29m bases/sec

@@ -1,7 +1,7 @@
- Mon Oct 31 13:39:44 2022
+ Wed Nov  2 11:35:57 2022
 
- Command: sortmerna --ref /home/oschakoo/Documents/Databases/sortmerna_indexed_DB/SILVA_138.1_SSURef_NR99_tax_silva_indexed.clustered.fasta,/home/oschakoo/Documents/Databases/sortmerna_indexed_DB/SILVA_138.1_SSURef_NR99_tax_silva_indexed.clustered --reads /home/oschakoo/RiboTaxa_test/test_data/sample01/output_sortmerna/sample01_mergedpaired.fastq --fastx --aligned /home/oschakoo/RiboTaxa_test/test_data/sample01/output_sortmerna/sample01_16S18S --paired_in -a 8 --log -v 
- Process pid = 301026
+ Command: sortmerna --ref /home/oschakoo/Documents/Databases/sortmerna_indexed_DB/SILVA_138.1_SSURef_NR99_tax_silva_indexed.clustered.fasta,/home/oschakoo/Documents/Databases/sortmerna_indexed_DB/SILVA_138.1_SSURef_NR99_tax_silva_indexed.clustered --reads /home/oschakoo/RiboTaxa/test_data/sample01/output_sortmerna/sample01_mergedpaired.fastq --fastx --aligned /home/oschakoo/RiboTaxa/test_data/sample01/output_sortmerna/sample01_16S18S --paired_in -a 8 --log -v 
+ Process pid = 21153
  Parameters summary:
     Index: /home/oschakoo/Documents/Databases/sortmerna_indexed_DB/SILVA_138.1_SSURef_NR99_tax_silva_indexed.clustered
      Seed length = 18
@@ -18,7 +18,7 @@
     SW ambiguous nucleotide = -3
     SQ tags are not output
     Number of threads = 8
-    Reads file = /home/oschakoo/RiboTaxa_test/test_data/sample01/output_sortmerna/sample01_mergedpaired.fastq
+    Reads file = /home/oschakoo/RiboTaxa/test_data/sample01/output_sortmerna/sample01_mergedpaired.fastq
 
  Results:
     Total reads = 224140
@@ -30,5 +30,5 @@
  By database:
     /home/oschakoo/Documents/Databases/sortmerna_indexed_DB/SILVA_138.1_SSURef_NR99_tax_silva_indexed.clustered.fasta		0.74%
 
- Mon Oct 31 13:40:09 2022
+ Wed Nov  2 11:36:23 2022
 

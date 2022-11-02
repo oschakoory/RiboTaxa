@@ -1,0 +1,3 @@
+Module	Section	Sample Name	Source
+FastQC	all_sections	sample01_2_trimmed	/home/oschakoo/RiboTaxa/test_data/sample01/quality_control/after_fastqc/sample01_2_trimmed_fastqc.zip
+FastQC	all_sections	sample01_1_trimmed	/home/oschakoo/RiboTaxa/test_data/sample01/quality_control/after_fastqc/sample01_1_trimmed_fastqc.zip

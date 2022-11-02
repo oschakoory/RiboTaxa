@@ -6,45 +6,45 @@ Version: 1.4
 This program is distributed under the AGPL-3.0 License. See LICENSE for more information.
 
 ***********************************************************************************************
->Running RiboTaxa on /home/oschakoo/RiboTaxa_test/test_data/raw_data/sample01_R1.fastq.gz
+>Running RiboTaxa on /storage/groups/medis/RiboTaxa/test_data/raw_data/sample01_R1.fastq.gz
 ***********************************************************************************************
 
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
->Quality control starting on : lun. 31 oct. 2022 13:39:23 CET
+>Quality control starting on : mer. nov. 2 13:20:56 CET 2022
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Run the First quality control on raw data... 
 command line :
-fastqc /home/oschakoo/RiboTaxa_test/test_data/raw_data/sample01_R1.fastq.gz  /home/oschakoo/RiboTaxa_test/test_data/raw_data/sample01_R2.fastq.gz  -dir /home/oschakoo/RiboTaxa_test/test_data/sample01 -o /home/oschakoo/RiboTaxa_test/test_data/sample01/quality_control/before_fastqc
+fastqc /storage/groups/medis/RiboTaxa/test_data/raw_data/sample01_R1.fastq.gz  /storage/groups/medis/RiboTaxa/test_data/raw_data/sample01_R2.fastq.gz  -dir /home/oschakoo/testRiboTaxa/sample01 -o /home/oschakoo/testRiboTaxa/sample01/quality_control/before_fastqc
 Analysis complete for sample01_R1.fastq.gz
 Analysis complete for sample01_R2.fastq.gz
 Removing adapters from sequences...
 command line :
-bbduk.sh -Xmx12g 	in1=/home/oschakoo/RiboTaxa_test/test_data/raw_data/sample01_R1.fastq.gz  	in2=/home/oschakoo/RiboTaxa_test/test_data/raw_data/sample01_R2.fastq.gz  	out1=/home/oschakoo/RiboTaxa_test/test_data/sample01/quality_control/sample01_1_noadapt.fastq.gz  	out2=/home/oschakoo/RiboTaxa_test/test_data/sample01/quality_control/sample01_2_noadapt.fastq.gz  	ref=/home/oschakoo/RiboTaxa_test/adapters/TruSeq3-PE.fa 	ktrim=r 	threads=8 	k=21 	mink=11 	tpe 	tbo
+bbduk.sh -Xmx80g 	in1=/storage/groups/medis/RiboTaxa/test_data/raw_data/sample01_R1.fastq.gz  	in2=/storage/groups/medis/RiboTaxa/test_data/raw_data/sample01_R2.fastq.gz  	out1=/home/oschakoo/testRiboTaxa/sample01/quality_control/sample01_1_noadapt.fastq.gz  	out2=/home/oschakoo/testRiboTaxa/sample01/quality_control/sample01_2_noadapt.fastq.gz  	ref=/storage/groups/medis/RiboTaxa/adapters/TruSeq3-PE.fa 	ktrim=r 	threads=50 	k=21 	mink=11 	tpe 	tbo
 Trimming sequences...
 command line :
-bbduk.sh -Xmx12g 	in1=/home/oschakoo/RiboTaxa_test/test_data/sample01/quality_control/sample01_1_noadapt.fastq.gz  	in2=/home/oschakoo/RiboTaxa_test/test_data/sample01/quality_control/sample01_2_noadapt.fastq.gz  	out1=/home/oschakoo/RiboTaxa_test/test_data/sample01/quality_control/sample01_1_trimmed.fastq.gz  	out2=/home/oschakoo/RiboTaxa_test/test_data/sample01/quality_control/sample01_2_trimmed.fastq.gz  	minlen=60 	qtrim=rl 	threads=8 	trimq=20 	maxns=1
+bbduk.sh -Xmx80g 	in1=/home/oschakoo/testRiboTaxa/sample01/quality_control/sample01_1_noadapt.fastq.gz  	in2=/home/oschakoo/testRiboTaxa/sample01/quality_control/sample01_2_noadapt.fastq.gz  	out1=/home/oschakoo/testRiboTaxa/sample01/quality_control/sample01_1_trimmed.fastq.gz  	out2=/home/oschakoo/testRiboTaxa/sample01/quality_control/sample01_2_trimmed.fastq.gz  	minlen=60 	qtrim=rl 	threads=50 	trimq=20 	maxns=1
 Run the second quality control on trimmed data...
 command line :
-fastqc /home/oschakoo/RiboTaxa_test/test_data/sample01/quality_control/sample01_1_trimmed.fastq.gz  /home/oschakoo/RiboTaxa_test/test_data/sample01/quality_control/sample01_2_trimmed.fastq.gz  -dir /home/oschakoo/RiboTaxa_test/test_data/sample01 -o /home/oschakoo/RiboTaxa_test/test_data/sample01/quality_control/after_fastqc
+fastqc /home/oschakoo/testRiboTaxa/sample01/quality_control/sample01_1_trimmed.fastq.gz  /home/oschakoo/testRiboTaxa/sample01/quality_control/sample01_2_trimmed.fastq.gz  -dir /home/oschakoo/testRiboTaxa/sample01 -o /home/oschakoo/testRiboTaxa/sample01/quality_control/after_fastqc
 Analysis complete for sample01_1_trimmed.fastq.gz
 Analysis complete for sample01_2_trimmed.fastq.gz
 Running multiQC...
 Saving results for quality control...
->Quality control ends successfully on : lun. 31 oct. 2022 13:39:42 CET
+>Quality control ends successfully on : mer. nov. 2 13:21:29 CET 2022
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
->Filtering 16S/18S using sortmerna starting on : lun. 31 oct. 2022 13:39:43 CET
+>Filtering 16S/18S using sortmerna starting on : mer. nov. 2 13:21:31 CET 2022
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Database directory for sortmerna = /home/oschakoo/Documents/Databases/sortmerna_indexed_DB
+Database directory for sortmerna = /storage/groups/medis/Databases/sortmerna_indexed_DB
 Merging paired files into single files... 
 command line :
-reformat.sh -Xmx12g threads=8 in1=/home/oschakoo/RiboTaxa_test/test_data/sample01/quality_control/sample01_1_trimmed.fastq in2=/home/oschakoo/RiboTaxa_test/test_data/sample01/quality_control/sample01_2_trimmed.fastq out=/home/oschakoo/RiboTaxa_test/test_data/sample01/output_sortmerna/sample01_mergedpaired.fastq overwrite=t
+reformat.sh -Xmx80g threads=50 in1=/home/oschakoo/testRiboTaxa/sample01/quality_control/sample01_1_trimmed.fastq in2=/home/oschakoo/testRiboTaxa/sample01/quality_control/sample01_2_trimmed.fastq out=/home/oschakoo/testRiboTaxa/sample01/output_sortmerna/sample01_mergedpaired.fastq overwrite=t
 Filtering 16S/18S reads....
 command line :
-sortmerna --ref /home/oschakoo/Documents/Databases/sortmerna_indexed_DB/SILVA_138.1_SSURef_NR99_tax_silva_indexed.clustered.fasta,/home/oschakoo/Documents/Databases/sortmerna_indexed_DB/SILVA_138.1_SSURef_NR99_tax_silva_indexed.clustered 	--reads /home/oschakoo/RiboTaxa_test/test_data/sample01/output_sortmerna/sample01_mergedpaired.fastq 	--fastx 	--aligned /home/oschakoo/RiboTaxa_test/test_data/sample01/output_sortmerna/sample01_16S18S 	--paired_in 	-a 8 	--log 	-v
+sortmerna --ref /storage/groups/medis/Databases/sortmerna_indexed_DB/SILVA_138.1_SSURef_NR99_tax_silva_indexed.clustered.fasta,/storage/groups/medis/Databases/sortmerna_indexed_DB/SILVA_138.1_SSURef_NR99_tax_silva_indexed.clustered 	--reads /home/oschakoo/testRiboTaxa/sample01/output_sortmerna/sample01_mergedpaired.fastq 	--fastx 	--aligned /home/oschakoo/testRiboTaxa/sample01/output_sortmerna/sample01_16S18S 	--paired_in 	-a 50 	--log 	-v
 
   Program:     SortMeRNA version 2.1b, 03/03/2016
   Copyright:   2012-16 Bonsai Bioinformatics Research Group:
@@ -59,7 +59,7 @@ sortmerna --ref /home/oschakoo/Documents/Databases/sortmerna_indexed_DB/SILVA_13
                Hélène Touzet, helene.touzet@lifl.fr
 
 
-  Computing read file statistics ... done [0.24 sec]
+  Computing read file statistics ... done [0.66 sec]
   size of reads file: 89357519 bytes
   partial section(s) to be executed: 1 of size 89357519 bytes 
   Parameters summary:
@@ -71,35 +71,35 @@ sortmerna --ref /home/oschakoo/Documents/Databases/sortmerna_indexed_DB/SILVA_13
     SW gap extend penalty = 2
     SW ambiguous nucleotide = -3
     SQ tags are not output
-    Number of threads = 8
+    Number of threads = 50
 
   [4mBegin mmap reads section # 1[0m:
-  Time to mmap reads and set up pointers [0.11 sec]
+  Time to mmap reads and set up pointers [0.18 sec]
 
-  Begin analysis of: [0;34m/home/oschakoo/Documents/Databases/sortmerna_indexed_DB/SILVA_138.1_SSURef_NR99_tax_silva_indexed.clustered.fasta[0m
+  Begin analysis of: [0;34m/storage/groups/medis/Databases/sortmerna_indexed_DB/SILVA_138.1_SSURef_NR99_tax_silva_indexed.clustered.fasta[0m
     Seed length = 18
     Pass 1 = 18, Pass 2 = 9, Pass 3 = 3
     Gumbel lambda = 0.605415
     Gumbel K = 0.340159
     Minimal SW score based on E-value = 59
-    Loading index part 1/1 ...  done [6.52 sec]
-    Begin index search ...  done [13.48 sec]
-    Freeing index ...  done [1.11 sec]
+    Loading index part 1/1 ...  done [13.31 sec]
+    Begin index search ...  done [6.47 sec]
+    Freeing index ...  done [1.50 sec]
     Total number of reads mapped (incl. all reads file sections searched): 1663
-    Writing aligned FASTA/FASTQ ...  done [0.02 sec]
+    Writing aligned FASTA/FASTQ ...  done [0.05 sec]
 Unmerging single files into paired files....
 command line :
-reformat.sh threads=8 in=/home/oschakoo/RiboTaxa_test/test_data/sample01/output_sortmerna/sample01_16S18S.fastq out1=/home/oschakoo/RiboTaxa_test/test_data/sample01/output_sortmerna/sample01_R1_16S18Sreads.fastq out2=/home/oschakoo/RiboTaxa_test/test_data/sample01/output_sortmerna/sample01_R2_16S18Sreads.fastq overwrite=t
+reformat.sh threads=50 in=/home/oschakoo/testRiboTaxa/sample01/output_sortmerna/sample01_16S18S.fastq out1=/home/oschakoo/testRiboTaxa/sample01/output_sortmerna/sample01_R1_16S18Sreads.fastq out2=/home/oschakoo/testRiboTaxa/sample01/output_sortmerna/sample01_R2_16S18Sreads.fastq overwrite=t
 Saving results...
->Filtering 16S/18S using sortmerna ends successfully on : lun. 31 oct. 2022 13:40:09 CET
+>Filtering 16S/18S using sortmerna ends successfully on : mer. nov. 2 13:22:02 CET 2022
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
->Reconstructing 16S18S using EMIRGE starting on : lun. 31 oct. 2022 13:40:09 CET
+>Reconstructing 16S18S using EMIRGE starting on : mer. nov. 2 13:22:02 CET 2022
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Database directory for EMIRGE = /home/oschakoo/Documents/Databases/SILVA_p1600_e1900/bowtie_indexed_DB
+Database directory for EMIRGE = /storage/groups/medis/Databases/silva138_p1600_e1900/bowtie_indexed_DB
 command line :
-emirge_amplicon.py 	-1 /home/oschakoo/RiboTaxa_test/test_data/sample01/output_sortmerna/sample01_R1_16S18Sreads.fastq 	-f /home/oschakoo/Documents/Databases/SILVA_p1600_e1900/bowtie_indexed_DB/SILVA_p1600_e1900_clustered_fixed.fasta 	-b /home/oschakoo/Documents/Databases/SILVA_p1600_e1900/bowtie_indexed_DB/SILVA_p1600_e1900_bowtie_indexed 	-l 300 	-2 /home/oschakoo/RiboTaxa_test/test_data/sample01/output_sortmerna/sample01_R2_16S18Sreads.fastq 	-j 1 	-n 20 	-i 300 	-s 100 	-a 8 	-c 0.3 	--phred33 /home/oschakoo/RiboTaxa_test/test_data/sample01/SSU_sequences/output_emirge/sample01_amplicon_16S18S_recons
+emirge_amplicon.py 	-1 /home/oschakoo/testRiboTaxa/sample01/output_sortmerna/sample01_R1_16S18Sreads.fastq 	-f /storage/groups/medis/Databases/silva138_p1600_e1900/bowtie_indexed_DB/SILVA_p1600_e1900_clustered_fixed.fasta 	-b /storage/groups/medis/Databases/silva138_p1600_e1900/bowtie_indexed_DB/SILVA_p1600_e1900_bowtie_indexed 	-l 300 	-2 /home/oschakoo/testRiboTaxa/sample01/output_sortmerna/sample01_R2_16S18Sreads.fastq 	-j 1 	-n 20 	-i 300 	-s 100 	-a 50 	-c 0.3 	--phred33 /home/oschakoo/testRiboTaxa/sample01/SSU_sequences/output_emirge/sample01_amplicon_16S18S_recons
 If you use EMIRGE in your work, please cite these manuscripts, as appropriate.
 
 Miller CS, Baker BJ, Thomas BC, Singer SW, Banfield JF (2011)
@@ -110,400 +110,400 @@ Miller CS, Handley KM, Wrighton KC, Frischkorn KR, Thomas BC, Banfield JF (2013)
 Short-Read Assembly of Full-Length 16S Amplicons Reveals Bacterial Diversity in Subsurface Sediments.
 PloS one 8: e56018. doi:10.1371/journal.pone.0056018.
 
-imported _emirge C functions from: /home/oschakoo/miniconda3/envs/RiboTaxa_py27/lib/python2.7/site-packages/_emirge_amplicon.so
+imported _emirge C functions from: /storage/groups/medis/miniconda3/envs/RiboTaxa_py27/lib/python2.7/site-packages/_emirge_amplicon.so
 Command:
-/home/oschakoo/miniconda3/envs/RiboTaxa_py27/bin/emirge_amplicon.py -1 /home/oschakoo/RiboTaxa_test/test_data/sample01/output_sortmerna/sample01_R1_16S18Sreads.fastq -f /home/oschakoo/Documents/Databases/SILVA_p1600_e1900/bowtie_indexed_DB/SILVA_p1600_e1900_clustered_fixed.fasta -b /home/oschakoo/Documents/Databases/SILVA_p1600_e1900/bowtie_indexed_DB/SILVA_p1600_e1900_bowtie_indexed -l 300 -2 /home/oschakoo/RiboTaxa_test/test_data/sample01/output_sortmerna/sample01_R2_16S18Sreads.fastq -j 1 -n 20 -i 300 -s 100 -a 8 -c 0.3 --phred33 /home/oschakoo/RiboTaxa_test/test_data/sample01/SSU_sequences/output_emirge/sample01_amplicon_16S18S_recons
+/storage/groups/medis/miniconda3/envs/RiboTaxa_py27/bin/emirge_amplicon.py -1 /home/oschakoo/testRiboTaxa/sample01/output_sortmerna/sample01_R1_16S18Sreads.fastq -f /storage/groups/medis/Databases/silva138_p1600_e1900/bowtie_indexed_DB/SILVA_p1600_e1900_clustered_fixed.fasta -b /storage/groups/medis/Databases/silva138_p1600_e1900/bowtie_indexed_DB/SILVA_p1600_e1900_bowtie_indexed -l 300 -2 /home/oschakoo/testRiboTaxa/sample01/output_sortmerna/sample01_R2_16S18Sreads.fastq -j 1 -n 20 -i 300 -s 100 -a 50 -c 0.3 --phred33 /home/oschakoo/testRiboTaxa/sample01/SSU_sequences/output_emirge/sample01_amplicon_16S18S_recons
 
-EMIRGE started at Mon Oct 31 13:40:09 2022
-Time loading reference: 00:00:00
+EMIRGE started at Wed Nov  2 13:22:05 2022
+Time loading reference: 00:00:01
 Time loading forward index: 00:00:00
 Time loading mirror index: 00:00:00
-Seeded quality full-index search: 00:00:00
+Seeded quality full-index search: 00:00:01
 # reads processed: 1004
-# reads with at least one reported alignment: 125 (12.45%)
-# reads that failed to align: 879 (87.55%)
-Reported 125 paired-end alignments
-Time searching: 00:00:00
-Overall time: 00:00:00
-usearch v11.0.667_i86linux32, 4.0Gb RAM (16.0Gb total), 8 cores
-(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
-https://drive5.com/usearch
+# reads with at least one reported alignment: 126 (12.55%)
+# reads that failed to align: 878 (87.45%)
+Reported 126 paired-end alignments
+Time searching: 00:00:02
+Overall time: 00:00:02
+usearch v7.0.1090_i86linux32, 4.0Gb RAM (132Gb total), 32 cores
+(C) Copyright 2013 Robert C. Edgar, all rights reserved.
+http://drive5.com/usearch
 
-License: personal use only
-
-Time loading reference: 00:00:00
-Time loading forward index: 00:00:00
-Time loading mirror index: 00:00:00
-Seeded quality full-index search: 00:00:00
-# reads processed: 1004
-# reads with at least one reported alignment: 117 (11.65%)
-# reads that failed to align: 887 (88.35%)
-Reported 205 paired-end alignments
-Time searching: 00:00:00
-Overall time: 00:00:00
-usearch v11.0.667_i86linux32, 4.0Gb RAM (16.0Gb total), 8 cores
-(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
-https://drive5.com/usearch
-
-License: personal use only
+License: supportcrri@clermont-universite.fr
 
 Time loading reference: 00:00:00
 Time loading forward index: 00:00:00
 Time loading mirror index: 00:00:00
 Seeded quality full-index search: 00:00:00
 # reads processed: 1004
-# reads with at least one reported alignment: 117 (11.65%)
-# reads that failed to align: 887 (88.35%)
-Reported 206 paired-end alignments
+# reads with at least one reported alignment: 114 (11.35%)
+# reads that failed to align: 890 (88.65%)
+Reported 171 paired-end alignments
 Time searching: 00:00:00
 Overall time: 00:00:00
-usearch v11.0.667_i86linux32, 4.0Gb RAM (16.0Gb total), 8 cores
-(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
-https://drive5.com/usearch
+usearch v7.0.1090_i86linux32, 4.0Gb RAM (132Gb total), 32 cores
+(C) Copyright 2013 Robert C. Edgar, all rights reserved.
+http://drive5.com/usearch
 
-License: personal use only
-
-Time loading reference: 00:00:00
-Time loading forward index: 00:00:00
-Time loading mirror index: 00:00:00
-Seeded quality full-index search: 00:00:00
-# reads processed: 1004
-# reads with at least one reported alignment: 117 (11.65%)
-# reads that failed to align: 887 (88.35%)
-Reported 205 paired-end alignments
-Time searching: 00:00:00
-Overall time: 00:00:00
-usearch v11.0.667_i86linux32, 4.0Gb RAM (16.0Gb total), 8 cores
-(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
-https://drive5.com/usearch
-
-License: personal use only
-
-Time loading reference: 00:00:00
-Time loading forward index: 00:00:00
-Time loading mirror index: 00:00:00
-Seeded quality full-index search: 00:00:00
-# reads processed: 1004
-# reads with at least one reported alignment: 117 (11.65%)
-# reads that failed to align: 887 (88.35%)
-Reported 205 paired-end alignments
-Time searching: 00:00:00
-Overall time: 00:00:00
-usearch v11.0.667_i86linux32, 4.0Gb RAM (16.0Gb total), 8 cores
-(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
-https://drive5.com/usearch
-
-License: personal use only
-
-Time loading reference: 00:00:00
-Time loading forward index: 00:00:00
-Time loading mirror index: 00:00:00
-Seeded quality full-index search: 00:00:00
-# reads processed: 1004
-# reads with at least one reported alignment: 117 (11.65%)
-# reads that failed to align: 887 (88.35%)
-Reported 205 paired-end alignments
-Time searching: 00:00:00
-Overall time: 00:00:00
-usearch v11.0.667_i86linux32, 4.0Gb RAM (16.0Gb total), 8 cores
-(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
-https://drive5.com/usearch
-
-License: personal use only
-
-Time loading reference: 00:00:00
-Time loading forward index: 00:00:00
-Time loading mirror index: 00:00:00
-Seeded quality full-index search: 00:00:00
-# reads processed: 1004
-# reads with at least one reported alignment: 117 (11.65%)
-# reads that failed to align: 887 (88.35%)
-Reported 206 paired-end alignments
-Time searching: 00:00:00
-Overall time: 00:00:00
-usearch v11.0.667_i86linux32, 4.0Gb RAM (16.0Gb total), 8 cores
-(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
-https://drive5.com/usearch
-
-License: personal use only
-
-Time loading reference: 00:00:00
-Time loading forward index: 00:00:00
-Time loading mirror index: 00:00:00
-Seeded quality full-index search: 00:00:00
-# reads processed: 1004
-# reads with at least one reported alignment: 117 (11.65%)
-# reads that failed to align: 887 (88.35%)
-Reported 206 paired-end alignments
-Time searching: 00:00:00
-Overall time: 00:00:00
-usearch v11.0.667_i86linux32, 4.0Gb RAM (16.0Gb total), 8 cores
-(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
-https://drive5.com/usearch
-
-License: personal use only
-
-Time loading reference: 00:00:00
-Time loading forward index: 00:00:00
-Time loading mirror index: 00:00:00
-Seeded quality full-index search: 00:00:00
-# reads processed: 1004
-# reads with at least one reported alignment: 117 (11.65%)
-# reads that failed to align: 887 (88.35%)
-Reported 206 paired-end alignments
-Time searching: 00:00:00
-Overall time: 00:00:00
-usearch v11.0.667_i86linux32, 4.0Gb RAM (16.0Gb total), 8 cores
-(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
-https://drive5.com/usearch
-
-License: personal use only
-
-Time loading reference: 00:00:00
-Time loading forward index: 00:00:00
-Time loading mirror index: 00:00:00
-Seeded quality full-index search: 00:00:00
-# reads processed: 1004
-# reads with at least one reported alignment: 117 (11.65%)
-# reads that failed to align: 887 (88.35%)
-Reported 206 paired-end alignments
-Time searching: 00:00:00
-Overall time: 00:00:00
-usearch v11.0.667_i86linux32, 4.0Gb RAM (16.0Gb total), 8 cores
-(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
-https://drive5.com/usearch
-
-License: personal use only
-
-Time loading reference: 00:00:00
-Time loading forward index: 00:00:00
-Time loading mirror index: 00:00:00
-Seeded quality full-index search: 00:00:00
-# reads processed: 1004
-# reads with at least one reported alignment: 117 (11.65%)
-# reads that failed to align: 887 (88.35%)
-Reported 206 paired-end alignments
-Time searching: 00:00:00
-Overall time: 00:00:00
-usearch v11.0.667_i86linux32, 4.0Gb RAM (16.0Gb total), 8 cores
-(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
-https://drive5.com/usearch
-
-License: personal use only
-
-Time loading reference: 00:00:00
-Time loading forward index: 00:00:00
-Time loading mirror index: 00:00:00
-Seeded quality full-index search: 00:00:00
-# reads processed: 1004
-# reads with at least one reported alignment: 117 (11.65%)
-# reads that failed to align: 887 (88.35%)
-Reported 206 paired-end alignments
-Time searching: 00:00:00
-Overall time: 00:00:00
-usearch v11.0.667_i86linux32, 4.0Gb RAM (16.0Gb total), 8 cores
-(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
-https://drive5.com/usearch
-
-License: personal use only
-
-Time loading reference: 00:00:00
-Time loading forward index: 00:00:00
-Time loading mirror index: 00:00:00
-Seeded quality full-index search: 00:00:00
-# reads processed: 1004
-# reads with at least one reported alignment: 117 (11.65%)
-# reads that failed to align: 887 (88.35%)
-Reported 206 paired-end alignments
-Time searching: 00:00:00
-Overall time: 00:00:00
-usearch v11.0.667_i86linux32, 4.0Gb RAM (16.0Gb total), 8 cores
-(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
-https://drive5.com/usearch
-
-License: personal use only
+License: supportcrri@clermont-universite.fr
 
 Time loading reference: 00:00:00
 Time loading forward index: 00:00:00
 Time loading mirror index: 00:00:00
 Seeded quality full-index search: 00:00:01
 # reads processed: 1004
-# reads with at least one reported alignment: 117 (11.65%)
-# reads that failed to align: 887 (88.35%)
-Reported 206 paired-end alignments
+# reads with at least one reported alignment: 114 (11.35%)
+# reads that failed to align: 890 (88.65%)
+Reported 171 paired-end alignments
 Time searching: 00:00:01
 Overall time: 00:00:01
-usearch v11.0.667_i86linux32, 4.0Gb RAM (16.0Gb total), 8 cores
-(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
-https://drive5.com/usearch
+usearch v7.0.1090_i86linux32, 4.0Gb RAM (132Gb total), 32 cores
+(C) Copyright 2013 Robert C. Edgar, all rights reserved.
+http://drive5.com/usearch
 
-License: personal use only
-
-Time loading reference: 00:00:00
-Time loading forward index: 00:00:00
-Time loading mirror index: 00:00:00
-Seeded quality full-index search: 00:00:00
-# reads processed: 1004
-# reads with at least one reported alignment: 117 (11.65%)
-# reads that failed to align: 887 (88.35%)
-Reported 206 paired-end alignments
-Time searching: 00:00:00
-Overall time: 00:00:00
-usearch v11.0.667_i86linux32, 4.0Gb RAM (16.0Gb total), 8 cores
-(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
-https://drive5.com/usearch
-
-License: personal use only
-
-Time loading reference: 00:00:00
-Time loading forward index: 00:00:00
-Time loading mirror index: 00:00:00
-Seeded quality full-index search: 00:00:00
-# reads processed: 1004
-# reads with at least one reported alignment: 117 (11.65%)
-# reads that failed to align: 887 (88.35%)
-Reported 206 paired-end alignments
-Time searching: 00:00:00
-Overall time: 00:00:00
-usearch v11.0.667_i86linux32, 4.0Gb RAM (16.0Gb total), 8 cores
-(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
-https://drive5.com/usearch
-
-License: personal use only
-
-Time loading reference: 00:00:00
-Time loading forward index: 00:00:00
-Time loading mirror index: 00:00:00
-Seeded quality full-index search: 00:00:00
-# reads processed: 1004
-# reads with at least one reported alignment: 117 (11.65%)
-# reads that failed to align: 887 (88.35%)
-Reported 206 paired-end alignments
-Time searching: 00:00:00
-Overall time: 00:00:00
-usearch v11.0.667_i86linux32, 4.0Gb RAM (16.0Gb total), 8 cores
-(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
-https://drive5.com/usearch
-
-License: personal use only
-
-Time loading reference: 00:00:00
-Time loading forward index: 00:00:00
-Time loading mirror index: 00:00:00
-Seeded quality full-index search: 00:00:00
-# reads processed: 1004
-# reads with at least one reported alignment: 117 (11.65%)
-# reads that failed to align: 887 (88.35%)
-Reported 206 paired-end alignments
-Time searching: 00:00:00
-Overall time: 00:00:00
-usearch v11.0.667_i86linux32, 4.0Gb RAM (16.0Gb total), 8 cores
-(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
-https://drive5.com/usearch
-
-License: personal use only
-
-Time loading reference: 00:00:00
-Time loading forward index: 00:00:00
-Time loading mirror index: 00:00:00
-Seeded quality full-index search: 00:00:00
-# reads processed: 1004
-# reads with at least one reported alignment: 117 (11.65%)
-# reads that failed to align: 887 (88.35%)
-Reported 206 paired-end alignments
-Time searching: 00:00:00
-Overall time: 00:00:00
-usearch v11.0.667_i86linux32, 4.0Gb RAM (16.0Gb total), 8 cores
-(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
-https://drive5.com/usearch
-
-License: personal use only
-
-Time loading reference: 00:00:00
-Time loading forward index: 00:00:00
-Time loading mirror index: 00:00:00
-Seeded quality full-index search: 00:00:00
-# reads processed: 1004
-# reads with at least one reported alignment: 117 (11.65%)
-# reads that failed to align: 887 (88.35%)
-Reported 206 paired-end alignments
-Time searching: 00:00:00
-Overall time: 00:00:00
-usearch v11.0.667_i86linux32, 4.0Gb RAM (16.0Gb total), 8 cores
-(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
-https://drive5.com/usearch
-
-License: personal use only
-
-Time loading reference: 00:00:00
-Time loading forward index: 00:00:00
-Time loading mirror index: 00:00:00
-Seeded quality full-index search: 00:00:00
-# reads processed: 1004
-# reads with at least one reported alignment: 117 (11.65%)
-# reads that failed to align: 887 (88.35%)
-Reported 206 paired-end alignments
-Time searching: 00:00:00
-Overall time: 00:00:00
-usearch v11.0.667_i86linux32, 4.0Gb RAM (16.0Gb total), 8 cores
-(C) Copyright 2013-18 Robert C. Edgar, all rights reserved.
-https://drive5.com/usearch
-
-License: personal use only
+License: supportcrri@clermont-universite.fr
 
 Time loading reference: 00:00:00
 Time loading forward index: 00:00:00
 Time loading mirror index: 00:00:00
 Seeded quality full-index search: 00:00:01
 # reads processed: 1004
-# reads with at least one reported alignment: 117 (11.65%)
-# reads that failed to align: 887 (88.35%)
-Reported 206 paired-end alignments
+# reads with at least one reported alignment: 114 (11.35%)
+# reads that failed to align: 890 (88.65%)
+Reported 171 paired-end alignments
 Time searching: 00:00:01
 Overall time: 00:00:01
-EMIRGE finished at Mon Oct 31 13:40:32 2022.  Total time: 0:00:22.051297
+usearch v7.0.1090_i86linux32, 4.0Gb RAM (132Gb total), 32 cores
+(C) Copyright 2013 Robert C. Edgar, all rights reserved.
+http://drive5.com/usearch
+
+License: supportcrri@clermont-universite.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:00
+# reads processed: 1004
+# reads with at least one reported alignment: 114 (11.35%)
+# reads that failed to align: 890 (88.65%)
+Reported 171 paired-end alignments
+Time searching: 00:00:00
+Overall time: 00:00:00
+usearch v7.0.1090_i86linux32, 4.0Gb RAM (132Gb total), 32 cores
+(C) Copyright 2013 Robert C. Edgar, all rights reserved.
+http://drive5.com/usearch
+
+License: supportcrri@clermont-universite.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:01
+# reads processed: 1004
+# reads with at least one reported alignment: 114 (11.35%)
+# reads that failed to align: 890 (88.65%)
+Reported 171 paired-end alignments
+Time searching: 00:00:01
+Overall time: 00:00:01
+usearch v7.0.1090_i86linux32, 4.0Gb RAM (132Gb total), 32 cores
+(C) Copyright 2013 Robert C. Edgar, all rights reserved.
+http://drive5.com/usearch
+
+License: supportcrri@clermont-universite.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:01
+# reads processed: 1004
+# reads with at least one reported alignment: 114 (11.35%)
+# reads that failed to align: 890 (88.65%)
+Reported 171 paired-end alignments
+Time searching: 00:00:01
+Overall time: 00:00:01
+usearch v7.0.1090_i86linux32, 4.0Gb RAM (132Gb total), 32 cores
+(C) Copyright 2013 Robert C. Edgar, all rights reserved.
+http://drive5.com/usearch
+
+License: supportcrri@clermont-universite.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:01
+# reads processed: 1004
+# reads with at least one reported alignment: 114 (11.35%)
+# reads that failed to align: 890 (88.65%)
+Reported 171 paired-end alignments
+Time searching: 00:00:01
+Overall time: 00:00:01
+usearch v7.0.1090_i86linux32, 4.0Gb RAM (132Gb total), 32 cores
+(C) Copyright 2013 Robert C. Edgar, all rights reserved.
+http://drive5.com/usearch
+
+License: supportcrri@clermont-universite.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:00
+# reads processed: 1004
+# reads with at least one reported alignment: 114 (11.35%)
+# reads that failed to align: 890 (88.65%)
+Reported 171 paired-end alignments
+Time searching: 00:00:00
+Overall time: 00:00:00
+usearch v7.0.1090_i86linux32, 4.0Gb RAM (132Gb total), 32 cores
+(C) Copyright 2013 Robert C. Edgar, all rights reserved.
+http://drive5.com/usearch
+
+License: supportcrri@clermont-universite.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:00
+# reads processed: 1004
+# reads with at least one reported alignment: 114 (11.35%)
+# reads that failed to align: 890 (88.65%)
+Reported 171 paired-end alignments
+Time searching: 00:00:00
+Overall time: 00:00:00
+usearch v7.0.1090_i86linux32, 4.0Gb RAM (132Gb total), 32 cores
+(C) Copyright 2013 Robert C. Edgar, all rights reserved.
+http://drive5.com/usearch
+
+License: supportcrri@clermont-universite.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:01
+# reads processed: 1004
+# reads with at least one reported alignment: 114 (11.35%)
+# reads that failed to align: 890 (88.65%)
+Reported 171 paired-end alignments
+Time searching: 00:00:01
+Overall time: 00:00:01
+usearch v7.0.1090_i86linux32, 4.0Gb RAM (132Gb total), 32 cores
+(C) Copyright 2013 Robert C. Edgar, all rights reserved.
+http://drive5.com/usearch
+
+License: supportcrri@clermont-universite.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:01
+# reads processed: 1004
+# reads with at least one reported alignment: 114 (11.35%)
+# reads that failed to align: 890 (88.65%)
+Reported 171 paired-end alignments
+Time searching: 00:00:01
+Overall time: 00:00:01
+usearch v7.0.1090_i86linux32, 4.0Gb RAM (132Gb total), 32 cores
+(C) Copyright 2013 Robert C. Edgar, all rights reserved.
+http://drive5.com/usearch
+
+License: supportcrri@clermont-universite.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:00
+# reads processed: 1004
+# reads with at least one reported alignment: 114 (11.35%)
+# reads that failed to align: 890 (88.65%)
+Reported 171 paired-end alignments
+Time searching: 00:00:00
+Overall time: 00:00:00
+usearch v7.0.1090_i86linux32, 4.0Gb RAM (132Gb total), 32 cores
+(C) Copyright 2013 Robert C. Edgar, all rights reserved.
+http://drive5.com/usearch
+
+License: supportcrri@clermont-universite.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:01
+# reads processed: 1004
+# reads with at least one reported alignment: 114 (11.35%)
+# reads that failed to align: 890 (88.65%)
+Reported 171 paired-end alignments
+Time searching: 00:00:01
+Overall time: 00:00:01
+usearch v7.0.1090_i86linux32, 4.0Gb RAM (132Gb total), 32 cores
+(C) Copyright 2013 Robert C. Edgar, all rights reserved.
+http://drive5.com/usearch
+
+License: supportcrri@clermont-universite.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:01
+# reads processed: 1004
+# reads with at least one reported alignment: 114 (11.35%)
+# reads that failed to align: 890 (88.65%)
+Reported 171 paired-end alignments
+Time searching: 00:00:01
+Overall time: 00:00:01
+usearch v7.0.1090_i86linux32, 4.0Gb RAM (132Gb total), 32 cores
+(C) Copyright 2013 Robert C. Edgar, all rights reserved.
+http://drive5.com/usearch
+
+License: supportcrri@clermont-universite.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:01
+# reads processed: 1004
+# reads with at least one reported alignment: 114 (11.35%)
+# reads that failed to align: 890 (88.65%)
+Reported 171 paired-end alignments
+Time searching: 00:00:01
+Overall time: 00:00:01
+usearch v7.0.1090_i86linux32, 4.0Gb RAM (132Gb total), 32 cores
+(C) Copyright 2013 Robert C. Edgar, all rights reserved.
+http://drive5.com/usearch
+
+License: supportcrri@clermont-universite.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:00
+# reads processed: 1004
+# reads with at least one reported alignment: 114 (11.35%)
+# reads that failed to align: 890 (88.65%)
+Reported 171 paired-end alignments
+Time searching: 00:00:00
+Overall time: 00:00:00
+usearch v7.0.1090_i86linux32, 4.0Gb RAM (132Gb total), 32 cores
+(C) Copyright 2013 Robert C. Edgar, all rights reserved.
+http://drive5.com/usearch
+
+License: supportcrri@clermont-universite.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:01
+# reads processed: 1004
+# reads with at least one reported alignment: 114 (11.35%)
+# reads that failed to align: 890 (88.65%)
+Reported 171 paired-end alignments
+Time searching: 00:00:01
+Overall time: 00:00:01
+usearch v7.0.1090_i86linux32, 4.0Gb RAM (132Gb total), 32 cores
+(C) Copyright 2013 Robert C. Edgar, all rights reserved.
+http://drive5.com/usearch
+
+License: supportcrri@clermont-universite.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:01
+# reads processed: 1004
+# reads with at least one reported alignment: 114 (11.35%)
+# reads that failed to align: 890 (88.65%)
+Reported 171 paired-end alignments
+Time searching: 00:00:01
+Overall time: 00:00:01
+usearch v7.0.1090_i86linux32, 4.0Gb RAM (132Gb total), 32 cores
+(C) Copyright 2013 Robert C. Edgar, all rights reserved.
+http://drive5.com/usearch
+
+License: supportcrri@clermont-universite.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:00
+# reads processed: 1004
+# reads with at least one reported alignment: 114 (11.35%)
+# reads that failed to align: 890 (88.65%)
+Reported 171 paired-end alignments
+Time searching: 00:00:00
+Overall time: 00:00:00
+usearch v7.0.1090_i86linux32, 4.0Gb RAM (132Gb total), 32 cores
+(C) Copyright 2013 Robert C. Edgar, all rights reserved.
+http://drive5.com/usearch
+
+License: supportcrri@clermont-universite.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:00
+# reads processed: 1004
+# reads with at least one reported alignment: 114 (11.35%)
+# reads that failed to align: 890 (88.65%)
+Reported 171 paired-end alignments
+Time searching: 00:00:00
+Overall time: 00:00:00
+usearch v7.0.1090_i86linux32, 4.0Gb RAM (132Gb total), 32 cores
+(C) Copyright 2013 Robert C. Edgar, all rights reserved.
+http://drive5.com/usearch
+
+License: supportcrri@clermont-universite.fr
+
+Time loading reference: 00:00:00
+Time loading forward index: 00:00:00
+Time loading mirror index: 00:00:00
+Seeded quality full-index search: 00:00:00
+# reads processed: 1004
+# reads with at least one reported alignment: 114 (11.35%)
+# reads that failed to align: 890 (88.65%)
+Reported 171 paired-end alignments
+Time searching: 00:00:00
+Overall time: 00:00:00
+EMIRGE finished at Wed Nov  2 13:22:56 2022.  Total time: 0:00:50.866713
 Merging iterations into fasta sequence... 
 command line :
-emirge_rename_fasta.py --no_N /home/oschakoo/RiboTaxa_test/test_data/sample01/SSU_sequences/output_emirge/sample01_amplicon_16S18S_recons/iter.20 > /home/oschakoo/RiboTaxa_test/test_data/sample01/SSU_sequences/output_emirge/sample01_renamed_16S18S_recons.fasta
->Running MetaRib to reconstruct 16S/18S full length sequences...lun. 31 oct. 2022 13:40:32 CET
+emirge_rename_fasta.py --no_N /home/oschakoo/testRiboTaxa/sample01/SSU_sequences/output_emirge/sample01_amplicon_16S18S_recons/iter.20 > /home/oschakoo/testRiboTaxa/sample01/SSU_sequences/output_emirge/sample01_renamed_16S18S_recons.fasta
+>Running MetaRib to reconstruct 16S/18S full length sequences...mer. nov. 2 13:22:58 CET 2022
 command line :
-python2 /home/oschakoo/RiboTaxa_test/scripts/run_MetaRib_PE.py -cfg /home/oschakoo/RiboTaxa_test/test_data/RiboTaxa_arguments.conf -p /home/oschakoo/RiboTaxa_test/test_data/sample01/quality_control -b /home/oschakoo/Documents/Databases/SILVA_p1600_e1900/bowtie_indexed_DB/SILVA_p1600_e1900_bowtie_indexed -l /home/oschakoo/Documents/Databases/SILVA_p1600_e1900/bowtie_indexed_DB/SILVA_p1600_e1900_clustered_fixed.fasta -o /home/oschakoo/RiboTaxa_test/test_data/sample01/SSU_sequences/output_MetaRib
+python2 /storage/groups/medis/RiboTaxa/scripts/run_MetaRib_PE.py -cfg /storage/groups/medis/RiboTaxa/test_data/RiboTaxa_arguments.conf -p /home/oschakoo/testRiboTaxa/sample01/quality_control -b /storage/groups/medis/Databases/silva138_p1600_e1900/bowtie_indexed_DB/SILVA_p1600_e1900_bowtie_indexed -l /storage/groups/medis/Databases/silva138_p1600_e1900/bowtie_indexed_DB/SILVA_p1600_e1900_clustered_fixed.fasta -o /home/oschakoo/testRiboTaxa/sample01/SSU_sequences/output_MetaRib
 ====START ITERATION 1====
-Iteration: 1	Total contigs: 15	New contigs: 15	unmapped fastq (MB): 50.78
+Iteration: 1	Total contigs: 16	New contigs: 16	unmapped fastq (MB): 50.78
 ====FINISH ITERATION 1====
 ====START LAST ITERATION 2====
-Iteration: 2	Total contigs: 15	New contigs: 0
+Iteration: 2	Total contigs: 16	New contigs: 0
 ====FINISH ITERATION 2====
 ====START POSTPROCESSING====
 ====FINISH POSTPROCESSING====
 ====PROGRAM FINISHED!====
 Saving results...
 Finalising reconstructed sequences...
->Reconstructing 16S/18S sequences ends successfully on : lun. 31 oct. 2022 13:42:51 CET
+>Reconstructing 16S/18S sequences ends successfully on : mer. nov. 2 13:25:05 CET 2022
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
->Relative abundance calculation starting on : lun. 31 oct. 2022 13:42:51 CET
+>Relative abundance calculation starting on : mer. nov. 2 13:25:05 CET 2022
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 >Calculating relative abundances of reconstructed sequences...
 command line :
-bbmap.sh -Xmx12g in1=/home/oschakoo/RiboTaxa_test/test_data/sample01/quality_control/sample01_1_trimmed.fastq 	in2=/home/oschakoo/RiboTaxa_test/test_data/sample01/quality_control/sample01_2_trimmed.fastq 	ref=/home/oschakoo/RiboTaxa_test/test_data/sample01/SSU_sequences/sample01_emirge_metarib_SSU_sequences.fasta 	path=/home/oschakoo/RiboTaxa_test/test_data/sample01/SSU_sequences/ 	covstats=/home/oschakoo/RiboTaxa_test/test_data/sample01/SSU_sequences/sample01_covstats.txt 	threads=8 	scafstats=/home/oschakoo/RiboTaxa_test/test_data/sample01/SSU_sequences/sample01_scafstats.txt 
+bbmap.sh -Xmx80g in1=/home/oschakoo/testRiboTaxa/sample01/quality_control/sample01_1_trimmed.fastq 	in2=/home/oschakoo/testRiboTaxa/sample01/quality_control/sample01_2_trimmed.fastq 	ref=/home/oschakoo/testRiboTaxa/sample01/SSU_sequences/sample01_emirge_metarib_SSU_sequences.fasta 	path=/home/oschakoo/testRiboTaxa/sample01/SSU_sequences/ 	covstats=/home/oschakoo/testRiboTaxa/sample01/SSU_sequences/sample01_covstats.txt 	threads=50 	scafstats=/home/oschakoo/testRiboTaxa/sample01/SSU_sequences/sample01_scafstats.txt 
 Saving results...
->Relative abundance calculation ends successfully on : lun. 31 oct. 2022 13:43:16 CET
+>Relative abundance calculation ends successfully on : mer. nov. 2 13:25:37 CET 2022
 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
->Taxonomic classification using sklearn classifier of QIIME2020.8 ... lun. 31 oct. 2022 13:43:17 CET
+>Taxonomic classification using sklearn classifier of QIIME2020.8 ... mer. nov. 2 13:25:45 CET 2022
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Importing data ...
 command line :
-qiime tools import   --input-path /home/oschakoo/RiboTaxa_test/test_data/sample01/SSU_sequences/sample01_SSU_sequences.fasta   --output-path /home/oschakoo/RiboTaxa_test/test_data/sample01/Taxonomy/sample01_SSU_sequences_qiime2.qza   --type FeatureData[Sequence]
-Imported /home/oschakoo/RiboTaxa_test/test_data/sample01/SSU_sequences/sample01_SSU_sequences.fasta as DNASequencesDirectoryFormat to /home/oschakoo/RiboTaxa_test/test_data/sample01/Taxonomy/sample01_SSU_sequences_qiime2.qza
+qiime tools import   --input-path /home/oschakoo/testRiboTaxa/sample01/SSU_sequences/sample01_SSU_sequences.fasta   --output-path /home/oschakoo/testRiboTaxa/sample01/Taxonomy/sample01_SSU_sequences_qiime2.qza   --type FeatureData[Sequence]
+Imported /home/oschakoo/testRiboTaxa/sample01/SSU_sequences/sample01_SSU_sequences.fasta as DNASequencesDirectoryFormat to /home/oschakoo/testRiboTaxa/sample01/Taxonomy/sample01_SSU_sequences_qiime2.qza
 >Classifying reconstructed sequences using sklearn_classifer...
 command line :
-qiime feature-classifier classify-sklearn   --i-classifier /home/oschakoo/Documents/Databases/qiime2020.8_silva138/silva-138-99-nb-classifier.qza   --i-reads /home/oschakoo/RiboTaxa_test/test_data/sample01/Taxonomy/sample01_SSU_sequences_qiime2.qza    --o-classification /home/oschakoo/RiboTaxa_test/test_data/sample01/Taxonomy/sample01_renamed_16S18S_recons_qiime2_taxonomy   --p-n-jobs 1   --p-confidence 0.7   --p-reads-per-batch 0   --verbose   --p-read-orientation same
-Saved FeatureData[Taxonomy] to: /home/oschakoo/RiboTaxa_test/test_data/sample01/Taxonomy/sample01_renamed_16S18S_recons_qiime2_taxonomy.qza
-Archive:  /home/oschakoo/RiboTaxa_test/test_data/sample01/Taxonomy/sample01_renamed_16S18S_recons_qiime2_taxonomy.qza
+qiime feature-classifier classify-sklearn   --i-classifier /storage/groups/medis/Databases/qiime2020.8_silva138/silva-138-99-nb-classifier.qza   --i-reads /home/oschakoo/testRiboTaxa/sample01/Taxonomy/sample01_SSU_sequences_qiime2.qza    --o-classification /home/oschakoo/testRiboTaxa/sample01/Taxonomy/sample01_renamed_16S18S_recons_qiime2_taxonomy   --p-n-jobs 1   --p-confidence 0.7   --p-reads-per-batch auto   --verbose   --p-read-orientation same
+Saved FeatureData[Taxonomy] to: /home/oschakoo/testRiboTaxa/sample01/Taxonomy/sample01_renamed_16S18S_recons_qiime2_taxonomy.qza
+Archive:  /home/oschakoo/testRiboTaxa/sample01/Taxonomy/sample01_renamed_16S18S_recons_qiime2_taxonomy.qza
   inflating: taxonomy.tsv            
 Finalising abundance table...
->Taxonomic classification using sklearn_classifer ends successfully on : lun. 31 oct. 2022 13:44:46 CET
+>Taxonomic classification using sklearn_classifer ends successfully on : mer. nov. 2 13:28:54 CET 2022

@@ -1,11 +1,11 @@
-java -ea -Xmx12g -Xms12g -cp /home/oschakoo/miniconda3/envs/RiboTaxa_py27/opt/bbmap-38.87-0/current/ jgi.ReformatReads -Xmx12g in=/home/oschakoo/RiboTaxa_test/test_data/sample01/SSU_sequences/output_MetaRib/Iteration/iter_1/emirge_amp/iter.20/current.sorted.fasta out=/home/oschakoo/RiboTaxa_test/test_data/sample01/SSU_sequences/output_MetaRib/Iteration/iter_1/emirge_amp/iter.20/current.uniqname.fasta threads=8 uniquenames
-Executing jgi.ReformatReads [-Xmx12g, in=/home/oschakoo/RiboTaxa_test/test_data/sample01/SSU_sequences/output_MetaRib/Iteration/iter_1/emirge_amp/iter.20/current.sorted.fasta, out=/home/oschakoo/RiboTaxa_test/test_data/sample01/SSU_sequences/output_MetaRib/Iteration/iter_1/emirge_amp/iter.20/current.uniqname.fasta, threads=8, uniquenames]
+java -ea -Xmx12g -Xms12g -cp /home/oschakoo/miniconda3/envs/RiboTaxa_py27/opt/bbmap-38.87-0/current/ jgi.ReformatReads -Xmx12g in=/home/oschakoo/RiboTaxa/test_data/sample01/SSU_sequences/output_MetaRib/Iteration/iter_1/emirge_amp/iter.20/current.sorted.fasta out=/home/oschakoo/RiboTaxa/test_data/sample01/SSU_sequences/output_MetaRib/Iteration/iter_1/emirge_amp/iter.20/current.uniqname.fasta threads=8 uniquenames
+Executing jgi.ReformatReads [-Xmx12g, in=/home/oschakoo/RiboTaxa/test_data/sample01/SSU_sequences/output_MetaRib/Iteration/iter_1/emirge_amp/iter.20/current.sorted.fasta, out=/home/oschakoo/RiboTaxa/test_data/sample01/SSU_sequences/output_MetaRib/Iteration/iter_1/emirge_amp/iter.20/current.uniqname.fasta, threads=8, uniquenames]
 
 Set threads to 8
 Input is being processed as unpaired
-Input:                  	15 reads          	21888 bases
-Output:                 	15 reads (100.00%) 	21888 bases (100.00%)
+Input:                  	17 reads          	24440 bases
+Output:                 	17 reads (100.00%) 	24440 bases (100.00%)
 
-Time:                         	0.052 seconds.
-Reads Processed:          15 	0.29k reads/sec
-Bases Processed:       21888 	0.42m bases/sec
+Time:                         	0.060 seconds.
+Reads Processed:          17 	0.28k reads/sec
+Bases Processed:       24440 	0.40m bases/sec

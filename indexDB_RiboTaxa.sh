@@ -54,7 +54,7 @@ echo "Clustering and indexing database for sortmerna... " `date` | tee /dev/fd/3
 echo "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" | tee /dev/fd/3
 echo ""
 
-matam_db_preprocessing.py -i "$DB_DIR"  \
+python3 "$RiboTaxa_DIR"/scripts/matam_db_preprocessing.py -i "$DB_DIR"  \
 	--clustering_id_threshold $CLUSTER_ID \
 	-d "$OUTPUT"/sortmerna_indexed_DB \
 	--out_db_name "$SHORTNAME"_indexed \

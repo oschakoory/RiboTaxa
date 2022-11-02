@@ -1,6 +1,6 @@
 <img align="right" src="docs/RiboaTaxa_Icon.png" width="200" alt="RiboTaxa logo"/>
 
-# RiboTaxa v1.4
+# RiboTaxa v1.5
 
 by Oshma Chakoory, Sophie Marre, and Pierre Peyret.
 

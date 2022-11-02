@@ -26,7 +26,7 @@ Oshma Chakoory, Sophie Comtet-Marre, Pierre Peyret, RiboTaxa: combined approache
 * [Quick-start](#Quick-start)
 	* [Install Miniconda](#Install-Miniconda)
 	* [Updating-Miniconda](#Updating-Miniconda)
-* [InstallRiboTaxa using conda](#Install-RiboTaxa-within-a-conda-environment)
+* [Install RiboTaxa using conda](#Install-RiboTaxa-within-a-conda-environment)
 * [Indexing databases For RiboTaxa](#Indexing-databases)
 * [Running RiboTaxa](#Running-RiboTaxa-pipeline)
     * [Singled-end dataset(s)](#Singled-end-dataset(s))

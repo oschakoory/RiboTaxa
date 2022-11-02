@@ -567,6 +567,8 @@ rm "$RESULTS"/SSU_sequences/"$SHORTNAME"_length_bySeq.tsv
 rm "$RESULTS"/SSU_sequences/"$SHORTNAME"_RA_length.tsv
 rm "$RESULTS"/SSU_sequences/"$SHORTNAME"_emirge_metarib_SSU_sequences.fasta
 rm "$RESULTS"/SSU_sequences/"$SHORTNAME"_emirge_metarib_clustered_SSU_sequences.fasta
+rm "$RESULTS"/SSU_sequences/output_MetaRib/Iteration/*/*.fq
+rm "$RESULTS"/SSU_sequences/output_MetaRib/Iteration/*/emirge_amp/*/*unmaped*
 
 rm -rf "$RESULTS"/SSU_sequences/ref
 

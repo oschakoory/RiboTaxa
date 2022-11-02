@@ -1,11 +1,11 @@
-java -ea -Xmx12g -Xms12g -cp /home/oschakoo/miniconda3/envs/RiboTaxa_py27/opt/bbmap-38.87-0/current/ jgi.ReformatReads -Xmx12g in=/home/oschakoo/RiboTaxa/test_data/sample01/SSU_sequences/output_MetaRib/Iteration/iter_1/emirge_amp/iter.20/current.sorted.fasta out=/home/oschakoo/RiboTaxa/test_data/sample01/SSU_sequences/output_MetaRib/Iteration/iter_1/emirge_amp/iter.20/current.uniqname.fasta threads=8 uniquenames
-Executing jgi.ReformatReads [-Xmx12g, in=/home/oschakoo/RiboTaxa/test_data/sample01/SSU_sequences/output_MetaRib/Iteration/iter_1/emirge_amp/iter.20/current.sorted.fasta, out=/home/oschakoo/RiboTaxa/test_data/sample01/SSU_sequences/output_MetaRib/Iteration/iter_1/emirge_amp/iter.20/current.uniqname.fasta, threads=8, uniquenames]
+java -ea -Xmx80g -Xms80g -cp /storage/groups/medis/miniconda3/envs/RiboTaxa_py27/opt/bbmap-38.87-0/current/ jgi.ReformatReads -Xmx80g in=/home/oschakoo/testRiboTaxa/sample01/SSU_sequences/output_MetaRib/Iteration/iter_1/emirge_amp/iter.20/current.sorted.fasta out=/home/oschakoo/testRiboTaxa/sample01/SSU_sequences/output_MetaRib/Iteration/iter_1/emirge_amp/iter.20/current.uniqname.fasta threads=50 uniquenames
+Executing jgi.ReformatReads [-Xmx80g, in=/home/oschakoo/testRiboTaxa/sample01/SSU_sequences/output_MetaRib/Iteration/iter_1/emirge_amp/iter.20/current.sorted.fasta, out=/home/oschakoo/testRiboTaxa/sample01/SSU_sequences/output_MetaRib/Iteration/iter_1/emirge_amp/iter.20/current.uniqname.fasta, threads=50, uniquenames]
 
-Set threads to 8
+Set threads to 50
 Input is being processed as unpaired
-Input:                  	17 reads          	24440 bases
-Output:                 	17 reads (100.00%) 	24440 bases (100.00%)
+Input:                  	16 reads          	23196 bases
+Output:                 	16 reads (100.00%) 	23196 bases (100.00%)
 
-Time:                         	0.060 seconds.
-Reads Processed:          17 	0.28k reads/sec
-Bases Processed:       24440 	0.40m bases/sec
+Time:                         	0.142 seconds.
+Reads Processed:          16 	0.11k reads/sec
+Bases Processed:       23196 	0.16m bases/sec

@@ -1,0 +1,11 @@
+java -ea -Xmx80g -Xms80g -cp /storage/groups/medis/miniconda3/envs/RiboTaxa_py27/opt/bbmap-38.87-0/current/ sort.SortByName -Xmx80g in=/home/oschakoo/testRiboTaxa/sample01/SSU_sequences/output_MetaRib/Iteration/iter_2_L/emirge_amp/iter.00/current.merged.fasta out=/home/oschakoo/testRiboTaxa/sample01/SSU_sequences/output_MetaRib/Iteration/iter_2_L/emirge_amp/iter.00/current.sorted.fasta threads=50 length descending
+Executing sort.SortByName [-Xmx80g, in=/home/oschakoo/testRiboTaxa/sample01/SSU_sequences/output_MetaRib/Iteration/iter_2_L/emirge_amp/iter.00/current.merged.fasta, out=/home/oschakoo/testRiboTaxa/sample01/SSU_sequences/output_MetaRib/Iteration/iter_2_L/emirge_amp/iter.00/current.sorted.fasta, threads=50, length, descending]
+
+Set threads to 50
+Input is being processed as unpaired
+Finished reading input.
+Sorting.
+Created a WriteThread for /home/oschakoo/testRiboTaxa/sample01/SSU_sequences/output_MetaRib/Iteration/iter_2_L/emirge_amp/iter.00/current.sorted.fasta
+Time:                         	0.157 seconds.
+Reads Processed:          16 	0.10k reads/sec
+Bases Processed:       23196 	0.15m bases/sec

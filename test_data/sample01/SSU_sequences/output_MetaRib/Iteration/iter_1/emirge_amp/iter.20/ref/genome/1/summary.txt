@@ -1,13 +1,13 @@
 #Summary
-#Generated on	Wed Nov 02 11:39:16 CET 2022
+#Generated on	Wed Nov 02 13:24:28 CET 2022
 #Version	5
 chroms	1
-bases	45240
-defined	24440
-undefined	20800
-contigs	17
-scaffolds	17
+bases	43696
+defined	23196
+undefined	20500
+contigs	16
+scaffolds	16
 interpad	300
-source	/home/oschakoo/RiboTaxa/test_data/sample01/SSU_sequences/output_MetaRib/Iteration/iter_1/emirge_amp/iter.20/all.dedup.fasta
-bytes	25130
-last modified	1667385556733
+source	/home/oschakoo/testRiboTaxa/sample01/SSU_sequences/output_MetaRib/Iteration/iter_1/emirge_amp/iter.20/all.dedup.fasta
+bytes	23861
+last modified	1667391867159

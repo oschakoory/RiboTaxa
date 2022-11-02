@@ -1,9 +1,9 @@
- Wed Nov  2 11:35:57 2022
+ Wed Nov  2 13:21:33 2022
 
- Command: sortmerna --ref /home/oschakoo/Documents/Databases/sortmerna_indexed_DB/SILVA_138.1_SSURef_NR99_tax_silva_indexed.clustered.fasta,/home/oschakoo/Documents/Databases/sortmerna_indexed_DB/SILVA_138.1_SSURef_NR99_tax_silva_indexed.clustered --reads /home/oschakoo/RiboTaxa/test_data/sample01/output_sortmerna/sample01_mergedpaired.fastq --fastx --aligned /home/oschakoo/RiboTaxa/test_data/sample01/output_sortmerna/sample01_16S18S --paired_in -a 8 --log -v 
- Process pid = 21153
+ Command: sortmerna --ref /storage/groups/medis/Databases/sortmerna_indexed_DB/SILVA_138.1_SSURef_NR99_tax_silva_indexed.clustered.fasta,/storage/groups/medis/Databases/sortmerna_indexed_DB/SILVA_138.1_SSURef_NR99_tax_silva_indexed.clustered --reads /home/oschakoo/testRiboTaxa/sample01/output_sortmerna/sample01_mergedpaired.fastq --fastx --aligned /home/oschakoo/testRiboTaxa/sample01/output_sortmerna/sample01_16S18S --paired_in -a 50 --log -v 
+ Process pid = 14129
  Parameters summary:
-    Index: /home/oschakoo/Documents/Databases/sortmerna_indexed_DB/SILVA_138.1_SSURef_NR99_tax_silva_indexed.clustered
+    Index: /storage/groups/medis/Databases/sortmerna_indexed_DB/SILVA_138.1_SSURef_NR99_tax_silva_indexed.clustered
      Seed length = 18
      Pass 1 = 18, Pass 2 = 9, Pass 3 = 3
      Gumbel lambda = 0.605415
@@ -17,8 +17,8 @@
     SW gap extend penalty = 2
     SW ambiguous nucleotide = -3
     SQ tags are not output
-    Number of threads = 8
-    Reads file = /home/oschakoo/RiboTaxa/test_data/sample01/output_sortmerna/sample01_mergedpaired.fastq
+    Number of threads = 50
+    Reads file = /home/oschakoo/testRiboTaxa/sample01/output_sortmerna/sample01_mergedpaired.fastq
 
  Results:
     Total reads = 224140
@@ -28,7 +28,7 @@
     Maximum read length = 300
     Mean read length = 177
  By database:
-    /home/oschakoo/Documents/Databases/sortmerna_indexed_DB/SILVA_138.1_SSURef_NR99_tax_silva_indexed.clustered.fasta		0.74%
+    /storage/groups/medis/Databases/sortmerna_indexed_DB/SILVA_138.1_SSURef_NR99_tax_silva_indexed.clustered.fasta		0.74%
 
- Wed Nov  2 11:36:23 2022
+ Wed Nov  2 13:22:01 2022
 

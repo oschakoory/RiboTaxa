@@ -17,6 +17,23 @@ Tools used in RiboTaxa pipeline:
 
 <img align="center" src="docs/RiboTaxa.png" width="700" alt="RiboTaxa Pipeline"/>
 
+**If you use RiboTaxa in your work, please cite the RiboTaxa paper:**
+
+Oshma Chakoory, Sophie Comtet-Marre, Pierre Peyret, RiboTaxa: combined approaches for rRNA genes taxonomic resolution down to the species level from metagenomics data revealing novelties, NAR Genomics and Bioinformatics, Volume 4, Issue 3, September 2022, lqac070, https://doi.org/10.1093/nargab/lqac070
+
+## Contents ##
+
+* [Quick-start](##-Quick-start)
+	* [Install Miniconda](###-Install-Miniconda)
+	* [Updating-Miniconda](###-Updating-Miniconda)
+* [InstallRiboTaxa using conda](###-Install-RiboTaxa-within-a-conda-environment)
+* [Indexing databases For RiboTaxa](###-Indexing-databases)
+* [Running RiboTaxa](###-Running-RiboTaxa-pipeline)
+    * [Singled-end dataset(s)](#####-Singled-end-dataset(s))
+    * [Paired-end dataset(s)](#####-Paired-end-dataset(s))
+* [Running RiboTaxa on test data](###-Running-RiboTaxa-pipeline-on-test-data)
+* [Group multiple taxonomy files](###-Group-multiple-samples-taxonomy-files-into-one)
+
 ## Quick-start
 
 ### Install Miniconda

@@ -1,0 +1,70 @@
+ID	Domain	Phylum	Class	Order	Family	Genus	Species	Confidence	Length	Assigned_reads	Relative_abundance	
+1002|KY476281.1.1218	d__Bacteria	p__Firmicutes	c__Bacilli	o__Bacillales	f__Bacillaceae	g__Bacillus		0.999999065139736	1218	11	0.000598
+1010|KY476263.1.1215	d__Bacteria	p__Firmicutes	c__Bacilli	o__Bacillales	f__Bacillaceae	g__Bacillus		0.9999988179191216	1215	21	0.001142
+1020|KY621966.1.1208	d__Bacteria	p__Firmicutes	c__Bacilli	o__Bacillales	f__Bacillaceae	g__Bacillus		0.9999979107124589	1208	2	0.000109
+1034|KY621987.1.1201	d__Bacteria	p__Firmicutes	c__Bacilli	o__Bacillales	f__Bacillaceae	g__Bacillus	s__Rodentibacter_pneumotropicus	0.9999874345254418	1201	21	0.001142
+108|X78889.1.1811	d__Eukaryota	p__Phragmoplastophyta	c__Embryophyta	o__Polypodiales	f__Polypodiales	g__Adiantum	s__Adiantum_raddianum	0.9577492192136442	1811	73	0.003970
+115|LMBD01002737.5551.7349	d__Eukaryota	p__Vertebrata	c__Mammalia	o__Mammalia	f__Mammalia	g__Mammalia		0.9999994015343859	1799	339	0.018434
+130|GECJ01021347.145.1894	d__Eukaryota	p__Vertebrata	c__Mammalia	o__Mammalia	f__Mammalia	g__Mammalia		0.9999330576153455	1750	312	0.016966
+173|AB822949.1.1574	d__Bacteria	p__Firmicutes	c__Bacilli	o__Lactobacillales	f__Lactobacillaceae	g__Lactobacillus	s__Lactobacillus_iners	0.7092300109512385	1574	341	0.018543
+175|CP018809.1347636.1349206	d__Bacteria	p__Firmicutes	c__Bacilli	o__Lactobacillales	f__Lactobacillaceae	g__Lactobacillus	s__Lactobacillus_jensenii	0.999943040651308	1571	3366	0.183032
+187|AB559717.1.1566	d__Bacteria	p__Firmicutes	c__Bacilli	o__Lactobacillales	f__Lactobacillaceae	g__Lactobacillus	s__Lactobacillus_coleohominis	0.9999932811757662	1566	272	0.014791
+189|KU161105.1.1566	d__Bacteria	p__Firmicutes	c__Bacilli	o__Lactobacillales	f__Lactobacillaceae	g__Lactobacillus	s__Lactobacillus_iners	0.9999989475264638	1566	34315	1.865941
+18|ADDF02229097.157.2011	d__Eukaryota	p__Vertebrata	c__Mammalia	o__Mammalia	f__Mammalia	g__Mammalia	s__Homo_sapiens	0.9767112134571443	1855	14914	0.810976
+196|AY219900.1.1562	d__Bacteria	p__Firmicutes	c__Bacilli	o__Bacillales	f__Bacillaceae	g__Bacillus		0.9997967962178795	1562	413	0.022458
+212|AY253657.1.1555	d__Bacteria	p__Firmicutes	c__Bacilli	o__Lactobacillales	f__Lactobacillaceae	g__Lactobacillus	s__Lactobacillus_iners	0.9999882030758237	1555	147	0.007993
+217|CP003017.4738540.4740093	d__Bacteria	p__Firmicutes	c__Bacilli	o__Bacillales	f__Bacillaceae	g__Bacillus	s__Bacillus_megaterium	0.8354990972609267	1554	335	0.018216
+246|AY958810.1.1544	d__Bacteria	p__Firmicutes	c__Bacilli	o__Lactobacillales	f__Lactobacillaceae	g__Lactobacillus	s__Lactobacillus_iners	0.7978265008095109	1544	17	0.000924
+253|FJ937927.1.1542	d__Bacteria	p__Firmicutes	c__Bacilli	o__Bacillales	f__Bacillaceae	g__Bacillus		0.999963459781896	1542	516	0.028058
+265|AY959084.1.1539	d__Bacteria	p__Firmicutes	c__Bacilli	o__Lactobacillales	f__Lactobacillaceae	g__Lactobacillus	s__Lactobacillus_iners	0.9951118389767863	1539	115	0.006253
+271|CP019058.1615440.1616976	d__Bacteria	p__Actinobacteriota	c__Actinobacteria	o__Bifidobacteriales	f__Bifidobacteriaceae	g__Gardnerella	s__Gardnerella_vaginalis	0.9801394387395433	1537	814	0.044263
+272|CP021987.266091.267627	d__Bacteria	p__Firmicutes	c__Bacilli	o__Mycoplasmatales	f__Mycoplasmataceae	g__Ureaplasma	s__Ureaplasma_parvum	0.9993743224012317	1537	1183	0.064328
+282|ALBS01000282.5578.7112	d__Eukaryota	p__Basidiomycota	c__Tremellomycetes	o__Trichosporonales	f__Trichosporonaceae	g__Trichosporon	s__Trichosporon_asahii	0.9999976782309782	1535	96	0.005220
+347|AY958804.1.1519	d__Bacteria	p__Firmicutes	c__Bacilli	o__Lactobacillales	f__Lactobacillaceae	g__Lactobacillus		0.999801546851286	1519	38	0.002066
+36|LKHW01000642.782.2627	d__Eukaryota	p__Vertebrata	c__Mammalia	o__Mammalia	f__Mammalia	g__Mammalia	s__Homo_sapiens	0.8145445851066845	1846	851	0.046275
+373|AY958978.1.1515	d__Bacteria	p__Firmicutes	c__Bacilli	o__Lactobacillales	f__Lactobacillaceae	g__Lactobacillus		0.9999999975872434	1515	4	0.000218
+392|AJVZ01000011.66937.68447	d__Bacteria	p__Bacteroidota	c__Bacteroidia	o__Bacteroidales	f__Prevotellaceae	g__Prevotella	s__Prevotella_bivia	0.9999999991252366	1511	268	0.014573
+398|CP021169.2943699.2945208	d__Bacteria	p__Firmicutes	c__Bacilli	o__Bacillales	f__Bacillaceae	g__Bacillus		0.999951885308788	1510	95	0.005166
+425|LZYJ01002326.19597.21099	d__Eukaryota	p__Vertebrata	c__Mammalia	o__Mammalia	f__Mammalia	g__Mammalia	s__Ensifer_sp.	0.9561147212939068	1503	38	0.002066
+45|JN939436.1.1842	d__Eukaryota	p__Basidiomycota	c__Tremellomycetes	o__Trichosporonales	f__Trichosporonaceae	g__Trichosporon	s__Trichosporon_coremiiforme	0.9747639010901255	1842	429	0.023328
+515|LY486205.1.1474	d__Bacteria	p__Firmicutes	c__Bacilli	o__Lactobacillales	f__Lactobacillaceae	g__Lactobacillus	s__Lactobacillus_iners	0.9260253389346955	1474	29	0.001577
+528|JX840373.1.1469	d__Bacteria	p__Firmicutes	c__Bacilli	o__Bacillales	f__Bacillaceae	g__Bacillus		0.9999966086752037	1469	6	0.000326
+533|LBLQ01005451.30.1498	d__Eukaryota	p__Vertebrata	c__Mammalia	o__Mammalia	f__Mammalia	g__Mammalia		0.9999492504389802	1469	47	0.002556
+54|LMBD01004006.31019.32854	d__Eukaryota	p__Vertebrata	c__Mammalia	o__Mammalia	f__Mammalia	g__Mammalia		0.9999995384519162	1836	117	0.006362
+565|JX094923.1.1457	d__Bacteria	p__Firmicutes	c__Bacilli	o__Bacillales	f__Bacillaceae	g__Bacillus		0.9999949270101607	1457	94	0.005111
+573|HM480314.1.1455	d__Bacteria	p__Firmicutes	c__Bacilli	o__Bacillales	f__Bacillaceae	g__Bacillus		0.999919431689395	1455	169	0.009190
+575|KY652126.1.1455	d__Bacteria	p__Firmicutes	c__Bacilli	o__Bacillales	f__Bacillaceae	g__Bacillus		0.9999998298083306	1455	772	0.041979
+591|JF343156.1.1451	d__Bacteria	p__Firmicutes	c__Bacilli	o__Bacillales	f__Bacillaceae	g__Bacillus		0.999992990111441	1451	37	0.002012
+599|MH571523.1.1450	d__Bacteria	p__Firmicutes	c__Bacilli	o__Bacillales	f__Bacillaceae	g__Bacillus	s__bacterium	0.9810242966326623	1450	188	0.010223
+611|EU780733.1.1447	d__Bacteria	p__Firmicutes	c__Bacilli	o__Bacillales	f__Bacillaceae	g__Bacillus		0.9999870746156384	1447	2254	0.122565
+618|AAFC05032335.570.2014	d__Eukaryota	p__Vertebrata	c__Actinopterygii	o__Teleostei	f__Teleostei	g__Teleostei	s__Bos_taurus	0.9839395176761967	1445	26	0.001414
+619|JX094905.1.1445	d__Bacteria	p__Firmicutes	c__Bacilli	o__Bacillales	f__Bacillaceae	g__Bacillus		0.9999992016607007	1445	18	0.000979
+642|MF687394.1.1439	d__Bacteria	p__Firmicutes	c__Bacilli	o__Bacillales	f__Bacillaceae	g__Bacillus		0.9999999792493746	1439	3	0.000163
+649|AB934481.1.1434	d__Bacteria	p__Firmicutes	c__Bacilli	o__Lactobacillales	f__Lactobacillaceae	g__Lactobacillus		0.9999999949931451	1434	85	0.004622
+6|AC118305.133088.134956	d__Eukaryota	p__Vertebrata	c__Mammalia	o__Mammalia	f__Mammalia	g__Mammalia		0.9999992440890099	1869	131	0.007123
+714|AJ272391.1.1421	d__Bacteria	p__Firmicutes	c__Bacilli	o__Lactobacillales	f__Lactobacillaceae	g__Lactobacillus		0.9999999918290058	1421	62	0.003371
+725|FJ584306.1.1418	d__Bacteria	p__Firmicutes	c__Bacilli	o__Bacillales	f__Bacillaceae	g__Bacillus		0.9999991994103818	1418	7	0.000381
+732|MBFK01000143.1.1414	d__Eukaryota	p__Vertebrata	c__Mammalia	o__Mammalia	f__Mammalia	g__Mammalia	s__Ensifer_sp.	0.9997165665518797	1414	3679	0.200052
+742|GDKO01023622.103.1513	d__Eukaryota	p__Vertebrata	c__Mammalia	o__Mammalia	f__Mammalia	g__Mammalia		0.8687374486370744	1411	1616926	87.923337
+748|FN999943.1.1409	d__Bacteria	p__Firmicutes	c__Bacilli	o__Bacillales	f__Bacillaceae	g__Bacillus		0.999999428900375	1409	595	0.032354
+799|KF102928.1.1392	d__Bacteria	p__Firmicutes	c__Bacilli	o__Lactobacillales	f__Lactobacillaceae	g__Lactobacillus	s__Lactobacillus_iners	0.9985140469126982	1392	31	0.001686
+804|JXRI01004457.9105.10495	d__Eukaryota	p__Vertebrata	c__Mammalia	o__Mammalia	f__Mammalia	g__Mammalia		0.9999972667278433	1391	3731	0.202880
+80|GECJ01042265.1.1824	d__Eukaryota	p__Vertebrata	c__Mammalia	o__Mammalia	f__Mammalia	g__Mammalia		0.9999971638796242	1824	97	0.005275
+820|AAFC05032349.519.1904	d__Eukaryota	p__Vertebrata	c__Actinopterygii	o__Teleostei	f__Teleostei	g__Teleostei	s__Bos_taurus	0.9811257265254919	1386	2716	0.147688
+870|KY930498.2186.3541	d__Bacteria	p__Cyanobacteria	c__Cyanobacteriia	o__Chloroplast	f__Chloroplast	g__Chloroplast	s__Chloroplast_expression	0.9999827610338383	1356	213	0.011582
+892|FU295248.18.1357	d__Eukaryota	p__Vertebrata	c__Mammalia	o__Mammalia	f__Mammalia	g__Mammalia	s__Ensifer_sp.	0.7809353612783589	1340	96	0.005220
+899|ABRN02370907.1.1336	d__Eukaryota	p__Vertebrata	c__Mammalia	o__Mammalia	f__Mammalia	g__Mammalia		0.999986515577091	1336	42	0.002284
+922|GBRV01093763.3.1318	d__Bacteria	p__Proteobacteria	c__Gammaproteobacteria	o__Pseudomonadales	f__Moraxellaceae	g__Enhydrobacter	s__Petunia_integrifolia	0.999999987371183	1316	216	0.011745
+927|GECJ01043114.78.1387	d__Eukaryota	p__Vertebrata	c__Mammalia	o__Mammalia	f__Mammalia	g__Mammalia	s__Ensifer_sp.	0.997815683194773	1310	18739	1.018968
+961|GQ379602.1.1266	d__Bacteria	p__Firmicutes	c__Bacilli	o__Bacillales	f__Bacillaceae	g__Bacillus		0.9999691715852399	1266	63	0.003426
+972|AAPY01395710.1.1251	d__Eukaryota	p__Vertebrata	c__Mammalia	o__Mammalia	f__Mammalia	g__Mammalia		0.9999532621953302	1251	122	0.006634
+973|LVMT01000359.2.1252	d__Bacteria	p__Proteobacteria	c__Gammaproteobacteria	o__Enterobacterales	f__Enterobacteriaceae	g__Escherichia-Shigella		0.9984223025317711	1251	3196	0.173788
+976|GBRX01013668.5495.6737	d__Eukaryota	p__Vertebrata	c__Mammalia	o__Mammalia	f__Mammalia	g__Mammalia		0.9999997780102925	1243	8162	0.443824
+977|DD408157.1.1242	d__Eukaryota	p__Vertebrata	c__Mammalia	o__Mammalia	f__Mammalia	g__Mammalia		0.9998345042745859	1242	31	0.001686
+988|KY476268.1.1231	d__Bacteria	p__Firmicutes	c__Bacilli	o__Bacillales	f__Bacillaceae	g__Bacillus		0.9999989085639054	1231	7	0.000381
+992|AAPE02027722.14070.15298	d__Eukaryota	p__Vertebrata	c__Mammalia	o__Mammalia	f__Mammalia	g__Mammalia	s__Ochotona_princeps	0.7282142374497388	1229	28	0.001523
+AGFL01195717.284.1649	d__Eukaryota	p__Vertebrata	c__Mammalia	o__Mammalia	f__Mammalia	g__Mammalia	s__Ensifer_sp.	0.9701888904244462	1366	610	0.033170
+AY959210.1.1546	d__Bacteria	p__Firmicutes	c__Bacilli	o__Lactobacillales	f__Lactobacillaceae	g__Lactobacillus	s__Lactobacillus_iners	0.9996831469554102	1546	2311	0.125665
+EF653422.1.1493	d__Bacteria	p__Firmicutes	c__Bacilli	o__Lactobacillales	f__Lactobacillaceae	g__Lactobacillus	s__Lactobacillus_iners	0.9998716104264063	1493	75	0.004078
+LDOC03003976.1.1418	d__Eukaryota	p__Vertebrata	c__Mammalia	o__Mammalia	f__Mammalia	g__Mammalia		0.9999998190367461	1418	21	0.001142
+LFVW01001116.1.1828	d__Eukaryota	p__Vertebrata	c__Mammalia	o__Mammalia	f__Mammalia	g__Mammalia	s__Kitasatospora_sp.	0.9999999958607759	1828	113920	6.194610

@@ -265,7 +265,7 @@ wide_table <- reshape(long_taxo, idvar = c("Study","Sample"), timevar = c("Taxon
 colnames(wide_table) = gsub("Abundance.", "", colnames(wide_table))
 wide_table <- as.data.frame(t(wide_table),stringsAsFactors=FALSE)
 wide_table[is.na(wide_table)] <- 0
-write.table(wide_table,"Complete_Taxonomy_abundance.csv", row.names = TRUE, col.names = FALSE)
+write.table(wide_table,"Complete_Taxonomy_abundance.csv", row.names = TRUE, col.names = FALSE, sep = "\t")
 
 #convert long table to wide table for genus
 #long_taxo <- read.table(file = 'Family_Taxonomy_abundance.csv', sep = ',', header = TRUE)
@@ -274,7 +274,7 @@ wide_table <- reshape(long_taxo, idvar = c("Study","Sample"), timevar = c("Famil
 colnames(wide_table) = gsub("Abundance.", "", colnames(wide_table))
 wide_table <- as.data.frame(t(wide_table),stringsAsFactors=FALSE)
 wide_table[is.na(wide_table)] <- 0
-write.table(wide_table,"Family_Taxonomy_abundance.csv", row.names = TRUE, col.names = FALSE)
+write.table(wide_table,"Family_Taxonomy_abundance.csv", row.names = TRUE, col.names = FALSE, sep = "\t")
 
 #convert long table to wide table for genus
 #long_taxo <- read.table(file = 'Genus_Taxonomy_abundance.csv', sep = ',', header = TRUE)
@@ -283,7 +283,7 @@ wide_table <- reshape(long_taxo, idvar = c("Study","Sample"), timevar = c("Genus
 colnames(wide_table) = gsub("Abundance.", "", colnames(wide_table))
 wide_table <- as.data.frame(t(wide_table),stringsAsFactors=FALSE)
 wide_table[is.na(wide_table)] <- 0
-write.table(wide_table,"Genus_Taxonomy_abundance.csv", row.names = TRUE, col.names = FALSE)
+write.table(wide_table,"Genus_Taxonomy_abundance.csv", row.names = TRUE, col.names = FALSE, sep = "\t")
 
 #convert long table to wide table for Species
 #long_taxo <- read.table(file = 'Species_Taxonomy_abundance.csv', sep = ',', header = TRUE)
@@ -292,4 +292,4 @@ wide_table <- reshape(long_taxo, idvar = c("Study","Sample"), timevar = c("Speci
 colnames(wide_table) = gsub("Abundance.", "", colnames(wide_table))
 wide_table <- as.data.frame(t(wide_table),stringsAsFactors=FALSE)
 wide_table[is.na(wide_table)] <- 0
-write.table(wide_table,"Species_Taxonomy_abundance.csv", row.names = TRUE, col.names = FALSE)
+write.table(wide_table,"Species_Taxonomy_abundance.csv", row.names = TRUE, col.names = FALSE, sep = "\t")

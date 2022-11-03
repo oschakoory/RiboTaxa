@@ -177,4 +177,4 @@ levels(no_vertebrate_file$Species) <- sub('g__', 's__unclassified_', levels(no_v
 levels(no_vertebrate_file$Species) <- sub('s__unclassified_uncultured_', 's__unclassified_', levels(no_vertebrate_file$Species)) #replace g__ by s__uncultured_
 
 #save results in csv files
-write.csv(no_vertebrate_file, file = paste0(file_name,"_SSU_taxonomy_abundance.tsv"), row.names = FALSE)
+write.table(no_vertebrate_file, file = paste0(file_name,"_SSU_taxonomy_abundance.tsv"), row.names = FALSE, sep = "\t")

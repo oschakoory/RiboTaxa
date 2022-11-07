@@ -5,7 +5,7 @@ __author__='Oshma Chakoory'
 __email__='oshma.chakoory@uca.fr'
 __credits__=["Oshma"]
 __status__='Development'
-__version__='1.4'
+__version__='1.5'
 
 
 # Handling errors
@@ -156,12 +156,18 @@ echo "fastqc $RESULTS/quality_control/"$SHORTNAME"_1_trimmed.$FORMAT  $RESULTS/q
 
 fastqc "$RESULTS"/quality_control/"$SHORTNAME"_1_trimmed.$FORMAT  "$RESULTS"/quality_control/"$SHORTNAME"_2_trimmed.$FORMAT  -dir $RESULTS -o "$RESULTS"/quality_control/after_fastqc
 
+conda deactivate
+
+conda activate multiqc
 echo "Running multiQC..." | tee /dev/fd/3
 
 multiqc -f "$OUTPUT"/*/quality_control/before_fastqc/* --outdir "$OUTPUT/multiqc/before_qc"
 
 multiqc -f "$OUTPUT"/*/quality_control/after_fastqc/* --outdir "$OUTPUT/multiqc/after_qc"
 
+conda deactivate
+
+conda activate RiboTaxa_py27
 echo "Saving results for quality control..." | tee /dev/fd/3
 
 echo ">Quality control ends successfully on : "`date` | tee /dev/fd/3

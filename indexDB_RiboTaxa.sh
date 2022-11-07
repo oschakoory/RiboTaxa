@@ -8,7 +8,7 @@ __author__='Oshma Chakoory'
 __email__='oshma.chakoory@uca.fr'
 __credits__=["Oshma"]
 __status__='Development'
-__version__='1.4'
+__version__='1.5'
 
 # Handling errors
 #set -x # debug mode on

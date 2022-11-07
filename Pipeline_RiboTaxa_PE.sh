@@ -5,7 +5,7 @@ __author__='Oshma Chakoory'
 __email__='oshma.chakoory@uca.fr'
 __credits__=["Oshma"]
 __status__='Development'
-__version__='1.4'
+__version__='1.5'
 
 
 # Handling errors
@@ -44,7 +44,7 @@ echo " "
 echo "RiboTaxa -- A complete pipeline from raw metagenomics to species-level identification" | tee /dev/fd/3
 echo "By Oshma Chakoory, Sophie Marre & Pierre Peyret" | tee /dev/fd/3
 echo "University Clermont Auvergne, France " | tee /dev/fd/3
-echo "Version: 1.4" | tee /dev/fd/3
+echo "Version: 1.5" | tee /dev/fd/3
 
 echo "This program is distributed under the AGPL-3.0 License. See LICENSE for more information." | tee /dev/fd/3
 

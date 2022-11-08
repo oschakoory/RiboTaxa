@@ -18,7 +18,7 @@ set -e
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 #activate virtual environment for RiboTaxa
-source activate RiboTaxa_py36
+conda activate RiboTaxa_py36
 #echo "Qiime2 virtual environment has been activated successfully..." | tee /dev/fd/3
 
 echo ""

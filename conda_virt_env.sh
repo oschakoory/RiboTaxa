@@ -15,6 +15,8 @@ echo ""
 
 conda env create -n RiboTaxa_py27 --file RiboTaxa_py27_requirements.yml
 
-conda env create -n multiqc --file multiqc.yml
+conda env create -n mm --file mm.yml
+
+conda install -c bioconda matam -n mm -y
 
 conda env create -n RiboTaxa_py36 --file RiboTaxa_py36_requirements.yml

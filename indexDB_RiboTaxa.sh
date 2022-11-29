@@ -45,7 +45,8 @@ CLUSTER_ID=$(awk '/^CLUSTER_ID/{print $3}' "${CONFIG}")
 #
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-conda activate RiboTaxa_py36
+conda activate mm
+conda activate mm
 #echo "RiboTaxa virtual environment has been activated successfully..." | tee /dev/fd/3
 
 echo ""
@@ -54,7 +55,7 @@ echo "Clustering and indexing database for sortmerna... " `date` | tee /dev/fd/3
 echo "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" | tee /dev/fd/3
 echo ""
 
-python3 "$RiboTaxa_DIR"/scripts/matam_db_preprocessing.py -i "$DB_DIR"  \
+matam_db_preprocessing.py -i "$DB_DIR"  \
 	--clustering_id_threshold $CLUSTER_ID \
 	-d "$OUTPUT"/sortmerna_indexed_DB \
 	--out_db_name "$SHORTNAME"_indexed \

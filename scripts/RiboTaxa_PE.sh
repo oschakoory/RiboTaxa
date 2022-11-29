@@ -159,8 +159,8 @@ fastqc "$RESULTS"/quality_control/"$SHORTNAME"_1_trimmed.$FORMAT  "$RESULTS"/qua
 conda deactivate
 conda deactivate
 
-conda activate multiqc
-conda activate multiqc
+conda activate mm
+conda activate mm
 echo "Running multiQC..." | tee /dev/fd/3
 
 multiqc -f "$OUTPUT"/*/quality_control/before_fastqc/* --outdir "$OUTPUT/multiqc/before_qc"

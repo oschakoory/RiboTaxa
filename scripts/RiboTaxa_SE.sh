@@ -146,8 +146,10 @@ echo "fastqc $RESULTS/quality_control/"$SHORTNAME"_trimmed.$FORMAT -dir $RESULTS
 fastqc "$RESULTS"/quality_control/"$SHORTNAME"_trimmed.$FORMAT  -dir $RESULTS -o "$RESULTS"/quality_control/after_fastqc
 
 conda deactivate
+conda deactivate
 
-conda activate multiqc
+conda activate mm
+conda activate mm
 
 echo "Running multiQC..." | tee /dev/fd/3
 
@@ -158,7 +160,9 @@ multiqc -f "$OUTPUT"/*/quality_control/after_fastqc/* --outdir "$OUTPUT/multiqc/
 echo "Saving results for quality control..." | tee /dev/fd/3
 
 conda deactivate
+conda deactivate
 
+conda activate RiboTaxa_py27
 conda activate RiboTaxa_py27
 
 echo ">Quality control ends successfully on : "`date` | tee /dev/fd/3

@@ -433,6 +433,8 @@ fi
 #mv "$RESULTS"/output_MetaRib/Iteration "$RESULTS"/SSU_sequences/output_MetaRib/"$SHORTNAME"
 mv "$RESULTS"/SSU_sequences/output_MetaRib/Abundance/all.dedup.fasta "$RESULTS"/SSU_sequences/output_MetaRib
 mv "$RESULTS"/SSU_sequences/output_MetaRib/all.dedup.fasta "$RESULTS"/SSU_sequences/output_MetaRib/MetaRib_SSU.fasta
+rm "$RESULTS"/SSU_sequences/output_MetaRib/Iteration/*/*.fq
+rm "$RESULTS"/SSU_sequences/output_MetaRib/Iteration/*/emirge_amp/*/*unmaped*
 
 #rm -r "$RESULTS"/output_MetaRib
 #rm "$RESULTS"/SSU_sequences/output_MetaRib/"$SHORTNAME"/samples.list.txt
@@ -577,8 +579,6 @@ rm "$RESULTS"/SSU_sequences/"$SHORTNAME"_length_bySeq.tsv
 rm "$RESULTS"/SSU_sequences/"$SHORTNAME"_RA_length.tsv
 rm "$RESULTS"/SSU_sequences/"$SHORTNAME"_emirge_metarib_SSU_sequences.fasta
 rm "$RESULTS"/SSU_sequences/"$SHORTNAME"_emirge_metarib_clustered_SSU_sequences.fasta
-rm "$RESULTS"/SSU_sequences/output_MetaRib/Iteration/*/*.fq
-rm "$RESULTS"/SSU_sequences/output_MetaRib/Iteration/*/emirge_amp/*/*unmaped*
 
 rm -rf "$RESULTS"/SSU_sequences/ref
 

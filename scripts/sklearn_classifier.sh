@@ -191,7 +191,6 @@ fi
 
 echo "Finalising abundance table..." | tee /dev/fd/3
 
-
 cp $RiboTaxa_DIR/scripts/PostRiboTaxa.sh "$RESULTS"/Taxonomy
 
 cd "$RESULTS"/Taxonomy

@@ -215,8 +215,9 @@ for (filename in a[[1]]) {
   #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
   family <- no_vertebrate_file[,c("Family","Relative_abundance")] #extract genus and %abundance
   family_grouped <- family %>% group_by(Family = as.factor(Family)) %>% summarise(Abundance = sum(Relative_abundance)) #group by species and sum up abundance of same species
-  family_final <- family_grouped %>% 
-    filter(str_detect(Family, ''))
+  family_final <- subset(family_grouped, Family != "")  
+  #family_final <- family_grouped %>% 
+  #  filter(str_detect(Family, ''))
   Study_family <- as.data.frame(replicate(nrow(family_final), study))
   Sample_family <- as.data.frame(replicate(nrow(family_final), file_name))
   final_family <- cbind(family_final, Study_family, Sample_family)
@@ -225,8 +226,9 @@ for (filename in a[[1]]) {
   
   genus <- no_vertebrate_file[,c("Genus","Relative_abundance")] #extract genus and %abundance
   genus_grouped <- genus %>% group_by(Genus = as.factor(Genus)) %>% summarise(Abundance = sum(Relative_abundance)) #group by species and sum up abundance of same species
-  genus_final <- genus_grouped %>% 
-    filter(str_detect(Genus, ''))
+  genus_final <- subset(genus_grouped, Genus != "")  
+  #genus_final <- genus_grouped %>% 
+  #  filter(str_detect(Genus, ''))
   Study_Ge <- as.data.frame(replicate(nrow(genus_final), study))
   Sample_Ge <- as.data.frame(replicate(nrow(genus_final), file_name))
   final_Ge <- cbind(genus_final, Study_Ge, Sample_Ge)
@@ -235,8 +237,9 @@ for (filename in a[[1]]) {
   
   species <- no_vertebrate_file[,c("Species","Relative_abundance")] #extract species and %abundance
   species_grouped <- species %>% group_by(Species = as.factor(Species)) %>% summarise(Abundance = sum(Relative_abundance)) #group by species and sum up abundance of same species
-  species_final <- species_grouped %>% 
-    filter(str_detect(Species, ''))
+  species_final <- subset(species_grouped, Species != "")  
+  #species_final <- species_grouped %>% 
+  #  filter(str_detect(Species, ''))
   Study_Sp <- as.data.frame(replicate(nrow(species_final), study))
   Sample_Sp <- as.data.frame(replicate(nrow(species_final), file_name))
   final_Sp <- cbind(species_final, Study_Sp, Sample_Sp)

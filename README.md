@@ -4,6 +4,8 @@
 
 by Oshma Chakoory, Sophie Marre, and Pierre Peyret.
 
+![GitHub All Releases](https://img.shields.io/github/downloads/lewdev/hw-gen/total)
+
 RiboTaxa is a complete pipeline to rapidly filter and reconstruct the full length SSU rRNA gene from Illumina (meta)genomic dataset and perform taxonomic classification on the reconstructed sequences.
 
 RiboTaxa takes as input singled-end or paired-end files which can be in compressed format (fastq.gz) or uncompressed format (.fastq).

@@ -9,6 +9,8 @@ by Oshma Chakoory, Sophie Marre, and Pierre Peyret.
 ![GitHub](https://img.shields.io/badge/views-498-brightgreen)
 ![GitHub all releases](https://img.shields.io/badge/clones-26-red)
 
+[![Hits](https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fgithub.com%2Foschakoory%2FRiboTaxa&count_bg=%2379C83D&title_bg=%23555555&icon=&icon_color=%23E7E7E7&title=Views&edge_flat=false)](https://hits.seeyoufarm.com)
+
 RiboTaxa is a complete pipeline to rapidly filter and reconstruct the full length SSU rRNA gene from Illumina (meta)genomic dataset and perform taxonomic classification on the reconstructed sequences.
 
 RiboTaxa takes as input singled-end or paired-end files which can be in compressed format (fastq.gz) or uncompressed format (.fastq).

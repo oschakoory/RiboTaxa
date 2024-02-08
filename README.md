@@ -113,7 +113,7 @@ Now, you are ready to use RiboTaxa !!!
 
 ### Indexing databases
 
-RiboTaxa pipeline includes tools like sortmerna and emirge, both of which need indexed databases of their own. The latest database SILVA SSU 138.1 can be downloaded <a class="reference external" href="https://www.arb-silva.de/" target="_blank" rel="noopener noreferrer">here</a> and the indexed database SILVA SSU 138.1 for RiboTaxa are available <a class="reference external" href="[https://ucafr-my.sharepoint.com/:f:/g/personal/oshma_chakoory_uca_fr/EkqL_9bA2UpApbEHiB8cfJ4B4BBsMB25O9Xtl29wi2QSIw?e=47rjOP](https://ucafr-my.sharepoint.com/:f:/g/personal/oshma_chakoory_uca_fr/EkqL_9bA2UpApbEHiB8cfJ4B4BBsMB25O9Xtl29wi2QSIw?e=lMrT9n)" target="_blank" rel="noopener noreferrer">here</a>. 
+RiboTaxa pipeline includes tools like sortmerna and emirge, both of which need indexed databases of their own. The latest database SILVA SSU 138.1 can be downloaded <a class="reference external" href="https://www.arb-silva.de/" target="_blank" rel="noopener noreferrer">here</a> and the indexed database SILVA SSU 138.1 for RiboTaxa are available <a class="reference external" href="https://ucafr-my.sharepoint.com/:f:/g/personal/oshma_chakoory_uca_fr/EkqL_9bA2UpApbEHiB8cfJ4B4BBsMB25O9Xtl29wi2QSIw?e=lMrT9n" target="_blank" rel="noopener noreferrer">here</a>. 
 
 To index your own database, you will need to fill the config file ```indexDB_arguments.conf```.If you are not sure of certains parameters, leave as defined except for directories and input files.
 
@@ -154,7 +154,7 @@ Indexing database takes a while. Using the maximum number of available threads/C
 
 For the taxonomic classification by sklearn classifier, the database used is the trained classifier ```SILVA 138 reference sequence``` downloaded from the <a class="reference external" href="https://docs.qiime2.org/2020.8/data-resources/" target="_blank" rel="noopener noreferrer">Data resources</a> of <a class="reference external" href="https://docs.qiime2.org/2020.8/" target="_blank" rel="noopener noreferrer">Qiime2</a>. 
 
-Please ensure that you are using the Silva138 database from qiime2.2022.11. You can also download it <a class="reference external" href="[https://ucafr-my.sharepoint.com/:f:/g/personal/oshma_chakoory_uca_fr/EkqL_9bA2UpApbEHiB8cfJ4B4BBsMB25O9Xtl29wi2QSIw?e=47rjOP](https://ucafr-my.sharepoint.com/:f:/g/personal/oshma_chakoory_uca_fr/EkqL_9bA2UpApbEHiB8cfJ4B4BBsMB25O9Xtl29wi2QSIw?e=lMrT9n)" target="_blank" rel="noopener noreferrer">here</a>. 
+Please ensure that you are using the Silva138 database from qiime2.2022.11. You can also download it <a class="reference external" href="https://ucafr-my.sharepoint.com/:f:/g/personal/oshma_chakoory_uca_fr/EkqL_9bA2UpApbEHiB8cfJ4B4BBsMB25O9Xtl29wi2QSIw?e=lMrT9n" target="_blank" rel="noopener noreferrer">here</a>. 
 
 To use other databases such as Greengenes or UNITE, you can download already trained classifer or train your own database by following the <a class="reference external" href="https://docs.qiime2.org/2020.8/data-resources/" target="_blank" rel="noopener noreferrer">Data resources</a> instructions.
 

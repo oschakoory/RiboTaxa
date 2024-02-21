@@ -30,8 +30,8 @@ no_vertebrate_file <- as_tibble(no_vertebrate_file)
 no_vertebrate_file[12] <- apply(no_vertebrate_file[,12],2,function(x){x/sum(x)*100}) #recalculate relative abundance
 
 
-no_vertebrate_file <- no_vertebrate_file %>% 
-  mutate(ID = str_replace(ID, "^[0-9|]+", ""))
+#no_vertebrate_file <- no_vertebrate_file %>% 
+#  mutate(ID = str_replace(ID, "^[0-9|]+", ""))
 
 no_vertebrate_file$Domain <- as.factor(no_vertebrate_file$Domain)
 no_vertebrate_file$Phylum <- as.factor(no_vertebrate_file$Phylum)

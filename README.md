@@ -113,7 +113,7 @@ Now, you are ready to use RiboTaxa !!!
 
 ### Indexing databases
 
-RiboTaxa pipeline includes tools like sortmerna and emirge, both of which need indexed databases of their own. The latest database SILVA SSU 138.1 can be downloaded <a class="reference external" href="https://www.arb-silva.de/" target="_blank" rel="noopener noreferrer">here</a> and the indexed database SILVA SSU 138.1 for RiboTaxa are available <a class="reference external" href="https://ucafr-my.sharepoint.com/personal/oshma_chakoory_uca_fr/_layouts/15/onedrive.aspx?id=%2Fpersonal%2Foshma%5Fchakoory%5Fuca%5Ffr%2FDocuments%2FDatabases&ga=1" target="_blank" rel="noopener noreferrer">here</a>. 
+RiboTaxa pipeline includes tools like sortmerna and emirge, both of which need indexed databases of their own. The latest database SILVA SSU 138.1 can be downloaded <a class="reference external" href="https://www.arb-silva.de/" target="_blank" rel="noopener noreferrer">here</a> and the indexed database SILVA SSU 138.1 for RiboTaxa are available <a class="reference external" href="https://ucafr-my.sharepoint.com/:f:/g/personal/oshma_chakoory_uca_fr/EkqL_9bA2UpApbEHiB8cfJ4B4BBsMB25O9Xtl29wi2QSIw?e=9uLyCS" target="_blank" rel="noopener noreferrer">here</a>. 
 
 To index your own database, you will need to fill the config file ```indexDB_arguments.conf```.If you are not sure of certains parameters, leave as defined except for directories and input files.
 
